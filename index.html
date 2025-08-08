@@ -1,113 +1,241 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- BASIC META -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rustic Garden | Kavutiri Embu</title>
-    <link rel="stylesheet" href="style.css">
-    <!-- Font links for a rustic, elegant feel -->
-    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <title>Rustic Garden | Sustainable Farming & Youth Empowerment</title>
+    <meta name="description" content="Rustic Garden is a serene agricultural hub offering premium coffee, macadamia, aquaculture, wellness experiences, and youth empowerment programs, all inspired by the rhythm and freshness of spring.">
+    <meta name="keywords" content="Rustic Garden, coffee, macadamia, aquaculture, youth program, wellness, sylvotherapy, sustainable farming, nature">
+    <meta name="author" content="Rustic Garden">
+
+    <!-- FONTS & STYLES -->
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Merriweather', serif;
+            background-color: #f9f6f0;
+            color: #2e2b25;
+            line-height: 1.6;
+        }
+        header {
+            background: #e3e0d1;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        header .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: #4c4637;
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 1.5rem;
+            margin: 0;
+            padding: 0;
+        }
+        nav ul li {
+            font-weight: bold;
+        }
+        nav ul li span {
+            cursor: pointer;
+        }
+        .hero {
+            height: 85vh;
+            background: #d6e3d2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem;
+        }
+        .hero-overlay h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #3a3a2b;
+        }
+        .hero-overlay p {
+            max-width: 600px;
+            margin: auto;
+            font-size: 1.2rem;
+            color: #575748;
+        }
+        .cta-btn {
+            display: inline-block;
+            margin-top: 1.5rem;
+            padding: 0.8rem 1.5rem;
+            background: #b1d8b7;
+            color: #2f2f2f;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        section {
+            padding: 3rem 2rem;
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+            font-family: 'Playfair Display', serif;
+            color: #3b3b2f;
+        }
+        .about-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            align-items: center;
+            justify-content: center;
+        }
+        .about-content p {
+            flex: 1 1 400px;
+            color: #4a4a3d;
+        }
+        .about-content figure {
+            flex: 1 1 300px;
+            background-color: #f0ede4;
+            padding: 0.5rem;
+            border-radius: 12px;
+        }
+        .about-content figure img {
+            max-width: 100%;
+            border-radius: 12px;
+        }
+        .wellness-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+        .wellness-card {
+            background: #f4f2ec;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+        }
+        .product-card {
+            background: #fffefa;
+            padding: 1rem;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+        }
+        form {
+            max-width: 600px;
+            margin: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        input, select, textarea, button {
+            padding: 0.8rem;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            font-family: inherit;
+        }
+        button {
+            background: #a6c8a4;
+            border: none;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        footer {
+            background: #e3e0d1;
+            text-align: center;
+            padding: 1rem;
+            font-size: 0.9rem;
+            color: #4c4637;
+        }
+    </style>
 </head>
 <body>
 
     <!-- HEADER -->
-    <header>
-        <div class="logo">Rustic Garden</div>
-        <nav>
-            <a href="#about">About</a>
-            <a href="#wellness">Wellness</a>
-            <a href="#services">Services</a>
-            <a href="#youth">Youth Program</a>
-            <a href="#contact">Contact</a>
+    <header role="banner">
+        <div class="logo" aria-label="Rustic Garden Logo">Rustic Garden</div>
+        <nav role="navigation" aria-label="Main Menu">
+            <ul>
+                <li><span>About</span></li>
+                <li><span>Wellness</span></li>
+                <li><span>Services</span></li>
+                <li><span>Youth Program</span></li>
+                <li><span>Contact</span></li>
+            </ul>
         </nav>
     </header>
 
-    <!-- HERO SECTION -->
+    <!-- HERO -->
     <section class="hero">
         <div class="hero-overlay">
-            <h2>Growing Potential, One Seed at a Time</h2>
-            <p>Premium Coffee, Aquaculture, Macadamia & Youth Empowerment in Kavutiri, Embu</p>
-            <a href="#order" class="cta-btn">Order Now</a>
+            <h1>Growing Potential, One Seed at a Time</h1>
+            <p>Celebrating the freshness of spring through sustainable farming, wholesome produce, and community empowerment.</p>
+            <div class="cta-btn">Order Now</div>
         </div>
     </section>
 
-    <!-- ABOUT SECTION -->
-    <section id="about">
-        <h3>About Rustic Garden</h3>
+    <!-- ABOUT -->
+    <section id="about" role="region" aria-labelledby="about-title">
+        <h2 id="about-title">About Rustic Garden</h2>
         <div class="about-content">
             <p>
-                Rustic Garden is a dynamic agricultural and training hub overlooking Mount Kenya in Kavutiri, Embu. We specialize in premium coffee, macadamia, and aquaculture, all produced with a strong commitment to sustainable farming. Our site features a swimming pool, a section for landscapers, and facilities for dam and water pan construction. We are deeply committed to youth empowerment through training, sponsorship, and business development programs. We also provide a sanctuary for wellness and connection with nature, offering unique experiences like sylvotherapy and chlorine-free swimming.
+                Nestled in the heart of fertile highlands, Rustic Garden is a place where agriculture meets artistry and sustainability. 
+                Inspired by the gentle renewal of spring, we nurture premium coffee, rich macadamia orchards, and thriving aquaculture ponds. 
+                Our philosophy is rooted in respect for nature, ensuring that every process, from planting to harvesting, is done with harmony and care. 
+                Beyond farming, Rustic Garden is a living classroom — a space where youth discover the skills, knowledge, and creativity needed to shape a better tomorrow.
             </p>
-            <div class="image-container">
-                <!-- This image was uploaded by you -->
-                <img src="20220527_115034.jpg" alt="A rustic farm landscape with a red wheelbarrow and plant seedlings.">
-            </div>
+            <figure>
+                <img src="" alt="A scenic spring-inspired farm view">
+                <figcaption>Our fields in full seasonal bloom.</figcaption>
+            </figure>
         </div>
     </section>
 
-    <!-- WELLNESS & EXPERIENCES SECTION -->
-    <section id="wellness">
-        <h3>Wellness & Nature Experiences</h3>
+    <!-- WELLNESS -->
+    <section id="wellness" aria-labelledby="wellness-title">
+        <h2 id="wellness-title">Wellness & Nature Experiences</h2>
         <div class="wellness-grid">
-            <div class="wellness-card">
-                <h4>Embrace Sylvotherapy</h4>
-                <p>Unlock the power of trees and boost your well-being. Our garden provides a sanctuary to reduce stress, improve focus, and spark creativity through the ancient practice of sylvotherapy.</p>
-            </div>
-            <div class="wellness-card">
-                <h4>Chlorine-Free Swimming</h4>
-                <p>Take a dip in serenity. Our eco-friendly, chlorine-free pool is perfect for a gentle workout or a relaxing swim, offering a low-impact way to stay active and connected with nature.</p>
-            </div>
-            <div class="wellness-card">
-                <h4>Sustainable Irrigation</h4>
-                <p>Ditch traditional methods and upgrade to our water-wise drip irrigation system. It delivers water directly to plant roots, minimizing evaporation and runoff while boosting plant growth and health.</p>
-            </div>
+            <article class="wellness-card">
+                <h3>Embrace Sylvotherapy</h3>
+                <p>Step into a forest embrace and let the quiet strength of trees restore your energy and balance. Our sylvotherapy walks offer a mindful escape into nature’s healing presence.</p>
+            </article>
+            <article class="wellness-card">
+                <h3>Chlorine-Free Swimming</h3>
+                <p>Breathe in the freshness as you swim in clear, naturally treated water. Our pool is designed to soothe the body while respecting the environment.</p>
+            </article>
+            <article class="wellness-card">
+                <h3>Sustainable Irrigation</h3>
+                <p>Our drip irrigation systems mirror spring’s gentle rains, delivering water directly to roots, preserving resources, and nourishing plants to their fullest potential.</p>
+            </article>
         </div>
     </section>
 
-    <!-- SERVICES & PRODUCTS SECTION (CAROUSEL) -->
-    <section id="services">
-        <h3>Our Services & Products</h3>
-        <div class="carousel-container">
-            <button class="carousel-btn prev">&#10094;</button>
-            <div class="carousel-track">
-                <div class="product-card">
-                    <img src="https://via.placeholder.com/300x200.png?text=Coffee" alt="Charlie's Coffee">
-                    <h4>Charlie's Coffee</h4>
-                    <p>Rich aroma, smooth taste, locally roasted. Available in light and dark roasts.</p>
-                </div>
-                <div class="product-card">
-                    <img src="https://via.placeholder.com/300x200.png?text=Macadamia" alt="Macadamia Nuts">
-                    <h4>Macadamia Nuts</h4>
-                    <p>Premium quality, hand-picked from our farms.</p>
-                </div>
-                <div class="product-card">
-                    <img src="https://via.placeholder.com/300x200.png?text=Aquaculture" alt="Aquaculture">
-                    <h4>Sustainable Aquaculture</h4>
-                    <p>Fresh fish farming using sustainable methods and technology.</p>
-                </div>
-                <div class="product-card">
-                    <img src="https://via.placeholder.com/300x200.png?text=Landscaping" alt="Landscaping Services">
-                    <h4>Landscaping Services</h4>
-                    <p>Custom garden design and professional landscaping.</p>
-                </div>
-                <div class="product-card">
-                    <img src="https://via.placeholder.com/300x200.png?text=Seedlings" alt="Seedlings Supply">
-                    <h4>Seedlings Supply</h4>
-                    <p>Quality seedlings for coffee, macadamia, and more.</p>
-                </div>
-                <div class="product-card">
-                    <img src="https://via.placeholder.com/300x200.png?text=Water+Pans" alt="Water Pans">
-                    <h4>Dams & Water Pans</h4>
-                    <p>Design and construction for farm water storage.</p>
-                </div>
+    <!-- SERVICES -->
+    <section id="services" aria-labelledby="services-title">
+        <h2 id="services-title">Our Services & Products</h2>
+        <div class="wellness-grid">
+            <div class="product-card">
+                <h3>Charlie's Coffee</h3>
+                <p>Freshly roasted, fragrant, and smooth, with the depth of the highlands in every sip.</p>
             </div>
-            <button class="carousel-btn next">&#10095;</button>
+            <div class="product-card">
+                <h3>Macadamia Nuts</h3>
+                <p>Rich, buttery, and handpicked for exceptional quality and taste.</p>
+            </div>
+            <div class="product-card">
+                <h3>Sustainable Aquaculture</h3>
+                <p>Eco-friendly fish farming that ensures freshness and supports biodiversity.</p>
+            </div>
+            <div class="product-card">
+                <h3>Landscaping Services</h3>
+                <p>Designs inspired by natural forms and seasonal palettes, bringing spring’s vitality to every space.</p>
+            </div>
         </div>
     </section>
 
     <!-- ORDER FORM -->
-    <section id="order">
-        <h3>Place Your Order</h3>
+    <section id="order" aria-labelledby="order-title">
+        <h2 id="order-title">Place Your Order</h2>
         <form>
             <label for="product">Select Product/Service</label>
             <select id="product" name="product" required>
@@ -116,10 +244,8 @@
                 <option value="macadamia">Macadamia Nuts</option>
                 <option value="fish">Aquaculture Products</option>
                 <option value="landscaping">Landscaping Services</option>
-                <option value="seedlings">Seedlings</option>
-                <option value="water-pan">Dam/Water Pan Construction</option>
             </select>
-            <input type="number" name="quantity" placeholder="Quantity (kg, bags, or units)" required>
+            <input type="number" name="quantity" placeholder="Quantity" required>
             <input type="text" name="name" placeholder="Your Name" required>
             <input type="tel" name="phone" placeholder="Phone Number" required>
             <textarea name="address" placeholder="Delivery Address" required></textarea>
@@ -128,30 +254,29 @@
     </section>
 
     <!-- YOUTH PROGRAM -->
-    <section id="youth">
-        <h3>Youth Empowerment Program</h3>
-        <p>We believe in building the future by investing in young people. Our youth program provides training, mentorship, and sponsorship opportunities in agriculture, aquaculture, and agribusiness management.</p>
+    <section id="youth" aria-labelledby="youth-title">
+        <h2 id="youth-title">Youth Empowerment Program</h2>
+        <p>Through practical training, mentorship, and sponsorship, we cultivate the talents of young people, helping them plant seeds of opportunity that will flourish for years to come.</p>
         <form>
             <input type="text" name="youth-name" placeholder="Your Full Name" required>
             <input type="tel" name="youth-phone" placeholder="Phone Number" required>
             <input type="email" name="youth-email" placeholder="Email Address" required>
-            <textarea name="youth-interest" placeholder="Tell us about your interest in the program" required></textarea>
+            <textarea name="youth-interest" placeholder="Share your interest in the program" required></textarea>
             <button type="submit">Register</button>
         </form>
     </section>
 
     <!-- CONTACT -->
-    <section id="contact">
-        <h3>Contact Us</h3>
-        <p>Email: GroupNomad@outlook.com</p>
-        <p>Phone: +254 722 704 997</p>
+    <section id="contact" aria-labelledby="contact-title">
+        <h2 id="contact-title">Contact Us</h2>
+        <p><strong>Email:</strong> GroupNomad@outlook.com</p>
+        <p><strong>Phone:</strong> +254 722 704 997</p>
     </section>
 
     <!-- FOOTER -->
-    <footer>
-        &copy; 2025 Rustic Garden - Kavutiri Embu | Empowering Youth & Growing Sustainability
+    <footer role="contentinfo">
+        &copy; 2025 Rustic Garden - Nurturing Sustainability & Community Growth
     </footer>
 
-    <script src="script.js"></script>
 </body>
 </html>
