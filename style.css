@@ -1,49 +1,145 @@
-body {
-    font-family: Arial, sans-serif;
+/* General Reset and Body Styling */
+* {
     margin: 0;
-    background: #f4f4f4;
+    padding: 0;
+    box-sizing: border-box;
 }
+
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #f4f6f8;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Header and Navigation */
 header {
-    background: #2e7d32;
+    background: linear-gradient(90deg, #2e7d32, #1b5e20);
     color: white;
-    padding: 15px;
+    padding: 20px;
     text-align: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 }
+
+header h1 {
+    font-size: 2rem;
+    letter-spacing: 1px;
+}
+
+nav {
+    margin-top: 10px;
+}
+
 nav a {
     color: white;
-    margin: 0 10px;
+    margin: 0 15px;
     text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
 }
+
+nav a:hover {
+    color: #ffeb3b;
+}
+
+/* Hero Section */
 .hero {
-    padding: 40px;
+    padding: 60px 20px;
     text-align: center;
-    background: #c8e6c9;
+    background: linear-gradient(135deg, #c8e6c9, #a5d6a7);
+    border-bottom: 3px solid #2e7d32;
 }
+
+.hero h2 {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    color: #444;
+}
+
+/* Main Sections */
 section {
-    padding: 20px;
-    max-width: 800px;
-    margin: auto;
+    padding: 30px;
+    max-width: 900px;
+    margin: 30px auto;
     background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
+
+section h3 {
+    font-size: 1.6rem;
+    margin-bottom: 15px;
+    color: #2e7d32;
+}
+
+/* Form Styling */
 form {
     display: flex;
     flex-direction: column;
 }
-form input, form textarea, form button {
+
+form input, 
+form textarea, 
+form button {
     margin: 10px 0;
-    padding: 10px;
+    padding: 12px;
+    font-size: 1rem;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    transition: all 0.3s ease;
 }
+
+form input:focus, 
+form textarea:focus {
+    border-color: #2e7d32;
+    outline: none;
+    box-shadow: 0 0 5px rgba(46,125,50,0.3);
+}
+
 form button {
     background: #2e7d32;
     color: white;
     border: none;
+    cursor: pointer;
+    font-weight: bold;
 }
+
+form button:hover {
+    background: #1b5e20;
+}
+
+/* Footer */
 footer {
     text-align: center;
-    padding: 10px;
+    padding: 15px;
     background: #2e7d32;
     color: white;
     position: fixed;
     bottom: 0;
     width: 100%;
+    font-size: 0.9rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 1.5rem;
+    }
+
+    nav a {
+        margin: 0 8px;
+    }
+
+    .hero h2 {
+        font-size: 2rem;
+    }
+
+    section {
+        margin: 15px;
+        padding: 20px;
+    }
 }
