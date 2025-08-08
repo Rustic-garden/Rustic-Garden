@@ -1,29 +1,51 @@
-// CAROUSEL FUNCTIONALITY
-const track = document.querySelector('.carousel-track');
-const prevBtn = document.querySelector('.prev');
-const nextBtn = document.querySelector('.next');
-let index = 0;
-
-nextBtn.addEventListener('click', () => {
-    if (index < track.children.length - 1) index++;
-    track.style.transform = `translateX(${-index * 270}px)`;
-});
-
-prevBtn.addEventListener('click', () => {
-    if (index > 0) index--;
-    track.style.transform = `translateX(${-index * 270}px)`;
-});
-
-// FORM SUBMISSION TO WHATSAPP
-document.querySelectorAll('form').forEach(form => {
-    form.addEventListener('submit', e => {
-        e.preventDefault();
-        let formData = new FormData(form);
-        let message = 'New Request:%0A';
-        formData.forEach((value, key) => {
-            message += `${key}: ${value}%0A`;
+document.addEventListener('DOMContentLoaded', () => {
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
+            });
         });
-        let phoneNumber = '254722704997'; // Replace with your WhatsApp number
-        window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
     });
+
+    // Carousel functionality for the services section
+    const carouselContainer = document.querySelector('.carousel-container');
+    const carouselTrack = document.querySelector('.carousel-track');
+    const prevBtn = document.querySelector('.carousel-btn.prev');
+    const nextBtn = document.querySelector('.carousel-btn.next');
+    let currentIndex = 0;
+
+    // Helper function to update the carousel position
+    function updateCarousel() {
+        const itemWidth = carouselTrack.children[0].offsetWidth;
+        carouselTrack.style.transform = `translateX(-${currentIndex * itemWidth}px)`;
+    }
+
+    nextBtn.addEventListener('click', () => {
+        // Prevent clicking too fast
+        carouselTrack.style.transition = 'transform 0.5s ease-in-out';
+        currentIndex++;
+        // If we reach the end, reset to the first item with a quick transition
+        if (currentIndex > carouselTrack.children.length - 1) {
+            currentIndex = 0;
+            carouselTrack.style.transition = 'none';
+        }
+        updateCarousel();
+    });
+
+    prevBtn.addEventListener('click', () => {
+        // Prevent clicking too fast
+        carouselTrack.style.transition = 'transform 0.5s ease-in-out';
+        currentIndex--;
+        // If we reach the beginning, loop back to the end
+        if (currentIndex < 0) {
+            currentIndex = carouselTrack.children.length - 1;
+            carouselTrack.style.transition = 'none';
+        }
+        updateCarousel();
+    });
+
+    // Recalculate carousel position on window resize
+    window.addEventListener('resize', updateCarousel);
 });
