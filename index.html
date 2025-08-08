@@ -13,8 +13,9 @@
     <h1>Rustic Garden</h1>
     <nav>
         <a href="#about">About</a>
-        <a href="#products">Products</a>
+        <a href="#services">Services</a>
         <a href="#order">Place Order</a>
+        <a href="#youth">Youth Program</a>
         <a href="#contact">Contact</a>
     </nav>
 </header>
@@ -22,8 +23,8 @@
 <!-- HERO -->
 <section class="hero">
     <div class="hero-overlay">
-        <h2>Fresh from Farm to Cup</h2>
-        <p>Premium Coffee & Organic Produce from Kavutiri, Embu</p>
+        <h2>Growing Potential, One Seed at a Time</h2>
+        <p>Premium Coffee, Aquaculture, Macadamia & Youth Empowerment in Kavutiri, Embu</p>
         <a href="#order" class="cta-btn">Order Now</a>
     </div>
 </section>
@@ -32,15 +33,16 @@
 <section id="about">
     <h3>About Rustic Garden</h3>
     <p>
-        Rustic Garden is a family-owned farm in the lush hills of Kavutiri, Embu. 
-        We specialize in producing premium coffee beans, pure farm honey, and fresh organic vegetables. 
-        Every product is cultivated with care, ensuring you enjoy the full taste of our land’s natural richness.
+        Rustic Garden is a dynamic agricultural and training hub overlooking Mount Kenya in Kavutiri, Embu. 
+        We specialize in premium coffee, macadamia, aquaculture, and sustainable farming solutions. 
+        Our site features a swimming pool, a section for landscapers, and facilities for dam and water pan construction. 
+        We are deeply committed to youth empowerment through training, sponsorship, and business development programs.
     </p>
 </section>
 
-<!-- PRODUCTS CAROUSEL -->
-<section id="products">
-    <h3>Our Products</h3>
+<!-- SERVICES -->
+<section id="services">
+    <h3>Our Services & Products</h3>
     <div class="carousel-container">
         <button class="carousel-btn prev">&#10094;</button>
         <div class="carousel-track">
@@ -50,19 +52,29 @@
                 <p>Rich aroma, smooth taste, locally roasted.</p>
             </div>
             <div class="product-card">
-                <img src="honey.jpg" alt="Honey">
-                <h4>Pure Farm Honey</h4>
-                <p>Golden, raw, and full of natural goodness.</p>
+                <img src="macadamia.jpg" alt="Macadamia">
+                <h4>Macadamia Nuts</h4>
+                <p>Premium quality, hand-picked from our farms.</p>
             </div>
             <div class="product-card">
-                <img src="vegetables.jpg" alt="Vegetables">
-                <h4>Fresh Vegetables</h4>
-                <p>Picked daily from our lush gardens.</p>
+                <img src="aquaculture.jpg" alt="Aquaculture">
+                <h4>Aquaculture</h4>
+                <p>Fresh fish farming using sustainable methods.</p>
             </div>
             <div class="product-card">
-                <img src="tea.jpg" alt="Tea">
-                <h4>Herbal Tea</h4>
-                <p>Soothing blends from farm-fresh herbs.</p>
+                <img src="landscaping.jpg" alt="Landscaping">
+                <h4>Landscaping Services</h4>
+                <p>Custom garden design and professional landscaping.</p>
+            </div>
+            <div class="product-card">
+                <img src="seedlings.jpg" alt="Seedlings">
+                <h4>Seedlings Supply</h4>
+                <p>Quality seedlings for coffee, macadamia, and more.</p>
+            </div>
+            <div class="product-card">
+                <img src="water-pan.jpg" alt="Water Pans">
+                <h4>Dams & Water Pans</h4>
+                <p>Design and construction for farm water storage.</p>
             </div>
         </div>
         <button class="carousel-btn next">&#10095;</button>
@@ -73,16 +85,18 @@
 <section id="order">
     <h3>Place Your Order</h3>
     <form>
-        <label for="product">Select Product</label>
+        <label for="product">Select Product/Service</label>
         <select id="product" name="product" required>
             <option value="">--Choose an item--</option>
             <option value="coffee">Coffee</option>
-            <option value="honey">Honey</option>
-            <option value="vegetables">Vegetables</option>
-            <option value="tea">Herbal Tea</option>
+            <option value="macadamia">Macadamia Nuts</option>
+            <option value="fish">Aquaculture Products</option>
+            <option value="landscaping">Landscaping Services</option>
+            <option value="seedlings">Seedlings</option>
+            <option value="water-pan">Dam/Water Pan Construction</option>
         </select>
 
-        <input type="number" name="quantity" placeholder="Quantity (kg or bags)" required>
+        <input type="number" name="quantity" placeholder="Quantity (kg, bags, or units)" required>
         <input type="text" name="name" placeholder="Your Name" required>
         <input type="tel" name="phone" placeholder="Phone Number" required>
         <textarea name="address" placeholder="Delivery Address" required></textarea>
@@ -91,16 +105,29 @@
     </form>
 </section>
 
+<!-- YOUTH PROGRAM -->
+<section id="youth">
+    <h3>Youth Empowerment Program</h3>
+    <p>We believe in building the future by investing in young people. Our youth program provides training, mentorship, and sponsorship opportunities in agriculture, aquaculture, and agribusiness management.</p>
+    <form>
+        <input type="text" name="youth-name" placeholder="Your Full Name" required>
+        <input type="tel" name="youth-phone" placeholder="Phone Number" required>
+        <input type="email" name="youth-email" placeholder="Email Address" required>
+        <textarea name="youth-interest" placeholder="Tell us about your interest in the program" required></textarea>
+        <button type="submit">Register</button>
+    </form>
+</section>
+
 <!-- CONTACT -->
 <section id="contact">
     <h3>Contact Us</h3>
-    <p>Email: rusticgardenkavutiri@gmail.com</p>
-    <p>Phone: +254 712 345 678</p>
+    <p>Email: GroupNomad@outlook.com</p>
+    <p>Phone: +254 722 704 997</p>
 </section>
 
 <!-- FOOTER -->
 <footer>
-    &copy; 2025 Rustic Garden - Kavutiri Embu | Fresh & Local
+    &copy; 2025 Rustic Garden - Kavutiri Embu | Empowering Youth & Growing Sustainability
 </footer>
 
 <script src="script.js"></script>
