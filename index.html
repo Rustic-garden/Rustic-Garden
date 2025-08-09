@@ -3,936 +3,250 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title id="page-title">Gibb's Coffee | Premium Mount Kenya Coffee | Rustic Garden</title>
-    <meta name="description" content="Experience Charlie's Coffee - honey-processed Arabica from Mount Kenya's volcanic slopes. Hand-picked, sustainably grown, and roasted in small batches for exceptional flavor.">
-    
-    <style>
-        /* CSS RESET & BASE STYLES */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: Georgia, 'Times New Roman', serif;
-            background-color: #f9f6f0;
-            color: #2e2b25;
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-        
-        /* UTILITY CLASSES */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-        
-        .text-center { text-align: center; }
-        .mb-1 { margin-bottom: 1rem; }
-        .mb-2 { margin-bottom: 2rem; }
-        .hidden { display: none; }
-        .loading { opacity: 0.6; pointer-events: none; }
-        
-        /* HEADER STYLES */
-        header {
-            background: #e3e0d1;
-            padding: 1rem 0;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-        
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .logo {
-            font-family: serif;
-            font-size: 1.8rem;
-            font-weight: bold;
-            color: #4c4637;
-            cursor: pointer;
-            transition: color 0.3s;
-        }
-        
-        .logo:hover { color: #8b5a3c; }
-        
-        /* SIMPLIFIED NAVIGATION - Reduces choice overload */
-        .main-nav {
-            display: flex;
-            gap: 1.5rem;
-            list-style: none;
-        }
-        
-        .nav-item {
-            font-weight: 600;
-            color: #4c4637;
-            cursor: pointer;
-            padding: 0.5rem 1rem;
-            border-radius: 6px;
-            transition: all 0.3s;
-            position: relative;
-        }
-        
-        .nav-item:hover, .nav-item.active {
-            background: #8b5a3c;
-            color: white;
-        }
-        
-        /* Mobile menu toggle */
-        .menu-toggle {
-            display: none;
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: #4c4637;
-        }
-        
-        /* HERO SECTION - Attractive & Social proof */
-        .hero {
-            height: 80vh;
-            background: linear-gradient(135deg, #d4c5a9 0%, #b8a082 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: radial-gradient(circle at 30% 50%, rgba(255,255,255,0.1) 0%, transparent 50%),
-                       radial-gradient(circle at 70% 80%, rgba(139,90,60,0.1) 0%, transparent 50%);
-        }
-        
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            max-width: 800px;
-        }
-        
-        .hero h1 {
-            font-size: clamp(2.5rem, 5vw, 4rem);
-            margin-bottom: 1rem;
-            color: #3a3a2b;
-            font-family: serif;
-            font-weight: bold;
-        }
-        
-        .hero .subtitle {
-            font-size: 1.4rem;
-            color: #5d4e37;
-            margin-bottom: 1.5rem;
-            font-style: italic;
-        }
-        
-        /* Social proof in hero */
-        .social-proof {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 2rem;
-            margin: 2rem 0;
-            flex-wrap: wrap;
-        }
-        
-        .proof-item {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            color: #5d4e37;
-            font-size: 0.9rem;
-        }
-        
-        /* SIMPLIFIED CTA BUTTONS - Easy principle */
-        .cta-group {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-        
-        .btn {
-            display: inline-block;
-            padding: 1rem 2rem;
-            border-radius: 8px;
-            font-weight: 600;
-            text-decoration: none;
-            cursor: pointer;
-            transition: all 0.3s;
-            border: none;
-            font-family: inherit;
-            font-size: 1rem;
-        }
-        
-        .btn-primary {
-            background: #8b5a3c;
-            color: white;
-        }
-        
-        .btn-primary:hover {
-            background: #6d4428;
-            transform: translateY(-2px);
-        }
-        
-        .btn-secondary {
-            background: transparent;
-            color: #8b5a3c;
-            border: 2px solid #8b5a3c;
-        }
-        
-        .btn-secondary:hover {
-            background: #8b5a3c;
-            color: white;
-        }
-        
-        /* PAGE CONTENT CONTAINER */
-        .page-content {
-            min-height: 60vh;
-        }
-        
-        section {
-            padding: 3rem 0;
-        }
-        
-        h2 {
-            text-align: center;
-            margin-bottom: 2rem;
-            font-family: serif;
-            color: #3b3b2f;
-            font-size: 2.2rem;
-            font-weight: bold;
-        }
-        
-        /* SIMPLIFIED GRID - Prevents choice overload */
-        .simple-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin: 2rem 0;
-        }
-        
-        .card {
-            background: white;
-            padding: 2rem;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-            transition: all 0.3s;
-            cursor: pointer;
-        }
-        
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
-        }
-        
-        .card-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            display: block;
-        }
-        
-        .card h3 {
-            color: #8b5a3c;
-            font-family: serif;
-            margin-bottom: 1rem;
-            font-size: 1.4rem;
-            font-weight: bold;
-        }
-        
-        .card-cta {
-            color: #8b5a3c;
-            font-weight: 600;
-            margin-top: 1rem;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        
-        /* PROGRESS INDICATOR - Timely principle */
-        .progress-bar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            height: 3px;
-            background: #8b5a3c;
-            z-index: 1000;
-            transition: width 0.3s;
-        }
-        
-        /* FLOATING ACTION BUTTON - Easy access */
-        .fab {
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            background: #8b5a3c;
-            color: white;
-            border: none;
-            cursor: pointer;
-            font-size: 1.5rem;
-            box-shadow: 0 4px 12px rgba(139, 90, 60, 0.3);
-            transition: all 0.3s;
-            z-index: 99;
-        }
-        
-        .fab:hover {
-            transform: scale(1.1);
-            box-shadow: 0 6px 16px rgba(139, 90, 60, 0.4);
-        }
-        
-        /* SIMPLIFIED ORDER FORM - Reduces decision fatigue */
-        .order-form {
-            background: white;
-            padding: 2rem;
-            border-radius: 12px;
-            max-width: 500px;
-            margin: 2rem auto;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-        }
-        
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-        
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-            color: #4c4637;
-        }
-        
-        .form-control {
-            width: 100%;
-            padding: 0.8rem;
-            border: 2px solid #e3e0d1;
-            border-radius: 6px;
-            font-family: inherit;
-            transition: border-color 0.3s;
-        }
-        
-        .form-control:focus {
-            outline: none;
-            border-color: #8b5a3c;
-        }
-        
-        /* CHOICE SIMPLIFICATION */
-        .choice-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-            gap: 1rem;
-            margin: 1rem 0;
-        }
-        
-        .choice-option {
-            padding: 1rem;
-            border: 2px solid #e3e0d1;
-            border-radius: 8px;
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.3s;
-            background: white;
-        }
-        
-        .choice-option:hover, .choice-option.selected {
-            border-color: #8b5a3c;
-            background: #8b5a3c;
-            color: white;
-        }
-        
-        /* SUCCESS STATES - Timely feedback */
-        .success-message {
-            background: #d4edda;
-            color: #155724;
-            padding: 1rem;
-            border-radius: 6px;
-            margin: 1rem 0;
-            border: 1px solid #c3e6cb;
-        }
-        
-        .error-message {
-            background: #f8d7da;
-            color: #721c24;
-            padding: 1rem;
-            border-radius: 6px;
-            margin: 1rem 0;
-            border: 1px solid #f5c6cb;
-        }
-        
-        /* FOOTER */
-        footer {
-            background: #e3e0d1;
-            text-align: center;
-            padding: 2rem 0;
-            margin-top: 3rem;
-        }
-        
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-        
-        .footer-nav {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-bottom: 1rem;
-            flex-wrap: wrap;
-        }
-        
-        .footer-nav a {
-            color: #4c4637;
-            text-decoration: none;
-            font-weight: 600;
-            transition: color 0.3s;
-        }
-        
-        .footer-nav a:hover {
-            color: #8b5a3c;
-        }
-        
-        /* RESPONSIVE DESIGN */
-        @media (max-width: 768px) {
-            .header-content {
-                flex-wrap: wrap;
-            }
-            
-            .main-nav {
-                display: none;
-                width: 100%;
-                flex-direction: column;
-                background: #d6d3c4;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                padding: 1rem;
-            }
-            
-            .main-nav.active {
-                display: flex;
-            }
-            
-            .menu-toggle {
-                display: block;
-            }
-            
-            .hero {
-                height: 70vh;
-                padding: 1rem;
-            }
-            
-            .social-proof {
-                flex-direction: column;
-                gap: 1rem;
-            }
-            
-            .cta-group {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .btn {
-                width: 100%;
-                max-width: 300px;
-            }
-            
-            .simple-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .fab {
-                bottom: 1rem;
-                right: 1rem;
-            }
-        }
-        
-        /* LOADING STATES */
-        .spinner {
-            width: 20px;
-            height: 20px;
-            border: 2px solid #f3f3f3;
-            border-top: 2px solid #8b5a3c;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-            display: inline-block;
-            margin-right: 0.5rem;
-        }
-        
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        
-        /* PAGE-SPECIFIC STYLES */
-        .page-story { background: #f4f2ec; }
-        .page-process { background: #f9f7f0; }
-        .page-roasting { background: #f6f4ed; }
-        .page-order { background: #f8f6f1; }
-        
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 2rem;
-            text-align: center;
-            margin: 2rem 0;
-        }
-        
-        .stat-number {
-            font-size: 3rem;
-            font-weight: bold;
-            color: #8b5a3c;
-            display: block;
-            font-family: serif;
-        }
-        
-        .stat-label {
-            color: #5d5d4e;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-size: 0.9rem;
-        }
-        
-        /* ANIMATIONS */
-        .fade-in {
-            animation: fadeIn 0.6s ease-in;
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        .slide-in-left {
-            animation: slideInLeft 0.6s ease-out;
-        }
-        
-        @keyframes slideInLeft {
-            from { opacity: 0; transform: translateX(-30px); }
-            to { opacity: 1; transform: translateX(0); }
-        }
-    </style>
+    <title>Rustic Garden | Premium Farm Products & Community Projects</title>
+    <meta name="description" content="Rustic Garden: Premium Mount Kenya Coffee, Macadamia, Dried Bananas, Nutrition Packs, and Aquaculture. Sustainable, nutritious, and community-focused.">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- PROGRESS BAR -->
-    <div class="progress-bar" id="progressBar"></div>
-
     <!-- HEADER -->
     <header>
-        <div class="container">
-            <div class="header-content">
-                <div class="logo" onclick="showPage('home')">Rustic Garden Coffee</div>
-                <button class="menu-toggle" onclick="toggleMobileMenu()">☰</button>
-                <nav class="main-nav" id="mainNav">
-                    <div class="nav-item active" onclick="showPage('home')">Home</div>
-                    <div class="nav-item" onclick="showPage('story')">Our Story</div>
-                    <div class="nav-item" onclick="showPage('process')">Process</div>
-                    <div class="nav-item" onclick="showPage('roasting')">Roasting</div>
-                    <div class="nav-item" onclick="showPage('order')">Order</div>
-                </nav>
+        <div class="container header-flex">
+            <div class="logo">
+                <a href="index.html" style="text-decoration:none;color:inherit;"><strong>Rustic Garden</strong></a>
             </div>
+            <nav class="main-nav" id="mainNav">
+                <a href="index.html" class="nav-item active">Coffee</a>
+                <a href="macadamia.html" class="nav-item">Macadamia</a>
+                <a href="bananas.html" class="nav-item">Dried Bananas</a>
+                <a href="family-pack.html" class="nav-item">Family Nutrition Pack</a>
+                <a href="aquaculture.html" class="nav-item">Aquaculture</a>
+            </nav>
+            <button class="menu-toggle" onclick="toggleMobileMenu()">☰</button>
         </div>
     </header>
 
-    <!-- PAGE: HOME -->
-    <div id="page-home" class="page-content">
-        <section class="hero">
-            <div class="hero-content fade-in">
-                <h1>Charlie's Coffee</h1>
-                <p class="subtitle">From Mount Kenya's volcanic slopes to your cup</p>
-                <p class="mb-2">Hand-picked Arabica, honey-processed with love, roasted to perfection. Experience the authentic taste of Kenyan coffee heritage.</p>
-                
-                <div class="social-proof">
-                    <div class="proof-item">⭐ 4.9/5 Rating</div>
-                    <div class="proof-item">🚚 48hr Fresh Delivery</div>
-                    <div class="proof-item">🌱 100% Sustainable</div>
-                </div>
-                
-                <div class="cta-group">
-                    <button class="btn btn-primary" onclick="showPage('order')">Order Coffee</button>
-                    <button class="btn btn-secondary" onclick="showPage('story')">Our Story</button>
-                </div>
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="hero-content fade-in">
+            <h1>Rustic Garden: Farm Fresh, Community Strong</h1>
+            <p class="subtitle">From Mount Kenya's volcanic slopes to your family table</p>
+            <p class="mb-2">Coffee, macadamia, bananas and nutrition packs grown and processed by our community. Sustainable. Nutritious. Delicious.</p>
+            <div class="cta-group">
+                <a class="btn btn-primary" href="#coffee-section">Shop Coffee</a>
+                <a class="btn btn-secondary" href="macadamia.html">See Macadamia</a>
+                <a class="btn btn-secondary" href="bananas.html">Dried Bananas</a>
+                <a class="btn btn-secondary" href="family-pack.html">Nutrition Pack</a>
+                <a class="btn btn-secondary" href="aquaculture.html">Aquaculture</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRODUCT OVERVIEW GRID -->
+    <main class="container">
+        <section class="simple-grid" style="margin-top:2rem;">
+            <!-- Coffee -->
+            <div class="card" id="coffee-section">
+                <span class="card-icon">☕</span>
+                <h3>Charlie's Coffee</h3>
+                <p>Honey-processed Arabica from Mount Kenya. Hand-picked, sun-dried, and roasted to perfection in small batches. <br>
+                <a href="#coffee-details" style="color:#8b5a3c;">Learn more…</a></p>
+                <a class="card-cta" href="#coffee-order">Order Coffee →</a>
+            </div>
+            <!-- Macadamia -->
+            <div class="card">
+                <span class="card-icon">🥜</span>
+                <h3>Macadamia</h3>
+                <p>Premium nuts, hand-picked and sun-dried. Creamy, nutritious, and great for snacks or baking. <br>
+                <a href="macadamia.html" style="color:#8b5a3c;">Learn more…</a></p>
+                <a class="card-cta" href="macadamia.html">See More →</a>
+            </div>
+            <!-- Dried Bananas -->
+            <div class="card">
+                <span class="card-icon">🍌</span>
+                <h3>Dried Bananas</h3>
+                <p>Solar dried, naturally sweet, and full of fiber. Healthy snacks for school, work, or adventure. <br>
+                <a href="bananas.html" style="color:#8b5a3c;">Learn more…</a></p>
+                <a class="card-cta" href="bananas.html">Order Bananas →</a>
+            </div>
+            <!-- Family Nutrition Pack -->
+            <div class="card">
+                <span class="card-icon">🧺</span>
+                <h3>Family Nutrition Pack</h3>
+                <p>Curated for wellness and recovery. Coffee, nuts, roots, fruit, and veggies. Designed for families and care. <br>
+                <a href="family-pack.html" style="color:#8b5a3c;">Learn more…</a></p>
+                <a class="card-cta" href="family-pack.html">Details →</a>
+            </div>
+            <!-- Aquaculture -->
+            <div class="card">
+                <span class="card-icon">🐟</span>
+                <h3>Aquaculture Projects</h3>
+                <p>School fish pods for nutrition, education, and resilience. Designs, case studies, and curriculum integration. <br>
+                <a href="aquaculture.html" style="color:#8b5a3c;">Learn more…</a></p>
+                <a class="card-cta" href="aquaculture.html">Explore →</a>
             </div>
         </section>
+    </main>
 
-        <section class="container">
-            <h2>From Farm to Cup</h2>
-            <div class="simple-grid">
-                <div class="card" onclick="showPage('story')">
-                    <span class="card-icon">🌿</span>
-                    <h3>Our Heritage</h3>
-                    <p>Three generations of coffee farming on Mount Kenya's fertile slopes, where volcanic soil meets perfect climate.</p>
-                    <div class="card-cta">Discover Our Story →</div>
-                </div>
-                
-                <div class="card" onclick="showPage('process')">
-                    <span class="card-icon">☀️</span>
-                    <h3>Honey Process</h3>
-                    <p>Our unique honey processing method creates naturally sweet, complex flavors that capture Mount Kenya's terroir.</p>
-                    <div class="card-cta">Learn Process →</div>
-                </div>
-                
-                <div class="card" onclick="showPage('roasting')">
-                    <span class="card-icon">🔥</span>
-                    <h3>Perfect Roast</h3>
-                    <p>Small-batch roasting brings out each bean's unique character. Choose from three carefully crafted profiles.</p>
-                    <div class="card-cta">View Roasts →</div>
-                </div>
+    <!-- COFFEE FOCUS SECTION -->
+    <section id="coffee-details" class="container page-content">
+        <h2>Charlie's Coffee: From Farm to Cup</h2>
+        <div class="simple-grid">
+            <div class="card">
+                <span class="card-icon">🌿</span>
+                <h3>Our Heritage</h3>
+                <p>Three generations of coffee farming on Mount Kenya's fertile slopes, where volcanic soil meets perfect climate.</p>
             </div>
-        </section>
-    </div>
-
-    <!-- PAGE: OUR STORY -->
-    <div id="page-story" class="page-content page-story hidden">
-        <section class="hero" style="height: 50vh;">
-            <div class="hero-content">
-                <h1>Our Coffee Story</h1>
-                <p class="subtitle">Three generations of passion on Mount Kenya</p>
+            <div class="card">
+                <span class="card-icon">☀️</span>
+                <h3>Honey Process</h3>
+                <p>Our unique honey processing method creates naturally sweet, complex flavors that capture Mount Kenya's terroir.</p>
             </div>
-        </section>
-
-        <section class="container">
-            <div class="slide-in-left">
-                <h2>Born from Volcanic Soil</h2>
-                <p style="font-size: 1.1rem; text-align: center; max-width: 800px; margin: 0 auto 3rem;">
-                    Our story begins with a small family plot where coffee bushes thrived under indigenous shade trees. 
-                    What started as subsistence farming has grown into a mission: to produce exceptional coffee that 
-                    respects nature, empowers people, and connects every customer to the heart of Kavutiri, Embu.
-                </p>
+            <div class="card">
+                <span class="card-icon">🔥</span>
+                <h3>Perfect Roast</h3>
+                <p>Small-batch roasting brings out each bean's unique character. Choose from three carefully crafted profiles.</p>
             </div>
+        </div>
+        <div class="text-center" style="margin-top:2rem;">
+            <a class="btn btn-primary" href="#coffee-order">Order Coffee</a>
+        </div>
+    </section>
 
-            <div class="stats-grid">
-                <div>
-                    <span class="stat-number">1,800m</span>
-                    <span class="stat-label">Elevation</span>
-                </div>
-                <div>
-                    <span class="stat-number">1952</span>
-                    <span class="stat-label">Family Farm Founded</span>
-                </div>
-                <div>
-                    <span class="stat-number">100+</span>
-                    <span class="stat-label">Families Supported</span>
-                </div>
-                <div>
-                    <span class="stat-number">3</span>
-                    <span class="stat-label">Generations</span>
-                </div>
-            </div>
-
-            <div class="simple-grid">
-                <div class="card">
-                    <h3>Perfect Terroir</h3>
-                    <p>Mount Kenya's volcanic soils, cool misty mornings, and steady sunshine create ideal growing conditions. Our microclimate produces beans with exceptional complexity and sweetness.</p>
-                </div>
-                
-                <div class="card">
-                    <h3>Community Impact</h3>
-                    <p>Every purchase supports local families through fair wages, youth training programs, and community development projects. Coffee farming that builds stronger communities.</p>
-                </div>
-                
-                <div class="card">
-                    <h3>Sustainability First</h3>
-                    <p>Organic cultivation, shade-growing, and water stewardship protect our environment for future generations while producing better coffee today.</p>
-                </div>
-            </div>
-
-            <div class="text-center" style="margin-top: 3rem;">
-                <button class="btn btn-primary" onclick="showPage('process')">See How We Grow →</button>
-            </div>
-        </section>
-    </div>
-
-    <!-- PAGE: PROCESS -->
-    <div id="page-process" class="page-content page-process hidden">
-        <section class="hero" style="height: 50vh;">
-            <div class="hero-content">
-                <h1>Farm to Cup Process</h1>
-                <p class="subtitle">Where tradition meets innovation</p>
-            </div>
-        </section>
-
-        <section class="container">
-            <h2>Our Cultivation Method</h2>
-            
-            <div class="simple-grid">
-                <div class="card">
-                    <span class="card-icon">🌱</span>
-                    <h3>Organic Growing</h3>
-                    <p>Natural compost, green manure, and beneficial microorganisms enrich our soil without synthetic chemicals. Healthier plants produce better coffee.</p>
-                </div>
-                
-                <div class="card">
-                    <span class="card-icon">🌳</span>
-                    <h3>Shade Cultivation</h3>
-                    <p>Coffee thrives under indigenous tree canopies, protecting delicate beans while supporting biodiversity. Birds, insects, and wildlife flourish in our farm.</p>
-                </div>
-                
-                <div class="card">
-                    <span class="card-icon">💧</span>
-                    <h3>Water Stewardship</h3>
-                    <p>Rainwater harvesting and targeted drip irrigation ensure responsible water use. Every drop counts in sustainable farming.</p>
-                </div>
-            </div>
-
-            <h2>Harvest & Processing</h2>
-            <div style="background: white; padding: 2rem; border-radius: 12px; margin: 2rem 0;">
-                <div class="simple-grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
-                    <div style="text-align: center;">
-                        <div style="font-size: 2rem; color: #8b5a3c;">1️⃣</div>
-                        <h4>Hand-Picking</h4>
-                        <p>Only the ripest red cherries are selected during harvest season.</p>
+    <!-- COFFEE ORDER SECTION -->
+    <section id="coffee-order" class="container page-content page-order" style="background:#f8f6f1;">
+        <h2>Order Charlie's Coffee</h2>
+        <form id="coffeeOrderForm" class="order-form">
+            <div class="form-group">
+                <label>Select Your Roast</label>
+                <div class="choice-grid">
+                    <div class="choice-option" onclick="selectChoice(this, 'roast', 'light')">
+                        <strong>Light</strong><br>
+                        <small>Bright & Floral</small>
                     </div>
-                    <div style="text-align: center;">
-                        <div style="font-size: 2rem; color: #8b5a3c;">2️⃣</div>
-                        <h4>Honey Processing</h4>
-                        <p>Natural mucilage retained during processing enhances sweetness and body.</p>
+                    <div class="choice-option selected" onclick="selectChoice(this, 'roast', 'medium')">
+                        <strong>Medium</strong><br>
+                        <small>Balanced</small>
                     </div>
-                    <div style="text-align: center;">
-                        <div style="font-size: 2rem; color: #8b5a3c;">3️⃣</div>
-                        <h4>Sun Drying</h4>
-                        <p>Raised beds allow even airflow, developing complex flavors naturally.</p>
-                    </div>
-                    <div style="text-align: center;">
-                        <div style="font-size: 2rem; color: #8b5a3c;">4️⃣</div>
-                        <h4>Quality Control</h4>
-                        <p>Each batch is cupped and graded to ensure consistent excellence.</p>
+                    <div class="choice-option" onclick="selectChoice(this, 'roast', 'dark')">
+                        <strong>Dark</strong><br>
+                        <small>Bold & Rich</small>
                     </div>
                 </div>
+                <input type="hidden" id="selectedRoast" value="medium">
             </div>
-
-            <div class="text-center">
-                <button class="btn btn-primary" onclick="showPage('roasting')">See Roasting Profiles →</button>
+            <div class="form-group">
+                <label>Grind Type</label>
+                <div class="choice-grid">
+                    <div class="choice-option selected" onclick="selectChoice(this, 'grind', 'whole')">
+                        <strong>Whole Bean</strong><br>
+                        <small>Best freshness</small>
+                    </div>
+                    <div class="choice-option" onclick="selectChoice(this, 'grind', 'drip')">
+                        <strong>Drip Grind</strong><br>
+                        <small>For coffee makers</small>
+                    </div>
+                    <div class="choice-option" onclick="selectChoice(this, 'grind', 'espresso')">
+                        <strong>Espresso</strong><br>
+                        <small>Fine grind</small>
+                    </div>
+                </div>
+                <input type="hidden" id="selectedGrind" value="whole">
             </div>
-        </section>
-    </div>
-
-    <!-- PAGE: ROASTING -->
-    <div id="page-roasting" class="page-content page-roasting hidden">
-        <section class="hero" style="height: 50vh;">
-            <div class="hero-content">
-                <h1>Roasting Profiles</h1>
-                <p class="subtitle">Crafted for your perfect cup</p>
+            <div class="form-group">
+                <label>Package Size</label>
+                <div class="choice-grid">
+                    <div class="choice-option" onclick="selectChoice(this, 'size', '250g'); updatePrice()">
+                        <strong>250g</strong><br>
+                        <small>KSh 800</small>
+                    </div>
+                    <div class="choice-option selected" onclick="selectChoice(this, 'size', '500g'); updatePrice()">
+                        <strong>500g</strong><br>
+                        <small>KSh 1,500</small>
+                    </div>
+                    <div class="choice-option" onclick="selectChoice(this, 'size', '1kg'); updatePrice()">
+                        <strong>1kg</strong><br>
+                        <small>KSh 2,800</small>
+                    </div>
+                </div>
+                <input type="hidden" id="selectedSize" value="500g">
             </div>
-        </section>
-
-        <section class="container">
-            <h2>Choose Your Profile</h2>
-            <p style="text-align: center; margin-bottom: 3rem; font-size: 1.1rem;">
-                Each roast is carefully crafted to highlight different characteristics of our Mount Kenya beans. 
-                From bright and floral to bold and smoky, find your perfect match.
+            <div class="form-group">
+                <label for="quantity">Quantity</label>
+                <select class="form-control" id="quantity" onchange="updatePrice()">
+                    <option value="1">1 package</option>
+                    <option value="2">2 packages</option>
+                    <option value="3">3 packages</option>
+                    <option value="4">4 packages</option>
+                    <option value="5">5+ packages (contact us)</option>
+                </select>
+            </div>
+            <div style="background: #f4f2ec; padding: 1.5rem; border-radius: 8px; margin: 1.5rem 0; text-align: center;">
+                <h3 style="margin: 0; color: #8b5a3c;">Total: KSh <span id="totalPrice">1,500</span></h3>
+                <small style="color: #5d5d4e;">Includes free delivery within 50km of Embu</small>
+            </div>
+            <div class="form-group">
+                <label for="customerName">Your Name</label>
+                <input type="text" class="form-control" id="customerName" required>
+            </div>
+            <div class="form-group">
+                <label for="customerPhone">Phone Number</label>
+                <input type="tel" class="form-control" id="customerPhone" required>
+            </div>
+            <div class="form-group">
+                <label for="customerEmail">Email (optional)</label>
+                <input type="email" class="form-control" id="customerEmail">
+            </div>
+            <div class="form-group">
+                <label for="deliveryAddress">Delivery Address</label>
+                <textarea class="form-control" id="deliveryAddress" rows="3" placeholder="Include landmarks and detailed directions" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="deliveryTime">Preferred Delivery</label>
+                <select class="form-control" id="deliveryTime" onchange="updatePrice()">
+                    <option value="2-3 days">Standard (2-3 days) - Free</option>
+                    <option value="next-day">Express (Next day) - +KSh 200</option>
+                    <option value="same-day">Same day (Embu town) - +KSh 300</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary" style="width: 100%;">
+                <span id="orderBtnText">Place Order</span>
+            </button>
+            <div id="orderMessage" style="margin-top: 1rem;"></div>
+            <p style="font-size: 0.9rem; color: #5d5d4e; margin-top: 1rem; text-align: center;">
+                We'll call to confirm your order and arrange payment (M-Pesa, cash on delivery, or bank transfer).
             </p>
-            
-            <div class="simple-grid">
-                <div class="card" onclick="selectRoast('light')">
-                    <span class="card-icon">☀️</span>
-                    <h3>Light Roast</h3>
-                    <p><strong>Flavor:</strong> Bright acidity, floral aromatics, tea-like body</p>
-                    <p><strong>Best For:</strong> Pour-over, AeroPress, cold brew</p>
-                    <p><strong>Notes:</strong> Jasmine, citrus, honey sweetness</p>
-                    <div class="card-cta">Perfect for mornings →</div>
-                </div>
-                
-                <div class="card" onclick="selectRoast('medium')" style="border: 3px solid #8b5a3c; position: relative;">
-                    <div style="position: absolute; top: -10px; right: 10px; background: #8b5a3c; color: white; padding: 0.3rem 0.8rem; border-radius: 15px; font-size: 0.8rem;">Most Popular</div>
-                    <span class="card-icon">🔥</span>
-                    <h3>Medium Roast</h3>
-                    <p><strong>Flavor:</strong> Balanced sweetness, smooth mouthfeel</p>
-                    <p><strong>Best For:</strong> Drip coffee, French press</p>
-                    <p><strong>Notes:</strong> Caramel, nuts, chocolate hints</p>
-                    <div class="card-cta">Perfectly balanced →</div>
-                </div>
-                
-                <div class="card" onclick="selectRoast('dark')">
-                    <span class="card-icon">🌙</span>
-                    <h3>Dark Roast</h3>
-                    <p><strong>Flavor:</strong> Bold, rich, chocolate and smoky undertones</p>
-                    <p><strong>Best For:</strong> Espresso, moka pot, Turkish coffee</p>
-                    <p><strong>Notes:</strong> Dark chocolate, roasted nuts, caramel</p>
-                    <div class="card-cta">For espresso lovers →</div>
-                </div>
-            </div>
-
-            <div class="text-center" style="margin-top: 3rem;">
-                <button class="btn btn-primary" onclick="showPage('order')">Order Your Coffee →</button>
-                <p style="margin-top: 1rem; color: #5d5d4e;">
-                    <small>Not sure which roast? <span style="color: #8b5a3c; cursor: pointer; text-decoration: underline;" onclick="showCuppingInfo()">Try our cupping experience</span></small>
-                </p>
-            </div>
-        </section>
-    </div>
-
-    <!-- PAGE: ORDER -->
-    <div id="page-order" class="page-content page-order hidden">
-        <section class="hero" style="height: 40vh;">
-            <div class="hero-content">
-                <h1>Order Charlie's Coffee</h1>
-                <p class="subtitle">Fresh roasted and shipped within 48 hours</p>
-            </div>
-        </section>
-
-        <section class="container">
-            <div class="order-form">
-                <form id="coffeeOrderForm">
-                    <div class="form-group">
-                        <label>Select Your Roast</label>
-                        <div class="choice-grid">
-                            <div class="choice-option" onclick="selectChoice(this, 'roast', 'light')">
-                                <strong>Light</strong><br>
-                                <small>Bright & Floral</small>
-                            </div>
-                            <div class="choice-option selected" onclick="selectChoice(this, 'roast', 'medium')">
-                                <strong>Medium</strong><br>
-                                <small>Balanced</small>
-                            </div>
-                            <div class="choice-option" onclick="selectChoice(this, 'roast', 'dark')">
-                                <strong>Dark</strong><br>
-                                <small>Bold & Rich</small>
-                            </div>
-                        </div>
-                        <input type="hidden" id="selectedRoast" value="medium">
-                    </div>
-
-                    <div class="form-group">
-                        <label>Grind Type</label>
-                        <div class="choice-grid">
-                            <div class="choice-option selected" onclick="selectChoice(this, 'grind', 'whole')">
-                                <strong>Whole Bean</strong><br>
-                                <small>Best freshness</small>
-                            </div>
-                            <div class="choice-option" onclick="selectChoice(this, 'grind', 'drip')">
-                                <strong>Drip Grind</strong><br>
-                                <small>For coffee makers</small>
-                            </div>
-                            <div class="choice-option" onclick="selectChoice(this, 'grind', 'espresso')">
-                                <strong>Espresso</strong><br>
-                                <small>Fine grind</small>
-                            </div>
-                        </div>
-                        <input type="hidden" id="selectedGrind" value="whole">
-                    </div>
-
-                    <div class="form-group">
-                        <label>Package Size</label>
-                        <div class="choice-grid">
-                            <div class="choice-option" onclick="selectChoice(this, 'size', '250g'); updatePrice()">
-                                <strong>250g</strong><br>
-                                <small>KSh 800</small>
-                            </div>
-                            <div class="choice-option selected" onclick="selectChoice(this, 'size', '500g'); updatePrice()">
-                                <strong>500g</strong><br>
-                                <small>KSh 1,500</small>
-                            </div>
-                            <div class="choice-option" onclick="selectChoice(this, 'size', '1kg'); updatePrice()">
-                                <strong>1kg</strong><br>
-                                <small>KSh 2,800</small>
-                            </div>
-                        </div>
-                        <input type="hidden" id="selectedSize" value="500g">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="quantity">Quantity</label>
-                        <select class="form-control" id="quantity" onchange="updatePrice()">
-                            <option value="1">1 package</option>
-                            <option value="2">2 packages</option>
-                            <option value="3">3 packages</option>
-                            <option value="4">4 packages</option>
-                            <option value="5">5+ packages (contact us)</option>
-                        </select>
-                    </div>
-
-                    <div style="background: #f4f2ec; padding: 1.5rem; border-radius: 8px; margin: 1.5rem 0; text-align: center;">
-                        <h3 style="margin: 0; color: #8b5a3c;">Total: KSh <span id="totalPrice">1,500</span></h3>
-                        <small style="color: #5d5d4e;">Includes free delivery within 50km of Embu</small>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="customerName">Your Name</label>
-                        <input type="text" class="form-control" id="customerName" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="customerPhone">Phone Number</label>
-                        <input type="tel" class="form-control" id="customerPhone" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="customerEmail">Email (optional)</label>
-                        <input type="email" class="form-control" id="customerEmail">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="deliveryAddress">Delivery Address</label>
-                        <textarea class="form-control" id="deliveryAddress" rows="3" placeholder="Include landmarks and detailed directions" required></textarea>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="deliveryTime">Preferred Delivery</label>
-                        <select class="form-control" id="deliveryTime">
-                            <option value="2-3 days">Standard (2-3 days) - Free</option>
-                            <option value="next-day">Express (Next day) - +KSh 200</option>
-                            <option value="same-day">Same day (Embu town) - +KSh 300</option>
-                        </select>
-                    </div>
-
-                    <button type="submit" class="btn btn-primary" style="width: 100%;">
-                        <span id="orderBtnText">Place Order</span>
-                    </button>
-
-                    <div id="orderMessage" style="margin-top: 1rem;"></div>
-
-                    <p style="font-size: 0.9rem; color: #5d5d4e; margin-top: 1rem; text-align: center;">
-                        We'll call to confirm your order and arrange payment (M-Pesa, cash on delivery, or bank transfer).
-                    </p>
-                </form>
-            </div>
-
-            <div class="text-center" style="margin-top: 2rem;">
-                <p><strong>Questions?</strong> Call us at <a href="tel:+254722704997" style="color: #8b5a3c;">+254 722 704 997</a></p>
-                <p>Or email: <a href="mailto:GroupNomad@outlook.com" style="color: #8b5a3c;">GroupNomad@outlook.com</a></p>
-            </div>
-        </section>
-    </div>
-
-    <!-- FLOATING ACTION BUTTON -->
-    <button class="fab" onclick="showPage('order')" title="Quick Order">🛒</button>
+        </form>
+        <div class="text-center" style="margin-top: 2rem;">
+            <p><strong>Questions?</strong> Call us at <a href="tel:+254722704997" style="color: #8b5a3c;">+254 722 704 997</a></p>
+            <p>Or email: <a href="mailto:GroupNomad@outlook.com" style="color: #8b5a3c;">GroupNomad@outlook.com</a></p>
+        </div>
+    </section>
 
     <!-- FOOTER -->
     <footer>
         <div class="footer-content">
             <div class="footer-nav">
-                <a href="#" onclick="showPage('home')">Home</a>
-                <a href="#" onclick="showPage('story')">Our Story</a>
-                <a href="#" onclick="showPage('process')">Process</a>
-                <a href="#" onclick="showPage('roasting')">Roasting</a>
-                <a href="#" onclick="showPage('order')">Order</a>
+                <a href="index.html">Coffee</a>
+                <a href="macadamia.html">Macadamia</a>
+                <a href="bananas.html">Dried Bananas</a>
+                <a href="family-pack.html">Family Nutrition Pack</a>
+                <a href="aquaculture.html">Aquaculture</a>
             </div>
-            <p>&copy; 2025 Rustic Garden - Premium Mount Kenya Coffee | Charlie's Coffee</p>
-            <p>📍 Kavutiri, Embu County, Kenya | 📞 +254 722 704 997</p>
+            <p>&copy; 2025 Rustic Garden - Premium Mount Kenya Products</p>
+            <p>📍 Kavutiri, Embu County | 📞 +254 722 704 997</p>
         </div>
     </footer>
 
+    <!-- SCRIPT: NAVIGATION, ORDER FORM, ETC. -->
     <script>
-        // ============================================
-        // GLOBAL STATE MANAGEMENT
-        // ============================================
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            const nav = document.getElementById('mainNav');
+            nav.classList.toggle('active');
+        }
+
+        // ORDER FORM LOGIC (reused from your SPA)
         const AppState = {
-            currentPage: 'home',
             selectedRoast: 'medium',
             selectedGrind: 'whole',
             selectedSize: '500g',
@@ -943,176 +257,41 @@
             }
         };
 
-        // ============================================
-        // NAVIGATION & PAGE MANAGEMENT
-        // ============================================
-        function showPage(pageId) {
-            // Hide all pages
-            const pages = document.querySelectorAll('.page-content');
-            pages.forEach(page => {
-                page.classList.add('hidden');
-            });
-
-            // Show selected page
-            const targetPage = document.getElementById(`page-${pageId}`);
-            if (targetPage) {
-                targetPage.classList.remove('hidden');
-                targetPage.classList.add('fade-in');
-                
-                // Update navigation active state
-                updateNavigation(pageId);
-                
-                // Update page title and state
-                updatePageTitle(pageId);
-                AppState.currentPage = pageId;
-                
-                // Scroll to top
-                window.scrollTo(0, 0);
-                
-                // Update progress bar
-                updateProgressBar();
-            }
-        }
-
-        function updateNavigation(activePageId) {
-            const navItems = document.querySelectorAll('.nav-item');
-            navItems.forEach(item => {
-                item.classList.remove('active');
-            });
-            
-            // Add active class to current page
-            const activeItem = Array.from(navItems).find(item => 
-                item.textContent.toLowerCase().includes(activePageId === 'home' ? 'home' : getPageDisplayName(activePageId))
-            );
-            if (activeItem) {
-                activeItem.classList.add('active');
-            }
-        }
-
-        function getPageDisplayName(pageId) {
-            const names = {
-                'story': 'story',
-                'process': 'process',
-                'roasting': 'roasting',
-                'order': 'order'
-            };
-            return names[pageId] || pageId;
-        }
-
-        function updatePageTitle(pageId) {
-            const titles = {
-                'home': 'Charlie\'s Coffee | Premium Mount Kenya Coffee | Rustic Garden',
-                'story': 'Our Coffee Story | Charlie\'s Coffee | Rustic Garden',
-                'process': 'Farm to Cup Process | Charlie\'s Coffee | Rustic Garden',
-                'roasting': 'Roasting Profiles | Charlie\'s Coffee | Rustic Garden',
-                'order': 'Order Coffee | Charlie\'s Coffee | Rustic Garden'
-            };
-            document.getElementById('page-title').textContent = titles[pageId] || titles.home;
-        }
-
-        // ============================================
-        // MOBILE MENU
-        // ============================================
-        function toggleMobileMenu() {
-            const nav = document.getElementById('mainNav');
-            nav.classList.toggle('active');
-        }
-
-        // Close mobile menu when clicking outside
-        document.addEventListener('click', function(event) {
-            const nav = document.getElementById('mainNav');
-            const toggle = document.querySelector('.menu-toggle');
-            
-            if (!nav.contains(event.target) && !toggle.contains(event.target)) {
-                nav.classList.remove('active');
-            }
-        });
-
-        // ============================================
-        // PROGRESS BAR
-        // ============================================
-        function updateProgressBar() {
-            const progressBar = document.getElementById('progressBar');
-            const scrollTop = window.pageYOffset;
-            const docHeight = document.body.offsetHeight;
-            const winHeight = window.innerHeight;
-            const scrollPercent = (scrollTop / (docHeight - winHeight)) * 100;
-            progressBar.style.width = scrollPercent + '%';
-        }
-
-        window.addEventListener('scroll', updateProgressBar);
-
-        // ============================================
-        // ORDER FORM FUNCTIONALITY
-        // ============================================
         function selectChoice(element, type, value) {
             // Remove selected class from siblings
             const siblings = element.parentNode.children;
-            for (let sibling of siblings) {
-                sibling.classList.remove('selected');
-            }
-            
-            // Add selected class to clicked element
+            for (let sibling of siblings) sibling.classList.remove('selected');
             element.classList.add('selected');
-            
-            // Update hidden input
-            const hiddenInput = document.getElementById(`selected${type.charAt(0).toUpperCase() + type.slice(1)}`);
-            if (hiddenInput) {
-                hiddenInput.value = value;
-            }
-            
-            // Update app state
+            document.getElementById(`selected${type.charAt(0).toUpperCase() + type.slice(1)}`).value = value;
             AppState[`selected${type.charAt(0).toUpperCase() + type.slice(1)}`] = value;
-        }
-
-        function selectRoast(roastType) {
-            AppState.selectedRoast = roastType;
-            showPage('order');
-            
-            // Pre-select the roast in the order form
-            setTimeout(() => {
-                const roastOptions = document.querySelectorAll('.choice-option');
-                roastOptions.forEach(option => {
-                    if (option.textContent.toLowerCase().includes(roastType)) {
-                        selectChoice(option, 'roast', roastType);
-                    }
-                });
-            }, 100);
+            if(type === 'size') updatePrice();
         }
 
         function updatePrice() {
             const size = AppState.selectedSize || '500g';
             const quantity = parseInt(document.getElementById('quantity').value) || 1;
             const deliveryType = document.getElementById('deliveryTime').value;
-            
             let basePrice = AppState.prices[size] * quantity;
             let deliveryCharge = 0;
-            
             if (deliveryType === 'next-day') deliveryCharge = 200;
             if (deliveryType === 'same-day') deliveryCharge = 300;
-            
             const total = basePrice + deliveryCharge;
             document.getElementById('totalPrice').textContent = total.toLocaleString();
         }
 
-        function showCuppingInfo() {
-            alert('Join our weekend cupping sessions! Every Saturday 2-4 PM at the farm. Call +254 722 704 997 to book your spot. Free tasting of all three roast profiles plus farm tour.');
-        }
+        document.addEventListener('DOMContentLoaded', function() {
+            updatePrice();
+        });
 
-        // ============================================
-        // ORDER FORM SUBMISSION
-        // ============================================
         document.getElementById('coffeeOrderForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            
             const submitBtn = e.target.querySelector('button[type="submit"]');
             const btnText = document.getElementById('orderBtnText');
             const messageDiv = document.getElementById('orderMessage');
-            
-            // Show loading state
+
             submitBtn.classList.add('loading');
             btnText.innerHTML = '<span class="spinner"></span>Processing...';
-            
+
             // Collect form data
             const formData = {
                 roast: AppState.selectedRoast,
@@ -1126,218 +305,25 @@
                 deliveryTime: document.getElementById('deliveryTime').value,
                 totalPrice: document.getElementById('totalPrice').textContent
             };
-            
-            // Simulate API call
+
             setTimeout(() => {
-                // In real implementation, this would be an actual API call
-                console.log('Order submitted:', formData);
-                
-                // Show success message
                 messageDiv.innerHTML = `
                     <div class="success-message">
                         <strong>Order Received!</strong><br>
                         Your order #CF${Date.now().toString().slice(-6)} has been submitted. 
                         We'll call you within 2 hours to confirm details and arrange payment.
-                        <br><br>
-                        <strong>What's Next:</strong><br>
-                        1. We'll call to confirm your order<br>
-                        2. Choose payment method (M-Pesa, bank transfer, or cash on delivery)<br>
-                        3. Your coffee will be roasted fresh and shipped within 48 hours
                     </div>
                 `;
-                
-                // Reset button
                 submitBtn.classList.remove('loading');
                 btnText.textContent = 'Place Another Order';
-                
-                // Reset form
                 setTimeout(() => {
                     e.target.reset();
-                    // Reset choices to default
-                    document.querySelectorAll('.choice-option').forEach(option => {
-                        option.classList.remove('selected');
-                    });
-                    // Re-select defaults
-                    document.querySelector('.choice-option').click(); // First roast option
+                    document.querySelectorAll('.choice-option').forEach(option => option.classList.remove('selected'));
+                    document.querySelectorAll('.choice-option')[1].click();
+                    updatePrice();
                 }, 3000);
-                
             }, 2000);
-        });
-
-        // ============================================
-        // INITIALIZATION
-        // ============================================
-        document.addEventListener('DOMContentLoaded', function() {
-            // Initialize the app
-            updateProgressBar();
-            
-            // Add smooth scrolling to all internal links
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    const target = document.querySelector(this.getAttribute('href'));
-                    if (target) {
-                        target.scrollIntoView({
-                            behavior: 'smooth'
-                        });
-                    }
-                });
-            });
-            
-            // Initialize price display
-            updatePrice();
-            
-            // Add keyboard navigation
-            document.addEventListener('keydown', function(e) {
-                if (e.key === 'Escape') {
-                    document.getElementById('mainNav').classList.remove('active');
-                }
-            });
-            
-            // Preload next page content (performance optimization)
-            setTimeout(() => {
-                const images = ['coffee-beans.jpg', 'farm-view.jpg', 'roasting-process.jpg'];
-                images.forEach(src => {
-                    const img = new Image();
-                    img.src = src;
-                });
-            }, 2000);
-            
-            console.log('Charlie\'s Coffee website loaded successfully!');
-            console.log('Features active: EAST principles, choice simplification, decision fatigue reduction');
-        });
-
-        // ============================================
-        // ANALYTICS & TRACKING (Placeholder)
-        // ============================================
-        function trackEvent(eventName, eventData) {
-            // In production, this would integrate with Google Analytics, Mixpanel, etc.
-            console.log('Event tracked:', eventName, eventData);
-        }
-
-        // Track page views
-        function trackPageView(pageName) {
-            trackEvent('page_view', { page: pageName });
-        }
-
-        // Track order attempts
-        function trackOrderStart() {
-            trackEvent('order_started', { 
-                roast: AppState.selectedRoast,
-                timestamp: new Date().toISOString()
-            });
-        }
-
-        // ============================================
-        // ACCESSIBILITY IMPROVEMENTS
-        // ============================================
-        
-        // Skip to main content
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Tab' && !e.shiftKey) {
-                const focusedElement = document.activeElement;
-                if (focusedElement.classList.contains('skip-link')) {
-                    e.preventDefault();
-                    document.querySelector('main').focus();
-                }
-            }
-        });
-
-        // High contrast mode detection
-        if (window.matchMedia && window.matchMedia('(prefers-contrast: high)').matches) {
-            document.body.classList.add('high-contrast');
-        }
-
-        // Reduced motion preference
-        if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-            document.body.classList.add('reduced-motion');
-        }
-
-        // ============================================
-        // ERROR HANDLING
-        // ============================================
-        window.addEventListener('error', function(e) {
-            console.error('JavaScript error:', e.error);
-            // In production, this would report to an error tracking service
-        });
-
-        window.addEventListener('unhandledrejection', function(e) {
-            console.error('Unhandled promise rejection:', e.reason);
-            // In production, this would report to an error tracking service
         });
     </script>
-
-    <!-- 
-    ============================================
-    DEPLOYMENT NOTES
-    ============================================
-    
-    This is a complete, production-ready coffee website with:
-    
-    ✅ STANDALONE FONTS IMPLEMENTED:
-    - Uses system fonts: Georgia, Times New Roman (serif)
-    - No external Google Fonts dependencies
-    - Fast loading and universally compatible
-    
-    ✅ EAST PRINCIPLES IMPLEMENTED:
-    - Easy: Simplified navigation, minimal choices, clear CTAs
-    - Attractive: Modern design, smooth animations, visual hierarchy
-    - Social: Social proof, testimonials, community focus
-    - Timely: Progress indicators, immediate feedback, urgency cues
-    
-    ✅ COGNITIVE LOAD REDUCTION:
-    - Limited navigation options (5 main pages)
-    - Progressive disclosure of information
-    - Clear visual hierarchy and typography
-    - Simplified choice architecture in order forms
-    
-    ✅ DECISION FATIGUE PREVENTION:
-    - Pre-selected recommended options
-    - Clear "Most Popular" indicators
-    - Limited product variants (3 roasts, 3 sizes)
-    - Streamlined ordering process
-    
-    ✅ PRIMACY BIAS OPTIMIZATION:
-    - Most important info first (hero sections)
-    - Recommended options shown prominently
-    - Clear price displays upfront
-    - Benefits before features
-    
-    ✅ ACCESSIBILITY FEATURES:
-    - Semantic HTML structure
-    - Keyboard navigation support
-    - Screen reader friendly
-    - High contrast and reduced motion support
-    
-    ✅ MOBILE OPTIMIZATION:
-    - Responsive design
-    - Touch-friendly buttons
-    - Simplified mobile navigation
-    - Optimized form inputs
-    
-    ✅ PERFORMANCE FEATURES:
-    - Efficient CSS (no external frameworks)
-    - No external font dependencies
-    - Minimal JavaScript footprint
-    - Image optimization ready
-    
-    TO DEPLOY:
-    1. Save this file as index.html
-    2. Add actual images to match the design
-    3. Set up backend API for order processing
-    4. Configure analytics tracking
-    5. Add SSL certificate
-    6. Test on multiple devices
-    
-    BACKEND INTEGRATION POINTS:
-    - Order form submission (/api/orders)
-    - Contact form (/api/contact)
-    - Newsletter signup (/api/newsletter)
-    - Inventory checking (/api/stock)
-    
-    -->
-
 </body>
 </html>
-
-
