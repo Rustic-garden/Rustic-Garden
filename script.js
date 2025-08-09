@@ -1,10 +1,10 @@
 /* ================================
-   Vivaldi Spring - script.js
-   Smooth nav, accessible carousel, reveals, form handling
+   Vivaldi Spring - script.js (Enhanced)
+   Smooth nav, accessible carousel, reveals, form handling, focus/ARIA improvements, gentle animations
    ================================ */
 
 document.addEventListener('DOMContentLoaded', () => {
-  /* ---------- NAV (supports <a href="#id"> or .nav-link[data-target="#id"] ) ---------- */
+  /* ---------- NAVIGATION (supports <a href="#id"> or .nav-link[data-target="#id"] ) ---------- */
   const header = document.querySelector('.site-header');
   const navLinks = Array.from(document.querySelectorAll('a[href^="#"], .nav-link[data-target]'));
   navLinks.forEach(el => {
@@ -24,11 +24,11 @@ document.addEventListener('DOMContentLoaded', () => {
       // update focus for accessibility
       target.setAttribute('tabindex', '-1');
       target.focus({ preventScroll: true });
-      target.removeAttribute('tabindex');
+      setTimeout(() => target.removeAttribute('tabindex'), 300); // allow screen readers to catch up
     });
   });
 
-  // mobile nav toggle
+  // mobile nav toggle and proper focus management
   const navToggle = document.querySelector('.nav-toggle');
   if (navToggle) {
     const navMobile = document.querySelector('.nav-mobile');
@@ -36,16 +36,29 @@ document.addEventListener('DOMContentLoaded', () => {
       if (!navMobile) return;
       navMobile.classList.toggle('open');
       navToggle.setAttribute('aria-expanded', navMobile.classList.contains('open'));
+      // move focus to first link if opening
+      if (navMobile.classList.contains('open')) {
+        const firstLink = navMobile.querySelector('.nav-link');
+        firstLink && firstLink.focus();
+      }
     });
   }
+  // close mobile nav when clicking outside
+  document.addEventListener('click', (e) => {
+    const navMobile = document.querySelector('.nav-mobile');
+    const navToggle = document.querySelector('.nav-toggle');
+    if (navMobile && navMobile.classList.contains('open') && !navMobile.contains(e.target) && !navToggle.contains(e.target)) {
+      navMobile.classList.remove('open');
+      navToggle.setAttribute('aria-expanded', 'false');
+    }
+  });
 
-  /* ---------- REVEAL ON SCROLL (IntersectionObserver) ---------- */
+  /* ---------- REVEAL ON SCROLL (IntersectionObserver, also for section fades) ---------- */
   const reveals = document.querySelectorAll('.reveal, section');
   const io = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add('in-view');
-        // optionally unobserve to reduce work
         io.unobserve(entry.target);
       }
     });
@@ -56,7 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
   reveals.forEach(el => io.observe(el));
 
-  /* ---------- CAROUSEL - accessible, autoplay, swipe, keyboard ---------- */
+  /* ---------- CAROUSEL - accessible, autoplay, swipe, keyboard, ARIA ---------- */
   const carouselRoot = document.querySelector('.carousel-container');
   if (carouselRoot) {
     const track = carouselRoot.querySelector('.carousel-track');
@@ -68,16 +81,17 @@ document.addEventListener('DOMContentLoaded', () => {
     let autoplay = true;
     const autoplayInterval = 5000;
     let autoplayTimer = null;
-    let progressStart = null;
 
-    // ensure items have role and aria
+    // ARIA roles for carousel
+    carouselRoot.setAttribute('role', 'region');
+    carouselRoot.setAttribute('aria-label', 'Image Carousel');
+    track.setAttribute('role', 'list');
     items.forEach((it, i) => {
-      it.setAttribute('role', 'group');
-      it.setAttribute('aria-roledescription', 'carousel item');
-      it.setAttribute('aria-label', `${i + 1} of ${items.length}`);
+      it.setAttribute('role', 'listitem');
+      it.setAttribute('aria-label', `Slide ${i + 1} of ${items.length}`);
     });
 
-    // responsive item width calculation
+    // Calculate current item width
     function itemWidth() {
       return items[0].offsetWidth + parseFloat(getComputedStyle(track).gap || 0);
     }
@@ -87,12 +101,9 @@ document.addEventListener('DOMContentLoaded', () => {
       track.style.transform = `translateX(-${index * w}px)`;
     }
 
-    // normalize index within bounds
     function normalizeIdx(i) {
       const n = items.length;
-      if (i < 0) return n - 1;
-      if (i >= n) return 0;
-      return i;
+      return (i + n) % n;
     }
 
     function goTo(i, instant = false) {
@@ -103,25 +114,28 @@ document.addEventListener('DOMContentLoaded', () => {
         track.style.transition = '';
       }
       setPosition();
-      // restart progress animation
       startProgress();
+      // update aria-current
+      items.forEach((slide, idx) => {
+        slide.setAttribute('aria-current', idx === index ? 'true' : 'false');
+      });
     }
 
-    // prev / next handlers
+    // prev / next
     nextBtn && nextBtn.addEventListener('click', () => { goTo(index + 1); pauseAutoplayTemporarily(); });
     prevBtn && prevBtn.addEventListener('click', () => { goTo(index - 1); pauseAutoplayTemporarily(); });
 
-    // keyboard support
+    // keyboard support (arrow keys and Home/End)
     carouselRoot.addEventListener('keydown', (ev) => {
       if (ev.key === 'ArrowLeft') { ev.preventDefault(); goTo(index - 1); pauseAutoplayTemporarily(); }
       if (ev.key === 'ArrowRight') { ev.preventDefault(); goTo(index + 1); pauseAutoplayTemporarily(); }
+      if (ev.key === 'Home') { ev.preventDefault(); goTo(0, false); pauseAutoplayTemporarily(); }
+      if (ev.key === 'End') { ev.preventDefault(); goTo(items.length - 1, false); pauseAutoplayTemporarily(); }
     });
     carouselRoot.setAttribute('tabindex', '0');
 
-    // touch/swipe support
-    let startX = 0;
-    let dx = 0;
-    let isDown = false;
+    // swipe/touch support
+    let startX = 0, dx = 0, isDown = false;
     track.addEventListener('touchstart', (e) => {
       isDown = true;
       startX = e.touches[0].clientX;
@@ -133,7 +147,7 @@ document.addEventListener('DOMContentLoaded', () => {
       dx = e.touches[0].clientX - startX;
       track.style.transform = `translateX(calc(${-index * itemWidth()}px + ${dx}px))`;
     }, {passive: true});
-    track.addEventListener('touchend', (e) => {
+    track.addEventListener('touchend', () => {
       if (!isDown) return;
       isDown = false;
       if (Math.abs(dx) > 50) {
@@ -144,11 +158,10 @@ document.addEventListener('DOMContentLoaded', () => {
       dx = 0;
     });
 
-    // autoplay & progress
+    // autoplay & progress bar
     function startAutoplay() {
       if (!autoplay) return;
       stopAutoplay();
-      progressStart = performance.now();
       autoplayTimer = setInterval(() => { goTo(index + 1); }, autoplayInterval);
       startProgress();
     }
@@ -159,45 +172,40 @@ document.addEventListener('DOMContentLoaded', () => {
     function pauseAutoplayTemporarily() {
       autoplay = false;
       stopAutoplay();
-      // resume after a delay
       setTimeout(() => { autoplay = true; startAutoplay(); }, 7000);
     }
     function startProgress() {
       if (!progressBar) return;
       progressBar.style.transition = `width ${autoplayInterval}ms linear`;
-      // reset then trigger
       progressBar.style.width = '0%';
-      // force reflow
       void progressBar.offsetWidth;
       progressBar.style.width = '100%';
     }
 
     // pause on hover/focus
-    carouselRoot.addEventListener('mouseenter', () => { stopAutoplay(); });
+    carouselRoot.addEventListener('mouseenter', stopAutoplay);
     carouselRoot.addEventListener('mouseleave', () => { if (autoplay) startAutoplay(); });
-    carouselRoot.addEventListener('focusin', () => { stopAutoplay(); });
+    carouselRoot.addEventListener('focusin', stopAutoplay);
     carouselRoot.addEventListener('focusout', () => { if (autoplay) startAutoplay(); });
 
-    // handle window resize
+    // window resize
     let resizeTimeout = null;
     window.addEventListener('resize', () => {
       if (resizeTimeout) clearTimeout(resizeTimeout);
-      resizeTimeout = setTimeout(() => {
-        setPosition();
-      }, 120);
+      resizeTimeout = setTimeout(setPosition, 120);
     });
 
     // initialize
     setPosition();
+    goTo(0, true);
     startAutoplay();
   }
 
-  /* ---------- FORMS - basic client-side validation & UX ---------- */
+  /* ---------- FORMS - client-side validation, ARIA, animated feedback ---------- */
   const forms = document.querySelectorAll('form');
   forms.forEach(form => {
     form.addEventListener('submit', (ev) => {
       ev.preventDefault();
-      // basic required validation
       const required = Array.from(form.querySelectorAll('[required]'));
       let ok = true;
       required.forEach(field => {
@@ -215,14 +223,8 @@ document.addEventListener('DOMContentLoaded', () => {
         showFormMessage(form, 'Please fill the required fields.', 'error');
         return;
       }
-
-      // create simple summary modal (no network)
       const data = new FormData(form);
-      const obj = {};
-      for (const [k, v] of data.entries()) obj[k] = v;
       showFormMessage(form, 'Thanks — your information has been recorded locally. We will contact you shortly.', 'success');
-
-      // optional: clear form after brief delay
       setTimeout(() => {
         form.reset();
       }, 900);
@@ -238,13 +240,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     msg.textContent = message;
     msg.setAttribute('role', 'status');
-    msg.classList.remove('info','error','success');
+    msg.classList.remove('info','error','success','visible');
     msg.classList.add(type);
     setTimeout(() => { msg.classList.add('visible'); }, 20);
     setTimeout(() => { msg.classList.remove('visible'); }, 5500);
   }
 
-  /* ---------- IMAGE LAZY LOADING (native if possible) ---------- */
+  /* ---------- IMAGE LAZY LOADING (native or fallback to IntersectionObserver) ---------- */
   const imgs = document.querySelectorAll('img[data-src]');
   imgs.forEach(img => {
     if ('loading' in HTMLImageElement.prototype) {
@@ -265,7 +267,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  /* ---------- SMALL UX: back-to-top button ---------- */
+  /* ---------- BACK TO TOP BUTTON with fade, keyboard focus ---------- */
   let topBtn = document.querySelector('.back-to-top');
   if (!topBtn) {
     topBtn = document.createElement('button');
@@ -286,17 +288,32 @@ document.addEventListener('DOMContentLoaded', () => {
       cursor: 'pointer',
       zIndex: 1100,
       display: 'none',
-      boxShadow: '0 8px 20px rgba(47,62,70,0.12)'
+      boxShadow: '0 8px 20px rgba(47,62,70,0.12)',
+      opacity: 0,
+      transition: 'opacity 0.35s'
     });
   }
   window.addEventListener('scroll', () => {
-    topBtn.style.display = (window.scrollY > 420) ? 'inline-flex' : 'none';
+    if (window.scrollY > 420) {
+      topBtn.style.display = 'inline-flex';
+      setTimeout(() => { topBtn.style.opacity = 1; }, 12);
+    } else {
+      topBtn.style.opacity = 0;
+      setTimeout(() => { topBtn.style.display = 'none'; }, 320);
+    }
   });
   topBtn.addEventListener('click', () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
+    topBtn.blur();
+  });
+  topBtn.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      e.preventDefault();
+    }
   });
 
-  /* ---------- small enhancement: keyboard "skip to content" support ---------- */
+  /* ---------- Skip to content keyboard accessibility ---------- */
   const skipLink = document.querySelector('.skip-to-content');
   if (skipLink) {
     skipLink.addEventListener('click', (e) => {
@@ -306,8 +323,19 @@ document.addEventListener('DOMContentLoaded', () => {
       if (!target) return;
       target.setAttribute('tabindex','-1');
       target.focus();
-      target.removeAttribute('tabindex');
+      setTimeout(() => target.removeAttribute('tabindex'), 350);
     });
   }
 
-}); // DOMContentLoaded
+  /* ---------- Small: animate focus rings for keyboard users ---------- */
+  let lastInputMethod = 'mouse';
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Tab') document.body.classList.add('keyboard-focus');
+    lastInputMethod = 'keyboard';
+  });
+  window.addEventListener('mousedown', () => {
+    document.body.classList.remove('keyboard-focus');
+    lastInputMethod = 'mouse';
+  });
+
+});
