@@ -1,5 +1,5 @@
 /* ==================================== */
-/* CSS VARIABLES (CUSTOM PROPERTIES)    */
+/* CSS VARIABLES                        */
 /* ==================================== */
 :root {
     --color-primary: #8b5a3c;
@@ -18,7 +18,7 @@
 }
 
 /* ==================================== */
-/* BASE STYLES & RESET                  */
+/* RESET & BASE                         */
 /* ==================================== */
 *, *::before, *::after {
     margin: 0;
@@ -26,10 +26,7 @@
     box-sizing: border-box;
 }
 
-html {
-    scroll-behavior: smooth;
-}
-
+html { scroll-behavior: smooth; }
 body {
     font-family: var(--font-family-body);
     background-color: var(--color-background-light);
@@ -37,6 +34,127 @@ body {
     line-height: 1.6;
     overflow-x: hidden;
 }
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+.text-center { text-align: center; }
+
+/* ==================================== */
+/* HEADER & NAVIGATION – ENHANCED       */
+/* ==================================== */
+.main-header {
+    background: linear-gradient(to right, var(--color-primary-dark), var(--color-primary));
+    padding: 0.5rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.15);
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+.logo {
+    font-family: var(--font-family-heading);
+    font-size: 2rem;
+    color: white;
+    text-decoration: none;
+    letter-spacing: 1px;
+    font-weight: bold;
+    transition: transform var(--transition-speed), color var(--transition-speed);
+}
+
+.logo:hover {
+    transform: scale(1.05);
+    color: #ffeccc;
+}
+
+.main-nav ul {
+    display: flex;
+    gap: 1.2rem;
+    list-style: none;
+    align-items: center;
+}
+
+.nav-item {
+    font-weight: 500;
+    color: white;
+    text-decoration: none;
+    padding: 0.4rem 0.9rem;
+    border-radius: var(--border-radius);
+    transition: background var(--transition-speed), color var(--transition-speed);
+}
+
+.nav-item:hover,
+.nav-item.active {
+    background: rgba(255, 255, 255, 0.15);
+    color: #ffeccc;
+}
+
+/* Mobile menu toggle */
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.8rem;
+    cursor: pointer;
+    color: white;
+}
+
+/* ==================================== */
+/* FOOTER                               */
+/* ==================================== */
+.main-footer {
+    background: var(--color-background-medium);
+    text-align: center;
+    padding: 2rem 0;
+    margin-top: 3rem;
+}
+.footer-nav {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+}
+.footer-nav a {
+    color: var(--color-text-medium);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color var(--transition-speed);
+}
+.footer-nav a:hover {
+    color: var(--color-primary);
+}
+
+/* ==================================== */
+/* RESPONSIVE                           */
+/* ==================================== */
+@media (max-width: 768px) {
+    .main-nav ul {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background: var(--color-primary-dark);
+        position: absolute;
+        top: 100%;
+        left: 0;
+        padding: 1rem;
+        box-shadow: 0 5px 10px rgba(0,0,0,0.15);
+    }
+    .main-nav.active ul { display: flex; }
+    .menu-toggle { display: block; }
+}
+
 
 /* ==================================== */
 /* UTILITY CLASSES                      */
@@ -533,4 +651,5 @@ h2 {
         right: 1rem;
     }
 }
+
 
