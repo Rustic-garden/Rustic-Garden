@@ -5,27 +5,56 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rustic Garden | Home</title>
     <link rel="stylesheet" href="style.css">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header>
-        <nav>
+    <!-- Header -->
+    <header class="main-header">
+        <div class="header-content">
+            <a href="index.html" class="logo">Rustic Garden</a>
+            <button class="menu-toggle" aria-label="Menu">&#9776;</button>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html" class="nav-item active">Home</a></li>
+                    <li><a href="coffee.html" class="nav-item">Coffee</a></li>
+                    <li><a href="macadamia.html" class="nav-item">Macadamia</a></li>
+                    <li><a href="bananas.html" class="nav-item">Dried Bananas</a></li>
+                    <li><a href="family-pack.html" class="nav-item">Family Nutrition Pack</a></li>
+                    <li><a href="aquaculture.html" class="nav-item">Aquaculture</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container page-content">
+        <h1 class="text-center">Welcome to Rustic Garden</h1>
+        <p class="text-center">Premium Mount Kenya coffee, organic macadamia, dried bananas, and aquaculture products.</p>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="footer-nav">
             <a href="index.html">Home</a>
             <a href="coffee.html">Coffee</a>
             <a href="macadamia.html">Macadamia</a>
-            <a href="bananas.html">Dried Bananas</a>
-            <a href="family-pack.html">Family Nutrition Pack</a>
+            <a href="bananas.html">Bananas</a>
+            <a href="family-pack.html">Family Pack</a>
             <a href="aquaculture.html">Aquaculture</a>
-        </nav>
-    </header>
-
-    <main>
-        <h1>Welcome to Rustic Garden</h1>
-        <p>Premium Mount Kenya coffee, organic macadamia, dried bananas, and aquaculture products.</p>
-    </main>
-
-    <footer>
+        </div>
         <p>&copy; 2025 Rustic Garden</p>
     </footer>
+
+    <!-- Mobile Menu Script -->
+    <script>
+        document.querySelector('.menu-toggle').addEventListener('click', function() {
+            document.querySelector('.main-nav').classList.toggle('active');
+        });
+    </script>
 </body>
 </html>
 
@@ -1356,4 +1385,5 @@
 
 </body>
 </html>
+
 
