@@ -87,53 +87,61 @@ h2 {
 }
 
 /* ==================================== */
-/* HEADER & NAVIGATION                  */
+/* HEADER & NAVIGATION – ENHANCED       */
 /* ==================================== */
 .main-header {
-    background: var(--color-background-medium);
-    padding: 1rem 0;
+    background: linear-gradient(to right, var(--color-primary-dark), var(--color-primary));
+    padding: 0.5rem 0;
     position: sticky;
     top: 0;
     z-index: 100;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 12px rgba(0,0,0,0.15);
 }
 
 .header-content {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
 }
 
 .logo {
     font-family: var(--font-family-heading);
-    font-size: 1.8rem;
-    color: var(--color-text-medium);
+    font-size: 2rem;
+    color: white;
     text-decoration: none;
-    transition: color var(--transition-speed);
+    letter-spacing: 1px;
+    font-weight: bold;
+    transition: transform var(--transition-speed), color var(--transition-speed);
 }
 
 .logo:hover {
-    color: var(--color-primary);
+    transform: scale(1.05);
+    color: #ffeccc;
 }
 
 .main-nav ul {
     display: flex;
-    gap: 1.5rem;
+    gap: 1.2rem;
     list-style: none;
+    align-items: center;
 }
 
 .nav-item {
-    font-weight: 600;
-    color: var(--color-text-medium);
+    font-weight: 500;
+    color: white;
     text-decoration: none;
-    padding: 0.5rem 1rem;
+    padding: 0.4rem 0.9rem;
     border-radius: var(--border-radius);
-    transition: all var(--transition-speed);
+    transition: background var(--transition-speed), color var(--transition-speed);
 }
 
-.nav-item:hover, .nav-item.active {
-    background: var(--color-primary);
-    color: white;
+.nav-item:hover,
+.nav-item.active {
+    background: rgba(255, 255, 255, 0.15);
+    color: #ffeccc;
 }
 
 /* Mobile menu toggle */
@@ -141,10 +149,11 @@ h2 {
     display: none;
     background: none;
     border: none;
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     cursor: pointer;
-    color: var(--color-text-medium);
+    color: white;
 }
+
 
 /* ==================================== */
 /* HERO SECTIONS                        */
@@ -524,3 +533,4 @@ h2 {
         right: 1rem;
     }
 }
+
