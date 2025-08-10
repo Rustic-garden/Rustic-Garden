@@ -4,63 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rustic Garden | Home</title>
-    <link rel="stylesheet" href="style.css">
-
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
-</head>
-<body>
-    <!-- Header -->
-    <header class="main-header">
-        <div class="header-content">
-            <a href="index.html" class="logo">Rustic Garden</a>
-            <button class="menu-toggle" aria-label="Menu">&#9776;</button>
-            <nav class="main-nav">
-                <ul>
-                    <li><a href="index.html" class="nav-item active">Home</a></li>
-                    <li><a href="coffee.html" class="nav-item">Coffee</a></li>
-                    <li><a href="macadamia.html" class="nav-item">Macadamia</a></li>
-                    <li><a href="bananas.html" class="nav-item">Dried Bananas</a></li>
-                    <li><a href="family-pack.html" class="nav-item">Family Nutrition Pack</a></li>
-                    <li><a href="aquaculture.html" class="nav-item">Aquaculture</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
-
-    <!-- Main Content -->
-    <main class="container page-content">
-        <h1 class="text-center">Welcome to Rustic Garden</h1>
-        <p class="text-center">Premium Mount Kenya coffee, organic macadamia, dried bananas, and aquaculture products.</p>
-    </main>
-
-    <!-- Footer -->
-    <footer class="main-footer">
-        <div class="footer-nav">
-            <a href="index.html">Home</a>
-            <a href="coffee.html">Coffee</a>
-            <a href="macadamia.html">Macadamia</a>
-            <a href="bananas.html">Bananas</a>
-            <a href="family-pack.html">Family Pack</a>
-            <a href="aquaculture.html">Aquaculture</a>
-        </div>
-        <p>&copy; 2025 Rustic Garden</p>
-    </footer>
-
-    <!-- Mobile Menu Script -->
-    <script>
-        document.querySelector('.menu-toggle').addEventListener('click', function() {
-            document.querySelector('.main-nav').classList.toggle('active');
-        });
-    </script>
-</body>
-</html>
-
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
-    
     <style>
         /* CSS RESET & BASE STYLES */
         * {
@@ -70,8 +13,8 @@
         }
         
         body {
-            font-family: 'Merriweather', serif;
-            background-color: #f9f6f0;
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, #f9f6f0 0%, #ede7d9 100%);
             color: #2e2b25;
             line-height: 1.6;
             overflow-x: hidden;
@@ -85,36 +28,410 @@
         }
         
         .text-center { text-align: center; }
-        .mb-1 { margin-bottom: 1rem; }
-        .mb-2 { margin-bottom: 2rem; }
-        .hidden { display: none; }
-        .loading { opacity: 0.6; pointer-events: none; }
         
-        /* HEADER STYLES */
-        header {
-            background: #e3e0d1;
-            padding: 1rem 0;
+        /* HEADER STYLES - Single, Clean Header */
+        .main-header {
+            background: rgba(227, 224, 209, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1.2rem 0;
             position: sticky;
             top: 0;
             z-index: 100;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 20px rgba(46, 43, 37, 0.1);
+            border-bottom: 2px solid #d4c5a9;
         }
         
         .header-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
         }
         
         .logo {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.8rem;
+            font-family: 'Georgia', serif;
+            font-size: 2.2rem;
+            font-weight: bold;
+            color: #4c4637;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+        
+        .logo:hover { 
+            color: #8b5a3c;
+            transform: scale(1.02);
+        }
+        
+        /* GUIDED NAVIGATION - Reduced Choice Overload */
+        .main-nav ul {
+            display: flex;
+            list-style: none;
+            gap: 0.5rem;
+        }
+        
+        .nav-item {
+            padding: 0.7rem 1.2rem;
+            text-decoration: none;
+            color: #4c4637;
+            font-weight: 500;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            position: relative;
+            background: rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(139, 90, 60, 0.2);
+        }
+        
+        .nav-item:hover, .nav-item.active {
+            background: #8b5a3c;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(139, 90, 60, 0.3);
+        }
+        
+        /* MOBILE MENU */
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
             color: #4c4637;
             cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        
+        .menu-toggle:hover {
+            background-color: rgba(139, 90, 60, 0.1);
+        }
+        
+        /* HERO SECTION - Guided Imagery: Entering the Scene */
+        .hero-section {
+            background: linear-gradient(rgba(46, 43, 37, 0.4), rgba(139, 90, 60, 0.3)),
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23d4c5a9" width="1200" height="600"/><circle fill="%23b8a082" cx="200" cy="150" r="80"/><circle fill="%23c9b896" cx="800" cy="300" r="120"/><circle fill="%23a68f73" cx="1000" cy="100" r="60"/><path fill="%238b5a3c" d="M0,450 Q300,350 600,400 T1200,380 L1200,600 L0,600 Z"/></svg>');
+            background-size: cover;
+            background-position: center;
+            min-height: 70vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-content {
+            z-index: 2;
+            max-width: 800px;
+            padding: 3rem 2rem;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(15px);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            animation: fadeInUp 1s ease-out;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .hero-title {
+            font-size: 3.5rem;
+            color: #4c4637;
+            margin-bottom: 1rem;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .hero-subtitle {
+            font-size: 1.3rem;
+            color: #6b5d4f;
+            margin-bottom: 2rem;
+            line-height: 1.5;
+        }
+        
+        /* GUIDED CTA - Confronting Bias, Single Clear Action */
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: linear-gradient(135deg, #8b5a3c, #a67c5a);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(139, 90, 60, 0.3);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(139, 90, 60, 0.4);
+            background: linear-gradient(135deg, #a67c5a, #8b5a3c);
+        }
+        
+        /* PRODUCT PREVIEW - Reduced Choices, Visual Hierarchy */
+        .products-preview {
+            padding: 4rem 0;
+            background: rgba(255, 255, 255, 0.7);
+        }
+        
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .product-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+            border-color: #8b5a3c;
+        }
+        
+        .product-image {
+            height: 200px;
+            background: linear-gradient(45deg, #d4c5a9, #c9b896);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: #8b5a3c;
+        }
+        
+        .product-info {
+            padding: 1.5rem;
+        }
+        
+        .product-title {
+            font-size: 1.3rem;
+            color: #4c4637;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+        
+        .product-description {
+            color: #6b5d4f;
+            font-size: 0.95rem;
+            line-height: 1.4;
+        }
+        
+        /* FOOTER */
+        .main-footer {
+            background: #4c4637;
+            color: white;
+            padding: 3rem 0 1rem;
+            text-align: center;
+        }
+        
+        .footer-nav {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .footer-nav a {
+            color: #d4c5a9;
+            text-decoration: none;
             transition: color 0.3s;
         }
         
-        .logo:hover { color: #8b5a3c; }
+        .footer-nav a:hover {
+            color: white;
+        }
+        
+        /* RESPONSIVE DESIGN */
+        @media (max-width: 768px) {
+            .main-nav {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: rgba(227, 224, 209, 0.98);
+                backdrop-filter: blur(10px);
+                box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            }
+            
+            .main-nav.active {
+                display: block;
+            }
+            
+            .main-nav ul {
+                flex-direction: column;
+                padding: 1rem;
+                gap: 0.5rem;
+            }
+            
+            .menu-toggle {
+                display: block;
+            }
+            
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* ACCESSIBILITY */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+        
+        /* FOCUS STATES */
+        .nav-item:focus,
+        .cta-button:focus,
+        .logo:focus {
+            outline: 3px solid #8b5a3c;
+            outline-offset: 2px;
+        }
+    </style>
+</head>
+<body>
+    <!-- SINGLE HEADER - No Repetition -->
+    <header class="main-header">
+        <div class="header-content">
+            <a href="index.html" class="logo">Rustic Garden</a>
+            <button class="menu-toggle" aria-label="Toggle navigation menu">☰</button>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html" class="nav-item active">Home</a></li>
+                    <li><a href="coffee.html" class="nav-item">Coffee</a></li>
+                    <li><a href="macadamia.html" class="nav-item">Macadamia</a></li>
+                    <li><a href="bananas.html" class="nav-item">Dried Bananas</a></li>
+                    <li><a href="family-pack.html" class="nav-item">Family Pack</a></li>
+                    <li><a href="aquaculture.html" class="nav-item">Aquaculture</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- HERO SECTION - Guided Imagery: Entering the Scene -->
+    <section class="hero-section">
+        <div class="hero-content">
+            <h1 class="hero-title">Welcome to Rustic Garden</h1>
+            <p class="hero-subtitle">Discover premium Mount Kenya coffee, organic macadamia, dried bananas, and sustainable aquaculture products. Experience the authentic taste of nature's finest offerings.</p>
+            <a href="#products" class="cta-button">Explore Our Products</a>
+        </div>
+    </section>
+
+    <!-- PRODUCT PREVIEW - Reduced Choice Overload -->
+    <section class="products-preview" id="products">
+        <div class="container">
+            <h2 class="text-center" style="font-size: 2.5rem; color: #4c4637; margin-bottom: 1rem;">Our Premium Collection</h2>
+            <p class="text-center" style="font-size: 1.1rem; color: #6b5d4f; max-width: 600px; margin: 0 auto;">Carefully curated products that represent the best of sustainable farming and ethical sourcing.</p>
+            
+            <div class="products-grid">
+                <div class="product-card">
+                    <div class="product-image">☕</div>
+                    <div class="product-info">
+                        <h3 class="product-title">Mount Kenya Coffee</h3>
+                        <p class="product-description">Premium arabica coffee beans grown in the rich volcanic soils of Mount Kenya's highlands.</p>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-image">🌰</div>
+                    <div class="product-info">
+                        <h3 class="product-title">Organic Macadamia</h3>
+                        <p class="product-description">Buttery, nutrient-rich macadamia nuts harvested from sustainable organic orchards.</p>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-image">🍌</div>
+                    <div class="product-info">
+                        <h3 class="product-title">Family Nutrition Pack</h3>
+                        <p class="product-description">A complete wellness bundle combining our finest coffee, nuts, and dried fruits.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-nav">
+                <a href="index.html">Home</a>
+                <a href="coffee.html">Coffee</a>
+                <a href="macadamia.html">Macadamia</a>
+                <a href="bananas.html">Dried Bananas</a>
+                <a href="family-pack.html">Family Pack</a>
+                <a href="aquaculture.html">Aquaculture</a>
+            </div>
+            <p>&copy; 2025 Rustic Garden. Cultivating excellence, naturally.</p>
+        </div>
+    </footer>
+
+    <!-- MOBILE MENU SCRIPT -->
+    <script>
+        document.querySelector('.menu-toggle').addEventListener('click', function() {
+            const nav = document.querySelector('.main-nav');
+            nav.classList.toggle('active');
+            
+            // Update aria-expanded for accessibility
+            const isExpanded = nav.classList.contains('active');
+            this.setAttribute('aria-expanded', isExpanded);
+        });
+        
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(e) {
+            const nav = document.querySelector('.main-nav');
+            const toggle = document.querySelector('.menu-toggle');
+            
+            if (!nav.contains(e.target) && !toggle.contains(e.target)) {
+                nav.classList.remove('active');
+                toggle.setAttribute('aria-expanded', 'false');
+            }
+        });
+        
+        // Smooth scroll for anchor links
+        document.querySelector('.cta-button').addEventListener('click', function(e) {
+            e.preventDefault();
+            document.querySelector('#products').scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    </script>
+</body>
+</html>
         
         /* SIMPLIFIED NAVIGATION - Reduces choice overload */
         .main-nav {
@@ -1385,5 +1702,6 @@
 
 </body>
 </html>
+
 
 
