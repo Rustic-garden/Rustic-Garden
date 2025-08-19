@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rustic Garden | Premium Mount Kenya Coffee</title>
+    <meta name="description" content="Rustic Garden offers premium Mount Kenya coffee, organic macadamia, dried bananas, and sustainable aquaculture products. Experience nature's finest.">
     <style>
         /* CSS RESET & BASE STYLES */
         * {
@@ -427,8 +428,8 @@
         <div class="container">
             <div class="header-content">
                 <div class="logo" onclick="showPage('home')">Rustic Garden</div>
-                <button class="menu-toggle" onclick="toggleMenu()">☰</button>
-                <nav class="main-nav" id="mainNav">
+                <button class="menu-toggle" onclick="toggleMenu()" aria-label="Open navigation menu">☰</button>
+                <nav class="main-nav" id="mainNav" role="navigation" aria-label="Main Navigation">
                     <ul>
                         <li><span class="nav-item active" data-page="home">Home</span></li>
                         <li><span class="nav-item" data-page="coffee">Coffee</span></li>
@@ -442,7 +443,7 @@
     </header>
 
     <!-- HOME PAGE -->
-    <div id="page-home" class="page-content">
+    <main id="page-home" class="page-content" role="main">
         <section class="hero-section">
             <div class="hero-content">
                 <h1 class="hero-title">Welcome to Rustic Garden</h1>
@@ -481,10 +482,10 @@
                 </div>
             </div>
         </section>
-    </div>
+    </main>
 
     <!-- COFFEE PAGE -->
-    <div id="page-coffee" class="page-content hidden">
+    <div id="page-coffee" class="page-content hidden" role="main">
         <div class="page-hero">
             <div class="container">
                 <h1 class="page-title">Mount Kenya Coffee</h1>
@@ -525,7 +526,7 @@
     </div>
 
     <!-- STORY PAGE -->
-    <div id="page-story" class="page-content hidden">
+    <div id="page-story" class="page-content hidden" role="main">
         <div class="page-hero">
             <div class="container">
                 <h1 class="page-title">Our Story</h1>
@@ -569,7 +570,7 @@
     </div>
 
     <!-- PRODUCTS PAGE -->
-    <div id="page-products" class="page-content hidden">
+    <div id="page-products" class="page-content hidden" role="main">
         <div class="page-hero">
             <div class="container">
                 <h1 class="page-title">Our Products</h1>
@@ -628,7 +629,7 @@
     </div>
 
     <!-- ORDER PAGE -->
-    <div id="page-order" class="page-content hidden">
+    <div id="page-order" class="page-content hidden" role="main">
         <div class="page-hero">
             <div class="container">
                 <h1 class="page-title">Place Your Order</h1>
@@ -638,77 +639,14 @@
 
         <section class="container">
             <div class="order-form">
-                <form id="orderForm">
-                    <div class="form-group">
-                        <label>Select Product</label>
-                        <div class="choice-grid">
-                            <div class="choice-option selected" data-product="coffee" data-price="1500">
-                                <strong>Coffee</strong><br>
-                                <small>KSh 1,500/kg</small>
-                            </div>
-                            <div class="choice-option" data-product="macadamia" data-price="2500">
-                                <strong>Macadamia</strong><br>
-                                <small>KSh 2,500/kg</small>
-                            </div>
-                            <div class="choice-option" data-product="bananas" data-price="800">
-                                <strong>Dried Bananas</strong><br>
-                                <small>KSh 800/500g</small>
-                            </div>
-                            <div class="choice-option" data-product="family-pack" data-price="4000">
-                                <strong>Family Pack</strong><br>
-                                <small>KSh 4,000</small>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="quantity">Quantity</label>
-                        <select class="form-control" id="quantity">
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5+</option>
-                        </select>
-                    </div>
-
-                    <div style="background: #f4f2ec; padding: 1.5rem; border-radius: 8px; margin: 1.5rem 0; text-align: center;">
-                        <h3 style="margin: 0; color: #8b5a3c;">Total: KSh <span id="totalPrice">1,500</span></h3>
-                        <small style="color: #5d5d4e;">Free delivery within Embu County</small>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="customerName">Your Name *</label>
-                        <input type="text" class="form-control" id="customerName" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="customerPhone">Phone Number *</label>
-                        <input type="tel" class="form-control" id="customerPhone" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="customerEmail">Email (Optional)</label>
-                        <input type="email" class="form-control" id="customerEmail">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="deliveryAddress">Delivery Address *</label>
-                        <textarea class="form-control" id="deliveryAddress" rows="3" placeholder="Include landmarks and detailed directions" required></textarea>
-                    </div>
-
+                <form id="orderForm" novalidate>
+                    <!-- Google Form Embed -->
+                    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScdGE8CRQq2PwkmGnvgUOh8_jLt4R7lXY2cr7X8Xh5YVS6qBA/viewform?embedded=true" width="100%" height="900" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
                     <button type="submit" class="cta-button" style="width: 100%;">
                         <span id="submitText">Place Order</span>
                     </button>
-
-                    <div id="orderMessage"></div>
+                    <div id="orderMessage" aria-live="polite"></div>
                 </form>
-
-                <div class="text-center" style="margin-top: 2rem;">
-                    <p><strong>Questions?</strong></p>
-                    <p>📞 <a href="tel:+254722704997" style="color: #8b5a3c;">+254 722 704 997</a></p>
-                    <p>📧 <a href="mailto:GroupNomad@outlook.com" style="color: #8b5a3c;">GroupNomad@outlook.com</a></p>
-                </div>
             </div>
         </section>
     </div>
@@ -744,6 +682,8 @@
                     item.addEventListener('click', (e) => {
                         const page = e.target.getAttribute('data-page');
                         this.showPage(page);
+                        // Close mobile menu on nav click
+                        document.getElementById('mainNav').classList.remove('active');
                     });
                 });
 
@@ -822,14 +762,26 @@
                 document.getElementById('totalPrice').textContent = total.toLocaleString();
             },
 
+            validateForm(formData) {
+                let errors = [];
+                if (!formData.customerName.trim()) {
+                    errors.push("Name is required.");
+                }
+                if (!formData.customerPhone.trim()) {
+                    errors.push("Phone number is required.");
+                } else if (!/^(\+?\d{10,15})$/.test(formData.customerPhone.trim())) {
+                    errors.push("Enter a valid phone number.");
+                }
+                if (!formData.deliveryAddress.trim()) {
+                    errors.push("Delivery address is required.");
+                }
+                return errors;
+            },
+
             submitOrder() {
                 const submitBtn = document.querySelector('#orderForm button[type="submit"]');
                 const submitText = document.getElementById('submitText');
                 const messageDiv = document.getElementById('orderMessage');
-
-                // Show loading state
-                submitText.innerHTML = '<span class="spinner"></span>Processing...';
-                submitBtn.disabled = true;
 
                 // Collect form data
                 const formData = {
@@ -841,6 +793,20 @@
                     deliveryAddress: document.getElementById('deliveryAddress').value,
                     totalPrice: document.getElementById('totalPrice').textContent
                 };
+
+                // Validate
+                const errors = this.validateForm(formData);
+                if (errors.length > 0) {
+                    messageDiv.innerHTML = `<div class="error-message">${errors.join('<br>')}</div>`;
+                    submitText.textContent = 'Place Order';
+                    submitBtn.disabled = false;
+                    return;
+                }
+
+                // Show loading state
+                messageDiv.innerHTML = '';
+                submitText.innerHTML = '<span class="spinner"></span>Processing...';
+                submitBtn.disabled = true;
 
                 // Simulate order processing
                 setTimeout(() => {
