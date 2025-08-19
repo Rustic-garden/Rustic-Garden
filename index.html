@@ -428,7 +428,7 @@
         <div class="container">
             <div class="header-content">
                 <div class="logo" onclick="showPage('home')">Rustic Garden</div>
-                <button class="menu-toggle" onclick="toggleMenu()" aria-label="Open navigation menu">☰</button>
+                <button class="menu-toggle" aria-label="Open navigation menu">☰</button>
                 <nav class="main-nav" id="mainNav" role="navigation" aria-label="Main Navigation">
                     <ul>
                         <li><span class="nav-item active" data-page="home">Home</span></li>
@@ -436,6 +436,8 @@
                         <li><span class="nav-item" data-page="story">Our Story</span></li>
                         <li><span class="nav-item" data-page="products">Products</span></li>
                         <li><span class="nav-item" data-page="order">Order</span></li>
+                        <li><span class="nav-item" data-page="aquaculture">Aquaculture</span></li>
+                        <li><span class="nav-item" data-page="landscaping">Landscaping</span></li>
                     </ul>
                 </nav>
             </div>
@@ -648,6 +650,47 @@
                     <div id="orderMessage" aria-live="polite"></div>
                 </form>
             </div>
+        </section>
+    </div>
+
+    <!-- AQUACULTURE PAGE -->
+    <div id="page-aquaculture" class="page-content hidden" role="main">
+        <div class="page-hero">
+            <div class="container">
+                <h1 class="page-title">Aquaculture</h1>
+                <p class="page-subtitle">Sustainable fish farming solutions</p>
+            </div>
+        </div>
+        <section class="container">
+            <h2>Our Aquaculture Services</h2>
+            <ul>
+                <li>Freshwater fish production</li>
+                <li>Pond construction & management</li>
+                <li>Consultancy for sustainable practices</li>
+            </ul>
+            <p>We offer high-quality fish, expert advice, and support for new and existing fish farmers.</p>
+        </section>
+    </div>
+
+    <!-- LANDSCAPING PAGE -->
+    <div id="page-landscaping" class="page-content hidden" role="main">
+        <div class="page-hero">
+            <div class="container">
+                <h1 class="page-title">Landscaping</h1>
+                <p class="page-subtitle">Transforming spaces with nature</p>
+            </div>
+                // Navigation
+                document.querySelectorAll('.nav-item').forEach(item => {
+                    item.addEventListener('click', (e) => {
+                        const page = e.target.getAttribute('data-page');
+                        this.showPage(page);
+                        // Close mobile menu on nav click
+                        document.getElementById('mainNav').classList.remove('active');
+                    });
+                });
+
+                // Menu toggle (mobile)
+                document.querySelector('.menu-toggle').addEventListener('click', toggleMenu);
         </section>
     </div>
 
