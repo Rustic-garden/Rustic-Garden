@@ -3,41 +3,136 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rustic Garden | Wellness Destination & Cultural Heritage of Mt. Kenya</title>
-    <meta name="description" content="Rustic Garden: A wellness destination in Embu celebrating Mt. Kenya's bounty. Premium coffee, organic produce, aquaculture training, landscaping, fresh water pools, cultural gardens & youth empowerment programs.">
+    <title>Rustic Garden | Academic Heritage & Cultural Research Platform</title>
+    <meta name="description" content="Rustic Garden: Academic platform for Mt. Kenya cultural heritage research, wellness destination documentation, and educational resources for scholars, educators, and cultural preservation.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        /* CSS RESET & BASE STYLES */
-        * {
+        /* MODERN CSS RESET & BASE STYLES */
+        *, *::before, *::after {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
         
+        :root {
+            --primary-color: #2c5530;
+            --secondary-color: #8b7355;
+            --accent-color: #d4a574;
+            --text-primary: #1a1a1a;
+            --text-secondary: #4a4a4a;
+            --text-muted: #6b7280;
+            --background: #fefefe;
+            --background-alt: #f8fafc;
+            --border-color: #e5e7eb;
+            --shadow-light: 0 1px 3px rgba(0,0,0,0.1);
+            --shadow-medium: 0 4px 12px rgba(0,0,0,0.15);
+            --shadow-heavy: 0 10px 40px rgba(0,0,0,0.2);
+            --border-radius: 8px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
         body {
-            font-family: 'Georgia', serif;
-            background: linear-gradient(135deg, #f9f6f0 0%, #ede7d9 100%);
-            color: #2e2b25;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background-color: var(--background);
+            color: var(--text-primary);
             line-height: 1.6;
+            font-size: 16px;
             overflow-x: hidden;
         }
         
         .container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
             padding: 0 2rem;
         }
         
-        .text-center { text-align: center; }
+        .container-narrow {
+            max-width: 1200px;
+        }
         
-        /* HEADER STYLES */
+        /* TYPOGRAPHY */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            line-height: 1.2;
+            color: var(--text-primary);
+        }
+        
+        .display-title {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1.5rem;
+        }
+        
+        .section-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        
+        .subsection-title {
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            margin-bottom: 0.75rem;
+        }
+        
+        .lead-text {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            font-weight: 400;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        /* HEADER & CONTACT BAR */
+        .contact-bar {
+            background: var(--primary-color);
+            color: white;
+            padding: 0.75rem 0;
+            font-size: 0.9rem;
+        }
+        
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .contact-item svg {
+            width: 16px;
+            height: 16px;
+            fill: currentColor;
+        }
+        
+        .contact-item a {
+            color: inherit;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .contact-item a:hover {
+            opacity: 0.8;
+        }
+        
         .main-header {
-            background: rgba(227, 224, 209, 0.95);
-            backdrop-filter: blur(10px);
-            padding: 1.2rem 0;
+            background: white;
+            padding: 1rem 0;
             position: sticky;
             top: 0;
             z-index: 100;
-            box-shadow: 0 4px 20px rgba(46, 43, 37, 0.1);
+            box-shadow: var(--shadow-light);
+            backdrop-filter: blur(10px);
         }
         
         .header-content {
@@ -47,286 +142,316 @@
         }
         
         .logo {
-            font-size: 2.2rem;
-            font-weight: bold;
-            color: #4c4637;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
             text-decoration: none;
-            transition: all 0.3s ease;
+            color: inherit;
         }
         
-        .logo-subtitle {
-            font-size: 0.8rem;
-            color: #8b5a3c;
-            font-weight: normal;
-            display: block;
-            margin-top: -0.2rem;
+        .logo-image {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            border-radius: var(--border-radius);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
         }
         
-        .logo:hover {
-            color: #8b5a3c;
-            transform: scale(1.02);
+        .logo-text h1 {
+            font-size: 1.75rem;
+            margin-bottom: 0.25rem;
+        }
+        
+        .logo-tagline {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-weight: 400;
         }
         
         /* NAVIGATION */
         .main-nav ul {
             display: flex;
             list-style: none;
-            gap: 0.3rem;
+            gap: 0.5rem;
+            align-items: center;
         }
         
         .nav-item {
-            padding: 0.6rem 1rem;
-            color: #4c4637;
+            padding: 0.75rem 1.25rem;
+            color: var(--text-secondary);
             font-weight: 500;
-            border-radius: 20px;
+            border-radius: 6px;
             text-decoration: none;
-            transition: all 0.3s ease;
-            background: rgba(255, 255, 255, 0.3);
-            border: 1px solid rgba(139, 90, 60, 0.2);
-            font-size: 0.9rem;
+            transition: var(--transition);
+            font-size: 0.95rem;
+            position: relative;
         }
         
         .nav-item:hover,
         .nav-item.active {
-            background: #8b5a3c;
+            background: var(--primary-color);
             color: white;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(139, 90, 60, 0.3);
+            transform: translateY(-1px);
         }
         
-        .menu-toggle {
+        .nav-item::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: var(--accent-color);
+            transition: var(--transition);
+            transform: translateX(-50%);
+        }
+        
+        .nav-item:hover::after,
+        .nav-item.active::after {
+            width: 80%;
+        }
+        
+        .mobile-menu-toggle {
             display: none;
             background: none;
             border: none;
             font-size: 1.5rem;
-            color: #4c4637;
+            color: var(--text-primary);
             cursor: pointer;
             padding: 0.5rem;
-            border-radius: 5px;
         }
         
         /* HERO SECTION */
         .hero-section {
-            background: linear-gradient(rgba(46, 43, 37, 0.3), rgba(139, 90, 60, 0.2)),
-                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23d4c5a9" width="1200" height="600"/><circle fill="%23b8a082" cx="200" cy="150" r="80"/><circle fill="%23c9b896" cx="800" cy="300" r="120"/><circle fill="%23a68f73" cx="1000" cy="100" r="60"/><path fill="%238b5a3c" d="M0,450 Q300,350 600,400 T1200,380 L1200,600 L0,600 Z"/><circle fill="%23527853" cx="150" cy="400" r="40"/><circle fill="%236b8e5a" cx="950" cy="450" r="30"/></svg>');
-            background-size: cover;
-            background-position: center;
-            min-height: 80vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
+            background: linear-gradient(135deg, var(--background) 0%, var(--background-alt) 100%);
+            padding: 6rem 0;
             position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><defs><pattern id="grain" patternUnits="userSpaceOnUse" width="100" height="100"><circle cx="50" cy="50" r="1" fill="%23000" opacity="0.02"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grain)"/></svg>') repeat;
+            opacity: 0.5;
         }
         
         .hero-content {
+            position: relative;
             z-index: 2;
-            max-width: 900px;
-            padding: 3rem 2rem;
-            background: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(15px);
-            border-radius: 20px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-            animation: fadeInUp 1s ease-out;
+            text-align: center;
+            max-width: 1000px;
+            margin: 0 auto;
         }
         
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
+        .hero-badges {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
         }
         
-        .hero-title {
-            font-size: 3.2rem;
-            color: #4c4637;
-            margin-bottom: 1rem;
-            font-weight: bold;
-        }
-        
-        .hero-subtitle {
-            font-size: 1.4rem;
-            color: #6b5d4f;
-            margin-bottom: 1rem;
-            line-height: 1.5;
+        .hero-badge {
+            background: var(--primary-color);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 500;
         }
         
         .hero-location {
-            font-size: 1rem;
-            color: #8b5a3c;
             font-style: italic;
-            margin-bottom: 2rem;
+            color: var(--text-muted);
+            margin-bottom: 3rem;
         }
         
-        /* WELLNESS HIGHLIGHTS */
-        .wellness-strip {
-            background: rgba(139, 90, 60, 0.1);
-            padding: 1rem 0;
-            margin: 2rem 0;
-            border-radius: 10px;
-        }
-        
-        .wellness-features {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            flex-wrap: wrap;
-            font-size: 0.95rem;
-            color: #6b5d4f;
-        }
-        
-        .wellness-feature {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        
-        .wellness-icon {
-            width: 20px;
-            height: 20px;
-            background: #8b5a3c;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 0.8rem;
-        }
-        
-        /* BUTTONS */
-        .cta-button {
-            display: inline-block;
-            padding: 1rem 2.5rem;
-            background: linear-gradient(135deg, #8b5a3c, #a67c5a);
-            color: white;
-            border: none;
-            border-radius: 50px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 8px 25px rgba(139, 90, 60, 0.3);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            text-decoration: none;
-            margin: 0.5rem;
-        }
-        
-        .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 35px rgba(139, 90, 60, 0.4);
-            background: linear-gradient(135deg, #a67c5a, #8b5a3c);
-        }
-        
-        .btn-secondary {
-            background: transparent;
-            color: #8b5a3c;
-            border: 2px solid #8b5a3c;
-        }
-        
-        .btn-secondary:hover {
-            background: #8b5a3c;
-            color: white;
-        }
-        
-        /* REVENUE STREAMS SECTION */
-        .revenue-section {
-            padding: 4rem 0;
-            background: rgba(255, 255, 255, 0.5);
-        }
-        
-        .section-title {
-            font-size: 2.5rem;
-            color: #4c4637;
-            margin: 0 0 1rem;
-            text-align: center;
-        }
-        
-        .section-subtitle {
-            font-size: 1.1rem;
-            color: #6b5d4f;
-            max-width: 700px;
-            margin: 0 auto 3rem;
-            text-align: center;
-        }
-        
-        .revenue-grid {
+        .hero-features {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 2rem;
             margin: 3rem 0;
         }
         
-        .revenue-card {
+        .feature-card {
             background: white;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
-            text-decoration: none;
-            color: inherit;
-            position: relative;
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-light);
+            text-align: center;
+            transition: var(--transition);
         }
         
-        .revenue-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
-            border: 2px solid #8b5a3c;
-            color: inherit;
-            text-decoration: none;
+        .feature-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-medium);
         }
         
-        .revenue-image {
-            height: 180px;
-            background: linear-gradient(45deg, #d4c5a9, #c9b896);
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2.5rem;
-            color: #8b5a3c;
+            margin: 0 auto 1rem;
+            font-size: 1.5rem;
+            color: white;
+        }
+        
+        /* BUTTONS */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            text-decoration: none;
+            transition: var(--transition);
+            font-family: inherit;
+            margin: 0.5rem;
+        }
+        
+        .btn-primary {
+            background: var(--primary-color);
+            color: white;
+            box-shadow: var(--shadow-light);
+        }
+        
+        .btn-primary:hover {
+            background: #1e3a21;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-medium);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+        }
+        
+        .btn-secondary:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+        
+        /* ACADEMIC SECTIONS */
+        .academic-section {
+            padding: 5rem 0;
+        }
+        
+        .academic-section:nth-child(even) {
+            background: var(--background-alt);
+        }
+        
+        .offerings-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .offering-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow-light);
+            transition: var(--transition);
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        .offering-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-heavy);
+            border: 2px solid var(--primary-color);
+        }
+        
+        .offering-image {
+            height: 200px;
+            background: var(--background-alt);
+            display: flex;
+            align-items: center;
+            justify-content: center;
             position: relative;
+            border: 2px dashed var(--border-color);
+        }
+        
+        .image-placeholder {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            text-align: center;
         }
         
         .category-badge {
             position: absolute;
-            top: 10px;
-            right: 10px;
-            background: rgba(139, 90, 60, 0.9);
+            top: 1rem;
+            right: 1rem;
+            background: var(--primary-color);
             color: white;
-            padding: 0.3rem 0.8rem;
-            border-radius: 15px;
-            font-size: 0.7rem;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
             font-weight: 600;
             text-transform: uppercase;
         }
         
-        .revenue-info {
-            padding: 1.5rem;
+        .offering-content {
+            padding: 2rem;
         }
         
-        .revenue-title {
-            font-size: 1.3rem;
-            color: #4c4637;
-            margin-bottom: 0.5rem;
+        .offering-title {
+            font-size: 1.25rem;
+            margin-bottom: 0.75rem;
+            color: var(--text-primary);
+        }
+        
+        .offering-description {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 1.5;
+        }
+        
+        .offering-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border-color);
+        }
+        
+        .offering-price {
             font-weight: 600;
+            color: var(--primary-color);
         }
         
-        .revenue-description {
-            color: #6b5d4f;
-            font-size: 0.95rem;
-            line-height: 1.4;
-            margin-bottom: 1rem;
+        .offering-type {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            background: var(--background-alt);
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
         }
         
-        .revenue-price {
-            color: #8b5a3c;
-            font-size: 1rem;
-            font-weight: 600;
-        }
-        
-        /* EMBU HERITAGE SECTION */
+        /* HERITAGE SECTION */
         .heritage-section {
-            background: linear-gradient(135deg, rgba(139, 90, 60, 0.1), rgba(212, 197, 169, 0.2));
-            padding: 4rem 0;
-            margin: 2rem 0;
+            background: linear-gradient(135deg, rgba(44, 85, 48, 0.05), rgba(212, 165, 116, 0.05));
+            padding: 5rem 0;
         }
         
         .heritage-content {
@@ -338,113 +463,146 @@
         .heritage-text {
             font-size: 1.1rem;
             margin-bottom: 2rem;
-            line-height: 1.7;
+            line-height: 1.8;
+            color: var(--text-secondary);
         }
         
-        .cultural-features {
+        .cultural-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2rem;
             margin: 3rem 0;
         }
         
         .cultural-card {
-            background: rgba(255, 255, 255, 0.8);
-            padding: 2rem;
-            border-radius: 15px;
+            background: white;
+            padding: 2.5rem 2rem;
+            border-radius: 12px;
             text-align: center;
+            box-shadow: var(--shadow-light);
+            transition: var(--transition);
+        }
+        
+        .cultural-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-medium);
         }
         
         .cultural-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            display: block;
         }
         
         .cultural-title {
-            font-size: 1.2rem;
-            color: #4c4637;
-            margin-bottom: 0.5rem;
-            font-weight: 600;
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
         }
         
-        /* WELLNESS DESTINATION */
-        .wellness-section {
-            padding: 4rem 0;
+        /* RESEARCH RESOURCES SECTION */
+        .resources-section {
+            padding: 5rem 0;
+            background: var(--background);
         }
         
-        .wellness-grid {
+        .resources-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
             margin: 3rem 0;
         }
         
-        .wellness-card {
-            background: linear-gradient(135deg, rgba(255,255,255,0.9), rgba(255,255,255,0.7));
-            border-radius: 15px;
+        .resource-card {
+            background: white;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
             padding: 2rem;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            text-align: center;
+            transition: var(--transition);
         }
         
-        .wellness-card h3 {
-            color: #4c4637;
-            margin-bottom: 1rem;
-            font-size: 1.3rem;
+        .resource-card:hover {
+            border-color: var(--primary-color);
+            box-shadow: var(--shadow-medium);
+        }
+        
+        .resource-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--primary-color);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.25rem;
+            margin-bottom: 1.5rem;
         }
         
         /* FOOTER */
         .main-footer {
-            background: #4c4637;
+            background: var(--text-primary);
             color: white;
-            padding: 3rem 0 1rem;
-            text-align: center;
-            margin-top: 4rem;
+            padding: 4rem 0 2rem;
         }
         
-        .footer-nav {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            margin-bottom: 2rem;
-            flex-wrap: wrap;
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
         }
         
-        .footer-nav a {
-            color: #d4c5a9;
+        .footer-section h4 {
+            margin-bottom: 1.5rem;
+            color: var(--accent-color);
+        }
+        
+        .footer-section ul {
+            list-style: none;
+        }
+        
+        .footer-section ul li {
+            margin-bottom: 0.75rem;
+        }
+        
+        .footer-section ul li a {
+            color: #d1d5db;
             text-decoration: none;
-            transition: color 0.3s;
-            font-size: 0.9rem;
+            transition: var(--transition);
         }
         
-        .footer-nav a:hover {
+        .footer-section ul li a:hover {
             color: white;
         }
         
-        .footer-info {
-            margin-bottom: 1rem;
-        }
-        
-        .location-info {
-            background: rgba(255,255,255,0.1);
-            padding: 1rem;
-            border-radius: 10px;
-            margin: 1rem auto;
-            max-width: 600px;
-            font-size: 0.9rem;
+        .footer-bottom {
+            padding-top: 2rem;
+            border-top: 1px solid #374151;
+            text-align: center;
+            color: #9ca3af;
         }
         
         /* RESPONSIVE DESIGN */
         @media (max-width: 768px) {
+            .contact-info {
+                gap: 1.5rem;
+                justify-content: center;
+            }
+            
+            .header-content {
+                flex-wrap: wrap;
+            }
+            
             .main-nav {
                 display: none;
                 position: absolute;
                 top: 100%;
                 left: 0;
                 right: 0;
-                background: rgba(227, 224, 209, 0.98);
-                backdrop-filter: blur(10px);
-                box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+                background: white;
+                box-shadow: var(--shadow-medium);
+                border-radius: 0 0 var(--border-radius) var(--border-radius);
             }
             
             .main-nav.active {
@@ -454,62 +612,143 @@
             .main-nav ul {
                 flex-direction: column;
                 padding: 1rem;
-                gap: 0.5rem;
+                gap: 0;
             }
             
-            .menu-toggle {
+            .nav-item {
+                width: 100%;
+                text-align: left;
+                border-radius: 0;
+            }
+            
+            .mobile-menu-toggle {
                 display: block;
             }
             
-            .hero-title {
-                font-size: 2.2rem;
+            .hero-section {
+                padding: 4rem 0;
             }
             
-            .hero-subtitle {
-                font-size: 1.2rem;
-            }
-            
-            .revenue-grid, .wellness-grid, .cultural-features {
-                grid-template-columns: 1fr;
+            .academic-section {
+                padding: 3rem 0;
             }
             
             .container {
                 padding: 0 1rem;
             }
             
-            .wellness-features {
+            .hero-features {
+                grid-template-columns: 1fr;
+            }
+            
+            .offerings-grid,
+            .cultural-grid,
+            .resources-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-info {
+                flex-direction: column;
                 gap: 1rem;
-                justify-content: center;
             }
         }
         
         /* ANIMATIONS */
         .fade-in {
-            animation: fadeIn 0.6s ease-in;
+            animation: fadeIn 0.6s ease-out forwards;
         }
         
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+            from { 
+                opacity: 0; 
+                transform: translateY(30px); 
+            }
+            to { 
+                opacity: 1; 
+                transform: translateY(0); 
+            }
+        }
+        
+        .stagger-animation > * {
+            animation: fadeIn 0.6s ease-out forwards;
+            opacity: 0;
+        }
+        
+        .stagger-animation > *:nth-child(1) { animation-delay: 0.1s; }
+        .stagger-animation > *:nth-child(2) { animation-delay: 0.2s; }
+        .stagger-animation > *:nth-child(3) { animation-delay: 0.3s; }
+        .stagger-animation > *:nth-child(4) { animation-delay: 0.4s; }
+        
+        /* ACCESSIBILITY */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+        
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
         }
     </style>
 </head>
 <body>
+    <!-- CONTACT BAR -->
+    <div class="contact-bar">
+        <div class="container">
+            <div class="contact-info">
+                <div class="contact-item">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56-.35-.12-.74-.03-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z"/>
+                    </svg>
+                    <span>Mobile: <a href="tel:+254722704997">+254 722 704 997</a></span>
+                </div>
+                <div class="contact-item">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                    </svg>
+                    <span>Email: <a href="mailto:GroupNomad@outlook.com">GroupNomad@outlook.com</a></span>
+                </div>
+                <div class="contact-item">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                    </svg>
+                    <span>Location: Kavutiri, Embu County, Mt. Kenya</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- HEADER -->
     <header class="main-header">
         <div class="container">
             <div class="header-content">
-                <div class="logo" onclick="showPage('home')">Rustic Garden</div>
-                <button class="menu-toggle" aria-label="Open navigation menu">☰</button>
+                <a href="#" class="logo">
+                    <div class="logo-image">RG</div>
+                    <div class="logo-text">
+                        <h1>Rustic Garden</h1>
+                        <div class="logo-tagline">Academic Heritage & Cultural Research Platform</div>
+                    </div>
+                </a>
+                <button class="mobile-menu-toggle" aria-label="Toggle navigation menu">☰</button>
                 <nav class="main-nav" id="mainNav" role="navigation" aria-label="Main Navigation">
                     <ul>
-                        <li><span class="nav-item active" data-page="home">Home</span></li>
-                        <li><span class="nav-item" data-page="coffee">Coffee</span></li>
-                        <li><span class="nav-item" data-page="story">Our Story</span></li>
-                        <li><span class="nav-item" data-page="products">Products</span></li>
-                        <li><span class="nav-item" data-page="order">Order</span></li>
-                        <li><span class="nav-item" data-page="aquaculture">Aquaculture</span></li>
-                        <li><span class="nav-item" data-page="landscaping">Landscaping</span></li>
+                        <li><a href="#home" class="nav-item active">Home</a></li>
+                        <li><a href="#research" class="nav-item">Research</a></li>
+                        <li><a href="#heritage" class="nav-item">Heritage</a></li>
+                        <li><a href="#products" class="nav-item">Products</a></li>
+                        <li><a href="#academic" class="nav-item">Academic</a></li>
+                        <li><a href="#resources" class="nav-item">Resources</a></li>
+                        <li><a href="#contact" class="nav-item">Contact</a></li>
                     </ul>
                 </nav>
             </div>
@@ -518,251 +757,99 @@
 
     <!-- HERO SECTION -->
     <main role="main">
-        <section class="hero-section">
-            <div class="hero-content">
-                <h1 class="hero-title">Where Mt. Kenya Meets Wellness</h1>
-                <p class="hero-subtitle">Experience the sacred slopes of Mt. Kenya through authentic Embu culture, premium organic products, and transformative wellness experiences.</p>
-                <p class="hero-location">Kavutiri, Embu County • 4,000-6,900 feet elevation • Descendants of Mwenendega</p>
-                
-                <div class="wellness-strip">
-                    <div class="wellness-features">
-                        <div class="wellness-feature">
-                            <div class="wellness-icon">💧</div>
-                            <span>Fresh Water Pools</span>
-                        </div>
-                        <div class="wellness-feature">
-                            <div class="wellness-icon">🌿</div>
-                            <span>Cultural Gardens</span>
-                        </div>
-                        <div class="wellness-feature">
-                            <div class="wellness-icon">🏔️</div>
-                            <span>Mt. Kenya Views</span>
-                        </div>
-                        <div class="wellness-feature">
-                            <div class="wellness-icon">🎯</div>
-                            <span>Youth Empowerment</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <a href="wellness.html" class="cta-button">Visit Our Sanctuary</a>
-                <a href="order.html" class="cta-button btn-secondary">Book Experience</a>
-            </div>
-        </section>
-
-        <!-- REVENUE STREAMS SECTION -->
-        <section id="offerings" class="revenue-section">
+        <section id="home" class="hero-section">
             <div class="container">
-                <h2 class="section-title">Our Sacred Offerings</h2>
-                <p class="section-subtitle">From the volcanic soils of Mt. Kenya to your wellness journey - discover authentic products, experiences, and knowledge rooted in Embu tradition.</p>
-                
-                <div class="revenue-grid">
-                    <a href="coffee.html" class="revenue-card">
-                        <div class="revenue-image">☕
-                            <span class="category-badge">Premium</span>
-                        </div>
-                        <div class="revenue-info">
-                            <h3 class="revenue-title">Mt. Kenya Coffee</h3>
-                            <p class="revenue-description">Single-origin arabica from sacred volcanic slopes. Light, medium, and dark roasts honoring our highland heritage.</p>
-                            <div class="revenue-price">From KSh 1,500/kg</div>
-                        </div>
-                    </a>
+                <div class="hero-content">
+                    <div class="hero-badges">
+                        <span class="hero-badge">Academic Research</span>
+                        <span class="hero-badge">Cultural Heritage</span>
+                        <span class="hero-badge">Educational Resources</span>
+                        <span class="hero-badge">Social Science</span>
+                    </div>
                     
-                    <a href="macadamia.html" class="revenue-card">
-                        <div class="revenue-image">🌰
-                            <span class="category-badge">Organic</span>
-                        </div>
-                        <div class="revenue-info">
-                            <h3 class="revenue-title">Organic Macadamia</h3>
-                            <p class="revenue-description">Buttery nuts from sustainable orchards. Raw, roasted, or oil - nature's premium protein source.</p>
-                            <div class="revenue-price">KSh 2,500/kg</div>
-                        </div>
-                    </a>
+                    <h1 class="display-title">Mt. Kenya Cultural Heritage Research Platform</h1>
+                    <p class="lead-text">A comprehensive academic platform documenting the cultural heritage, traditional wisdom, and sustainable practices of the Embu people - descendants of Mwenendega from the sacred slopes of Mt. Kenya.</p>
                     
-                    <a href="bananas.html" class="revenue-card">
-                        <div class="revenue-image">🍌
-                            <span class="category-badge">Natural</span>
-                        </div>
-                        <div class="revenue-info">
-                            <h3 class="revenue-title">Dried Bananas</h3>
-                            <p class="revenue-description">Sun-dried sweetness with no additives. Traditional preservation methods passed down through generations.</p>
-                            <div class="revenue-price">KSh 800/500g</div>
-                        </div>
-                    </a>
+                    <p class="hero-location">Kavutiri, Embu County • 4,000-6,900 feet elevation • Traditional Embu Territory</p>
                     
-                    <a href="aquaculture.html" class="revenue-card">
-                        <div class="revenue-image">🐟
-                            <span class="category-badge">Training</span>
+                    <div class="hero-features stagger-animation">
+                        <div class="feature-card">
+                            <div class="feature-icon">📚</div>
+                            <h3>Academic Papers</h3>
+                            <p>Peer-reviewed research on Embu culture, agricultural practices, and traditional knowledge systems</p>
                         </div>
-                        <div class="revenue-info">
-                            <h3 class="revenue-title">Cold-Climate Aquaculture</h3>
-                            <p class="revenue-description">Revolutionary tilapia farming for highland conditions. Complete training programs for schools and communities.</p>
-                            <div class="revenue-price">Consultation Available</div>
+                        <div class="feature-card">
+                            <div class="feature-icon">🌳</div>
+                            <h3>Cultural Preservation</h3>
+                            <p>Digital archive of oral histories, traditional practices, and cultural heritage documentation</p>
                         </div>
-                    </a>
+                        <div class="feature-card">
+                            <div class="feature-icon">👥</div>
+                            <h3>Educational Resources</h3>
+                            <p>Teaching materials for educators, scholars, and children exploring their cultural roots</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">🔬</div>
+                            <h3>Social Science Research</h3>
+                            <p>Anthropological studies, community development research, and sustainable practice documentation</p>
+                        </div>
+                    </div>
                     
-                    <a href="landscaping.html" class="revenue-card">
-                        <div class="revenue-image">🌺
-                            <span class="category-badge">Design</span>
-                        </div>
-                        <div class="revenue-info">
-                            <h3 class="revenue-title">Cultural Landscaping</h3>
-                            <p class="revenue-description">Transform spaces into healing sanctuaries inspired by traditional Embu gardens and Mt. Kenya's natural beauty.</p>
-                            <div class="revenue-price">Custom Quotes</div>
-                        </div>
-                    </a>
-                    
-                    <a href="seedlings.html" class="revenue-card">
-                        <div class="revenue-image">🌱
-                            <span class="category-badge">Native</span>
-                        </div>
-                        <div class="revenue-info">
-                            <h3 class="revenue-title">Indigenous Seedlings</h3>
-                            <p class="revenue-description">Native Mt. Kenya species for reforestation, landscaping, and cultural preservation. Grown from sacred grove genetics.</p>
-                            <div class="revenue-price">From KSh 50/seedling</div>
-                        </div>
-                    </a>
-                    
-                    <a href="events.html" class="revenue-card">
-                        <div class="revenue-image">🎋
-                            <span class="category-badge">Cultural</span>
-                        </div>
-                        <div class="revenue-info">
-                            <h3 class="revenue-title">Garden Events & Ceremonies</h3>
-                            <p class="revenue-description">Sacred spaces for weddings, corporate retreats, cultural ceremonies. Fresh water pools and ceremonial grounds.</p>
-                            <div class="revenue-price">Venue Hire Available</div>
-                        </div>
-                    </a>
-                    
-                    <a href="youth.html" class="revenue-card">
-                        <div class="revenue-image">🎓
-                            <span class="category-badge">Empowerment</span>
-                        </div>
-                        <div class="revenue-info">
-                            <h3 class="revenue-title">Youth Training Programs</h3>
-                            <p class="revenue-description">Practical skills in agriculture, aquaculture, landscaping. Connecting modern opportunities with ancestral wisdom.</p>
-                            <div class="revenue-price">Scholarships Available</div>
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <!-- EMBU HERITAGE SECTION -->
-        <section class="heritage-section">
-            <div class="container">
-                <div class="heritage-content">
-                    <h2 class="section-title">Children of Kembu</h2>
-                    <p class="heritage-text">
-                        We are the descendants of Mwenendega, who first saw the beautiful Nveta bathing by the sacred waters of Mbui Njeru. From their union came Kembu and Werimba, whose children became the Embu people. Our land stretches from the slopes of Mt. Kenya, where Ngai dwells, down to the fertile valleys at 4,000 feet.
-                    </p>
-                    <p class="heritage-text">
-                        For generations, our athamaki (elders) have guided our communities through the wisdom of ciama councils. At Rustic Garden, we honor this heritage by creating spaces where tradition meets innovation, where the sacred waters still flow, and where every visitor becomes part of our extended family.
-                    </p>
-                    
-                    <div class="cultural-features">
-                        <div class="cultural-card">
-                            <div class="cultural-icon">💧</div>
-                            <h3 class="cultural-title">Sacred Waters</h3>
-                            <p>Following the tradition of Mbui Njeru falls, our fresh water pools offer healing and renewal.</p>
-                        </div>
-                        <div class="cultural-card">
-                            <div class="cultural-icon">🏔️</div>
-                            <h3 class="cultural-title">Mt. Kenya Connection</h3>
-                            <p>Direct sight lines to Ngai's dwelling place, maintaining our spiritual connection to the sacred mountain.</p>
-                        </div>
-                        <div class="cultural-card">
-                            <div class="cultural-icon">🌿</div>
-                            <h3 class="cultural-title">Ancestral Gardens</h3>
-                            <p>Plants and layouts inspired by traditional Embu agricultural wisdom and sacred grove preservation.</p>
-                        </div>
-                        <div class="cultural-card">
-                            <div class="cultural-icon">👥</div>
-                            <h3 class="cultural-title">Community Wisdom</h3>
-                            <p>Modern ciama approach to decision-making, bringing elders and youth together for sustainable solutions.</p>
-                        </div>
+                    <div style="margin-top: 3rem;">
+                        <a href="#research" class="btn btn-primary">Explore Research</a>
+                        <a href="#heritage" class="btn btn-secondary">Cultural Heritage</a>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- WELLNESS DESTINATION -->
-        <section class="wellness-section">
-            <div class="container">
-                <h2 class="section-title">Wellness Sanctuary</h2>
-                <p class="section-subtitle">Immerse yourself in the healing power of Mt. Kenya's sacred slopes through mindful experiences and authentic cultural connection.</p>
+        <!-- RESEARCH & ACADEMIC OFFERINGS -->
+        <section id="research" class="academic-section">
+            <div class="container container-narrow">
+                <h2 class="section-title">Research & Academic Resources</h2>
+                <p class="lead-text">Comprehensive documentation and academic analysis of Mt. Kenya cultural heritage, traditional practices, and sustainable development initiatives.</p>
                 
-                <div class="wellness-grid">
-                    <div class="wellness-card">
-                        <h3>Fresh Water Therapy</h3>
-                        <p>Natural spring-fed pools for meditation, healing ceremonies, and rejuvenation rituals inspired by Nveta's sacred bathing place.</p>
+                <div class="offerings-grid">
+                    <div class="offering-card">
+                        <div class="offering-image">
+                            <div class="image-placeholder">
+                                📷<br>Academic Papers<br>Upload Image
+                            </div>
+                            <span class="category-badge">Academic</span>
+                        </div>
+                        <div class="offering-content">
+                            <h3 class="offering-title">Published Research Papers</h3>
+                            <p class="offering-description">Peer-reviewed academic papers on Embu cultural heritage, traditional agricultural practices, sustainable development, and community empowerment initiatives.</p>
+                            <div class="offering-meta">
+                                <span class="offering-type">Research Collection</span>
+                                <span class="offering-price">Open Access</span>
+                            </div>
+                        </div>
                     </div>
-                    <div class="wellness-card">
-                        <h3>Cultural Immersion</h3>
-                        <p>Learn traditional Embu practices: sustainable farming, herbal medicine, ancestral cooking, and storytelling under ancient trees.</p>
+                    
+                    <div class="offering-card">
+                        <div class="offering-image">
+                            <div class="image-placeholder">
+                                📷<br>Cultural Documentation<br>Upload Image
+                            </div>
+                            <span class="category-badge">Heritage</span>
+                        </div>
+                        <div class="offering-content">
+                            <h3 class="offering-title">Oral History Archive</h3>
+                            <p class="offering-description">Digital preservation of elder narratives, traditional stories, cultural practices, and historical accounts from the descendants of Mwenendega.</p>
+                            <div class="offering-meta">
+                                <span class="offering-type">Digital Archive</span>
+                                <span class="offering-price">Free Access</span>
+                            </div>
+                        </div>
                     </div>
-                    <div class="wellness-card">
-                        <h3>Mindful Agriculture</h3>
-                        <p>Hands-on experiences in coffee harvesting, organic farming, and aquaculture that connect you to the land's rhythm.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- FOOTER -->
-<footer class="main-footer">
-    <div class="container">
-        <div class="footer-nav">
-            <a href="index.html">Home</a>
-            <a href="our-story.html">Our Story</a>
-            <a href="wellness.html">Wellness</a>
-            <a href="coffee.html">Coffee</a>
-            <a href="macadamia.html">Macadamia</a>
-            <a href="bananas.html">Bananas</a>
-            <a href="aquaculture.html">Aquaculture</a>
-            <a href="landscaping.html">Landscaping</a>
-            <a href="seedlings.html">Seedlings</a>
-            <a href="events.html">Events</a>
-            <a href="youth.html">Youth Program</a>
-            <a href="order.html">Book/Order</a>
-        </div>
-        
-        <div class="location-info">
-            <p><strong>Rustic Garden - Mt. Kenya Wellness Destination</strong></p>
-            <p>Kavutiri, Embu County | South-eastern slopes of Mt. Kenya</p>
-            <p>4,000-6,900 feet elevation | Traditional Embu Territory</p>
-            <p>Descendants of Mwenendega • Children of Kembu • Guided by Ancestral Wisdom</p>
-        </div>
-        
-        <div style="margin-top: 2rem; padding-top: 1rem; border-top: 1px solid #6b5d4f; color: #d4c5a9;">
-            <p>&copy; 2025 Rustic Garden. Honoring the legacy of our ancestors while nurturing future generations.</p>
-        </div>
-    </div>
-</footer>
-
-    <script>
-        function toggleMenu() {
-            const nav = document.getElementById('mainNav');
-            nav.classList.toggle('active');
-        }
-
-        // Initialize app when DOM is loaded
-        document.addEventListener('DOMContentLoaded', () => {
-            app.init();
-            
-            // Close mobile menu when clicking outside
-            document.addEventListener('click', (e) => {
-                const nav = document.getElementById('mainNav');
-                const toggle = document.querySelector('.menu-toggle');
-                
-                if (!nav.contains(e.target) && !toggle.contains(e.target)) {
-                    nav.classList.remove('active');
-                }
-            });
-            
-            console.log('Rustic Garden website loaded successfully!');
-        });
-    </script>
-</body>
-</html>
+                    
+                    <div class="offering-card">
+                        <div class="offering-image">
+                            <div class="image-placeholder">
+                                📷<br>Educational Materials<br>Upload Image
+                            </div>
+                            <span class="category-badge">Education</span>
+                        </div>
+                        <div class="offering-content">
+                            <h3 class="offering-title">Teaching Resources</h3>
