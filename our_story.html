@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Our Story • Rustic Garden</title>
+  <meta name="description" content="Rustic Garden — our story, roots, and inspiration in Embu. Learn about the heritage behind our coffee, aquaculture, and landscaping work." />
+  <meta property="og:title" content="Our Story • Rustic Garden" />
+  <meta property="og:description" content="Our roots and inspiration in Embu: community, heritage, and sustainable agriculture." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="/our-story.html" />
+  <meta name="theme-color" content="#0f172a" />
+  <link rel="icon" href="/favicon.ico" />
+  <style>
+    :root {
+      --bg: #0b1020;           /* deep navy */
+      --card: #0f172a;         /* slate-900 */
+      --muted: #94a3b8;        /* slate-400 */
+      --text: #e2e8f0;         /* slate-200 */
+      --accent: #22c55e;       /* green-500 */
+      --ring: rgba(34,197,94,0.45);
+    }
+    * { box-sizing: border-box }
+    html, body { height: 100% }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      background: radial-gradient(1200px 800px at 20% -10%, #172554 0%, transparent 60%),
+                  radial-gradient(1000px 600px at 120% 10%, #064e3b 0%, transparent 55%),
+                  var(--bg);
+      color: var(--text);
+      line-height: 1.55;
+    }
+    a { color: var(--accent); text-decoration: none }
+    a:hover { text-decoration: underline }
+
+    .wrap { max-width: 1100px; margin: 0 auto; padding: 20px }
+    header {
+      position: sticky; top: 0; z-index: 40;
+      background: linear-gradient(180deg, rgba(11,16,32,0.9), rgba(11,16,32,0.6));
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(148,163,184,0.15);
+    }
+    .brand { display:flex; align-items:center; gap:.6rem; font-weight: 700; letter-spacing:.2px }
+    .brand .dot { width:10px; height:10px; border-radius:999px; background: var(--accent); box-shadow:0 0 0 6px rgba(34,197,94,.15) }
+    nav a { margin-left: 18px; font-weight: 600; color: var(--text); opacity:.9 }
+    nav a:hover { opacity:1 }
+
+    .hero { padding: 60px 0 24px }
+    .hero h1 { font-size: clamp(2rem, 5vw, 3rem); margin:.2rem 0 .75rem }
+    .lead { color: var(--muted); max-width: 70ch }
+
+    .grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 18px; margin: 26px 0 50px }
+    .card { grid-column: span 12; background: linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.01)); border: 1px solid rgba(148,163,184,.15); border-radius: 18px; padding: 22px; box-shadow: 0 10px 30px rgba(2,6,23,.35) }
+    @media (min-width: 700px) { .card.half { grid-column: span 6 } }
+
+    .card h2 { margin: 0 0 8px; font-size: 1.15rem }
+    .card p { margin: 0 0 12px; color: var(--muted) }
+    .card .actions { display:flex; flex-wrap:wrap; gap:12px; margin-top: 12px }
+
+    .btn {
+      display:inline-flex; align-items:center; gap:.5rem; padding: .7rem 1rem; border-radius: 12px; font-weight: 700; border: 1px solid rgba(148,163,184,.3);
+      background: linear-gradient(180deg, rgba(34,197,94,.18), rgba(34,197,94,.08));
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.1), 0 8px 20px rgba(34,197,94,.12);
+    }
+    .btn:focus-visible { outline: 3px solid var(--ring); outline-offset: 2px }
+
+    .note { font-size: .925rem; color: var(--muted) }
+    footer { border-top: 1px solid rgba(148,163,184,.15); padding: 30px 0; margin-top: 30px; color: var(--muted) }
+  </style>
+</head>
+<body>
+  <header role="banner">
+    <div class="wrap" style="display:flex; align-items:center; justify-content:space-between; padding: 12px 20px">
+      <a class="brand" href="index.html" aria-label="Back to Rustic Garden home">
+        <span class="dot" aria-hidden="true"></span>
+        <span>Rustic Garden</span>
+      </a>
+      <nav aria-label="Primary">
+        <a href="index.html">Home</a>
+        <a aria-current="page" href="#">Our Story</a>
+        <a href="products.html">Products</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="wrap" role="main">
+    <section class="hero">
+      <h1>Our Story</h1>
+      <p class="lead">
+        We are rooted in Embu, where mountain rains meet fertile soil and community traditions. Our coffee, aquaculture, and landscapes are shaped by the stories that came before us—and the ones we’re writing now.
+      </p>
+    </section>
+
+    <section class="grid" aria-label="Featured Sources and Links">
+      <article class="card half" aria-labelledby="card-embu-texts">
+        <h2 id="card-embu-texts">Embu Historical Texts (1974)</h2>
+        <p>
+          By <strong>Henry Stanley Kabeca Mwaniki</strong> — a foundational reference on Embu heritage.
+        </p>
+        <div class="actions">
+          <a class="btn" target="_blank" rel="noopener noreferrer" href="https://www.mathaga.com/products/embu-historical-texts-by-h-s-kabeca-mwaniki?utm_source=chatgpt.com">
+            View on Mathaga.com
+          </a>
+        </div>
+        <p class="note">External link opens in a new tab.</p>
+      </article>
+
+      <article class="card half" aria-labelledby="card-101tribes">
+        <h2 id="card-101tribes">Background on the Embu People</h2>
+        <p>Accessible overview, customs, and context for newcomers to the region and culture.</p>
+        <div class="actions">
+          <a class="btn" target="_blank" rel="noopener noreferrer" href="https://www.101lasttribes.com/tribes/embu.html">
+            Read at 101 Last Tribes
+          </a>
+        </div>
+        <p class="note">External link opens in a new tab.</p>
+      </article>
+
+      <article class="card" aria-labelledby="card-commitment">
+        <h2 id="card-commitment">People • Land • Continuity</h2>
+        <p>
+          Rustic Garden is a community-first effort: fair partnerships with growers and fishers, climate-smart practices, and regenerative design. We pair local knowledge with modern tools to nurture livelihoods today—without compromising tomorrow.
+        </p>
+      </article>
+    </section>
+  </main>
+
+  <footer role="contentinfo">
+    <div class="wrap">
+      <small>© <span id="y"></span> Rustic Garden. Built with love in Embu & beyond.</small>
+    </div>
+  </footer>
+
+  <script>
+    // Set year
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
