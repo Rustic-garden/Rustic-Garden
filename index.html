@@ -527,32 +527,60 @@
         </div>
     </div>
 
-    <!-- Header -->
-    <header class="main-header">
-        <div class="container">
-            <div class="header-content">
-                <a href="#" class="logo">
-                    <div class="logo-image">RG</div>
-                    <div class="logo-text">
-                        <h1>Rustic Garden</h1>
-                        <div class="logo-tagline">Academic Heritage & Cultural Research Platform</div>
-                    </div>
-                </a>
-                <button class="mobile-toggle" onclick="toggleNav()" aria-label="Toggle navigation">☰</button>
-                <nav role="navigation" aria-label="Main Navigation">
-                    <ul class="nav" id="nav">
-                        <li><a href="#home" class="nav-item active">Home</a></li>
-                        <li><a href="#research" class="nav-item">Research</a></li>
-                        <li><a href="#heritage" class="nav-item">Heritage</a></li>
-                        <li><a href="#products" class="nav-item">Products</a></li>
-                        <li><a href="#academic" class="nav-item">Academic</a></li>
-                        <li><a href="#resources" class="nav-item">Resources</a></li>
-                        <li><a href="#contact" class="nav-item">Contact</a></li>
-                    </ul>
-                </nav>
-            </div>
+<!-- Header -->
+<header class="main-header">
+  <div class="container">
+    <div class="header-content">
+      <!-- Logo -->
+      <a href="index.html" class="logo">
+        <div class="logo-image">RG</div>
+        <div class="logo-text">
+          <h1>Rustic Garden</h1>
+          <div class="logo-tagline">Academic Heritage & Cultural Research Platform</div>
         </div>
-    </header>
+      </a>
+
+      <!-- Mobile Nav Toggle -->
+      <button class="mobile-toggle" onclick="toggleNav()" aria-label="Toggle navigation">☰</button>
+
+      <!-- Main Navigation -->
+      <nav role="navigation" aria-label="Main Navigation" class="main-nav">
+        <ul class="nav-list" id="nav">
+          <!-- Home -->
+          <li class="nav-item">
+            <a href="index.html" class="nav-link active">Home</a>
+          </li>
+
+          <!-- Dropdown Explore -->
+          <li class="nav-item nav-dropdown" aria-haspopup="true">
+            <button class="nav-link dropdown-toggle" aria-expanded="false" aria-controls="explore-menu">
+              Explore <span class="caret">▾</span>
+            </button>
+            <ul id="explore-menu" class="dropdown-menu" role="menu" aria-label="Explore pages">
+              <li role="none"><a role="menuitem" href="macadamia.html" class="dropdown-link">Macadamia</a></li>
+              <li role="none"><a role="menuitem" href="aquaculture.html" class="dropdown-link">Aquaculture</a></li>
+              <li role="none"><a role="menuitem" href="coffee.html" class="dropdown-link">Coffee</a></li>
+              <li role="none"><a role="menuitem" href="our-story.html" class="dropdown-link">Our Story</a></li>
+            </ul>
+          </li>
+
+          <!-- Order -->
+          <li class="nav-item">
+            <a href="order.html" class="nav-link">Order</a>
+          </li>
+
+          <!-- Other Sections -->
+          <li class="nav-item"><a href="#research" class="nav-link">Research</a></li>
+          <li class="nav-item"><a href="#heritage" class="nav-link">Heritage</a></li>
+          <li class="nav-item"><a href="#products" class="nav-link">Products</a></li>
+          <li class="nav-item"><a href="#academic" class="nav-link">Academic</a></li>
+          <li class="nav-item"><a href="#resources" class="nav-link">Resources</a></li>
+          <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</header>
 
     <!-- Hero -->
     <main role="main">
@@ -784,3 +812,4 @@
             </div>
             <div class="footer-bottom">
                 <p>&copy
+
