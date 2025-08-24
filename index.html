@@ -122,13 +122,17 @@
         }
 
         /* Navigation */
-        .nav {
+        .main-nav {
+            position: relative;
+        }
+        
+        .nav-list {
             display: flex;
             gap: 0.5rem;
             list-style: none;
         }
 
-        .nav-item {
+        .nav-link {
             padding: 0.75rem 1.25rem;
             color: var(--text-light);
             font-weight: 500;
@@ -138,13 +142,69 @@
             font-size: 0.95rem;
         }
 
-        .nav-item:hover,
-        .nav-item.active {
+        .nav-link:hover,
+        .nav-link.active {
             background: var(--primary);
             color: white;
             transform: translateY(-1px);
         }
 
+        /* Dropdown Menu Styling */
+        .nav-dropdown {
+            position: relative;
+        }
+        
+        .nav-dropdown .nav-link {
+            padding-right: 2.25rem;
+        }
+        
+        .nav-dropdown .caret {
+            font-size: 0.75rem;
+            position: absolute;
+            right: 0.75rem;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            list-style: none;
+            background: white;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            min-width: 200px;
+            z-index: 110;
+        }
+        
+        .nav-dropdown:hover .dropdown-menu {
+            display: block;
+        }
+        
+        .dropdown-menu a {
+            display: block;
+            padding: 0.75rem 1.25rem;
+            color: var(--text);
+            text-decoration: none;
+        }
+        
+        .dropdown-menu a:hover {
+            background: var(--bg-alt);
+            color: var(--primary);
+        }
+        
+        .dropdown-menu li:first-child a {
+            border-top-left-radius: var(--radius);
+            border-top-right-radius: var(--radius);
+        }
+        
+        .dropdown-menu li:last-child a {
+            border-bottom-left-radius: var(--radius);
+            border-bottom-right-radius: var(--radius);
+        }
+        
         .mobile-toggle {
             display: none;
             background: none;
@@ -444,64 +504,36 @@
             .container { padding: 0 1rem; }
             .contact-info { flex-direction: column; gap: 1rem; }
             .header-content { flex-wrap: wrap; }
-            .nav { display: none; }
-            .nav.active { 
-                display: flex; 
-                flex-direction: column; 
-                position: absolute; 
-                top: 100%; 
-                left: 0; 
-                right: 0; 
-                background: white; 
-                box-shadow: var(--shadow); 
-                padding: 1rem; 
+            .nav-list {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: white;
+                box-shadow: var(--shadow);
+                padding: 1rem;
                 border-radius: 0 0 var(--radius) var(--radius);
+            }
+            .nav-list.active {
+                display: flex;
             }
             .mobile-toggle { display: block; }
             .hero { padding: 4rem 0; }
             .section { padding: 3rem 0; }
             .grid { grid-template-columns: 1fr; }
-        }
-
-        /* Animations */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .fade-in { animation: fadeIn 0.6s ease-out forwards; }
-
-        .stagger > *:nth-child(n) { 
-            animation: fadeIn 0.6s ease-out forwards; 
-            opacity: 0; 
-        }
-        .stagger > *:nth-child(1) { animation-delay: 0.1s; }
-        .stagger > *:nth-child(2) { animation-delay: 0.2s; }
-        .stagger > *:nth-child(3) { animation-delay: 0.3s; }
-        .stagger > *:nth-child(4) { animation-delay: 0.4s; }
-
-        @media (prefers-reduced-motion: reduce) {
-            *, *::before, *::after {
-                animation-duration: 0.01ms !important;
-                transition-duration: 0.01ms !important;
+            .nav-dropdown:hover .dropdown-menu {
+                position: static;
+                box-shadow: none;
+                background: none;
+                min-width: unset;
+                padding-left: 1rem;
             }
-        }
-
-        .sr-only {
-            position: absolute;
-            width: 1px;
-            height: 1px;
-            padding: 0;
-            margin: -1px;
-            overflow: hidden;
-            clip: rect(0, 0, 0, 0);
-            white-space: nowrap;
-            border: 0;
         }
     </style>
 </head>
 <body>
-    <!-- Contact Bar -->
     <div class="contact-bar">
         <div class="container">
             <div class="contact-info">
@@ -527,62 +559,63 @@
         </div>
     </div>
 
-<!-- Header -->
-<header class="main-header">
-  <div class="container">
-    <div class="header-content">
-      <!-- Logo -->
-      <a href="index.html" class="logo">
-        <div class="logo-image">RG</div>
-        <div class="logo-text">
-          <h1>Rustic Garden</h1>
-          <div class="logo-tagline">Academic Heritage & Cultural Research Platform</div>
+    <header class="main-header">
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo">
+                    <div class="logo-image">RG</div>
+                    <div class="logo-text">
+                        <h1>Rustic Garden</h1>
+                        <div class="logo-tagline">Academic Heritage & Cultural Research Platform</div>
+                    </div>
+                </a>
+                
+                <button class="mobile-toggle" onclick="toggleNav()" aria-label="Toggle navigation">☰</button>
+
+                <nav role="navigation" aria-label="Main Navigation" class="main-nav">
+                    <ul class="nav-list" id="nav">
+                        <li><a href="wellness.html" class="nav-link">Wellness</a></li>
+                        <li><a href="coffee.html" class="nav-link">Coffee</a></li>
+                        <li><a href="macadamia.html" class="nav-link">Macadamia</a></li>
+                        <li class="nav-dropdown">
+                            <a href="#" class="nav-link dropdown-toggle">
+                                Youth Program <span class="caret">▾</span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="landscaping.html" class="dropdown-link">Landscaping</a></li>
+                                <li><a href="seedlings.html" class="dropdown-link">Seedlings</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="aquaculture.html" class="nav-link">Aquaculture</a></li>
+                        <li><a href="events.html" class="nav-link">Events</a></li>
+                        
+                        <li class="nav-dropdown">
+                            <a href="#" class="nav-link dropdown-toggle">
+                                Academic<span class="caret">▾</span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#research" class="dropdown-link">Research</a></li>
+                                <li><a href="#heritage" class="dropdown-link">Heritage</a></li>
+                                <li><a href="#resources" class="dropdown-link">Resources</a></li>
+                                <li><a href="#contact" class="dropdown-link">Contact</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-dropdown">
+                            <a href="#" class="nav-link dropdown-toggle">
+                                Products <span class="caret">▾</span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#coffee-products" class="dropdown-link">Coffee Products</a></li>
+                                <li><a href="#macadamia-products" class="dropdown-link">Macadamia Products</a></li>
+                                <li><a href="#seedlings-products" class="dropdown-link">Seedlings Products</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
         </div>
-      </a>
+    </header>
 
-      <!-- Mobile Nav Toggle -->
-      <button class="mobile-toggle" onclick="toggleNav()" aria-label="Toggle navigation">☰</button>
-
-      <!-- Main Navigation -->
-      <nav role="navigation" aria-label="Main Navigation" class="main-nav">
-        <ul class="nav-list" id="nav">
-          <!-- Home -->
-          <li class="nav-item">
-            <a href="index.html" class="nav-link active">Home</a>
-          </li>
-
-          <!-- Dropdown Explore -->
-          <li class="nav-item nav-dropdown" aria-haspopup="true">
-            <button class="nav-link dropdown-toggle" aria-expanded="false" aria-controls="explore-menu">
-              Explore <span class="caret">▾</span>
-            </button>
-            <ul id="explore-menu" class="dropdown-menu" role="menu" aria-label="Explore pages">
-              <li role="none"><a role="menuitem" href="macadamia.html" class="dropdown-link">Macadamia</a></li>
-              <li role="none"><a role="menuitem" href="aquaculture.html" class="dropdown-link">Aquaculture</a></li>
-              <li role="none"><a role="menuitem" href="coffee.html" class="dropdown-link">Coffee</a></li>
-              <li role="none"><a role="menuitem" href="our-story.html" class="dropdown-link">Our Story</a></li>
-            </ul>
-          </li>
-
-          <!-- Order -->
-          <li class="nav-item">
-            <a href="order.html" class="nav-link">Order</a>
-          </li>
-
-          <!-- Other Sections -->
-          <li class="nav-item"><a href="#research" class="nav-link">Research</a></li>
-          <li class="nav-item"><a href="#heritage" class="nav-link">Heritage</a></li>
-          <li class="nav-item"><a href="#products" class="nav-link">Products</a></li>
-          <li class="nav-item"><a href="#academic" class="nav-link">Academic</a></li>
-          <li class="nav-item"><a href="#resources" class="nav-link">Resources</a></li>
-          <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
-        </ul>
-      </nav>
-    </div>
-  </div>
-</header>
-
-    <!-- Hero -->
     <main role="main">
         <section id="home" class="hero">
             <div class="container">
@@ -630,7 +663,6 @@
             </div>
         </section>
 
-        <!-- Research Section -->
         <section id="research" class="section">
             <div class="container">
                 <h2 class="section-title">Research & Academic Resources</h2>
@@ -685,7 +717,6 @@
             </div>
         </section>
 
-        <!-- Heritage Section -->
         <section id="heritage" class="section heritage">
             <div class="container">
                 <h2 class="section-title">Cultural Heritage of Mt. Kenya</h2>
@@ -716,7 +747,6 @@
             </div>
         </section>
 
-        <!-- Products Section -->
         <section id="products" class="section">
             <div class="container">
                 <h2 class="section-title">Research Products & Publications</h2>
@@ -742,7 +772,6 @@
             </div>
         </section>
 
-        <!-- Resources Section -->
         <section id="resources" class="section">
             <div class="container">
                 <h2 class="section-title">Academic Resources</h2>
@@ -769,7 +798,6 @@
         </section>
     </main>
 
-    <!-- Footer -->
     <footer id="contact" class="footer">
         <div class="container">
             <div class="footer-content">
@@ -811,5 +839,17 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy
-
+                <p>&copy; 2024 Rustic Garden. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // JavaScript to toggle the mobile navigation menu
+        function toggleNav() {
+            const nav = document.getElementById('nav');
+            nav.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>
