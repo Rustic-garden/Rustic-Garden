@@ -7,140 +7,93 @@
     <meta name="description" content="Rustic Garden: Academic platform for Mt. Kenya cultural heritage research, wellness destination documentation, and educational resources for scholars, educators, and cultural preservation.">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        /* MODERN CSS RESET & BASE STYLES */
-        *, *::before, *::after {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
         :root {
-            --primary-color: #2c5530;
-            --secondary-color: #8b7355;
-            --accent-color: #d4a574;
-            --text-primary: #1a1a1a;
-            --text-secondary: #4a4a4a;
-            --text-muted: #6b7280;
-            --background: #fefefe;
-            --background-alt: #f8fafc;
-            --border-color: #e5e7eb;
-            --shadow-light: 0 1px 3px rgba(0,0,0,0.1);
-            --shadow-medium: 0 4px 12px rgba(0,0,0,0.15);
-            --shadow-heavy: 0 10px 40px rgba(0,0,0,0.2);
-            --border-radius: 8px;
-            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --primary: #2c5530;
+            --secondary: #8b7355;
+            --accent: #d4a574;
+            --text: #1a1a1a;
+            --text-light: #6b7280;
+            --bg: #fefefe;
+            --bg-alt: #f8fafc;
+            --border: #e5e7eb;
+            --shadow: 0 4px 12px rgba(0,0,0,0.1);
+            --radius: 8px;
+            --ease: cubic-bezier(0.4, 0, 0.2, 1);
         }
-        
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            background-color: var(--background);
-            color: var(--text-primary);
-            line-height: 1.6;
-            font-size: 16px;
+            font: 400 16px/1.6 'Inter', system-ui, sans-serif;
+            color: var(--text);
+            background: var(--bg);
             overflow-x: hidden;
         }
-        
+
         .container {
             max-width: 1400px;
             margin: 0 auto;
             padding: 0 2rem;
         }
-        
-        .container-narrow {
-            max-width: 1200px;
-        }
-        
-        /* TYPOGRAPHY */
-        h1, h2, h3, h4, h5, h6 {
-            font-family: 'Playfair Display', serif;
+
+        h1, h2, h3 { 
+            font-family: 'Playfair Display', serif; 
             font-weight: 600;
             line-height: 1.2;
-            color: var(--text-primary);
         }
-        
-        .display-title {
-            font-size: clamp(2.5rem, 5vw, 4rem);
-            font-weight: 700;
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            background-clip: text;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 1.5rem;
-        }
-        
-        .section-title {
-            font-size: clamp(2rem, 4vw, 3rem);
-            margin-bottom: 1rem;
-            text-align: center;
-        }
-        
-        .subsection-title {
-            font-size: clamp(1.5rem, 3vw, 2rem);
-            margin-bottom: 0.75rem;
-        }
-        
-        .lead-text {
-            font-size: 1.25rem;
-            color: var(--text-secondary);
-            font-weight: 400;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        
-        /* HEADER & CONTACT BAR */
+
+        /* Header */
         .contact-bar {
-            background: var(--primary-color);
+            background: var(--primary);
             color: white;
             padding: 0.75rem 0;
-            font-size: 0.9rem;
+            text-align: center;
         }
-        
+
         .contact-info {
             display: flex;
             justify-content: center;
-            align-items: center;
             gap: 3rem;
             flex-wrap: wrap;
+            font-size: 0.9rem;
         }
-        
+
         .contact-item {
             display: flex;
             align-items: center;
             gap: 0.5rem;
         }
-        
+
         .contact-item svg {
             width: 16px;
             height: 16px;
             fill: currentColor;
         }
-        
+
         .contact-item a {
             color: inherit;
             text-decoration: none;
-            transition: var(--transition);
+            transition: opacity 0.3s var(--ease);
         }
-        
-        .contact-item a:hover {
-            opacity: 0.8;
-        }
-        
+
+        .contact-item a:hover { opacity: 0.8; }
+
         .main-header {
             background: white;
             padding: 1rem 0;
             position: sticky;
             top: 0;
             z-index: 100;
-            box-shadow: var(--shadow-light);
+            box-shadow: var(--shadow);
             backdrop-filter: blur(10px);
         }
-        
+
         .header-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
-        
+
         .logo {
             display: flex;
             align-items: center;
@@ -148,546 +101,392 @@
             text-decoration: none;
             color: inherit;
         }
-        
+
         .logo-image {
             width: 50px;
             height: 50px;
-            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
-            border-radius: var(--border-radius);
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border-radius: var(--radius);
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
-            font-size: 1.5rem;
-            font-weight: bold;
+            font: 700 1.5rem/1 'Playfair Display';
         }
-        
-        .logo-text h1 {
-            font-size: 1.75rem;
-            margin-bottom: 0.25rem;
+
+        .logo-text h1 { font-size: 1.75rem; }
+        .logo-tagline { 
+            font-size: 0.85rem; 
+            color: var(--text-light); 
+            font-weight: 400; 
         }
-        
-        .logo-tagline {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            font-weight: 400;
-        }
-        
-        /* NAVIGATION */
-        .main-nav ul {
+
+        /* Navigation */
+        .nav {
             display: flex;
-            list-style: none;
             gap: 0.5rem;
-            align-items: center;
+            list-style: none;
         }
-        
+
         .nav-item {
             padding: 0.75rem 1.25rem;
-            color: var(--text-secondary);
+            color: var(--text-light);
             font-weight: 500;
             border-radius: 6px;
             text-decoration: none;
-            transition: var(--transition);
+            transition: all 0.3s var(--ease);
             font-size: 0.95rem;
-            position: relative;
         }
-        
+
         .nav-item:hover,
         .nav-item.active {
-            background: var(--primary-color);
+            background: var(--primary);
             color: white;
             transform: translateY(-1px);
         }
-        
-        .nav-item::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            width: 0;
-            height: 2px;
-            background: var(--accent-color);
-            transition: var(--transition);
-            transform: translateX(-50%);
-        }
-        
-        .nav-item:hover::after,
-        .nav-item.active::after {
-            width: 80%;
-        }
-        
-        .mobile-menu-toggle {
+
+        .mobile-toggle {
             display: none;
             background: none;
             border: none;
             font-size: 1.5rem;
-            color: var(--text-primary);
             cursor: pointer;
             padding: 0.5rem;
         }
-        
-        /* HERO SECTION */
-        .hero-section {
-            background: linear-gradient(135deg, var(--background) 0%, var(--background-alt) 100%);
+
+        /* Hero */
+        .hero {
+            background: linear-gradient(135deg, var(--bg) 0%, var(--bg-alt) 100%);
             padding: 6rem 0;
+            text-align: center;
             position: relative;
-            overflow: hidden;
         }
-        
-        .hero-section::before {
+
+        .hero::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><defs><pattern id="grain" patternUnits="userSpaceOnUse" width="100" height="100"><circle cx="50" cy="50" r="1" fill="%23000" opacity="0.02"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grain)"/></svg>') repeat;
+            inset: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="1" fill="%23000" opacity="0.02"/></svg>') repeat;
             opacity: 0.5;
         }
-        
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            text-align: center;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-        
-        .hero-badges {
+
+        .hero-content { position: relative; max-width: 1000px; margin: 0 auto; }
+
+        .badges {
             display: flex;
             justify-content: center;
             gap: 1rem;
             margin-bottom: 2rem;
             flex-wrap: wrap;
         }
-        
-        .hero-badge {
-            background: var(--primary-color);
+
+        .badge {
+            background: var(--primary);
             color: white;
             padding: 0.5rem 1rem;
             border-radius: 50px;
             font-size: 0.85rem;
             font-weight: 500;
         }
-        
-        .hero-location {
+
+        .title {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1.5rem;
+        }
+
+        .lead {
+            font-size: 1.25rem;
+            color: var(--text-light);
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+
+        .location {
             font-style: italic;
-            color: var(--text-muted);
+            color: var(--text-light);
             margin-bottom: 3rem;
         }
-        
-        .hero-features {
+
+        /* Cards */
+        .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2rem;
             margin: 3rem 0;
         }
-        
-        .feature-card {
+
+        .card {
             background: white;
             padding: 2rem;
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow-light);
+            border-radius: 12px;
+            box-shadow: var(--shadow);
             text-align: center;
-            transition: var(--transition);
+            transition: all 0.3s var(--ease);
         }
-        
-        .feature-card:hover {
+
+        .card:hover {
             transform: translateY(-4px);
-            box-shadow: var(--shadow-medium);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.15);
         }
-        
-        .feature-icon {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 1rem;
-            font-size: 1.5rem;
-            color: white;
+
+        .card-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            display: block;
         }
-        
-        /* BUTTONS */
+
+        .card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+        }
+
+        .card p {
+            color: var(--text-light);
+            line-height: 1.5;
+        }
+
+        /* Buttons */
         .btn {
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
             padding: 1rem 2rem;
             border: none;
-            border-radius: var(--border-radius);
-            font-size: 1rem;
-            font-weight: 500;
+            border-radius: var(--radius);
+            font: 500 1rem/1 inherit;
             cursor: pointer;
             text-decoration: none;
-            transition: var(--transition);
-            font-family: inherit;
+            transition: all 0.3s var(--ease);
             margin: 0.5rem;
         }
-        
+
         .btn-primary {
-            background: var(--primary-color);
+            background: var(--primary);
             color: white;
-            box-shadow: var(--shadow-light);
+            box-shadow: var(--shadow);
         }
-        
+
         .btn-primary:hover {
             background: #1e3a21;
             transform: translateY(-2px);
-            box-shadow: var(--shadow-medium);
+            box-shadow: 0 10px 40px rgba(44, 85, 48, 0.3);
         }
-        
+
         .btn-secondary {
             background: transparent;
-            color: var(--primary-color);
-            border: 2px solid var(--primary-color);
+            color: var(--primary);
+            border: 2px solid var(--primary);
         }
-        
+
         .btn-secondary:hover {
-            background: var(--primary-color);
+            background: var(--primary);
             color: white;
         }
-        
-        /* ACADEMIC SECTIONS */
-        .academic-section {
+
+        /* Sections */
+        .section {
             padding: 5rem 0;
         }
-        
-        .academic-section:nth-child(even) {
-            background: var(--background-alt);
+
+        .section:nth-child(even) {
+            background: var(--bg-alt);
         }
-        
-        .offerings-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-            margin: 3rem 0;
+
+        .section-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            text-align: center;
+            margin-bottom: 1rem;
         }
-        
+
+        .section-lead {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            line-height: 1.7;
+        }
+
+        /* Offering Cards */
         .offering-card {
             background: white;
             border-radius: 12px;
             overflow: hidden;
-            box-shadow: var(--shadow-light);
-            transition: var(--transition);
+            box-shadow: var(--shadow);
+            transition: all 0.3s var(--ease);
             text-decoration: none;
             color: inherit;
         }
-        
+
         .offering-card:hover {
             transform: translateY(-6px);
-            box-shadow: var(--shadow-heavy);
-            border: 2px solid var(--primary-color);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+            border: 2px solid var(--primary);
         }
-        
+
         .offering-image {
             height: 200px;
-            background: var(--background-alt);
+            background: var(--bg-alt);
             display: flex;
             align-items: center;
             justify-content: center;
+            border: 2px dashed var(--border);
             position: relative;
-            border: 2px dashed var(--border-color);
-        }
-        
-        .image-placeholder {
-            color: var(--text-muted);
+            color: var(--text-light);
             font-size: 0.9rem;
             text-align: center;
         }
-        
+
         .category-badge {
             position: absolute;
             top: 1rem;
             right: 1rem;
-            background: var(--primary-color);
+            background: var(--primary);
             color: white;
             padding: 0.5rem 1rem;
             border-radius: 20px;
-            font-size: 0.75rem;
-            font-weight: 600;
+            font: 600 0.75rem/1 inherit;
             text-transform: uppercase;
         }
-        
+
         .offering-content {
             padding: 2rem;
         }
-        
+
         .offering-title {
             font-size: 1.25rem;
             margin-bottom: 0.75rem;
-            color: var(--text-primary);
         }
-        
+
         .offering-description {
-            color: var(--text-secondary);
+            color: var(--text-light);
             margin-bottom: 1.5rem;
             line-height: 1.5;
         }
-        
+
         .offering-meta {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding-top: 1rem;
-            border-top: 1px solid var(--border-color);
+            border-top: 1px solid var(--border);
         }
-        
+
         .offering-price {
             font-weight: 600;
-            color: var(--primary-color);
+            color: var(--primary);
         }
-        
+
         .offering-type {
             font-size: 0.85rem;
-            color: var(--text-muted);
-            background: var(--background-alt);
+            color: var(--text-light);
+            background: var(--bg-alt);
             padding: 0.25rem 0.75rem;
             border-radius: 12px;
         }
-        
-        /* HERITAGE SECTION */
-        .heritage-section {
+
+        /* Heritage Section */
+        .heritage {
             background: linear-gradient(135deg, rgba(44, 85, 48, 0.05), rgba(212, 165, 116, 0.05));
-            padding: 5rem 0;
         }
-        
-        .heritage-content {
-            max-width: 900px;
-            margin: 0 auto;
-            text-align: center;
-        }
-        
-        .heritage-text {
-            font-size: 1.1rem;
-            margin-bottom: 2rem;
-            line-height: 1.8;
-            color: var(--text-secondary);
-        }
-        
-        .cultural-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            margin: 3rem 0;
-        }
-        
-        .cultural-card {
-            background: white;
-            padding: 2.5rem 2rem;
-            border-radius: 12px;
-            text-align: center;
-            box-shadow: var(--shadow-light);
-            transition: var(--transition);
-        }
-        
-        .cultural-card:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-medium);
-        }
-        
-        .cultural-icon {
-            font-size: 3rem;
-            margin-bottom: 1.5rem;
-            display: block;
-        }
-        
-        .cultural-title {
-            font-size: 1.25rem;
-            margin-bottom: 1rem;
-            color: var(--text-primary);
-        }
-        
-        /* RESEARCH RESOURCES SECTION */
-        .resources-section {
-            padding: 5rem 0;
-            background: var(--background);
-        }
-        
-        .resources-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin: 3rem 0;
-        }
-        
-        .resource-card {
-            background: white;
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 2rem;
-            transition: var(--transition);
-        }
-        
-        .resource-card:hover {
-            border-color: var(--primary-color);
-            box-shadow: var(--shadow-medium);
-        }
-        
-        .resource-icon {
-            width: 50px;
-            height: 50px;
-            background: var(--primary-color);
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.25rem;
-            margin-bottom: 1.5rem;
-        }
-        
-        /* FOOTER */
-        .main-footer {
-            background: var(--text-primary);
+
+        /* Footer */
+        .footer {
+            background: var(--text);
             color: white;
             padding: 4rem 0 2rem;
         }
-        
+
         .footer-content {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 3rem;
             margin-bottom: 3rem;
         }
-        
-        .footer-section h4 {
+
+        .footer h4 {
             margin-bottom: 1.5rem;
-            color: var(--accent-color);
+            color: var(--accent);
         }
-        
-        .footer-section ul {
+
+        .footer ul {
             list-style: none;
         }
-        
-        .footer-section ul li {
+
+        .footer li {
             margin-bottom: 0.75rem;
         }
-        
-        .footer-section ul li a {
+
+        .footer a {
             color: #d1d5db;
             text-decoration: none;
-            transition: var(--transition);
+            transition: color 0.3s var(--ease);
         }
-        
-        .footer-section ul li a:hover {
+
+        .footer a:hover {
             color: white;
         }
-        
+
         .footer-bottom {
             padding-top: 2rem;
             border-top: 1px solid #374151;
             text-align: center;
             color: #9ca3af;
         }
-        
-        /* RESPONSIVE DESIGN */
+
+        /* Responsive */
         @media (max-width: 768px) {
-            .contact-info {
-                gap: 1.5rem;
-                justify-content: center;
+            .container { padding: 0 1rem; }
+            .contact-info { flex-direction: column; gap: 1rem; }
+            .header-content { flex-wrap: wrap; }
+            .nav { display: none; }
+            .nav.active { 
+                display: flex; 
+                flex-direction: column; 
+                position: absolute; 
+                top: 100%; 
+                left: 0; 
+                right: 0; 
+                background: white; 
+                box-shadow: var(--shadow); 
+                padding: 1rem; 
+                border-radius: 0 0 var(--radius) var(--radius);
             }
-            
-            .header-content {
-                flex-wrap: wrap;
-            }
-            
-            .main-nav {
-                display: none;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                right: 0;
-                background: white;
-                box-shadow: var(--shadow-medium);
-                border-radius: 0 0 var(--border-radius) var(--border-radius);
-            }
-            
-            .main-nav.active {
-                display: block;
-            }
-            
-            .main-nav ul {
-                flex-direction: column;
-                padding: 1rem;
-                gap: 0;
-            }
-            
-            .nav-item {
-                width: 100%;
-                text-align: left;
-                border-radius: 0;
-            }
-            
-            .mobile-menu-toggle {
-                display: block;
-            }
-            
-            .hero-section {
-                padding: 4rem 0;
-            }
-            
-            .academic-section {
-                padding: 3rem 0;
-            }
-            
-            .container {
-                padding: 0 1rem;
-            }
-            
-            .hero-features {
-                grid-template-columns: 1fr;
-            }
-            
-            .offerings-grid,
-            .cultural-grid,
-            .resources-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .contact-info {
-                flex-direction: column;
-                gap: 1rem;
-            }
+            .mobile-toggle { display: block; }
+            .hero { padding: 4rem 0; }
+            .section { padding: 3rem 0; }
+            .grid { grid-template-columns: 1fr; }
         }
-        
-        /* ANIMATIONS */
-        .fade-in {
-            animation: fadeIn 0.6s ease-out forwards;
-        }
-        
+
+        /* Animations */
         @keyframes fadeIn {
-            from { 
-                opacity: 0; 
-                transform: translateY(30px); 
-            }
-            to { 
-                opacity: 1; 
-                transform: translateY(0); 
-            }
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
-        
-        .stagger-animation > * {
-            animation: fadeIn 0.6s ease-out forwards;
-            opacity: 0;
+
+        .fade-in { animation: fadeIn 0.6s ease-out forwards; }
+
+        .stagger > *:nth-child(n) { 
+            animation: fadeIn 0.6s ease-out forwards; 
+            opacity: 0; 
         }
-        
-        .stagger-animation > *:nth-child(1) { animation-delay: 0.1s; }
-        .stagger-animation > *:nth-child(2) { animation-delay: 0.2s; }
-        .stagger-animation > *:nth-child(3) { animation-delay: 0.3s; }
-        .stagger-animation > *:nth-child(4) { animation-delay: 0.4s; }
-        
-        /* ACCESSIBILITY */
+        .stagger > *:nth-child(1) { animation-delay: 0.1s; }
+        .stagger > *:nth-child(2) { animation-delay: 0.2s; }
+        .stagger > *:nth-child(3) { animation-delay: 0.3s; }
+        .stagger > *:nth-child(4) { animation-delay: 0.4s; }
+
         @media (prefers-reduced-motion: reduce) {
             *, *::before, *::after {
                 animation-duration: 0.01ms !important;
-                animation-iteration-count: 1 !important;
                 transition-duration: 0.01ms !important;
             }
         }
-        
+
         .sr-only {
             position: absolute;
             width: 1px;
@@ -702,7 +501,7 @@
     </style>
 </head>
 <body>
-    <!-- CONTACT BAR -->
+    <!-- Contact Bar -->
     <div class="contact-bar">
         <div class="container">
             <div class="contact-info">
@@ -727,8 +526,8 @@
             </div>
         </div>
     </div>
-</head>
-<body>
+
+    <!-- Header -->
     <header class="main-header">
         <div class="container">
             <div class="header-content">
@@ -739,91 +538,57 @@
                         <div class="logo-tagline">Academic Heritage & Cultural Research Platform</div>
                     </div>
                 </a>
-                <button class="mobile-menu-toggle" aria-label="Toggle navigation menu" onclick="toggleMobileMenu()">☰</button>
-                <nav class="main-nav" id="mainNav" role="navigation" aria-label="Main Navigation">
-                    <ul>
-                        <li><a href="index.html" class="nav-item active">Home</a></li>
-                        <li><a href="our-story.html" class="nav-item">Our Story</a></li>
-                        <li><a href="wellness.html" class="nav-item">Wellness</a></li>
-                        <li class="nav-dropdown">
-                            <a href="#products" class="nav-item">Products</a>
-                            <div class="dropdown-content">
-                                <a href="coffee.html">Coffee</a>
-                                <a href="macadamia.html">Macadamia</a>
-                                <a href="bananas.html">Bananas</a>
-                                <a href="aquaculture.html">Aquaculture</a>
-                                <a href="landscaping.html">Landscaping</a>
-                                <a href="seedlings.html">Seedlings</a>
-                            </div>
-                        </li>
-                        <li><a href="events.html" class="nav-item">Events</a></li>
-                        <li><a href="youth.html" class="nav-item">Youth Program</a></li>
-                        <li><a href="order.html" class="nav-item">Book/Order</a></li>
+                <button class="mobile-toggle" onclick="toggleNav()" aria-label="Toggle navigation">☰</button>
+                <nav role="navigation" aria-label="Main Navigation">
+                    <ul class="nav" id="nav">
+                        <li><a href="#home" class="nav-item active">Home</a></li>
+                        <li><a href="#research" class="nav-item">Research</a></li>
+                        <li><a href="#heritage" class="nav-item">Heritage</a></li>
+                        <li><a href="#products" class="nav-item">Products</a></li>
+                        <li><a href="#academic" class="nav-item">Academic</a></li>
+                        <li><a href="#resources" class="nav-item">Resources</a></li>
+                        <li><a href="#contact" class="nav-item">Contact</a></li>
                     </ul>
                 </nav>
             </div>
         </div>
     </header>
 
-    <!-- HERO SECTION -->
+    <!-- Hero -->
     <main role="main">
-        <section id="home" class="hero-section">
+        <section id="home" class="hero">
             <div class="container">
                 <div class="hero-content">
-                    <div class="hero-badges">
-                        <span class="hero-badge">Academic Research</span>
-                        <span class="hero-badge">Cultural Heritage</span>
-                        <span class="hero-badge">Educational Resources</span>
-                        <span class="hero-badge">Social Science</span>
+                    <div class="badges">
+                        <span class="badge">Academic Research</span>
+                        <span class="badge">Cultural Heritage</span>
+                        <span class="badge">Educational Resources</span>
+                        <span class="badge">Social Science</span>
                     </div>
-                    <h2 style="font-size: 2.5rem; color: #2c5530; margin-bottom: 1rem;">Welcome to Rustic Garden</h2>
-                    <p style="font-size: 1.2rem; color: #666; max-width: 600px; margin: 0 auto;">Discover our range of premium products from coffee and macadamias to sustainable aquaculture and landscaping solutions.</p>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <script>
-        function toggleMobileMenu() {
-            const nav = document.getElementById('mainNav');
-            nav.classList.toggle('active');
-        }
-
-        // Close mobile menu when clicking outside
-        document.addEventListener('click', function(event) {
-            const nav = document.getElementById('mainNav');
-            const toggle = document.querySelector('.mobile-menu-toggle');
-            
-            if (!nav.contains(event.target) && !toggle.contains(event.target)) {
-                nav.classList.remove('active');
-            }
-        });
-    </script>
-</body>
-</html>
-                    <h1 class="display-title">Mt. Kenya Cultural Heritage Research Platform</h1>
-                    <p class="lead-text">A comprehensive academic platform documenting the cultural heritage, traditional wisdom, and sustainable practices of the Embu people - descendants of Mwenendega from the sacred slopes of Mt. Kenya.</p>
                     
-                    <p class="hero-location">Kavutiri, Embu County • 4,000-6,900 feet elevation • Traditional Embu Territory</p>
+                    <h1 class="title">Mt. Kenya Cultural Heritage Research Platform</h1>
+                    <p class="lead">A comprehensive academic platform documenting the cultural heritage, traditional wisdom, and sustainable practices of the Embu people - descendants of Mwenendega from the sacred slopes of Mt. Kenya.</p>
                     
-                    <div class="hero-features stagger-animation">
-                        <div class="feature-card">
-                            <div class="feature-icon">📚</div>
+                    <p class="location">Kavutiri, Embu County • 4,000-6,900 feet elevation • Traditional Embu Territory</p>
+                    
+                    <div class="grid stagger">
+                        <div class="card">
+                            <span class="card-icon">📚</span>
                             <h3>Academic Papers</h3>
                             <p>Peer-reviewed research on Embu culture, agricultural practices, and traditional knowledge systems</p>
                         </div>
-                        <div class="feature-card">
-                            <div class="feature-icon">🌳</div>
+                        <div class="card">
+                            <span class="card-icon">🌳</span>
                             <h3>Cultural Preservation</h3>
                             <p>Digital archive of oral histories, traditional practices, and cultural heritage documentation</p>
                         </div>
-                        <div class="feature-card">
-                            <div class="feature-icon">👥</div>
+                        <div class="card">
+                            <span class="card-icon">👥</span>
                             <h3>Educational Resources</h3>
                             <p>Teaching materials for educators, scholars, and children exploring their cultural roots</p>
                         </div>
-                        <div class="feature-card">
-                            <div class="feature-icon">🔬</div>
+                        <div class="card">
+                            <span class="card-icon">🔬</span>
                             <h3>Social Science Research</h3>
                             <p>Anthropological studies, community development research, and sustainable practice documentation</p>
                         </div>
@@ -837,18 +602,16 @@
             </div>
         </section>
 
-        <!-- RESEARCH & ACADEMIC OFFERINGS -->
-        <section id="research" class="academic-section">
-            <div class="container container-narrow">
+        <!-- Research Section -->
+        <section id="research" class="section">
+            <div class="container">
                 <h2 class="section-title">Research & Academic Resources</h2>
-                <p class="lead-text">Comprehensive documentation and academic analysis of Mt. Kenya cultural heritage, traditional practices, and sustainable development initiatives.</p>
+                <p class="section-lead">Comprehensive documentation and academic analysis of Mt. Kenya cultural heritage, traditional practices, and sustainable development initiatives.</p>
                 
-                <div class="offerings-grid">
+                <div class="grid">
                     <div class="offering-card">
                         <div class="offering-image">
-                            <div class="image-placeholder">
-                                📷<br>Academic Papers<br>Upload Image
-                            </div>
+                            📷<br>Academic Papers<br>Upload Image
                             <span class="category-badge">Academic</span>
                         </div>
                         <div class="offering-content">
@@ -863,9 +626,7 @@
                     
                     <div class="offering-card">
                         <div class="offering-image">
-                            <div class="image-placeholder">
-                                📷<br>Cultural Documentation<br>Upload Image
-                            </div>
+                            📷<br>Cultural Documentation<br>Upload Image
                             <span class="category-badge">Heritage</span>
                         </div>
                         <div class="offering-content">
@@ -880,11 +641,146 @@
                     
                     <div class="offering-card">
                         <div class="offering-image">
-                            <div class="image-placeholder">
-                                📷<br>Educational Materials<br>Upload Image
-                            </div>
+                            📷<br>Educational Materials<br>Upload Image
                             <span class="category-badge">Education</span>
                         </div>
                         <div class="offering-content">
                             <h3 class="offering-title">Teaching Resources</h3>
+                            <p class="offering-description">Comprehensive educational materials for teachers, students, and researchers studying East African cultural heritage and sustainable practices.</p>
+                            <div class="offering-meta">
+                                <span class="offering-type">Educational Content</span>
+                                <span class="offering-price">Free Download</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
+        <!-- Heritage Section -->
+        <section id="heritage" class="section heritage">
+            <div class="container">
+                <h2 class="section-title">Cultural Heritage of Mt. Kenya</h2>
+                <p class="section-lead">Preserving and sharing the rich cultural traditions of the Embu people, descendants of Mwenendega, who have lived in harmony with Mt. Kenya for generations.</p>
+                
+                <div class="grid">
+                    <div class="card">
+                        <span class="card-icon">🏔️</span>
+                        <h3>Sacred Mountain</h3>
+                        <p>Mt. Kenya holds deep spiritual significance for the Embu people, serving as the dwelling place of Ngai (God) and the source of life-giving waters.</p>
+                    </div>
+                    <div class="card">
+                        <span class="card-icon">🌾</span>
+                        <h3>Traditional Agriculture</h3>
+                        <p>Sustainable farming practices passed down through generations, including crop rotation, terracing, and indigenous seed preservation.</p>
+                    </div>
+                    <div class="card">
+                        <span class="card-icon">🎭</span>
+                        <h3>Cultural Practices</h3>
+                        <p>Rich traditions of storytelling, music, dance, and ceremonies that strengthen community bonds and preserve ancestral wisdom.</p>
+                    </div>
+                    <div class="card">
+                        <span class="card-icon">👴</span>
+                        <h3>Elder Wisdom</h3>
+                        <p>Oral histories and traditional knowledge systems that guide community governance, conflict resolution, and environmental stewardship.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Products Section -->
+        <section id="products" class="section">
+            <div class="container">
+                <h2 class="section-title">Research Products & Publications</h2>
+                <p class="section-lead">Academic outputs and research materials documenting the cultural wealth and sustainable practices of the Mt. Kenya region.</p>
+                
+                <div class="grid">
+                    <div class="card">
+                        <span class="card-icon">📖</span>
+                        <h3>Research Journals</h3>
+                        <p>Quarterly publications featuring peer-reviewed articles on cultural anthropology, sustainable development, and community research.</p>
+                    </div>
+                    <div class="card">
+                        <span class="card-icon">🎓</span>
+                        <h3>Academic Theses</h3>
+                        <p>Graduate and undergraduate research projects focusing on Mt. Kenya cultural heritage and community development initiatives.</p>
+                    </div>
+                    <div class="card">
+                        <span class="card-icon">📚</span>
+                        <h3>Educational Curricula</h3>
+                        <p>Structured learning materials for schools and universities incorporating local cultural knowledge into academic frameworks.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Resources Section -->
+        <section id="resources" class="section">
+            <div class="container">
+                <h2 class="section-title">Academic Resources</h2>
+                <p class="section-lead">Comprehensive tools and materials for researchers, educators, and students studying East African cultural heritage.</p>
+                
+                <div class="grid">
+                    <div class="card">
+                        <span class="card-icon">🗃️</span>
+                        <h3>Digital Library</h3>
+                        <p>Searchable database of research papers, historical documents, and multimedia resources related to Mt. Kenya cultural heritage.</p>
+                    </div>
+                    <div class="card">
+                        <span class="card-icon">🔬</span>
+                        <h3>Research Tools</h3>
+                        <p>Methodological frameworks and data collection instruments for conducting community-based participatory research.</p>
+                    </div>
+                    <div class="card">
+                        <span class="card-icon">🌐</span>
+                        <h3>Online Courses</h3>
+                        <p>Distance learning programs covering traditional knowledge systems, sustainable development, and cultural preservation methods.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer id="contact" class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <h4>Contact Information</h4>
+                    <ul>
+                        <li>Mobile: <a href="tel:+254722704997">+254 722 704 997</a></li>
+                        <li>Email: <a href="mailto:GroupNomad@outlook.com">GroupNomad@outlook.com</a></li>
+                        <li>Location: Kavutiri, Embu County</li>
+                        <li>Mt. Kenya Region, Kenya</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Research Areas</h4>
+                    <ul>
+                        <li><a href="#research">Cultural Anthropology</a></li>
+                        <li><a href="#heritage">Traditional Knowledge</a></li>
+                        <li><a href="#academic">Sustainable Development</a></li>
+                        <li><a href="#resources">Community Research</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Academic Resources</h4>
+                    <ul>
+                        <li><a href="#products">Publications</a></li>
+                        <li><a href="#resources">Digital Archives</a></li>
+                        <li><a href="#academic">Teaching Materials</a></li>
+                        <li><a href="#heritage">Cultural Documentation</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Community</h4>
+                    <ul>
+                        <li><a href="#heritage">Embu Heritage</a></li>
+                        <li><a href="#research">Elder Narratives</a></li>
+                        <li><a href="#products">Cultural Practices</a></li>
+                        <li><a href="#contact">Collaboration</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy
