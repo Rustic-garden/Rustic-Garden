@@ -1,69 +1,466 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Macadamia | Premium Nuts from Mount Kenya | Rustic Garden</title>
-    <meta name="description" content="Explore our macadamia story: orchard varieties, gentle processing, nutritional benefits, export quality, and sustainability with coffee.">
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Macadamia | Premium Nuts from Mount Kenya | Rustic Garden</title>
+  <meta name="description" content="From seed to plate and back: discover Mount Kenya macadamias—our orchard story, gentle processing, nutrition, traceability, and export quality." />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Mount Kenya Macadamia — Rustic Garden" />
+  <meta property="og:description" content="Creamy, crunchy, traceable. Discover our macadamias from orchard to table." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://example.com/macadamia-hero.jpg" />
+
+  <!-- Fonts (system stack for performance) -->
+  <style>
+    :root{
+      --bg: #0f1221;
+      --card: #171a2b;
+      --muted: #aab1c7;
+      --text: #f5f7ff;
+      --accent: #7dd3fc;
+      --accent-2: #a78bfa;
+      --success: #86efac;
+      --warning: #fde68a;
+      --ring: 0 0 0 0.35rem rgba(125, 211, 252, .25);
+      --radius: 18px;
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --grid-gap: clamp(1rem, 1.5vw, 1.5rem);
+    }
+    /* Reset + base */
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
+      background: radial-gradient(1200px 800px at 10% -10%, #1b2142 0%, transparent 60%),
+                  radial-gradient(1000px 700px at 90% 10%, #1e143a 0%, transparent 60%),
+                  var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      letter-spacing: .2px;
+    }
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+
+    /* Layout */
+    header{
+      position: sticky;
+      top:0;
+      z-index: 50;
+      backdrop-filter: blur(8px);
+      background: rgba(15, 18, 33, .6);
+      border-bottom: 1px solid rgba(255,255,255,.06);
+    }
+    .nav{
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      padding: .75rem 1rem;
+      gap: 1rem;
+    }
+    .brand{
+      display:flex;align-items:center;gap:.75rem;
+      font-weight:700;
+      letter-spacing:.4px;
+    }
+    .brand-badge{
+      width:36px;height:36px;border-radius:12px;
+      display:grid;place-items:center;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      color:#0b1324;font-weight:900;
+      box-shadow: var(--shadow);
+    }
+    nav a{
+      padding:.55rem .8rem;border-radius:12px;
+      border:1px solid transparent;
+      transition: .25s ease;
+      font-weight:600;
+      color: var(--muted);
+    }
+    nav a:hover{border-color: rgba(125,211,252,.3); color:var(--text); background: rgba(125,211,252,.06)}
+    nav a.active{color:var(--text); background: rgba(167,139,250,.12); border-color: rgba(167,139,250,.35)}
+    .links{display:flex;gap:.25rem;flex-wrap:wrap}
+
+    /* Hero */
+    .hero{
+      max-width:1200px;margin: clamp(1rem, 3vw, 2rem) auto 0;
+      padding: clamp(1rem, 2vw, 1.5rem);
+      display:grid;gap: var(--grid-gap);
+      grid-template-columns: 1.2fr .8fr;
+    }
+    @media (max-width: 900px){ .hero{grid-template-columns:1fr} }
+    .hero-card{
+      background:linear-gradient(180deg, rgba(23,26,43,.9), rgba(23,26,43,.6));
+      border:1px solid rgba(255,255,255,.08);
+      border-radius: var(--radius);
+      padding: clamp(1rem, 3vw, 2rem);
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow:hidden;
+    }
+    .spark{
+      position:absolute; inset:-1px;
+      background: radial-gradient(500px 220px at 10% 0%, rgba(125,211,252,.12), transparent 60%),
+                  radial-gradient(400px 250px at 90% 20%, rgba(167,139,250,.12), transparent 60%);
+      pointer-events:none;
+    }
+    .eyebrow{color:var(--accent);font-weight:700;letter-spacing:.14em;text-transform:uppercase;font-size:.8rem}
+    h1{
+      margin:.35rem 0 0;
+      font-size: clamp(1.8rem, 2.8vw, 2.6rem);
+      line-height:1.15;
+    }
+    .lead{color:var(--muted);margin-top:.75rem;max-width:60ch}
+    .cta-row{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1rem}
+    .btn{
+      display:inline-flex;align-items:center;gap:.5rem;
+      padding:.8rem 1rem;border-radius:14px;border:1px solid transparent;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      color:#0b1324;font-weight:800; letter-spacing:.2px;
+      box-shadow: var(--shadow);
+      transition: transform .1s ease;
+    }
+    .btn:hover{transform: translateY(-1px)}
+    .btn.secondary{
+      background: transparent; color: var(--text);
+      border-color: rgba(255,255,255,.14);
+    }
+
+    .hero-media{
+      background: linear-gradient(180deg, rgba(10,14,29,.5), rgba(10,14,29,.7)), url('https://images.unsplash.com/photo-1560807707-8cc77767d783?q=80&w=1600&auto=format&fit=crop') center/cover no-repeat;
+      border-radius: var(--radius);
+      border:1px solid rgba(255,255,255,.08);
+      min-height: 340px;
+      display:grid;align-content:end;
+      overflow:hidden;
+      box-shadow: var(--shadow);
+    }
+    .badge-stack{
+      display:flex; gap:.5rem; padding: .75rem;
+      background: rgba(0,0,0,.25);
+      backdrop-filter: blur(6px);
+    }
+    .pill{
+      padding:.4rem .7rem;border-radius:999px;font-weight:700;font-size:.85rem;
+      border:1px solid rgba(255,255,255,.15);
+      background: rgba(255,255,255,.06);
+      white-space:nowrap;
+    }
+
+    /* Content sections */
+    .container{max-width:1200px;margin: 0 auto;padding: clamp(1rem, 2vw, 1.5rem)}
+    section.block{
+      margin-top: clamp(1rem, 4vw, 2rem);
+      background: linear-gradient(180deg, rgba(23,26,43,.65), rgba(23,26,43,.35));
+      border:1px solid rgba(255,255,255,.08);
+      border-radius: var(--radius);
+      padding: clamp(1rem, 3vw, 2rem);
+      box-shadow: var(--shadow);
+    }
+    h2{margin:0 0 .25rem;font-size: clamp(1.25rem, 2.2vw, 1.6rem)}
+    .sub{color:var(--muted);margin:0 0 .75rem}
+
+    /* Feature grids */
+    .grid{display:grid;gap: var(--grid-gap)}
+    .grid-3{grid-template-columns: repeat(3,1fr)}
+    .grid-2{grid-template-columns: repeat(2,1fr)}
+    @media (max-width: 900px){ .grid-3,.grid-2{grid-template-columns:1fr} }
+
+    .card{
+      background: linear-gradient(180deg, rgba(10,14,29,.35), rgba(10,14,29,.15));
+      border:1px solid rgba(255,255,255,.08);
+      border-radius: 16px;
+      padding: 1rem;
+      transition: transform .15s ease, border-color .2s ease, background .2s ease;
+    }
+    .card:hover{
+      transform: translateY(-2px);
+      border-color: rgba(125,211,252,.35);
+      background: linear-gradient(180deg, rgba(10,14,29,.45), rgba(10,14,29,.2));
+    }
+    .kicker{font-weight:800;color:var(--accent);letter-spacing:.06em;text-transform:uppercase;font-size:.78rem}
+    .card h3{margin:.25rem 0 .25rem}
+    .meta{color:var(--muted);font-size:.95rem}
+
+    /* Timeline */
+    .timeline{
+      position:relative;padding-left:1rem
+    }
+    .timeline::before{
+      content:"";position:absolute;left:.4rem;top:.2rem;bottom:.2rem;width:2px;background:linear-gradient(var(--accent), var(--accent-2))
+    }
+    .step{position:relative;padding-left:1.5rem;margin-bottom:1rem}
+    .bullet{
+      position:absolute;left:-.05rem;top:.2rem;width:.9rem;height:.9rem;border-radius:50%;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      box-shadow: 0 0 0 .25rem rgba(125,211,252,.15);
+    }
+    .step h4{margin:.1rem 0 .25rem}
+    .step p{margin:0;color:var(--muted)}
+
+    /* Nutrition badges */
+    .badges{display:flex;flex-wrap:wrap;gap:.5rem}
+    .nutri{
+      border:1px solid rgba(255,255,255,.12);
+      border-radius: 12px; padding:.55rem .7rem; font-weight:700
+    }
+
+    /* Traceability */
+    .trace{
+      display:grid; gap:1rem; align-items:center;
+      grid-template-columns: 1fr auto;
+    }
+    @media (max-width: 700px){ .trace{grid-template-columns:1fr} }
+    .qr{
+      width:120px;height:120px;border-radius:14px;
+      display:grid;place-items:center;
+      border:1px dashed rgba(255,255,255,.2);
+      background: rgba(125,211,252,.06);
+      font-size:.8rem;color:var(--muted)
+    }
+
+    /* Footer */
+    footer{
+      margin-top: 2rem;
+      border-top: 1px solid rgba(255,255,255,.08);
+      background: rgba(10,14,29,.4);
+    }
+    .foot{
+      max-width:1200px;margin:0 auto;padding:1rem;
+      display:flex;flex-wrap:wrap;gap:1rem;align-items:center;justify-content:space-between;
+      color:var(--muted)
+    }
+
+    /* Motion preferences */
+    @media (prefers-reduced-motion: reduce){
+      *{animation:none !important;transition:none !important}
+    }
+    /* Focus */
+    :focus-visible{outline:none;box-shadow: var(--ring)}
+  </style>
+
+  <!-- Structured Data (Product) -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Product",
+    "name":"Mount Kenya Macadamia Kernels",
+    "brand":{"@type":"Brand","name":"Rustic Garden"},
+    "description":"Premium macadamia nuts intercropped with coffee on Mount Kenya, gently cracked and sun-dried, fully traceable from orchard to table.",
+    "category":"Food",
+    "offers":{"@type":"Offer","priceCurrency":"KES","availability":"https://schema.org/PreOrder"},
+    "additionalProperty":[
+      {"@type":"PropertyValue","name":"Varieties","value":"Macadamia integrifolia, M. tetraphylla"},
+      {"@type":"PropertyValue","name":"Processing","value":"Gentle mechanical cracking, sun drying"},
+      {"@type":"PropertyValue","name":"Traceability","value":"QR-linked lot provenance"}
+    ]
+  }
+  </script>
 </head>
 <body>
-    <header>
-        <nav>
-            <a href="index.html">Home</a>
-            <a href="coffee.html">Coffee</a>
-            <a href="macadamia.html" class="active">Macadamia</a>
-            <a href="bananas.html">Dried Bananas</a>
-            <a href="family-pack.html">Family Nutrition Pack</a>
-            <a href="aquaculture.html">Aquaculture</a>
-        </nav>
-    </header>
-    <main class="container">
-        <h1>Macadamia: Premium from Orchard to Table</h1>
-        <section>
-            <h2>Orchards & Varieties</h2>
-            <p>
-                Our macadamia trees thrive alongside coffee in the rich volcanic soils of Mount Kenya. We cultivate select varieties—Macadamia integrifolia and Tetraphylla—for their creamy texture and high oil content, ensuring exceptional taste and crunch in every nut.
-            </p>
-        </section>
-        <section>
-            <h2>Harvest & Shelling</h2>
-            <ul>
-                <li><strong>Hand-Picking</strong> — Each nut is picked at peak ripeness for maximum flavor and nutrition.</li>
-                <li><strong>Gentle Cracking</strong> — Our mechanical crackers preserve kernel integrity, minimizing damage and waste.</li>
-                <li><strong>Careful Sorting</strong> — Nuts are hand-graded for size, color, and quality before further processing.</li>
-            </ul>
-        </section>
-        <section>
-            <h2>Drying & Storage</h2>
-            <p>
-                We sun-dry macadamias to the perfect moisture content, locking in natural oils and sweetness. Our climate-controlled stores ensure that nuts remain fresh and crunchy until packed.
-            </p>
-        </section>
-        <section>
-            <h2>Nutritional Benefits</h2>
-            <ul>
-                <li>High in heart-healthy monounsaturated fats</li>
-                <li>Rich in magnesium, manganese, and antioxidants</li>
-                <li>Natural, gluten-free, and suitable for plant-based diets</li>
-            </ul>
-        </section>
-        <section>
-            <h2>Packing & Export</h2>
-            <ul>
-                <li><strong>Local Packs</strong> — Fresh, vacuum-sealed packs for home and gifting.</li>
-                <li><strong>Bulk Export</strong> — Carefully graded kernels for international buyers, with full traceability and quality certifications.</li>
-            </ul>
-        </section>
-        <section>
-            <h2>Sustainability</h2>
-            <p>
-                Our macadamia trees are intercropped with coffee and indigenous species, enriching soil, providing shade, and supporting pollinators. This agroforestry approach boosts land resilience and farm biodiversity.
-            </p>
-        </section>
-    </main>
-    <footer>
-        <p>&copy; 2025 Rustic Garden - Mount Kenya Macadamia</p>
-    </footer>
+  <header>
+    <div class="nav">
+      <a class="brand" href="index.html" aria-label="Rustic Garden Home">
+        <span class="brand-badge">RG</span>
+        Rustic Garden
+      </a>
+      <nav class="links" aria-label="Primary">
+        <a href="index.html">Home</a>
+        <a href="coffee.html">Coffee</a>
+        <a class="active" href="macadamia.html" aria-current="page">Macadamia</a>
+        <a href="bananas.html">Dried Bananas</a>
+        <a href="family-pack.html">Family Nutrition Pack</a>
+        <a href="aquaculture.html">Aquaculture</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero" id="top">
+    <article class="hero-card">
+      <div class="spark" aria-hidden="true"></div>
+      <p class="eyebrow">Mount Kenya • Orchard to Table</p>
+      <h1>Macadamia, Reimagined: Creamy, Crunchy, Traceable.</h1>
+      <p class="lead">
+        From volcanic soils and cool mountain mists, our macadamias grow alongside shade-loving coffee, then travel a gentle path—hand-picking, careful cracking, and slow sun-drying—so the first snap you hear is matched by a clean, buttery finish you remember.
+      </p>
+      <div class="cta-row">
+        <a class="btn" href="#packs">Shop Packs</a>
+        <a class="btn secondary" href="#trace">See Provenance</a>
+      </div>
+    </article>
+    <figure class="hero-media" role="img" aria-label="Macadamia orchards on the slopes of Mount Kenya with dappled light and shade trees">
+      <div class="badge-stack">
+        <span class="pill">Intercropped with Coffee</span>
+        <span class="pill">Sun-Dried</span>
+        <span class="pill">Export Grade</span>
+        <span class="pill">Seed → Plate → Back</span>
+      </div>
+    </figure>
+  </section>
+
+  <main class="container">
+    <!-- ORCHARDS & VARIETIES -->
+    <section class="block">
+      <h2>Orchards & Varieties</h2>
+      <p class="sub">
+        In the rich volcanic belts of Mount Kenya, macadamia integrifolia and tetraphylla settle their roots among arabica rows, the shade softening wind stress, the leaf litter feeding earth life, the bees moving between white coffee bloom and macadamia racemes to stitch a small ecology into every kernel.
+      </p>
+      <div class="grid grid-3">
+        <div class="card">
+          <span class="kicker">Terroir</span>
+          <h3>Volcanic soils with cool nights</h3>
+          <p class="meta">Slow oil development for that signature butter-snap texture.</p>
+        </div>
+        <div class="card">
+          <span class="kicker">Selection</span>
+          <h3>Integrifolia &amp; Tetraphylla</h3>
+          <p class="meta">Creamy body, high oil content, balanced crunch in mixed lots.</p>
+        </div>
+        <div class="card">
+          <span class="kicker">Companions</span>
+          <h3>Coffee &amp; Indigenous Shade</h3>
+          <p class="meta">Agroforestry that enriches soil, shelters birds, and supports pollinators.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- HARVEST TO CRACKING -->
+    <section class="block">
+      <h2>Harvest, Shelling, and the Gentle Path</h2>
+      <p class="sub">
+        Ripeness is read in the drop and the husk, hands gather what the tree releases, then shells meet calibrated pressure—enough to open, never enough to bruise—so more kernels arrive whole and more flavour reaches the table.
+      </p>
+      <div class="timeline" aria-label="Processing timeline">
+        <div class="step">
+          <span class="bullet" aria-hidden="true"></span>
+          <h4>Hand-Picking at Peak</h4>
+          <p>Selective collection ensures uniform moisture and clean sweetness.</p>
+        </div>
+        <div class="step">
+          <span class="bullet" aria-hidden="true"></span>
+          <h4>Gentle Mechanical Cracking</h4>
+          <p>Pressure-matched cracking preserves integrity and reduces waste.</p>
+        </div>
+        <div class="step">
+          <span class="bullet" aria-hidden="true"></span>
+          <h4>Careful Sorting &amp; Grading</h4>
+          <p>Colour, size, and sound guide grading before drying begins.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- DRYING & STORAGE -->
+    <section class="block">
+      <h2>Drying & Storage</h2>
+      <p class="sub">
+        Sun does what it does best, carrying moisture down to the narrow window where texture sharpens and oils stay luminous; after that, climate-controlled calm keeps every lot steady until it travels.
+      </p>
+      <div class="grid grid-2">
+        <div class="card">
+          <h3>Sun-Finished Drying</h3>
+          <p class="meta">Natural sweetness preserved, crisp break achieved without harsh heat.</p>
+        </div>
+        <div class="card">
+          <h3>Climate-Steady Stores</h3>
+          <p class="meta">Kernel freshness held with low-oxygen barriers and clean air flow.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- NUTRITION -->
+    <section class="block">
+      <h2>Nutritional Traits</h2>
+      <p class="sub">
+        The profile favours heart-healthy fats and essential minerals; the form favours versatility, from snack bowls to pâtisserie work where a clean fat and fine crumb are prized.
+      </p>
+      <div class="badges" role="list">
+        <span class="nutri" role="listitem">Monounsaturated fats</span>
+        <span class="nutri" role="listitem">Magnesium &amp; Manganese</span>
+        <span class="nutri" role="listitem">Antioxidant profile</span>
+        <span class="nutri" role="listitem">Naturally gluten-free</span>
+        <span class="nutri" role="listitem">Plant-based friendly</span>
+      </div>
+    </section>
+
+    <!-- PACKS & EXPORT -->
+    <section id="packs" class="block">
+      <h2>Local Packs & Export Lots</h2>
+      <p class="sub">
+        Whether it is a gift-ready vacuum pack for the table at home or a calibrated export lot for roasters and chocolatiers, each unit travels with its story attached and its quality verified.
+      </p>
+      <div class="grid grid-3">
+        <div class="card">
+          <span class="kicker">Local</span>
+          <h3>Vacuum-Sealed Fresh Packs</h3>
+          <p class="meta">Whole and half kernels, freshness-locked for gifting and daily snacking.</p>
+        </div>
+        <div class="card">
+          <span class="kicker">Trade</span>
+          <h3>Graded Export Kernels</h3>
+          <p class="meta">Consistent sizes with documentation for seamless import procedures.</p>
+        </div>
+        <div class="card">
+          <span class="kicker">Assurance</span>
+          <h3>Full Traceability</h3>
+          <p class="meta">Lot-linked records and certifications available on scan.</p>
+        </div>
+      </div>
+      <div class="cta-row" style="margin-top:1rem">
+        <a class="btn" href="mailto:GroupNomad@outlook.com?subject=Macadamia%20Orders">Request Quote</a>
+        <a class="btn secondary" href="#trace">Trace a Lot</a>
+      </div>
+    </section>
+
+    <!-- SUSTAINABILITY + TRACEABILITY -->
+    <section id="trace" class="block">
+      <h2>Sustainability & Traceability</h2>
+      <div class="trace">
+        <div>
+          <p class="sub">
+            Intercropping with coffee and indigenous species builds shade, buffers climate swings, and lowers input intensity; QR-linked provenance binds that practice to each purchase so the story that begins in the orchard can be verified at the table.
+          </p>
+          <p class="meta">
+            Scan a pack to view orchard zone, harvest window, drying curve, and quality checks—because the shortest route to trust is a clear line of sight.
+          </p>
+        </div>
+        <div class="qr" aria-label="QR code placeholder">QR • LOT-2025-MK</div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="foot">
+      <span>&copy; 2025 Rustic Garden — Mount Kenya Macadamia</span>
+      <span>Seed → Plate → Back</span>
+    </div>
+  </footer>
+
+  <script>
+    // Tiny enhancement: smooth scroll for in-page anchors
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', e=>{
+        const id = a.getAttribute('href');
+        if(id.length > 1){
+          e.preventDefault();
+          const el = document.querySelector(id);
+          if(el){ el.scrollIntoView({behavior:'smooth', block:'start'}); }
+        }
+      });
+    });
+
+    // Demo: change QR placeholder to a pseudo lot number based on date
+    (function(){
+      const box = document.querySelector('.qr');
+      if(!box) return;
+      const d = new Date();
+      const lot = `LOT-${d.getFullYear()}-MK${String(d.getMonth()+1).padStart(2,'0')}${String(d.getDate()).padStart(2,'0')}`;
+      box.textContent = `QR • ${lot}`;
+    })();
+  </script>
 </body>
 </html>
