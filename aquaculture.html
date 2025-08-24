@@ -1,13 +1,65 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Aquaculture & Water Projects | School Fish Pods | Rustic Garden</title>
-  <meta name="description" content="Strengthen food security and education with practical fish pod designs for schools in Kavutiri, Embu. Case studies, design options, learning, and revenue models.">
-  <link rel="stylesheet" href="styles.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Rustic Garden — Shared Template</title>
+  <meta name="description" content="Rustic Garden — Aquaculture, Landscaping, and Ecological Design in Kavutiri, Embu. Crafting vibrant atmospheres with plants, water, and community.">
+  <style>
+    :root {
+      --accent-coffee:#6f4e37;
+      --accent-macadamia:#d2b48c;
+      --accent-water:#1ca3ec;
+      --muted:#4a4a4a;
+      --card:#f0f4ef;
+      --bg:#e8f5e9; /* soft garden green */
+      --text:#1b1b1b;
+      --cta-bg:#6f4e37;
+      --cta-hover:#593a2a;
+    }
+    body {
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',Arial;
+      line-height:1.5;
+      background:var(--bg);
+      color:var(--text);
+      margin:0;
+    }
+    .container {max-width:1100px;margin:0 auto;padding:28px}
+    .page-hero {
+      background:linear-gradient(180deg, rgba(232,245,233,0.8), rgba(232,245,233,0.6)), center/cover no-repeat;
+      color:var(--text);
+      padding:56px 0;
+      border-bottom:4px solid rgba(0,0,0,0.1);
+      border-radius:12px;
+    }
+    .page-title {font-size:clamp(28px,4vw,44px);margin:0 0 8px}
+    .page-subtitle {margin:0;font-weight:500;opacity:0.9}
+    h2 {color:var(--accent-coffee);margin-top:36px}
+    .grid {display:grid;gap:18px}
+    @media(min-width:800px){.grid-cols-3{grid-template-columns:repeat(3,1fr)}.grid-cols-2{grid-template-columns:repeat(2,1fr)}}
+    .card {
+      background:#fff;
+      padding:24px;
+      border-radius:12px;
+      box-shadow:0 6px 18px rgba(0,0,0,0.1);
+      transition:transform 0.3s, box-shadow 0.3s;
+      color:var(--text);
+    }
+    .card:hover {transform:translateY(-4px);box-shadow:0 10px 20px rgba(0,0,0,0.15);}
+    ul {padding-left:1.2rem}
+    .muted {color:var(--muted)}
+    .cta {display:inline-block;background:var(--cta-bg);color:#fff;padding:12px 18px;border-radius:12px;text-decoration:none;font-weight:700;transition:background 0.3s}
+    .cta:hover {background:var(--cta-hover)}
+    .feature-list li{margin-bottom:8px}
+    .small{font-size:0.9rem}
+    footer {padding:36px 0;text-align:center;color:var(--muted);background:var(--bg)}
+    nav {display:flex;gap:16px;padding:16px;background:#dcedc8;border-radius:8px}
+    nav a {text-decoration:none;color:var(--text);font-weight:500;transition:color 0.3s}
+    nav a.active, nav a:hover {color:var(--accent-macadamia)}
+  </style>
 </head>
 <body>
+
   <!-- Header -->
   <header>
     <nav>
@@ -20,198 +72,75 @@
     </nav>
   </header>
 
-  <!-- Main Content -->
-  <main class="container">
-    <h1>School Fish Pods: Food, Learning, and Income</h1>
-    <p class="intro">Rustic Garden turns aquaculture into a running enterprise: <strong>seed-to-plate-and-back</strong> learning that produces food and revenue. We breed <em>Oreochromis (Tilapia)</em>, make feed locally, run recirculatory systems, and monetize through advertising, product sales, services and intellectual property.</p>
-
-    <!-- Quick Links -->
-    <nav class="quick-links">
-      <a href="#case-study">Case Study</a>
-      <a href="#design">Design</a>
-      <a href="#operation">Operation</a>
-      <a href="#feed">Feed</a>
-      <a href="#education">Education</a>
-      <a href="#economy">Economy</a>
-      <a href="#ip">Intellectual Property</a>
-      <a href="#cta">Get Involved</a>
-    </nav>
-
-    <!-- Case Study -->
-    <section id="case-study">
-      <h2>Case Study: School Fish Pod Project</h2>
-      <p>Compact, low-maintenance fish pods supply fresh protein for school meals, serve as living classrooms, and generate income through local sales and sponsorship.</p>
-      <ul>
-        <li>Fresh fish for school meals</li>
-        <li>Hands-on curriculum and vocational training</li>
-        <li>Local sales, ad sponsorships, and training fees</li>
-      </ul>
-    </section>
-
-    <!-- Design Options -->
-    <section id="design">
-      <h2>Design Options</h2>
-      <ul>
-        <li><strong>Earthen Pond</strong> – low cost, large footprint; good for community-scale sales</li>
-        <li><strong>Lined Pond (HDPE/Clay)</strong> – compact, durable, controllable water quality</li>
-        <li><strong>Above-ground Tank</strong> – portable, ideal for demonstration and classroom sales</li>
-      </ul>
-
-      <div class="example">
-        <h3>Recommended Example</h3>
-        <ul>
-          <li>Rectangular lined pond: 4.0 × 2.5 × 1.0 m (~10,000 L)</li>
-          <li>Stocking: 5–10 fish (education) | 20–30 fish (regular meals/sales)</li>
-          <li>Species: Tilapia (preferred) — quick growth and market demand</li>
-        </ul>
+  <!-- AQUACULTURE PAGE -->
+  <main id="page-aquaculture" class="page-content hidden" role="main">
+    <header class="page-hero" style="background-image:url('/assets/images/tilapia-pond-hero.jpg')">
+      <div class="container">
+        <h1 class="page-title" style="color:var(--accent-water);">Aquaculture — Cold-Climate Tilapia in Kavutiri</h1>
+        <p class="page-subtitle">Crafting resilient water-based atmospheres with ponds, dams, hatcheries, and training.</p>
       </div>
+    </header>
+
+    <section class="container">
+      <h2 style="color:var(--accent-water);">Atmospheres We Create</h2>
+      <div class="grid grid-cols-2">
+        <article class="card">
+          <h3 style="color:var(--accent-water);">Resilient Water</h3>
+          <p class="small muted">Dams, water pans, and ponds designed to capture rainfall and anchor aquatic life.</p>
+        </article>
+        <article class="card">
+          <h3 style="color:var(--accent-water);">Living Systems</h3>
+          <p class="small muted">Tilapia hatcheries and selective breeding as living atmosphere engines.</p>
+        </article>
+        <article class="card">
+          <h3 style="color:var(--accent-macadamia);">Nourishment</h3>
+          <p class="small muted">On‑farm feed mills and local ingredients creating cycles of abundance.</p>
+        </article>
+        <article class="card">
+          <h3 style="color:var(--accent-coffee);">Community Flow</h3>
+          <p class="small muted">Training schools, youth, and retirees to steward water and fish together.</p>
+        </article>
+      </div>
+      <p style="margin-top:18px"><a class="cta" href="/order.html">Book a consultation</a></p>
     </section>
-
-    <!-- Operation -->
-    <section id="operation">
-      <h2>Operation & Monitoring</h2>
-      <p><em>Clear, repeatable routines create predictable revenue:</em></p>
-      <ul>
-        <li><strong>Daily</strong>: Feed, observe, log</li>
-        <li><strong>Weekly</strong>: Water tests, aeration checks</li>
-        <li><strong>Monthly</strong>: Sample weighing, partial water change</li>
-        <li><strong>Yearly</strong>: Desludge, deep clean</li>
-      </ul>
-      <p class="reinforce">Consistency → higher survival → larger harvests → higher revenue.</p>
-    </section>
-
-    <!-- Feed Production -->
-    <section id="feed">
-      <h2>Making Feed Locally (Cost Reduction)</h2>
-      <p>Affordable, nutritious feed reduces input cost and creates products to sell.</p>
-      <ul>
-        <li>Local inputs: maize bran, coffee husks, moringa, fishmeal alternatives</li>
-        <li>On-site protein: duckweed, Azolla, black soldier fly larvae</li>
-        <li>By-product loop: harvest waste → compost → crop feed → income</li>
-      </ul>
-    </section>
-
-    <!-- Education -->
-    <section id="education">
-      <h2>Education & Training</h2>
-      <ul>
-        <li><strong>Science:</strong> water chemistry, ecosystems</li>
-        <li><strong>Math:</strong> feed conversion, supply costs</li>
-        <li><strong>Business:</strong> pricing, local markets, record keeping</li>
-        <li><strong>Vocational:</strong> hatchery skills, feed production</li>
-      </ul>
-      <p>Offer certified short courses and paid apprenticeships that fund the program and create local employment.</p>
-    </section>
-
-    <!-- Economy -->
-    <section id="economy">
-      <h2>Economy & Monetization</h2>
-      <p>Rustic Garden turns aquaculture into a local micro-economy. Revenue streams include:</p>
-
-      <h3>1. Product Sales</h3>
-      <ul>
-        <li>Live fingerlings for other farmers</li>
-        <li>Packaged feed (small bags for households & schools)</li>
-        <li>Harvested fish sold to schools, local markets, and restaurants</li>
-        <li>Value-added products: smoked fish, fillets, meal kits</li>
-      </ul>
-
-      <h3>2. Advertising & Sponsorship</h3>
-      <ul>
-        <li>Site sponsorships (tank naming, ‘partner school’ branding)</li>
-        <li>Sponsored educational materials (branded lab kits, posters)</li>
-        <li>Ad placements on the program website and video content targeted at regional agri-brands</li>
-      </ul>
-
-      <h3>3. Services & Training</h3>
-      <ul>
-        <li>Paid training workshops for schools, farmers, and youth groups</li>
-        <li>Consultancy for pond design, RAS installations, and feed optimization</li>
-        <li>Maintenance contracts for local institutions</li>
-      </ul>
-
-      <h3>4. Franchising & Licensing</h3>
-      <ul>
-        <li>Modular Fish Pod kits sold with licensing for local installation</li>
-        <li>Certified ‘Rustic Pod’ operators who pay a small licensing fee and follow the operations manual</li>
-      </ul>
-
-      <h3>5. Grants, Impact Investors & CSR</h3>
-      <ul>
-        <li>Seed funding to scale pilot pods</li>
-        <li>Impact investors attracted by measurable nutrition & education outcomes</li>
-        <li>Corporate Social Responsibility (CSR) partnerships for regional brands</li>
-      </ul>
-
-      <h3>Unit Economics (Quick View)</h3>
-      <ul>
-        <li>Example: 10,000 L pod → ~200 kg annual harvest → gross revenue depends on local price/kg</li>
-        <li>Costs: feed, labor, liner amortization, maintenance</li>
-        <li>Margin drivers: locally-made feed, direct-to-school sales, value-add processing</li>
-      </ul>
-
-      <p class="note">We can add a simple pricing calculator to this page so administrators can input local prices and get revenue estimates.</p>
-    </section>
-
-    <!-- Intellectual Property -->
-    <section id="ip">
-      <h2>Intellectual Property & Brand</h2>
-      <p>Protecting and monetizing knowledge strengthens the business model.</p>
-
-      <h3>Protectable Assets</h3>
-      <ul>
-        <li>Proprietary feed formulations and mixing protocols</li>
-        <li>Hatchery methods and survival-boosting procedures</li>
-        <li>Training curriculum, videos, and certification materials</li>
-        <li>Branding and ‘Rustic Pod’ trademarks</li>
-      </ul>
-
-      <h3>Monetization Strategies</h3>
-      <ul>
-        <li>Sell or license feed recipes to local producers</li>
-        <li>Offer paid certification for trainers and pod operators</li>
-        <li>Sell branded starter kits and printed curriculum</li>
-      </ul>
-
-      <h3>Legal & Compliance</h3>
-      <ul>
-        <li>Register trademarks and protect written curriculum</li>
-        <li>Consider simple NDAs for commercial partners</li>
-        <li>Comply with local health, food safety, and aquaculture regulations</li>
-      </ul>
-
-      <p class="advice">Tip: Start with low-cost protections (copyright, trade secrets, simple trademarks) and scale legal coverage as revenue grows.</p>
-    </section>
-
-    <!-- Metrics & Reporting -->
-    <section id="metrics">
-      <h2>Metrics & Reporting (for Advertisers & Investors)</h2>
-      <p>Advertisers and investors want measurable impact:</p>
-      <ul>
-        <li>Impressions & engagement on learning content (videos, posts)</li>
-        <li>Number of meals supplied per term</li>
-        <li>Fingerling sales and feed unit sales</li>
-        <li>Job placements & certified graduates</li>
-      </ul>
-      <p>Provide quarterly reports and simple dashboards to partners.</p>
-    </section>
-
-    <!-- Call to Action -->
-    <section id="cta" class="cta">
-      <h2>Get Involved — Build an Income Stream</h2>
-      <ul>
-        <li><strong>Schools:</strong> Request a business-ready pod design & pricing calculator</li>
-        <li><strong>Entrepreneurs:</strong> Buy starter kits or license our feed formula</li>
-        <li><strong>Advertisers & Funders:</strong> Sponsor a pod and get branded content and reporting</li>
-      </ul>
-      <p><a href="contact.html" class="button">Contact Us</a> <a href="shop.html" class="button ghost">Visit Shop</a></p>
-    </section>
-
   </main>
 
-  <!-- Footer -->
+  <!-- LANDSCAPING PAGE -->
+  <main id="page-landscaping" class="page-content hidden" role="main">
+    <header class="page-hero" style="background-image:url('/assets/images/landscaping-hero.jpg')">
+      <div class="container">
+        <h1 class="page-title" style="color:var(--accent-macadamia);">Landscaping — Crafting Atmospheres with Plants</h1>
+        <p class="page-subtitle">We design moods, vibes, and spaces through ecological planting.</p>
+      </div>
+    </header>
+
+    <section class="container">
+      <h2 style="color:var(--accent-coffee);">Atmospheres We Create</h2>
+      <div class="grid grid-cols-2">
+        <article class="card">
+          <h3 style="color:var(--accent-coffee);">Tranquility</h3>
+          <p class="small muted">Bamboo groves, medicinal gardens, and water features — calm and clarity made visible.</p>
+        </article>
+        <article class="card">
+          <h3 style="color:var(--accent-macadamia);">Energy</h3>
+          <p class="small muted">Bougainvillea bursts, vibrant perennials, and pollinator havens radiating vitality.</p>
+        </article>
+        <article class="card">
+          <h3 style="color:var(--accent-coffee);">Community</h3>
+          <p class="small muted">Shaded gathering trees, edible hedges, and outdoor fire circles where people connect.</p>
+        </article>
+        <article class="card">
+          <h3 style="color:var(--accent-macadamia);">Resilience</h3>
+          <p class="small muted">Indigenous corridors, drought-smart groundcovers, and carbon-holding soils for the future.</p>
+        </article>
+      </div>
+      <p style="margin-top:18px"><a class="cta" href="/order.html">Request a landscaping visit</a></p>
+    </section>
+  </main>
+
   <footer>
-    <p>&copy; 2025 Rustic Garden – Turning Aquaculture into Food, Learning, and Local Income</p>
+    <div class="small muted">Rustic Garden • Kavutiri, Embu — Crafting Vibrant Garden Atmospheres in Land & Water</div>
   </footer>
+
 </body>
 </html>
