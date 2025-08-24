@@ -2,145 +2,413 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Rustic Garden — Shared Template</title>
-  <meta name="description" content="Rustic Garden — Aquaculture, Landscaping, and Ecological Design in Kavutiri, Embu. Crafting vibrant atmospheres with plants, water, and community.">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Aquaculture Portfolio — USB‑MDR Tilapia RAS</title>
+  <meta name="description" content="Sustainable tilapia aquaculture portfolio: USB‑MDR RAS, five turnkey products, results, channels, and contact.">
   <style>
-    :root {
-      --accent-coffee:#6f4e37;
-      --accent-macadamia:#d2b48c;
-      --accent-water:#1ca3ec;
-      --muted:#4a4a4a;
-      --card:#f0f4ef;
-      --bg:#e8f5e9; /* soft garden green */
-      --text:#1b1b1b;
-      --cta-bg:#6f4e37;
-      --cta-hover:#593a2a;
+    :root{
+      --ink:#0f172a; --muted:#6b7280; --bg:#f6f9fb; --card:#ffffff; --water:#1ca3ec; --coffee:#6f4e37; --mac:#c6a167; --leaf:#10b981; --accent:#0ea5e9; --ring:rgba(28,163,236,.25)
     }
-    body {
-      font-family:system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',Arial;
-      line-height:1.5;
-      background:var(--bg);
-      color:var(--text);
-      margin:0;
-    }
-    .container {max-width:1100px;margin:0 auto;padding:28px}
-    .page-hero {
-      background:linear-gradient(180deg, rgba(232,245,233,0.8), rgba(232,245,233,0.6)), center/cover no-repeat;
-      color:var(--text);
-      padding:56px 0;
-      border-bottom:4px solid rgba(0,0,0,0.1);
-      border-radius:12px;
-    }
-    .page-title {font-size:clamp(28px,4vw,44px);margin:0 0 8px}
-    .page-subtitle {margin:0;font-weight:500;opacity:0.9}
-    h2 {color:var(--accent-coffee);margin-top:36px}
-    .grid {display:grid;gap:18px}
-    @media(min-width:800px){.grid-cols-3{grid-template-columns:repeat(3,1fr)}.grid-cols-2{grid-template-columns:repeat(2,1fr)}}
-    .card {
-      background:#fff;
-      padding:24px;
-      border-radius:12px;
-      box-shadow:0 6px 18px rgba(0,0,0,0.1);
-      transition:transform 0.3s, box-shadow 0.3s;
-      color:var(--text);
-    }
-    .card:hover {transform:translateY(-4px);box-shadow:0 10px 20px rgba(0,0,0,0.15);}
-    ul {padding-left:1.2rem}
-    .muted {color:var(--muted)}
-    .cta {display:inline-block;background:var(--cta-bg);color:#fff;padding:12px 18px;border-radius:12px;text-decoration:none;font-weight:700;transition:background 0.3s}
-    .cta:hover {background:var(--cta-hover)}
-    .feature-list li{margin-bottom:8px}
-    .small{font-size:0.9rem}
-    footer {padding:36px 0;text-align:center;color:var(--muted);background:var(--bg)}
-    nav {display:flex;gap:16px;padding:16px;background:#dcedc8;border-radius:8px}
-    nav a {text-decoration:none;color:var(--text);font-weight:500;transition:color 0.3s}
-    nav a.active, nav a:hover {color:var(--accent-macadamia)}
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:var(--ink);background:var(--bg);line-height:1.6}
+    a{color:var(--accent);text-decoration:none}
+    img{max-width:100%;display:block}
+    .container{max-width:1200px;margin:0 auto;padding:0 20px}
+    /* NAV */
+    header{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.9);backdrop-filter:saturate(160%) blur(8px);border-bottom:1px solid #e5e7eb}
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
+    .brand{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.2px}
+    .brand .mark{width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,var(--water),var(--leaf));box-shadow:0 6px 14px rgba(0,0,0,.12)}
+    .nav a{color:var(--ink);font-weight:600;margin:0 8px;padding:8px 12px;border-radius:10px}
+    .nav a:hover{background:#eef6ff}
+    .nav .cta{background:var(--water);color:#fff}
+    .nav .cta:hover{background:#1187c5}
+    /* HERO */
+    .hero{position:relative;padding:80px 0 40px;background:radial-gradient(1200px 500px at 20% -10%,rgba(28,163,236,.18),transparent),
+      radial-gradient(900px 400px at 80% 0,rgba(16,185,129,.12),transparent)}
+    .hero h1{font-size:clamp(30px,5vw,56px);line-height:1.1;margin:0 0 12px}
+    .hero p{font-size:clamp(16px,2.2vw,20px);color:var(--muted);margin:0 0 18px}
+    .badges{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+    .badge{background:#fff;border:1px solid #e5e7eb;border-radius:999px;padding:8px 12px;font-size:14px}
+    .actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+    .btn{display:inline-block;padding:12px 16px;border-radius:12px;font-weight:700;border:1px solid transparent}
+    .btn.primary{background:var(--water);color:#fff}
+    .btn.primary:hover{background:#1187c5}
+    .btn.ghost{background:#fff;border-color:#e5e7eb}
+    .btn.ghost:hover{background:#f8fafc}
+    /* SECTIONS */
+    section{padding:56px 0}
+    h2{font-size:clamp(22px,3vw,32px);margin:0 0 8px}
+    .lead{color:var(--muted);max-width:900px}
+    /* GRID CARDS */
+    .grid{display:grid;gap:18px}
+    @media(min-width:900px){.grid.cols-2{grid-template-columns:repeat(2,1fr)}.grid.cols-3{grid-template-columns:repeat(3,1fr)}.grid.cols-4{grid-template-columns:repeat(4,1fr)}}
+    .card{background:var(--card);border:1px solid #e5e7eb;border-radius:16px;padding:22px;box-shadow:0 4px 14px rgba(0,0,0,.06)}
+    .card h3{margin:0 0 6px;color:var(--coffee)}
+    .card small{color:var(--muted)}
+    .tag{display:inline-block;padding:6px 10px;border-radius:999px;background:#eef6ff;color:#0b6ea8;font-weight:700;font-size:12px;margin-bottom:8px}
+    .kpis{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:10px}
+    .kpi{background:#f8fafc;border:1px solid #e5e7eb;border-radius:12px;padding:10px}
+    .kpi b{display:block;font-size:18px}
+    /* TABLE */
+    table{width:100%;border-collapse:collapse;margin-top:16px}
+    th,td{border:1px solid #e5e7eb;padding:12px;text-align:left}
+    th{background:#0b6ea8;color:#fff}
+    tr:nth-child(even){background:#fbfdff}
+    caption{caption-side:bottom;padding-top:8px;color:var(--muted)}
+    /* CHANNEL ROWS */
+    .pill{display:inline-block;padding:8px 12px;background:#f0f9ff;border:1px solid #bae6fd;border-radius:999px;margin:4px 6px;color:#075985;font-weight:600}
+    /* FOOTER */
+    footer{padding:40px 0;border-top:1px solid #e5e7eb;background:#fff;color:var(--muted)}
+    /* UTILS */
+    .row{display:flex;gap:18px;flex-wrap:wrap}
+    .grow{flex:1 1 320px}
+    .center{text-align:center}
+    .note{font-size:14px;color:var(--muted)}
+    .shadow-ring{box-shadow:0 0 0 6px var(--ring)}
+    /* MODAL */
+    .modal{position:fixed;inset:0;background:rgba(15,23,42,.55);display:none;align-items:center;justify-content:center;padding:20px}
+    .modal .sheet{background:#fff;border-radius:16px;max-width:680px;width:100%;padding:22px}
+    .modal.show{display:flex}
+    .field{display:grid;gap:6px;margin:10px 0}
+    input,textarea,select{padding:12px;border:1px solid #e5e7eb;border-radius:10px;font:inherit;width:100%}
+    label{font-weight:700}
   </style>
 </head>
 <body>
-
-  <!-- Header -->
+  <!-- NAV -->
   <header>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="coffee.html">Coffee</a>
-      <a href="macadamia.html">Macadamia</a>
-      <a href="bananas.html">Dried Bananas</a>
-      <a href="family-pack.html">Family Nutrition Pack</a>
-      <a href="aquaculture.html" class="active">Aquaculture</a>
-    </nav>
+    <div class="container nav">
+      <div class="brand"><div class="mark"></div><span>Aquaculture Portfolio</span></div>
+      <nav>
+        <a href="#home">Home</a>
+        <a href="#products">Products</a>
+        <a href="#case">Case Study</a>
+        <a href="#results">Results</a>
+        <a href="#channels">Channels</a>
+        <a href="#contact" class="cta">Contact</a>
+      </nav>
+    </div>
   </header>
 
-  <!-- AQUACULTURE PAGE -->
-  <main id="page-aquaculture" class="page-content hidden" role="main">
-    <header class="page-hero" style="background-image:url('/assets/images/tilapia-pond-hero.jpg')">
-      <div class="container">
-        <h1 class="page-title" style="color:var(--accent-water);">Aquaculture — Cold-Climate Tilapia in Kavutiri</h1>
-        <p class="page-subtitle">Crafting resilient water-based atmospheres with ponds, dams, hatcheries, and training.</p>
+  <!-- HERO -->
+  <section id="home" class="hero">
+    <div class="container">
+      <div class="row">
+        <div class="grow">
+          <h1>USB‑MDR Tilapia RAS: Five Products. One Sustainable Food System.</h1>
+          <p>We help farms, schools, and investors scale resilient aquaculture: diversify production, enhance nutrient management, use water more intensively, and increase economic performance.</p>
+          <div class="badges">
+            <span class="badge">100 MT/year Tilapia</span>
+            <span class="badge">Nitrate → N₂ via USB‑MDR</span>
+            <span class="badge">Avg feed load 333 kg/day</span>
+            <span class="badge">99.5% survival</span>
+          </div>
+          <div class="actions">
+            <a class="btn primary" href="#products">Explore Products</a>
+            <a class="btn ghost" href="#case">Read the White Paper</a>
+          </div>
+        </div>
+        <div class="grow">
+          <div class="card shadow-ring">
+            <span class="tag">Sustainability Pillars</span>
+            <ul>
+              <li><b>Diversify production:</b> Fish + fruits & vegetables</li>
+              <li><b>Enhance nutrients:</b> Expanded clay bio‑media for reuse</li>
+              <li><b>Intensive water use:</b> ~1.4 m³/kg tilapia</li>
+              <li><b>Economic performance:</b> Labor ≈ 0.04 h/kg (vs 0.27)</li>
+            </ul>
+            <p class="note">Figures from the integrated system case study (tilapia RAS with USB‑MDR, aquaponics vs pond filter variants).</p>
+          </div>
+        </div>
       </div>
-    </header>
+    </div>
+  </section>
 
-    <section class="container">
-      <h2 style="color:var(--accent-water);">Atmospheres We Create</h2>
-      <div class="grid grid-cols-2">
+  <!-- PRODUCTS -->
+  <section id="products">
+    <div class="container">
+      <h2>Product Portfolio</h2>
+      <p class="lead">Five turnkey offerings to fit your scale and goals. Combine modules to build a closed‑loop, profitable system.</p>
+      <div class="grid cols-3">
         <article class="card">
-          <h3 style="color:var(--accent-water);">Resilient Water</h3>
-          <p class="small muted">Dams, water pans, and ponds designed to capture rainfall and anchor aquatic life.</p>
+          <h3>AquaPro™ Tank System</h3>
+          <small>One fish tank • One pond filter • One pump</small>
+          <ul>
+            <li>Starter kit for schools & smallholders</li>
+            <li>Simple ops, fast setup, ground‑level installation</li>
+            <li>Upgrade‑ready to USB‑MDR loop</li>
+          </ul>
+          <div class="kpis">
+            <div class="kpi"><small>Water input</small><b>~1.4 m³/kg</b></div>
+            <div class="kpi"><small>Energy</small><b>157 kWh/kg*</b></div>
+          </div>
         </article>
         <article class="card">
-          <h3 style="color:var(--accent-water);">Living Systems</h3>
-          <p class="small muted">Tilapia hatcheries and selective breeding as living atmosphere engines.</p>
+          <h3>NutriFlow™ Water Treatment</h3>
+          <small>Expanded clay pellets replace water body</small>
+          <ul>
+            <li>High surface area biofiltration & denitrification</li>
+            <li>Stabilizes water quality at higher density</li>
+            <li>Drop‑in for existing RAS</li>
+          </ul>
+          <div class="kpis">
+            <div class="kpi"><small>N utilization</small><b>0.28 kg/kg</b></div>
+            <div class="kpi"><small>P utilization</small><b>0.32 kg/kg</b></div>
+          </div>
         </article>
         <article class="card">
-          <h3 style="color:var(--accent-macadamia);">Nourishment</h3>
-          <p class="small muted">On‑farm feed mills and local ingredients creating cycles of abundance.</p>
+          <h3>AgriGrow™ Crop Extension</h3>
+          <small>Swap aquatic plants → fruits & vegetables</small>
+          <ul>
+            <li>Diversify revenue with premium produce</li>
+            <li>Optimized for leafy & fruiting crops</li>
+            <li>Compact racks & greenhouse options</li>
+          </ul>
+          <div class="kpis">
+            <div class="kpi"><small>Water reuse</small><b>Closed‑loop</b></div>
+            <div class="kpi"><small>By‑products (N/P)</small><b>Monetizable</b></div>
+          </div>
         </article>
         <article class="card">
-          <h3 style="color:var(--accent-coffee);">Community Flow</h3>
-          <p class="small muted">Training schools, youth, and retirees to steward water and fish together.</p>
+          <h3>EcoConstruct™ Install Kit</h3>
+          <small>Ground‑level, modular construction</small>
+          <ul>
+            <li>Scales from backyard to commercial</li>
+            <li>Pre‑fabricated skids, low civil works</li>
+            <li>Compliant with school & community sites</li>
+          </ul>
+          <div class="kpis">
+            <div class="kpi"><small>Install time</small><b>&lt; 48 hours</b></div>
+            <div class="kpi"><small>Footprint</small><b>Ultra‑compact</b></div>
+          </div>
+        </article>
+        <article class="card">
+          <h3>AquaEconomy™ Productivity</h3>
+          <small>Training • SOPs • Labor‑efficiency tools</small>
+          <ul>
+            <li>7× labor productivity vs. baseline</li>
+            <li>FC & feeding curves, alarm playbooks</li>
+            <li>Investor‑grade KPI dashboards</li>
+          </ul>
+          <div class="kpis">
+            <div class="kpi"><small>Labor</small><b>0.04 h/kg</b></div>
+            <div class="kpi"><small>FCR target</small><b>~1.34</b></div>
+          </div>
+        </article>
+        <article class="card">
+          <h3>USB‑MDR Core™</h3>
+          <small>Upflow Sludge Blanket — Denitrifying reactor</small>
+          <ul>
+            <li>Nitrate → Nitrogen gas (less water exchange)</li>
+            <li>Improves stability & scalability</li>
+            <li>Lower discharge (N, P, COD)</li>
+          </ul>
+          <div class="kpis">
+            <div class="kpi"><small>Survival</small><b>~99.5%</b></div>
+            <div class="kpi"><small>Max feed</small><b>349 kg/day</b></div>
+          </div>
         </article>
       </div>
-      <p style="margin-top:18px"><a class="cta" href="/order.html">Book a consultation</a></p>
-    </section>
-  </main>
+      <p class="note">*Energy figure shown for pond‑filter variant; aquaponic variant ≈ 214 kWh/kg tilapia produced.</p>
+    </div>
+  </section>
 
-  <!-- LANDSCAPING PAGE -->
-  <main id="page-landscaping" class="page-content hidden" role="main">
-    <header class="page-hero" style="background-image:url('/assets/images/landscaping-hero.jpg')">
-      <div class="container">
-        <h1 class="page-title" style="color:var(--accent-macadamia);">Landscaping — Crafting Atmospheres with Plants</h1>
-        <p class="page-subtitle">We design moods, vibes, and spaces through ecological planting.</p>
+  <!-- CASE STUDY (WHITE PAPER SUMMARY) -->
+  <section id="case" style="background:#ffffff;border-top:1px solid #e5e7eb;border-bottom:1px solid #e5e7eb">
+    <div class="container">
+      <h2>Case Study: 100 MT/year Tilapia RAS with USB‑MDR</h2>
+      <p class="lead">Stocking 70 g → harvest 845 g in 24 weeks across 12 tanks (20.5 m³ each). Two phases with tank splitting at week 12; sawtooth feed pattern; max feed 349 kg/day; average 333 kg/day.</p>
+      <div class="grid cols-3">
+        <div class="card">
+          <h3>Farm Profile</h3>
+          <ul>
+            <li>Species: <b>Oreochromis niloticus</b></li>
+            <li>Annual output: <b>100 MT</b> (~118,946 fish)</li>
+            <li>Survival: <b>~99.5%</b></li>
+            <li>FCR: <b>~1.34</b></li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Culture Plan</h3>
+          <ul>
+            <li>12 tanks in blocks of 3</li>
+            <li>Stock every 3 weeks (~6,862 fish)</li>
+            <li>Phase 1: 70 → 370 g (12 weeks)</li>
+            <li>Phase 2: 370 → 845 g (12 weeks)</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Operations</h3>
+          <ul>
+            <li>Max density design ≈ 140 kg/m³</li>
+            <li>Water quality stabilized by USB‑MDR</li>
+            <li>Lower discharge of N, P, COD</li>
+          </ul>
+        </div>
       </div>
-    </header>
+    </div>
+  </section>
 
-    <section class="container">
-      <h2 style="color:var(--accent-coffee);">Atmospheres We Create</h2>
-      <div class="grid grid-cols-2">
-        <article class="card">
-          <h3 style="color:var(--accent-coffee);">Tranquility</h3>
-          <p class="small muted">Bamboo groves, medicinal gardens, and water features — calm and clarity made visible.</p>
-        </article>
-        <article class="card">
-          <h3 style="color:var(--accent-macadamia);">Energy</h3>
-          <p class="small muted">Bougainvillea bursts, vibrant perennials, and pollinator havens radiating vitality.</p>
-        </article>
-        <article class="card">
-          <h3 style="color:var(--accent-coffee);">Community</h3>
-          <p class="small muted">Shaded gathering trees, edible hedges, and outdoor fire circles where people connect.</p>
-        </article>
-        <article class="card">
-          <h3 style="color:var(--accent-macadamia);">Resilience</h3>
-          <p class="small muted">Indigenous corridors, drought-smart groundcovers, and carbon-holding soils for the future.</p>
-        </article>
+  <!-- RESULTS & COMPARISON -->
+  <section id="results">
+    <div class="container">
+      <h2>Measured Results</h2>
+      <p class="lead">Comparison of <b>System with Aquaponic</b> beds vs. <b>System with Pond Filter</b> (tilapia produced basis).</p>
+      <div class="grid cols-2">
+        <div class="card">
+          <h3>Energy Efficiency</h3>
+          <table>
+            <thead><tr><th>Metric</th><th>Aquaponic</th><th>Pond Filter</th></tr></thead>
+            <tbody>
+              <tr><td>Total energy [kWh/kg]</td><td>214.43</td><td>157.41</td></tr>
+              <tr><td>Heat [kWh/kg]</td><td>214.38</td><td>157.36</td></tr>
+              <tr><td>Electrical [kWh/kg]</td><td>0.05</td><td>0.05</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="card">
+          <h3>Water Use</h3>
+          <table>
+            <thead><tr><th>Metric</th><th>Aquaponic</th><th>Pond Filter</th></tr></thead>
+            <tbody>
+              <tr><td>Water input [m³/kg]</td><td>1.4</td><td>1.4</td></tr>
+              <tr><td>Water output [m³/kg]</td><td>1.4</td><td>1.3</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="card">
+          <h3>Nutrient Utilization</h3>
+          <table>
+            <thead><tr><th>Metric</th><th>Aquaponic</th><th>Pond Filter</th></tr></thead>
+            <tbody>
+              <tr><td>N in tilapia / N input [kg/kg]</td><td>0.28</td><td>0.24</td></tr>
+              <tr><td>P in tilapia / P input [kg/kg]</td><td>0.32</td><td>0.27</td></tr>
+              <tr><td>N in output water / N input</td><td>0.21</td><td>0.22</td></tr>
+              <tr><td>P in output water / P input</td><td>0.17</td><td>0.29</td></tr>
+              <tr><td>N in by‑products / N input</td><td>0.01</td><td>0.00</td></tr>
+              <tr><td>P in by‑products / P input</td><td>0.01</td><td>0.00</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="card">
+          <h3>Productivity per Labor</h3>
+          <table>
+            <thead><tr><th>Metric</th><th>Aquaponic</th><th>Pond Filter</th></tr></thead>
+            <tbody>
+              <tr><td>Time for operation [h/kg]</td><td>0.04</td><td>0.27</td></tr>
+            </tbody>
+          </table>
+          <p class="note">Aquaponic configuration shows ~7× labor efficiency vs. pond‑filter system.</p>
+        </div>
       </div>
-      <p style="margin-top:18px"><a class="cta" href="/order.html">Request a landscaping visit</a></p>
-    </section>
-  </main>
+    </div>
+  </section>
+
+  <!-- CHANNELS -->
+  <section id="channels" style="background:#ffffff;border-top:1px solid #e5e7eb;border-bottom:1px solid #e5e7eb">
+    <div class="container">
+      <h2>Go‑to‑Market Channels</h2>
+      <p class="lead">We meet customers where they are — digitally, on the farm, and through institutional partners.</p>
+      <div class="grid cols-3">
+        <div class="card">
+          <h3>Digital</h3>
+          <span class="pill">Instagram Reels</span>
+          <span class="pill">TikTok Demos</span>
+          <span class="pill">YouTube Case Studies</span>
+          <span class="pill">LinkedIn White Papers</span>
+          <span class="pill">E‑commerce</span>
+        </div>
+        <div class="card">
+          <h3>Physical</h3>
+          <span class="pill">Demo Farms</span>
+          <span class="pill">Schools & TVETs</span>
+          <span class="pill">Hotels & Restaurants</span>
+          <span class="pill">Agri Expos</span>
+          <span class="pill">Climate Fairs</span>
+        </div>
+        <div class="card">
+          <h3>Partnerships</h3>
+          <span class="pill">NGOs</span>
+          <span class="pill">Govt. Programs</span>
+          <span class="pill">Co‑ops</span>
+          <span class="pill">Impact Investors</span>
+          <span class="pill">Universities</span>
+        </div>
+      </div>
+      <div class="card" style="margin-top:18px">
+        <h3>Messaging Hooks</h3>
+        <ul>
+          <li><b>Grow Fish + Veggies in Your Backyard</b> — homes & schools</li>
+          <li><b>Slash Water Use, Boost Yield</b> — farmers in water‑scarce areas</li>
+          <li><b>Farm‑to‑Table, in One Tank</b> — hospitality & retail</li>
+          <li><b>Invest in Sustainable Protein</b> — commercial farms & funds</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="container">
+      <h2>Book a Consultation</h2>
+      <p class="lead">Tell us about your site and goals. We’ll design the right combination of the five products for you.</p>
+      <div class="row">
+        <form class="card grow" onsubmit="event.preventDefault();openModal('thanks');">
+          <div class="field"><label for="name">Name</label><input id="name" required placeholder="Full name"></div>
+          <div class="field"><label for="email">Email</label><input id="email" type="email" required placeholder="name@example.com"></div>
+          <div class="field"><label for="segment">I am a…</label>
+            <select id="segment" required>
+              <option value="" disabled selected>Select one</option>
+              <option>Smallholder / Household</option>
+              <option>School / TVET</option>
+              <option>Commercial Farm</option>
+              <option>Hotel / Restaurant</option>
+              <option>Investor / NGO / Govt.</option>
+            </select>
+          </div>
+          <div class="field"><label for="msg">Project Notes</label><textarea id="msg" rows="4" placeholder="Site size, location, timeline, target outputs…"></textarea></div>
+          <button class="btn primary" type="submit">Send Request</button>
+        </form>
+        <div class="card grow">
+          <h3>Why Work With Us</h3>
+          <ul>
+            <li>Proven case study: 100 MT/year RAS with USB‑MDR</li>
+            <li>Modular products from starter kits to industrial</li>
+            <li>Training, SOPs, and dashboards included</li>
+            <li>Designed for ground‑level installations</li>
+          </ul>
+          <div class="kpis">
+            <div class="kpi"><small>Survival</small><b>~99.5%</b></div>
+            <div class="kpi"><small>Energy</small><b>↓ up to 26%</b></div>
+            <div class="kpi"><small>Labor</small><b>7× efficiency</b></div>
+            <div class="kpi"><small>Water</small><b>~1.4 m³/kg</b></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MODALS -->
+  <div id="thanks" class="modal" role="dialog" aria-modal="true" aria-labelledby="thanks-title">
+    <div class="sheet">
+      <h3 id="thanks-title">Thanks! 🎉</h3>
+      <p>We’ve received your request. Our team will follow up to schedule your consultation and share a tailored system design.</p>
+      <div style="margin-top:10px"><button class="btn ghost" onclick="closeModal('thanks')">Close</button></div>
+    </div>
+  </div>
 
   <footer>
-    <div class="small muted">Rustic Garden • Kavutiri, Embu — Crafting Vibrant Garden Atmospheres in Land & Water</div>
+    <div class="container center">
+      <div>© 2025 Aquaculture Portfolio • Tilapia RAS & USB‑MDR Systems</div>
+      <div class="note">Data points reflect the supplied case study comparing aquaponic vs pond filter configurations.
+      </div>
+    </div>
   </footer>
 
+  <script>
+    function openModal(id){document.getElementById(id).classList.add('show')}
+    function closeModal(id){document.getElementById(id).classList.remove('show')}
+  </script>
 </body>
 </html>
