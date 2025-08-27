@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Events • Rustic Garden</title>
+  <meta name="description" content="Join Rustic Garden for cultural festivals, wellness retreats, aquaculture showcases, and family events. Book your spot and create unforgettable memories." />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary: #2c5530;
+      --secondary: #8b7355;
+      --accent: #d4a574;
+      --text: #1a1a1a;
+      --text-light: #6b7280;
+      --bg: #fefefe;
+      --bg-alt: #f8fafc;
+      --border: #e5e7eb;
+      --shadow: 0 4px 12px rgba(0,0,0,0.1);
+      --radius: 12px;
+    }
+
+    body {
+      margin: 0;
+      font: 400 16px/1.6 'Inter', system-ui, sans-serif;
+      color: var(--text);
+      background: var(--bg);
+    }
+
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
+    h1, h2, h3 { font-family: 'Playfair Display', serif; font-weight: 600; }
+
+    /* Header */
+    .main-header {
+      background: white;
+      padding: 1rem 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: var(--shadow);
+    }
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo { display: flex; align-items: center; gap: 1rem; text-decoration: none; color: inherit; }
+    .logo-image {
+      width: 50px; height: 50px;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      border-radius: var(--radius);
+      display: flex; align-items: center; justify-content: center;
+      color: white; font: 700 1.5rem/1 'Playfair Display';
+    }
+    .logo-text h1 { font-size: 1.5rem; }
+    .logo-tagline { font-size: 0.85rem; color: var(--text-light); }
+
+    /* Navigation */
+    .nav-list { display: flex; list-style: none; gap: 0.5rem; }
+    .nav-link {
+      padding: 0.75rem 1.25rem;
+      border-radius: 6px;
+      text-decoration: none;
+      color: var(--text-light);
+      font-weight: 500;
+      transition: all 0.3s;
+    }
+    .nav-link:hover, .nav-link.active { background: var(--primary); color: white; }
+
+    /* Hero */
+    .hero {
+      padding: 5rem 0;
+      text-align: center;
+      background: linear-gradient(135deg, var(--bg) 0%, var(--bg-alt) 100%);
+    }
+    .hero h1 { font-size: clamp(2rem, 5vw, 3rem); margin-bottom: 1rem; }
+    .hero p { max-width: 800px; margin: 0 auto; font-size: 1.15rem; color: var(--text-light); }
+
+    /* Events grid */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin: 3rem 0;
+    }
+    .card {
+      background: white;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      transition: transform 0.3s;
+    }
+    .card:hover { transform: translateY(-4px); }
+    .card img { width: 100%; height: 200px; object-fit: cover; }
+    .card-content { padding: 1.5rem; }
+    .card h3 { margin-bottom: 0.5rem; font-size: 1.25rem; }
+    .card p { color: var(--text-light); margin-bottom: 1rem; }
+
+    /* Booking */
+    .booking {
+      background: var(--bg-alt);
+      padding: 3rem 1rem;
+      border-radius: var(--radius);
+      text-align: center;
+      box-shadow: var(--shadow);
+      margin-bottom: 3rem;
+    }
+    .booking h2 { margin-bottom: 1rem; }
+    .booking p { margin-bottom: 1.5rem; color: var(--text-light); }
+    .btn {
+      display: inline-block;
+      padding: 0.8rem 1.5rem;
+      background: var(--primary);
+      color: white;
+      border-radius: var(--radius);
+      text-decoration: none;
+      font-weight: 600;
+      transition: background 0.3s;
+    }
+    .btn:hover { background: #1e3a21; }
+
+    /* Footer */
+    .footer {
+      background: var(--text);
+      color: white;
+      padding: 3rem 0 2rem;
+    }
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+    .footer h4 { margin-bottom: 1rem; color: var(--accent); }
+    .footer a { color: #d1d5db; text-decoration: none; }
+    .footer a:hover { color: white; }
+    .footer-bottom {
+      text-align: center;
+      color: #9ca3af;
+      border-top: 1px solid #374151;
+      padding-top: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <header class="main-header">
+    <div class="container">
+      <div class="header-content">
+        <a href="index.html" class="logo">
+          <div class="logo-image">RG</div>
+          <div class="logo-text">
+            <h1>Rustic Garden</h1>
+            <div class="logo-tagline">Academic Heritage & Cultural Research</div>
+          </div>
+        </a>
+        <nav>
+          <ul class="nav-list">
+            <li><a href="index.html" class="nav-link">Home</a></li>
+            <li><a href="our-story.html" class="nav-link">Our Story</a></li>
+            <li><a href="wellness.html" class="nav-link">Wellness</a></li>
+            <li><a href="coffee.html" class="nav-link">Coffee</a></li>
+            <li><a href="macadamia.html" class="nav-link">Macadamia</a></li>
+            <li><a href="aquaculture.html" class="nav-link">Aquaculture</a></li>
+            <li><a href="seedlings.html" class="nav-link">Seedlings</a></li>
+            <li><a href="events.html" class="nav-link active">Events</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <h1>Events at Rustic Garden</h1>
+        <p>Celebrate culture, wellness, and nature. Join us for unforgettable experiences in the heart of Embu.</p>
+      </div>
+    </section>
+
+    <section class="container">
+      <div class="grid">
+        <div class="card">
+          <img src="images/rg1.jpg" alt="Wellness retreat event">
+          <div class="card-content">
+            <h3>Wellness Retreats</h3>
+            <p>Join guided sylvotherapy walks, meditation, and nature connection sessions for relaxation and renewal.</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <img src="images/rg2.jpg" alt="Coffee tasting event">
+          <div class="card-content">
+            <h3>Coffee Tastings</h3>
+            <p>Experience Charlie’s Coffee with guided tastings, roasting demos, and stories from local growers.</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <img src="images/rg3.jpg" alt="Aquaculture showcase">
+          <div class="card-content">
+            <h3>Aquaculture Showcase</h3>
+            <p>Explore our tilapia and catfish ponds, learn about sustainable fish farming, and enjoy fresh tastings.</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <img src="images/rg4.jpg" alt="Community festival">
+          <div class="card-content">
+            <h3>Community Festivals</h3>
+            <p>Celebrate Embu heritage through food, dance, and storytelling in our rustic open-air grounds.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="container">
+      <div class="booking">
+        <h2>Book Your Spot</h2>
+        <p>Reserve a place at our upcoming events. Spaces are limited!</p>
+        <a href="mailto:GroupNomad@outlook.com?subject=Event Booking Request" class="btn">Book Now</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div>
+          <h4>Contact</h4>
+          <ul>
+            <li>Mobile: <a href="tel:+254722704997">+254 722 704 997</a></li>
+            <li>Email: <a href="mailto:GroupNomad@outlook.com">GroupNomad@outlook.com</a></li>
+            <li>Location: Kavutiri, Embu County</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Explore</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="our-story.html">Our Story</a></li>
+            <li><a href="coffee.html">Coffee</a></li>
+            <li><a href="aquaculture.html">Aquaculture</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Community</h4>
+          <ul>
+            <li><a href="wellness.html">Wellness</a></li>
+            <li><a href="seedlings.html">Seedlings</a></li>
+            <li><a href="events.html">Events</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; <span id="y"></span> Rustic Garden. All Rights Reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
