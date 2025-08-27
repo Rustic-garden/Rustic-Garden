@@ -1,139 +1,283 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Our Story • Rustic Garden</title>
-  <meta name="description" content="Rustic Garden — our story, roots, and inspiration in Embu. Learn about the heritage behind our coffee, aquaculture, and landscaping work." />
-  <meta property="og:title" content="Our Story • Rustic Garden" />
-  <meta property="og:description" content="Our roots and inspiration in Embu: community, heritage, and sustainable agriculture." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="/our-story.html" />
-  <meta name="theme-color" content="#0f172a" />
-  <link rel="icon" href="/favicon.ico" />
+  <meta name="description" content="Rustic Garden — our story, roots, and inspiration in Embu. Learn about our heritage, wellness, aquaculture, Charlie’s Coffee, and sustainable water innovations." />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+
   <style>
     :root {
-      --bg: #0b1020;           /* deep navy */
-      --card: #0f172a;         /* slate-900 */
-      --muted: #94a3b8;        /* slate-400 */
-      --text: #e2e8f0;         /* slate-200 */
-      --accent: #22c55e;       /* green-500 */
-      --ring: rgba(34,197,94,0.45);
+      --primary: #2c5530;
+      --secondary: #8b7355;
+      --accent: #d4a574;
+      --text: #1a1a1a;
+      --text-light: #6b7280;
+      --bg: #fefefe;
+      --bg-alt: #f8fafc;
+      --border: #e5e7eb;
+      --shadow: 0 4px 12px rgba(0,0,0,0.1);
+      --radius: 12px;
     }
-    * { box-sizing: border-box }
-    html, body { height: 100% }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
     body {
-      margin: 0;
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
-      background: radial-gradient(1200px 800px at 20% -10%, #172554 0%, transparent 60%),
-                  radial-gradient(1000px 600px at 120% 10%, #064e3b 0%, transparent 55%),
-                  var(--bg);
+      font: 400 16px/1.6 'Inter', system-ui, sans-serif;
       color: var(--text);
-      line-height: 1.55;
+      background: var(--bg);
     }
-    a { color: var(--accent); text-decoration: none }
-    a:hover { text-decoration: underline }
 
-    .wrap { max-width: 1100px; margin: 0 auto; padding: 20px }
-    header {
-      position: sticky; top: 0; z-index: 40;
-      background: linear-gradient(180deg, rgba(11,16,32,0.9), rgba(11,16,32,0.6));
-      backdrop-filter: blur(8px);
-      border-bottom: 1px solid rgba(148,163,184,0.15);
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
     }
-    .brand { display:flex; align-items:center; gap:.6rem; font-weight: 700; letter-spacing:.2px }
-    .brand .dot { width:10px; height:10px; border-radius:999px; background: var(--accent); box-shadow:0 0 0 6px rgba(34,197,94,.15) }
-    nav a { margin-left: 18px; font-weight: 600; color: var(--text); opacity:.9 }
-    nav a:hover { opacity:1 }
 
-    .hero { padding: 60px 0 24px }
-    .hero h1 { font-size: clamp(2rem, 5vw, 3rem); margin:.2rem 0 .75rem }
-    .lead { color: var(--muted); max-width: 70ch }
-
-    .grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 18px; margin: 26px 0 50px }
-    .card { grid-column: span 12; background: linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.01)); border: 1px solid rgba(148,163,184,.15); border-radius: 18px; padding: 22px; box-shadow: 0 10px 30px rgba(2,6,23,.35) }
-    @media (min-width: 700px) { .card.half { grid-column: span 6 } }
-
-    .card h2 { margin: 0 0 8px; font-size: 1.15rem }
-    .card p { margin: 0 0 12px; color: var(--muted) }
-    .card .actions { display:flex; flex-wrap:wrap; gap:12px; margin-top: 12px }
-
-    .btn {
-      display:inline-flex; align-items:center; gap:.5rem; padding: .7rem 1rem; border-radius: 12px; font-weight: 700; border: 1px solid rgba(148,163,184,.3);
-      background: linear-gradient(180deg, rgba(34,197,94,.18), rgba(34,197,94,.08));
-      box-shadow: inset 0 1px 0 rgba(255,255,255,.1), 0 8px 20px rgba(34,197,94,.12);
+    h1, h2, h3 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 600;
     }
-    .btn:focus-visible { outline: 3px solid var(--ring); outline-offset: 2px }
 
-    .note { font-size: .925rem; color: var(--muted) }
-    footer { border-top: 1px solid rgba(148,163,184,.15); padding: 30px 0; margin-top: 30px; color: var(--muted) }
+    /* Header */
+    .main-header {
+      background: white;
+      padding: 1rem 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: var(--shadow);
+    }
+
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .logo-image {
+      width: 50px;
+      height: 50px;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      border-radius: var(--radius);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font: 700 1.5rem/1 'Playfair Display';
+    }
+
+    .logo-text h1 { font-size: 1.5rem; }
+    .logo-tagline { font-size: 0.85rem; color: var(--text-light); }
+
+    /* Navigation */
+    .nav-list {
+      display: flex;
+      list-style: none;
+      gap: 0.5rem;
+    }
+
+    .nav-link {
+      padding: 0.75rem 1.25rem;
+      border-radius: 6px;
+      text-decoration: none;
+      color: var(--text-light);
+      font-weight: 500;
+      transition: all 0.3s;
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+      background: var(--primary);
+      color: white;
+    }
+
+    /* Hero */
+    .hero {
+      padding: 5rem 0;
+      text-align: center;
+      background: url('images/hero-banner.jpg') center/cover no-repeat, linear-gradient(135deg, var(--bg) 0%, var(--bg-alt) 100%);
+      color: var(--text);
+    }
+
+    .hero h1 {
+      font-size: clamp(2rem, 5vw, 3rem);
+      margin-bottom: 1rem;
+    }
+
+    .hero p {
+      max-width: 800px;
+      margin: 0 auto;
+      font-size: 1.15rem;
+      color: var(--text-light);
+      background: rgba(255,255,255,0.7);
+      padding: 1rem;
+      border-radius: var(--radius);
+    }
+
+    /* Grid section */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin: 3rem 0;
+    }
+
+    .card {
+      background: white;
+      border-radius: var(--radius);
+      padding: 2rem;
+      box-shadow: var(--shadow);
+      transition: transform 0.3s;
+    }
+
+    .card:hover { transform: translateY(-4px); }
+    .card img { width: 100%; border-radius: var(--radius); margin-bottom: 1rem; }
+
+    .card h2 { margin-bottom: 0.75rem; font-size: 1.25rem; }
+    .card p { color: var(--text-light); }
+
+    /* Footer */
+    .footer {
+      background: var(--text);
+      color: white;
+      padding: 3rem 0 2rem;
+    }
+
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .footer h4 { margin-bottom: 1rem; color: var(--accent); }
+    .footer a { color: #d1d5db; text-decoration: none; }
+    .footer a:hover { color: white; }
+
+    .footer-bottom {
+      text-align: center;
+      color: #9ca3af;
+      border-top: 1px solid #374151;
+      padding-top: 1rem;
+    }
   </style>
 </head>
 <body>
-  <header role="banner">
-    <div class="wrap" style="display:flex; align-items:center; justify-content:space-between; padding: 12px 20px">
-      <a class="brand" href="index.html" aria-label="Back to Rustic Garden home">
-        <span class="dot" aria-hidden="true"></span>
-        <span>Rustic Garden</span>
-      </a>
-      <nav aria-label="Primary">
-        <a href="index.html">Home</a>
-        <a aria-current="page" href="#">Our Story</a>
-        <a href="products.html">Products</a>
-      </nav>
+  <header class="main-header">
+    <div class="container">
+      <div class="header-content">
+        <a href="index.html" class="logo">
+          <div class="logo-image">RG</div>
+          <div class="logo-text">
+            <h1>Rustic Garden</h1>
+            <div class="logo-tagline">Academic Heritage & Cultural Research</div>
+          </div>
+        </a>
+
+        <nav>
+          <ul class="nav-list">
+            <li><a href="index.html" class="nav-link">Home</a></li>
+            <li><a href="our-story.html" class="nav-link active">Our Story</a></li>
+            <li><a href="wellness.html" class="nav-link">Wellness</a></li>
+            <li><a href="coffee.html" class="nav-link">Coffee</a></li>
+            <li><a href="macadamia.html" class="nav-link">Macadamia</a></li>
+            <li><a href="aquaculture.html" class="nav-link">Aquaculture</a></li>
+            <li><a href="seedlings.html" class="nav-link">Seedlings</a></li>
+            <li><a href="events.html" class="nav-link">Events</a></li>
+          </ul>
+        </nav>
+      </div>
     </div>
   </header>
 
-  <main id="main" class="wrap" role="main">
+  <main role="main">
+    <!-- Hero -->
     <section class="hero">
-      <h1>Our Story</h1>
-      <p class="lead">
-        We are rooted in Embu, where mountain rains meet fertile soil and community traditions. Our coffee, aquaculture, and landscapes are shaped by the stories that came before us—and the ones we’re writing now.
-      </p>
+      <div class="container">
+        <h1>Our Story</h1>
+        <p>
+          Rooted in Embu, where mountain rains meet fertile soil and community traditions, Rustic Garden blends heritage with innovation. Our coffee, aquaculture, and landscapes are shaped by the stories of the past — and the sustainable future we’re writing together.
+        </p>
+      </div>
     </section>
 
-    <section class="grid" aria-label="Featured Sources and Links">
-      <article class="card half" aria-labelledby="card-embu-texts">
-        <h2 id="card-embu-texts">Embu Historical Texts (1974)</h2>
-        <p>
-          By <strong>Henry Stanley Kabeca Mwaniki</strong> — a foundational reference on Embu heritage.
-        </p>
-        <div class="actions">
-          <a class="btn" target="_blank" rel="noopener noreferrer" href="https://www.mathaga.com/products/embu-historical-texts-by-h-s-kabeca-mwaniki?utm_source=chatgpt.com">
-            View on Mathaga.com
-          </a>
-        </div>
-        <p class="note">External link opens in a new tab.</p>
-      </article>
+    <!-- Highlights Section -->
+    <section class="container">
+      <div class="grid">
+        <article class="card">
+          <img src="images/wellness.jpg" alt="Wellness and sylvotherapy">
+          <h2>Wellness & Sylvotherapy</h2>
+          <p>Discover sylvotherapy — the healing power of trees. Reduce stress, boost immunity, and spark creativity by reconnecting with nature at Rustic Garden.</p>
+        </article>
 
-      <article class="card half" aria-labelledby="card-101tribes">
-        <h2 id="card-101tribes">Background on the Embu People</h2>
-        <p>Accessible overview, customs, and context for newcomers to the region and culture.</p>
-        <div class="actions">
-          <a class="btn" target="_blank" rel="noopener noreferrer" href="https://www.101lasttribes.com/tribes/embu.html">
-            Read at 101 Last Tribes
-          </a>
-        </div>
-        <p class="note">External link opens in a new tab.</p>
-      </article>
+        <article class="card">
+          <img src="images/aquaculture.jpg" alt="Fish farming aquaculture">
+          <h2>Aquaculture & Food Security</h2>
+          <p>We raise tilapia and catfish using eco-friendly ponds, boosting food security, job creation, and environmental sustainability.</p>
+        </article>
 
-      <article class="card" aria-labelledby="card-commitment">
-        <h2 id="card-commitment">People • Land • Continuity</h2>
-        <p>
-          Rustic Garden is a community-first effort: fair partnerships with growers and fishers, climate-smart practices, and regenerative design. We pair local knowledge with modern tools to nurture livelihoods today—without compromising tomorrow.
-        </p>
-      </article>
+        <article class="card">
+          <img src="images/coffee.jpg" alt="Charlie’s Coffee">
+          <h2>Charlie’s Coffee</h2>
+          <p>From the fertile slopes of Kavutiri, our honey-processed Arabica beans bring a sweet, rich cup of Kenyan excellence, hand-picked and carefully roasted.</p>
+        </article>
+
+        <article class="card">
+          <img src="images/water.jpg" alt="Sustainable irrigation and water harvesting">
+          <h2>Water Innovation</h2>
+          <p>Our drip irrigation and water harvesting systems conserve resources, boost yields, and nurture the land for generations to come.</p>
+        </article>
+      </div>
     </section>
   </main>
 
-  <footer role="contentinfo">
-    <div class="wrap">
-      <small>© <span id="y"></span> Rustic Garden. Built with love in Embu & beyond.</small>
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div>
+          <h4>Contact</h4>
+          <ul>
+            <li>Mobile: <a href="tel:+254722704997">+254 722 704 997</a></li>
+            <li>Email: <a href="mailto:GroupNomad@outlook.com">GroupNomad@outlook.com</a></li>
+            <li>Location: Kavutiri, Embu County</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Explore</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="our-story.html">Our Story</a></li>
+            <li><a href="coffee.html">Coffee</a></li>
+            <li><a href="aquaculture.html">Aquaculture</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Community</h4>
+          <ul>
+            <li><a href="wellness.html">Wellness</a></li>
+            <li><a href="seedlings.html">Seedlings</a></li>
+            <li><a href="events.html">Events</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; <span id="y"></span> Rustic Garden. All Rights Reserved.</p>
+      </div>
     </div>
   </footer>
 
   <script>
-    // Set year
+    // Set year dynamically
     document.getElementById('y').textContent = new Date().getFullYear();
   </script>
 </body>
