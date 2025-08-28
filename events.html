@@ -46,13 +46,7 @@
       align-items: center;
     }
     .logo { display: flex; align-items: center; gap: 1rem; text-decoration: none; color: inherit; }
-    .logo-image {
-      width: 50px; height: 50px;
-      background: linear-gradient(135deg, var(--primary), var(--accent));
-      border-radius: var(--radius);
-      display: flex; align-items: center; justify-content: center;
-      color: white; font: 700 1.5rem/1 'Playfair Display';
-    }
+    .logo-image { width: 50px; height: 50px; }
     .logo-text h1 { font-size: 1.5rem; }
     .logo-tagline { font-size: 0.85rem; color: var(--text-light); }
 
@@ -90,12 +84,43 @@
       box-shadow: var(--shadow);
       overflow: hidden;
       transition: transform 0.3s;
+      position: relative;
     }
     .card:hover { transform: translateY(-4px); }
     .card img { width: 100%; height: 200px; object-fit: cover; }
     .card-content { padding: 1.5rem; }
     .card h3 { margin-bottom: 0.5rem; font-size: 1.25rem; }
-    .card p { color: var(--text-light); margin-bottom: 1rem; }
+
+    /* Progressive disclosure nudges */
+    .expanded { display: none; color: var(--text-light); margin-top: 1rem; animation: fadeIn 0.4s ease-in; }
+    .nudge-card.active .expanded { display: block; }
+    .nudge-card.active .read-more { display: none; }
+
+    .read-more, .close-btn {
+      background: none;
+      border: none;
+      color: var(--primary);
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 0.5rem;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Application section */
+    .application {
+      background: var(--bg-alt);
+      padding: 3rem 1.5rem;
+      border-radius: var(--radius);
+      margin: 4rem 0;
+      text-align: center;
+      box-shadow: var(--shadow);
+    }
+    .application h2 { margin-bottom: 1rem; }
+    .application p { max-width: 800px; margin: 0.5rem auto; color: var(--text-light); }
 
     /* Booking */
     .booking {
@@ -148,7 +173,26 @@
     <div class="container">
       <div class="header-content">
         <a href="index.html" class="logo">
-          <div class="logo-image">RG</div>
+          <div class="logo-image">
+            <!-- Inline SVG Logo -->
+            <svg width="50" height="50" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="100" cy="100" r="95" fill="none" stroke="#6B4423" stroke-width="6"/>
+              <circle cx="100" cy="100" r="75" fill="#F5F1E8"/>
+              <circle cx="100" cy="100" r="45" fill="none" stroke="#6B4423" stroke-width="2"/>
+              <g transform="translate(100, 100)">
+                <line x1="0" y1="20" x2="0" y2="-25" stroke="#6B4423" stroke-width="3" stroke-linecap="round"/>
+                <path d="M -2 -5 Q -18 -15 -25 -8 Q -20 5 -2 10 Z" fill="#6B4423"/>
+                <path d="M -4 -2 Q -16 -10 -20 -5 Q -16 5 -4 8 Z" fill="#8B7355"/>
+                <path d="M 2 -5 Q 18 -15 25 -8 Q 20 5 2 10 Z" fill="#6B4423"/>
+                <path d="M 4 -2 Q 16 -10 20 -5 Q 16 5 4 8 Z" fill="#8B7355"/>
+                <path d="M 0 -25 Q -8 -35 0 -40 Q 8 -35 0 -25 Z" fill="#6B4423"/>
+                <path d="M 0 -27 Q -5 -33 0 -36 Q 5 -33 0 -27 Z" fill="#8B7355"/>
+                <ellipse cx="0" cy="22" rx="15" ry="3" fill="none" stroke="#6B4423" stroke-width="1.5"/>
+                <ellipse cx="0" cy="26" rx="22" ry="4" fill="none" stroke="#6B4423" stroke-width="1.5"/>
+                <ellipse cx="0" cy="31" rx="28" ry="5" fill="none" stroke="#6B4423" stroke-width="1.5"/>
+              </g>
+            </svg>
+          </div>
           <div class="logo-text">
             <h1>Rustic Garden</h1>
             <div class="logo-tagline">Academic Heritage & Cultural Research</div>
@@ -178,37 +222,63 @@
       </div>
     </section>
 
+    <section class="application container">
+      <h2>Application of Reality and Imagination</h2>
+      <p><strong>Reality plane:</strong> Eating to live, coffee to fuel, fish to nourish — the Festival grounds you in necessity.</p>
+      <p><strong>Imagination plane:</strong> Choirs rising in the garden, weddings under open skies, laughter around the pool — these gestures transform necessity into abundance, pride, and the dream of flourishing.</p>
+    </section>
+
     <section class="container">
       <div class="grid">
-        <div class="card">
-          <img src="rg1.jpg" alt="Wellness retreat event">
+        <div class="card nudge-card">
+          <img src="images/rg1.jpg" alt="Wellness retreat event">
           <div class="card-content">
             <h3>Wellness Retreats</h3>
-            <p>Join guided sylvotherapy walks, meditation, and nature connection sessions for relaxation and renewal.</p>
+            <p class="teaser">Join guided sylvotherapy walks, meditation, and renewal...</p>
+            <div class="expanded">
+              <p>Breathe deep among trees, let silence frame your inner world. The Festival nudges you to imagine your life as whole, not fragmented.</p>
+              <button class="close-btn">Close</button>
+            </div>
+            <button class="read-more">Read More</button>
           </div>
         </div>
 
-        <div class="card">
+        <div class="card nudge-card">
           <img src="images/rg2.jpg" alt="Coffee tasting event">
           <div class="card-content">
             <h3>Coffee Tastings</h3>
-            <p>Experience Charlie’s Coffee with guided tastings, roasting demos, and stories from local growers.</p>
+            <p class="teaser">Experience Charlie’s Coffee with guided tastings...</p>
+            <div class="expanded">
+              <p>Picture Vivaldi’s *Four Seasons* in the garden, fresh tilapia sizzling in the pan, moka pots bubbling with Embu coffee. Weddings, choirs, birthdays — each becomes a stage for abundance.</p>
+              <button class="close-btn">Close</button>
+            </div>
+            <button class="read-more">Read More</button>
           </div>
         </div>
 
-        <div class="card">
+        <div class="card nudge-card">
           <img src="images/rg3.jpg" alt="Aquaculture showcase">
           <div class="card-content">
             <h3>Aquaculture Showcase</h3>
-            <p>Explore our tilapia and catfish ponds, learn about sustainable fish farming, and enjoy fresh tastings.</p>
+            <p class="teaser">Explore our tilapia and catfish ponds...</p>
+            <div class="expanded">
+              <p>Fish to fuel, but also fish to feast. By the pool, abundance reframed as joy, necessity elevated into cultural imagination.</p>
+              <button class="close-btn">Close</button>
+            </div>
+            <button class="read-more">Read More</button>
           </div>
         </div>
 
-        <div class="card">
+        <div class="card nudge-card">
           <img src="images/rg4.jpg" alt="Community festival">
           <div class="card-content">
             <h3>Community Festivals</h3>
-            <p>Celebrate Embu heritage through food, dance, and storytelling in our rustic open-air grounds.</p>
+            <p class="teaser">Celebrate Embu heritage through food and dance...</p>
+            <div class="expanded">
+              <p>School choirs, church groups, birthdays, weddings — ordinary gatherings reframed as constitutional pride, binding reality to imagination.</p>
+              <button class="close-btn">Close</button>
+            </div>
+            <button class="read-more">Read More</button>
           </div>
         </div>
       </div>
@@ -260,7 +330,10 @@
 
   <script>
     document.getElementById('y').textContent = new Date().getFullYear();
-  </script>
-</body>
-</html>
 
+    // Progressive disclosure nudges
+    document.querySelectorAll('.nudge-card').forEach(card => {
+      const readMore = card.querySelector('.read-more');
+      const closeBtn = card.querySelector('.close-btn');
+      readMore.addEventListener('click', () => card.classList.add('active'));
+      closeBtn.addEventListener('click', ()
