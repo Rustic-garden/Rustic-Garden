@@ -1,466 +1,677 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Macadamia | Premium Nuts from Mount Kenya | Rustic Garden</title>
-  <meta name="description" content="From seed to plate and back: discover Mount Kenya macadamias—our orchard story, gentle processing, nutrition, traceability, and export quality." />
-
-  <!-- Open Graph -->
-  <meta property="og:title" content="Mount Kenya Macadamia — Rustic Garden" />
-  <meta property="og:description" content="Creamy, crunchy, traceable. Discover our macadamias from orchard to table." />
-  <meta property="og:type" content="website" />
-  <meta property="og:image" content="https://example.com/macadamia-hero.jpg" />
-
-  <!-- Fonts (system stack for performance) -->
-  <style>
-    :root{
-      --bg: #0f1221;
-      --card: #171a2b;
-      --muted: #aab1c7;
-      --text: #f5f7ff;
-      --accent: #7dd3fc;
-      --accent-2: #a78bfa;
-      --success: #86efac;
-      --warning: #fde68a;
-      --ring: 0 0 0 0.35rem rgba(125, 211, 252, .25);
-      --radius: 18px;
-      --shadow: 0 10px 30px rgba(0,0,0,.35);
-      --grid-gap: clamp(1rem, 1.5vw, 1.5rem);
-    }
-    /* Reset + base */
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
-      background: radial-gradient(1200px 800px at 10% -10%, #1b2142 0%, transparent 60%),
-                  radial-gradient(1000px 700px at 90% 10%, #1e143a 0%, transparent 60%),
-                  var(--bg);
-      color: var(--text);
-      line-height: 1.65;
-      letter-spacing: .2px;
-    }
-    a{color:inherit;text-decoration:none}
-    img{max-width:100%;display:block}
-
-    /* Layout */
-    header{
-      position: sticky;
-      top:0;
-      z-index: 50;
-      backdrop-filter: blur(8px);
-      background: rgba(15, 18, 33, .6);
-      border-bottom: 1px solid rgba(255,255,255,.06);
-    }
-    .nav{
-      max-width: 1200px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1fr auto;
-      align-items: center;
-      padding: .75rem 1rem;
-      gap: 1rem;
-    }
-    .brand{
-      display:flex;align-items:center;gap:.75rem;
-      font-weight:700;
-      letter-spacing:.4px;
-    }
-    .brand-badge{
-      width:36px;height:36px;border-radius:12px;
-      display:grid;place-items:center;
-      background: linear-gradient(135deg, var(--accent), var(--accent-2));
-      color:#0b1324;font-weight:900;
-      box-shadow: var(--shadow);
-    }
-    nav a{
-      padding:.55rem .8rem;border-radius:12px;
-      border:1px solid transparent;
-      transition: .25s ease;
-      font-weight:600;
-      color: var(--muted);
-    }
-    nav a:hover{border-color: rgba(125,211,252,.3); color:var(--text); background: rgba(125,211,252,.06)}
-    nav a.active{color:var(--text); background: rgba(167,139,250,.12); border-color: rgba(167,139,250,.35)}
-    .links{display:flex;gap:.25rem;flex-wrap:wrap}
-
-    /* Hero */
-    .hero{
-      max-width:1200px;margin: clamp(1rem, 3vw, 2rem) auto 0;
-      padding: clamp(1rem, 2vw, 1.5rem);
-      display:grid;gap: var(--grid-gap);
-      grid-template-columns: 1.2fr .8fr;
-    }
-    @media (max-width: 900px){ .hero{grid-template-columns:1fr} }
-    .hero-card{
-      background:linear-gradient(180deg, rgba(23,26,43,.9), rgba(23,26,43,.6));
-      border:1px solid rgba(255,255,255,.08);
-      border-radius: var(--radius);
-      padding: clamp(1rem, 3vw, 2rem);
-      box-shadow: var(--shadow);
-      position: relative;
-      overflow:hidden;
-    }
-    .spark{
-      position:absolute; inset:-1px;
-      background: radial-gradient(500px 220px at 10% 0%, rgba(125,211,252,.12), transparent 60%),
-                  radial-gradient(400px 250px at 90% 20%, rgba(167,139,250,.12), transparent 60%);
-      pointer-events:none;
-    }
-    .eyebrow{color:var(--accent);font-weight:700;letter-spacing:.14em;text-transform:uppercase;font-size:.8rem}
-    h1{
-      margin:.35rem 0 0;
-      font-size: clamp(1.8rem, 2.8vw, 2.6rem);
-      line-height:1.15;
-    }
-    .lead{color:var(--muted);margin-top:.75rem;max-width:60ch}
-    .cta-row{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1rem}
-    .btn{
-      display:inline-flex;align-items:center;gap:.5rem;
-      padding:.8rem 1rem;border-radius:14px;border:1px solid transparent;
-      background: linear-gradient(135deg, var(--accent), var(--accent-2));
-      color:#0b1324;font-weight:800; letter-spacing:.2px;
-      box-shadow: var(--shadow);
-      transition: transform .1s ease;
-    }
-    .btn:hover{transform: translateY(-1px)}
-    .btn.secondary{
-      background: transparent; color: var(--text);
-      border-color: rgba(255,255,255,.14);
-    }
-
-    .hero-media{
-      background: linear-gradient(180deg, rgba(10,14,29,.5), rgba(10,14,29,.7)), url('https://images.unsplash.com/photo-1560807707-8cc77767d783?q=80&w=1600&auto=format&fit=crop') center/cover no-repeat;
-      border-radius: var(--radius);
-      border:1px solid rgba(255,255,255,.08);
-      min-height: 340px;
-      display:grid;align-content:end;
-      overflow:hidden;
-      box-shadow: var(--shadow);
-    }
-    .badge-stack{
-      display:flex; gap:.5rem; padding: .75rem;
-      background: rgba(0,0,0,.25);
-      backdrop-filter: blur(6px);
-    }
-    .pill{
-      padding:.4rem .7rem;border-radius:999px;font-weight:700;font-size:.85rem;
-      border:1px solid rgba(255,255,255,.15);
-      background: rgba(255,255,255,.06);
-      white-space:nowrap;
-    }
-
-    /* Content sections */
-    .container{max-width:1200px;margin: 0 auto;padding: clamp(1rem, 2vw, 1.5rem)}
-    section.block{
-      margin-top: clamp(1rem, 4vw, 2rem);
-      background: linear-gradient(180deg, rgba(23,26,43,.65), rgba(23,26,43,.35));
-      border:1px solid rgba(255,255,255,.08);
-      border-radius: var(--radius);
-      padding: clamp(1rem, 3vw, 2rem);
-      box-shadow: var(--shadow);
-    }
-    h2{margin:0 0 .25rem;font-size: clamp(1.25rem, 2.2vw, 1.6rem)}
-    .sub{color:var(--muted);margin:0 0 .75rem}
-
-    /* Feature grids */
-    .grid{display:grid;gap: var(--grid-gap)}
-    .grid-3{grid-template-columns: repeat(3,1fr)}
-    .grid-2{grid-template-columns: repeat(2,1fr)}
-    @media (max-width: 900px){ .grid-3,.grid-2{grid-template-columns:1fr} }
-
-    .card{
-      background: linear-gradient(180deg, rgba(10,14,29,.35), rgba(10,14,29,.15));
-      border:1px solid rgba(255,255,255,.08);
-      border-radius: 16px;
-      padding: 1rem;
-      transition: transform .15s ease, border-color .2s ease, background .2s ease;
-    }
-    .card:hover{
-      transform: translateY(-2px);
-      border-color: rgba(125,211,252,.35);
-      background: linear-gradient(180deg, rgba(10,14,29,.45), rgba(10,14,29,.2));
-    }
-    .kicker{font-weight:800;color:var(--accent);letter-spacing:.06em;text-transform:uppercase;font-size:.78rem}
-    .card h3{margin:.25rem 0 .25rem}
-    .meta{color:var(--muted);font-size:.95rem}
-
-    /* Timeline */
-    .timeline{
-      position:relative;padding-left:1rem
-    }
-    .timeline::before{
-      content:"";position:absolute;left:.4rem;top:.2rem;bottom:.2rem;width:2px;background:linear-gradient(var(--accent), var(--accent-2))
-    }
-    .step{position:relative;padding-left:1.5rem;margin-bottom:1rem}
-    .bullet{
-      position:absolute;left:-.05rem;top:.2rem;width:.9rem;height:.9rem;border-radius:50%;
-      background: linear-gradient(135deg, var(--accent), var(--accent-2));
-      box-shadow: 0 0 0 .25rem rgba(125,211,252,.15);
-    }
-    .step h4{margin:.1rem 0 .25rem}
-    .step p{margin:0;color:var(--muted)}
-
-    /* Nutrition badges */
-    .badges{display:flex;flex-wrap:wrap;gap:.5rem}
-    .nutri{
-      border:1px solid rgba(255,255,255,.12);
-      border-radius: 12px; padding:.55rem .7rem; font-weight:700
-    }
-
-    /* Traceability */
-    .trace{
-      display:grid; gap:1rem; align-items:center;
-      grid-template-columns: 1fr auto;
-    }
-    @media (max-width: 700px){ .trace{grid-template-columns:1fr} }
-    .qr{
-      width:120px;height:120px;border-radius:14px;
-      display:grid;place-items:center;
-      border:1px dashed rgba(255,255,255,.2);
-      background: rgba(125,211,252,.06);
-      font-size:.8rem;color:var(--muted)
-    }
-
-    /* Footer */
-    footer{
-      margin-top: 2rem;
-      border-top: 1px solid rgba(255,255,255,.08);
-      background: rgba(10,14,29,.4);
-    }
-    .foot{
-      max-width:1200px;margin:0 auto;padding:1rem;
-      display:flex;flex-wrap:wrap;gap:1rem;align-items:center;justify-content:space-between;
-      color:var(--muted)
-    }
-
-    /* Motion preferences */
-    @media (prefers-reduced-motion: reduce){
-      *{animation:none !important;transition:none !important}
-    }
-    /* Focus */
-    :focus-visible{outline:none;box-shadow: var(--ring)}
-  </style>
-
-  <!-- Structured Data (Product) -->
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"Product",
-    "name":"Mount Kenya Macadamia Kernels",
-    "brand":{"@type":"Brand","name":"Rustic Garden"},
-    "description":"Premium macadamia nuts intercropped with coffee on Mount Kenya, gently cracked and sun-dried, fully traceable from orchard to table.",
-    "category":"Food",
-    "offers":{"@type":"Offer","priceCurrency":"KES","availability":"https://schema.org/PreOrder"},
-    "additionalProperty":[
-      {"@type":"PropertyValue","name":"Varieties","value":"Macadamia integrifolia, M. tetraphylla"},
-      {"@type":"PropertyValue","name":"Processing","value":"Gentle mechanical cracking, sun drying"},
-      {"@type":"PropertyValue","name":"Traceability","value":"QR-linked lot provenance"}
-    ]
-  }
-  </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mount Kenya Macadamia | Rustic Garden</title>
+    <meta name="description" content="From seed to plate and back: discover Mount Kenya macadamias—our orchard story, gentle processing, nutrition, traceability, and export quality.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2c5530;
+            --secondary: #8b7355;
+            --accent: #d4a574;
+            --text: #1a1a1a;
+            --text-light: #6b7280;
+            --bg: #fefefe;
+            --bg-alt: #f8fafc;
+            --border: #e5e7eb;
+            --shadow: 0 4px 12px rgba(0,0,0,0.1);
+            --radius: 8px;
+            --ease: cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font: 400 16px/1.6 'Inter', system-ui, sans-serif;
+            color: var(--text);
+            background: var(--bg);
+            overflow-x: hidden;
+        }
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        h1, h2, h3 { 
+            font-family: 'Playfair Display', serif; 
+            font-weight: 600;
+            line-height: 1.2;
+        }
+        
+        /* Header */
+        .contact-bar {
+            background: var(--primary);
+            color: white;
+            padding: 0.75rem 0;
+            text-align: center;
+        }
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+            font-size: 0.9rem;
+        }
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .contact-item svg {
+            width: 16px;
+            height: 16px;
+            fill: currentColor;
+        }
+        .contact-item a {
+            color: inherit;
+            text-decoration: none;
+            transition: opacity 0.3s var(--ease);
+        }
+        .contact-item a:hover { opacity: 0.8; }
+        
+        .main-header {
+            background: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: var(--shadow);
+            backdrop-filter: blur(10px);
+        }
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            text-decoration: none;
+            color: inherit;
+        }
+        .logo-image {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .logo-svg {
+            width: 50px;
+            height: 50px;
+            display: block;
+        }
+        .logo:hover .logo-svg {
+            transform: scale(1.05);
+            transition: transform 0.3s var(--ease);
+        }
+        .logo-text h1 { 
+            font-size: 1.75rem;
+            color: var(--primary);
+        }
+        .logo-tagline { 
+            font-size: 0.85rem; 
+            color: var(--text-light); 
+            font-weight: 400; 
+        }
+        
+        /* Navigation */
+        .main-nav {
+            position: relative;
+        }
+        .nav-list {
+            display: flex;
+            gap: 0.5rem;
+            list-style: none;
+        }
+        .nav-link {
+            padding: 0.75rem 1.25rem;
+            color: var(--text-light);
+            font-weight: 500;
+            border-radius: 6px;
+            text-decoration: none;
+            transition: all 0.3s var(--ease);
+            font-size: 0.95rem;
+        }
+        .nav-link:hover,
+        .nav-link.active {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-1px);
+        }
+        .nav-dropdown {
+            position: relative;
+        }
+        .nav-dropdown .nav-link {
+            padding-right: 2.25rem;
+        }
+        .nav-dropdown .caret {
+            font-size: 0.75rem;
+            position: absolute;
+            right: 0.75rem;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            list-style: none;
+            background: white;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            min-width: 200px;
+            z-index: 110;
+        }
+        .nav-dropdown:hover .dropdown-menu {
+            display: block;
+        }
+        .dropdown-menu a {
+            display: block;
+            padding: 0.75rem 1.25rem;
+            color: var(--text);
+            text-decoration: none;
+        }
+        .dropdown-menu a:hover {
+            background: var(--bg-alt);
+            color: var(--primary);
+        }
+        .dropdown-menu li:first-child a {
+            border-top-left-radius: var(--radius);
+            border-top-right-radius: var(--radius);
+        }
+        .dropdown-menu li:last-child a {
+            border-bottom-left-radius: var(--radius);
+            border-bottom-right-radius: var(--radius);
+        }
+        .mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+        
+        /* Hero */
+        .hero {
+            background: linear-gradient(135deg, var(--bg-alt) 0%, white 100%);
+            padding: 4rem 0;
+            text-align: center;
+        }
+        .hero-content { position: relative; max-width: 1000px; margin: 0 auto; }
+        .badges {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+        .badge {
+            background: var(--primary);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+        .title {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1.5rem;
+        }
+        .lead {
+            font-size: 1.25rem;
+            color: var(--text-light);
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+        .location {
+            font-style: italic;
+            color: var(--text-light);
+            margin-bottom: 3rem;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        .card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: all 0.3s var(--ease);
+        }
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+        }
+        .card-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+        .card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+        }
+        .card p {
+            color: var(--text-light);
+            line-height: 1.5;
+        }
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: var(--radius);
+            font: 500 1rem/1 inherit;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s var(--ease);
+            margin: 0.5rem;
+        }
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+            box-shadow: var(--shadow);
+        }
+        .btn-primary:hover {
+            background: #1e3a21;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 40px rgba(44, 85, 48, 0.3);
+        }
+        .btn-secondary {
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+        .btn-secondary:hover {
+            background: var(--primary);
+            color: white;
+        }
+        .section {
+            padding: 5rem 0;
+        }
+        .section:nth-child(even) {
+            background: var(--bg-alt);
+        }
+        .section-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+        .section-lead {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            line-height: 1.7;
+        }
+        /* Offering Cards */
+        .offering-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: all 0.3s var(--ease);
+            text-decoration: none;
+            color: inherit;
+        }
+        .offering-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+            border: 2px solid var(--primary);
+        }
+        .offering-image {
+            height: 200px;
+            background: var(--bg-alt);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px dashed var(--border);
+            position: relative;
+            color: var(--text-light);
+            font-size: 0.9rem;
+            text-align: center;
+        }
+        .category-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: var(--primary);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font: 600 0.75rem/1 inherit;
+            text-transform: uppercase;
+        }
+        .offering-content {
+            padding: 2rem;
+        }
+        .offering-title {
+            font-size: 1.25rem;
+            margin-bottom: 0.75rem;
+        }
+        .offering-description {
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            line-height: 1.5;
+        }
+        .offering-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border);
+        }
+        .offering-price {
+            font-weight: 600;
+            color: var(--primary);
+        }
+        .offering-type {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            background: var(--bg-alt);
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+        }
+        .heritage {
+            background: linear-gradient(135deg, rgba(44, 85, 48, 0.05), rgba(212, 165, 116, 0.05));
+        }
+        /* Footer */
+        .footer {
+            background: var(--text);
+            color: white;
+            padding: 4rem 0 2rem;
+        }
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+        .footer h4 {
+            margin-bottom: 1.5rem;
+            color: var(--accent);
+        }
+        .footer ul {
+            list-style: none;
+        }
+        .footer li {
+            margin-bottom: 0.75rem;
+        }
+        .footer a {
+            color: #d1d5db;
+            text-decoration: none;
+            transition: color 0.3s var(--ease);
+        }
+        .footer a:hover {
+            color: white;
+        }
+        .footer-bottom {
+            padding-top: 2rem;
+            border-top: 1px solid #374151;
+            text-align: center;
+            color: #9ca3af;
+        }
+        /* New Macadamia-specific styles */
+        .timeline {
+            position: relative;
+            padding-left: 20px;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--primary);
+        }
+        .timeline-item {
+            position: relative;
+            padding: 1rem 0;
+            padding-left: 2rem;
+        }
+        .timeline-item h3 {
+            margin-top: 0;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -8px;
+            top: 1.7rem;
+            width: 16px;
+            height: 16px;
+            background: var(--secondary);
+            border: 2px solid white;
+            border-radius: 50%;
+        }
+        .qr-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 2rem;
+        }
+        .qr-placeholder {
+            width: 150px;
+            height: 150px;
+            background: var(--bg-alt);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            font-weight: 600;
+            color: var(--text-light);
+            border: 2px dashed var(--border);
+            border-radius: var(--radius);
+        }
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container { padding: 0 1rem; }
+            .header-content { flex-direction: column; }
+            .nav-list { flex-direction: column; position: absolute; top: 100%; left: 0; right: 0; background: white; box-shadow: var(--shadow); padding: 1rem; border-radius: 0 0 var(--radius) var(--radius); display: none; }
+            .nav-list.active { display: flex; }
+            .mobile-toggle { display: block; }
+            .hero { padding: 4rem 0; }
+            .section { padding: 3rem 0; }
+            .grid { grid-template-columns: 1fr; }
+            .contact-info { gap: 1rem; }
+        }
+    </style>
 </head>
 <body>
-  <header>
-    <div class="nav">
-      <a class="brand" href="index.html" aria-label="Rustic Garden Home">
-        <span class="brand-badge">RG</span>
-        Rustic Garden
-      </a>
-      <nav class="links" aria-label="Primary">
-        <a href="index.html">Home</a>
-        <a href="coffee.html">Coffee</a>
-        <a class="active" href="macadamia.html" aria-current="page">Macadamia</a>
-        <a href="bananas.html">Dried Bananas</a>
-        <a href="family-pack.html">Family Nutrition Pack</a>
-        <a href="aquaculture.html">Aquaculture</a>
-      </nav>
+    <div class="contact-bar">
+        <div class="container">
+            <div class="contact-info">
+                <div class="contact-item">
+                    <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                    <a href="tel:+254712345678">+254 712 345 678</a>
+                </div>
+                <div class="contact-item">
+                    <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                    <a href="mailto:info@rusticgarden.co.ke">info@rusticgarden.co.ke</a>
+                </div>
+                <div class="contact-item">
+                    <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                    <span>Kavutiri, Embu County, Kenya</span>
+                </div>
+            </div>
+        </div>
     </div>
-  </header>
+    <header class="main-header">
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo">
+                    <span class="logo-image">
+                        <svg class="logo-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="100" cy="100" r="95" fill="none" stroke="#6B4423" stroke-width="6"/>
+                            <circle cx="100" cy="100" r="75" fill="#F5F1E8"/>
+                            <circle cx="100" cy="100" r="45" fill="none" stroke="#6B4423" stroke-width="2"/>
+                            <g transform="translate(100, 100)">
+                                <line x1="0" y1="20" x2="0" y2="-25" stroke="#6B4423" stroke-width="3" stroke-linecap="round"/>
+                                <path d="M -2 -5 Q -18 -15 -25 -8 Q -20 5 -2 10 Z" fill="#6B4423"/>
+                                <path d="M -4 -2 Q -16 -10 -20 -5 Q -16 5 -4 8 Z" fill="#8B7355"/>
+                                <path d="M 2 -5 Q 18 -15 25 -8 Q 20 5 2 10 Z" fill="#6B4423"/>
+                                <path d="M 4 -2 Q 16 -10 20 -5 Q 16 5 4 8 Z" fill="#8B7355"/>
+                            </g>
+                        </svg>
+                    </span>
+                    <div class="logo-text">
+                        <h1>Rustic Garden</h1>
+                        <p class="logo-tagline">Cultural Research & Wellness</p>
+                    </div>
+                </a>
+                <nav class="main-nav">
+                    <button class="mobile-toggle" onclick="toggleNav()">☰</button>
+                    <ul class="nav-list" id="nav">
+                        <li><a href="index.html" class="nav-link">Home</a></li>
+                        <li class="nav-dropdown">
+                            <a href="#" class="nav-link active">Offerings <span class="caret">▼</span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="macadamia.html">Macadamia Nuts</a></li>
+                                <li><a href="aquaculture.html">Aquaculture</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="contact.html" class="nav-link">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
 
-  <!-- HERO -->
-  <section class="hero" id="top">
-    <article class="hero-card">
-      <div class="spark" aria-hidden="true"></div>
-      <p class="eyebrow">Mount Kenya • Orchard to Table</p>
-      <h1>Macadamia, Reimagined: Creamy, Crunchy, Traceable.</h1>
-      <p class="lead">
-        From volcanic soils and cool mountain mists, our macadamias grow alongside shade-loving coffee, then travel a gentle path—hand-picking, careful cracking, and slow sun-drying—so the first snap you hear is matched by a clean, buttery finish you remember.
-      </p>
-      <div class="cta-row">
-        <a class="btn" href="#packs">Shop Packs</a>
-        <a class="btn secondary" href="#trace">See Provenance</a>
-      </div>
-    </article>
-    <figure class="hero-media" role="img" aria-label="Macadamia orchards on the slopes of Mount Kenya with dappled light and shade trees">
-      <div class="badge-stack">
-        <span class="pill">Intercropped with Coffee</span>
-        <span class="pill">Sun-Dried</span>
-        <span class="pill">Export Grade</span>
-        <span class="pill">Seed → Plate → Back</span>
-      </div>
-    </figure>
-  </section>
-
-  <main class="container">
-    <!-- ORCHARDS & VARIETIES -->
-    <section class="block">
-      <h2>Orchards & Varieties</h2>
-      <p class="sub">
-        In the rich volcanic belts of Mount Kenya, macadamia integrifolia and tetraphylla settle their roots among arabica rows, the shade softening wind stress, the leaf litter feeding earth life, the bees moving between white coffee bloom and macadamia racemes to stitch a small ecology into every kernel.
-      </p>
-      <div class="grid grid-3">
-        <div class="card">
-          <span class="kicker">Terroir</span>
-          <h3>Volcanic soils with cool nights</h3>
-          <p class="meta">Slow oil development for that signature butter-snap texture.</p>
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="badges">
+                    <span class="badge">Orchard-Grown</span>
+                    <span class="badge">Traceable</span>
+                    <span class="badge">Export-Quality</span>
+                </div>
+                <h1 class="title">Mount Kenya Macadamia</h1>
+                <p class="lead">From seed to plate and back: discover our orchard story, gentle processing, nutrition, and traceability. Every nut is a testament to quality and sustainable practice.</p>
+                <div class="cta-row">
+                    <a href="#story" class="btn btn-primary">Our Story</a>
+                    <a href="#traceability" class="btn btn-secondary">Traceability</a>
+                </div>
+            </div>
         </div>
-        <div class="card">
-          <span class="kicker">Selection</span>
-          <h3>Integrifolia &amp; Tetraphylla</h3>
-          <p class="meta">Creamy body, high oil content, balanced crunch in mixed lots.</p>
-        </div>
-        <div class="card">
-          <span class="kicker">Companions</span>
-          <h3>Coffee &amp; Indigenous Shade</h3>
-          <p class="meta">Agroforestry that enriches soil, shelters birds, and supports pollinators.</p>
-        </div>
-      </div>
     </section>
 
-    <!-- HARVEST TO CRACKING -->
-    <section class="block">
-      <h2>Harvest, Shelling, and the Gentle Path</h2>
-      <p class="sub">
-        Ripeness is read in the drop and the husk, hands gather what the tree releases, then shells meet calibrated pressure—enough to open, never enough to bruise—so more kernels arrive whole and more flavour reaches the table.
-      </p>
-      <div class="timeline" aria-label="Processing timeline">
-        <div class="step">
-          <span class="bullet" aria-hidden="true"></span>
-          <h4>Hand-Picking at Peak</h4>
-          <p>Selective collection ensures uniform moisture and clean sweetness.</p>
+    <section id="story" class="section">
+        <div class="container">
+            <h2 class="section-title">Cultivating a Legacy</h2>
+            <p class="section-lead">
+                Our journey begins in the fertile soils of Mount Kenya, where macadamia trees thrive in a unique ecosystem. We practice regenerative farming to ensure the long-term health of our land.
+            </p>
+            <div class="grid">
+                <div class="card">
+                    <span class="card-icon">🌱</span>
+                    <h3>Orchard Management</h3>
+                    <p>We use composting and cover cropping to improve soil health and resilience against climate swings.</p>
+                </div>
+                <div class="card">
+                    <span class="card-icon">💧</span>
+                    <h3>Gentle Processing</h3>
+                    <p>Our nuts are harvested with care and processed gently to preserve their delicate flavor and nutritional value.</p>
+                </div>
+                <div class="card">
+                    <span class="card-icon">🧪</span>
+                    <h3>Quality & Nutrition</h3>
+                    <p>Our macadamias are packed with healthy fats, vitamins, and minerals, making them a delicious and nutritious snack.</p>
+                </div>
+            </div>
         </div>
-        <div class="step">
-          <span class="bullet" aria-hidden="true"></span>
-          <h4>Gentle Mechanical Cracking</h4>
-          <p>Pressure-matched cracking preserves integrity and reduces waste.</p>
-        </div>
-        <div class="step">
-          <span class="bullet" aria-hidden="true"></span>
-          <h4>Careful Sorting &amp; Grading</h4>
-          <p>Colour, size, and sound guide grading before drying begins.</p>
-        </div>
-      </div>
     </section>
 
-    <!-- DRYING & STORAGE -->
-    <section class="block">
-      <h2>Drying & Storage</h2>
-      <p class="sub">
-        Sun does what it does best, carrying moisture down to the narrow window where texture sharpens and oils stay luminous; after that, climate-controlled calm keeps every lot steady until it travels.
-      </p>
-      <div class="grid grid-2">
-        <div class="card">
-          <h3>Sun-Finished Drying</h3>
-          <p class="meta">Natural sweetness preserved, crisp break achieved without harsh heat.</p>
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">The Journey of a Nut</h2>
+            <p class="section-lead">A clear line of sight from the orchard to your table.</p>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <h3>Harvest</h3>
+                    <p>Nuts are harvested from the orchard floor, not from the tree, ensuring they are fully mature and ripe.</p>
+                </div>
+                <div class="timeline-item">
+                    <h3>Drying</h3>
+                    <p>We use a specific drying curve to reduce moisture content and extend shelf life while maintaining texture and flavor.</p>
+                </div>
+                <div class="timeline-item">
+                    <h3>Sorting & Grading</h3>
+                    <p>Nuts are sorted by size, kernel percentage, and color to meet our high export-quality standards.</p>
+                </div>
+                <div class="timeline-item">
+                    <h3>Packing & Traceability</h3>
+                    <p>Each pack is sealed with a unique QR code, linking you directly to the orchard zone, harvest window, and quality checks.</p>
+                </div>
+            </div>
         </div>
-        <div class="card">
-          <h3>Climate-Steady Stores</h3>
-          <p class="meta">Kernel freshness held with low-oxygen barriers and clean air flow.</p>
-        </div>
-      </div>
     </section>
 
-    <!-- NUTRITION -->
-    <section class="block">
-      <h2>Nutritional Traits</h2>
-      <p class="sub">
-        The profile favours heart-healthy fats and essential minerals; the form favours versatility, from snack bowls to pâtisserie work where a clean fat and fine crumb are prized.
-      </p>
-      <div class="badges" role="list">
-        <span class="nutri" role="listitem">Monounsaturated fats</span>
-        <span class="nutri" role="listitem">Magnesium &amp; Manganese</span>
-        <span class="nutri" role="listitem">Antioxidant profile</span>
-        <span class="nutri" role="listitem">Naturally gluten-free</span>
-        <span class="nutri" role="listitem">Plant-based friendly</span>
-      </div>
+    <section id="traceability" class="section">
+        <div class="container">
+            <div class="qr-section">
+                <div>
+                    <h2 class="section-title" style="text-align: left;">Scan to Verify</h2>
+                    <p class="lead" style="text-align: left;">
+                        Our QR-linked provenance binds our sustainable practice to each purchase, so the story that begins in the orchard can be verified at the table.
+                    </p>
+                    <p class="lead" style="text-align: left; font-style: italic; font-size: 1rem;">
+                        Scan a pack to view orchard zone, harvest window, drying curve, and quality checks—because the shortest route to trust is a clear line of sight.
+                    </p>
+                </div>
+                <div class="qr-placeholder" aria-label="QR code placeholder">
+                    QR • LOT-2025-MK
+                </div>
+            </div>
+        </div>
     </section>
 
-    <!-- PACKS & EXPORT -->
-    <section id="packs" class="block">
-      <h2>Local Packs & Export Lots</h2>
-      <p class="sub">
-        Whether it is a gift-ready vacuum pack for the table at home or a calibrated export lot for roasters and chocolatiers, each unit travels with its story attached and its quality verified.
-      </p>
-      <div class="grid grid-3">
-        <div class="card">
-          <span class="kicker">Local</span>
-          <h3>Vacuum-Sealed Fresh Packs</h3>
-          <p class="meta">Whole and half kernels, freshness-locked for gifting and daily snacking.</p>
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <h4>Rustic Garden</h4>
+                    <p class="note">A platform for Mt. Kenya cultural heritage research, wellness destination documentation, and educational resources.</p>
+                </div>
+                <div>
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="macadamia.html">Macadamia Nuts</a></li>
+                        <li><a href="aquaculture.html">Aquaculture</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Connect</h4>
+                    <ul>
+                        <li><a href="mailto:GroupNomad@outlook.com">GroupNomad@outlook.com</a></li>
+                        <li><a href="tel:+254722 704997">+254 722 704 997</a></li>
+                        <li><span>Kavutiri, Embu County, Kenya</span></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Rustic Garden. All Rights Reserved. </p>
+                <p class="note">Seed → Plate → Back</p>
+            </div>
         </div>
-        <div class="card">
-          <span class="kicker">Trade</span>
-          <h3>Graded Export Kernels</h3>
-          <p class="meta">Consistent sizes with documentation for seamless import procedures.</p>
-        </div>
-        <div class="card">
-          <span class="kicker">Assurance</span>
-          <h3>Full Traceability</h3>
-          <p class="meta">Lot-linked records and certifications available on scan.</p>
-        </div>
-      </div>
-      <div class="cta-row" style="margin-top:1rem">
-        <a class="btn" href="mailto:GroupNomad@outlook.com?subject=Macadamia%20Orders">Request Quote</a>
-        <a class="btn secondary" href="#trace">Trace a Lot</a>
-      </div>
-    </section>
-
-    <!-- SUSTAINABILITY + TRACEABILITY -->
-    <section id="trace" class="block">
-      <h2>Sustainability & Traceability</h2>
-      <div class="trace">
-        <div>
-          <p class="sub">
-            Intercropping with coffee and indigenous species builds shade, buffers climate swings, and lowers input intensity; QR-linked provenance binds that practice to each purchase so the story that begins in the orchard can be verified at the table.
-          </p>
-          <p class="meta">
-            Scan a pack to view orchard zone, harvest window, drying curve, and quality checks—because the shortest route to trust is a clear line of sight.
-          </p>
-        </div>
-        <div class="qr" aria-label="QR code placeholder">QR • LOT-2025-MK</div>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="foot">
-      <span>&copy; 2025 Rustic Garden — Mount Kenya Macadamia</span>
-      <span>Seed → Plate → Back</span>
-    </div>
-  </footer>
-
-  <script>
-    // Tiny enhancement: smooth scroll for in-page anchors
-    document.querySelectorAll('a[href^="#"]').forEach(a=>{
-      a.addEventListener('click', e=>{
-        const id = a.getAttribute('href');
-        if(id.length > 1){
-          e.preventDefault();
-          const el = document.querySelector(id);
-          if(el){ el.scrollIntoView({behavior:'smooth', block:'start'}); }
-        }
-      });
-    });
-
-    // Demo: change QR placeholder to a pseudo lot number based on date
-    (function(){
-      const box = document.querySelector('.qr');
-      if(!box) return;
-      const d = new Date();
-      const lot = `LOT-${d.getFullYear()}-MK${String(d.getMonth()+1).padStart(2,'0')}${String(d.getDate()).padStart(2,'0')}`;
-      box.textContent = `QR • ${lot}`;
-    })();
-  </script>
+    </footer>
 </body>
 </html>
