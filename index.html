@@ -20,28 +20,24 @@
             --radius: 8px;
             --ease: cubic-bezier(0.4, 0, 0.2, 1);
         }
-
         * { margin: 0; padding: 0; box-sizing: border-box; }
-
         body {
             font: 400 16px/1.6 'Inter', system-ui, sans-serif;
             color: var(--text);
             background: var(--bg);
             overflow-x: hidden;
         }
-
         .container {
             max-width: 1400px;
             margin: 0 auto;
             padding: 0 2rem;
         }
-
         h1, h2, h3 { 
             font-family: 'Playfair Display', serif; 
             font-weight: 600;
             line-height: 1.2;
         }
-
+        
         /* Header */
         .contact-bar {
             background: var(--primary);
@@ -49,7 +45,6 @@
             padding: 0.75rem 0;
             text-align: center;
         }
-
         .contact-info {
             display: flex;
             justify-content: center;
@@ -57,27 +52,23 @@
             flex-wrap: wrap;
             font-size: 0.9rem;
         }
-
         .contact-item {
             display: flex;
             align-items: center;
             gap: 0.5rem;
         }
-
         .contact-item svg {
             width: 16px;
             height: 16px;
             fill: currentColor;
         }
-
         .contact-item a {
             color: inherit;
             text-decoration: none;
             transition: opacity 0.3s var(--ease);
         }
-
         .contact-item a:hover { opacity: 0.8; }
-
+        
         .main-header {
             background: white;
             padding: 1rem 0;
@@ -87,13 +78,13 @@
             box-shadow: var(--shadow);
             backdrop-filter: blur(10px);
         }
-
         .header-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
         }
-
         .logo {
             display: flex;
             align-items: center;
@@ -101,25 +92,431 @@
             text-decoration: none;
             color: inherit;
         }
-
         .logo-image {
             width: 50px;
             height: 50px;
+            transition: transform 0.3s var(--ease);
+        }
+        .logo:hover .logo-image {
+            transform: scale(1.05);
+        }
+        .logo-text h1 { 
+            font-size: 1.75rem;
+            color: var(--primary);
+        }
+        .logo-tagline { 
+            font-size: 0.85rem; 
+            color: var(--text-light); 
+            font-weight: 400; 
+        }
+        
+        .nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        .nav a {
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 500;
+            padding: 0.5rem 0;
+            position: relative;
+            transition: color 0.3s var(--ease);
+        }
+        .nav a:hover {
+            color: var(--primary);
+        }
+        .nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s var(--ease);
+        }
+        .nav a:hover::after {
+            width: 100%;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--bg-alt) 0%, white 100%);
+            padding: 4rem 0;
+            text-align: center;
+        }
+        .hero h2 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+        .cta-button {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: var(--radius);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s var(--ease);
+            box-shadow: var(--shadow);
+        }
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(44, 85, 48, 0.3);
+        }
+        
+        /* Features */
+        .features {
+            padding: 4rem 0;
+        }
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        .feature-card {
+            background: white;
+            padding: 2rem;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: transform 0.3s var(--ease);
+        }
+        .feature-card:hover {
+            transform: translateY(-4px);
+        }
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            color: white;
+            font-size: 1.5rem;
+        }
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-light);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        /* About Section */
+        .about {
+            background: var(--bg-alt);
+            padding: 4rem 0;
+        }
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            margin-top: 3rem;
+        }
+        .about-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+        .about-image {
+            width: 100%;
+            height: 300px;
             background: linear-gradient(135deg, var(--primary), var(--accent));
             border-radius: var(--radius);
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
-            font: 700 1.5rem/1 'Playfair Display';
+            font-size: 1.2rem;
         }
+        
+        /* Footer */
+        .footer {
+            background: var(--primary);
+            color: white;
+            padding: 3rem 0 1rem;
+        }
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+        .footer-section a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: color 0.3s var(--ease);
+        }
+        .footer-section a:hover {
+            color: white;
+        }
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container { padding: 0 1rem; }
+            .header-content { flex-direction: column; }
+            .nav { flex-wrap: wrap; gap: 1rem; }
+            .hero h2 { font-size: 2rem; }
+            .section-title { font-size: 2rem; }
+            .about-content { grid-template-columns: 1fr; }
+            .contact-info { gap: 1rem; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Contact Bar -->
+    <div class="contact-bar">
+        <div class="container">
+            <div class="contact-info">
+                <div class="contact-item">
+                    <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                    <a href="tel:+254712345678">+254 712 345 678</a>
+                </div>
+                <div class="contact-item">
+                    <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                    <a href="mailto:info@rusticgarden.co.ke">info@rusticgarden.co.ke</a>
+                </div>
+                <div class="contact-item">
+                    <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                    <span>Kavutiri, Embu County, Kenya</span>
+                </div>
+            </div>
+        </div>
+    </div>
 
-        .logo-text h1 { font-size: 1.75rem; }
-        .logo-tagline { 
-            font-size: 0.85rem; 
-            color: var(--text-light); 
-            font-weight: 400; 
-        }
+    <!-- Main Header -->
+    <header class="main-header">
+        <div class="container">
+            <div class="header-content">
+                <a href="#" class="logo">
+                    <svg class="logo-image" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Outer circle -->
+                        <circle cx="100" cy="100" r="95" fill="none" stroke="#6B4423" stroke-width="6"/>
+                        
+                        <!-- Inner circle background -->
+                        <circle cx="100" cy="100" r="75" fill="#F5F1E8"/>
+                        
+                        <!-- Inner decorative circle -->
+                        <circle cx="100" cy="100" r="45" fill="none" stroke="#6B4423" stroke-width="2"/>
+                        
+                        <!-- Central plant motif -->
+                        <g transform="translate(100, 100)">
+                            <!-- Stem -->
+                            <line x1="0" y1="20" x2="0" y2="-25" stroke="#6B4423" stroke-width="3" stroke-linecap="round"/>
+                            
+                            <!-- Left leaf -->
+                            <path d="M -2 -5 Q -18 -15 -25 -8 Q -20 5 -2 10 Z" fill="#6B4423"/>
+                            <path d="M -4 -2 Q -16 -10 -20 -5 Q -16 5 -4 8 Z" fill="#8B7355"/>
+                            
+                            <!-- Right leaf -->
+                            <path d="M 2 -5 Q 18 -15 25 -8 Q 20 5 2 10 Z" fill="#6B4423"/>
+                            <path d="M 4 -2 Q 16 -10 20 -5 Q 16 5 4 8 Z" fill="#8B7355"/>
+                            
+                            <!-- Center leaf/bud -->
+                            <path d="M 0 -25 Q -8 -35 0 -40 Q 8 -35 0 -25 Z" fill="#6B4423"/>
+                            <path d="M 0 -27 Q -5 -33 0 -36 Q 5 -33 0 -27 Z" fill="#8B7355"/>
+                            
+                            <!-- Water ripples -->
+                            <ellipse cx="0" cy="22" rx="15" ry="3" fill="none" stroke="#6B4423" stroke-width="1.5"/>
+                            <ellipse cx="0" cy="26" rx="22" ry="4" fill="none" stroke="#6B4423" stroke-width="1.5"/>
+                            <ellipse cx="0" cy="31" rx="28" ry="5" fill="none" stroke="#6B4423" stroke-width="1.5"/>
+                        </g>
+                        
+                        <!-- Text along top arc -->
+                        <path id="top-arc" d="M 30 100 A 70 70 0 0 1 170 100" fill="none"/>
+                        <text font-family="serif" font-size="16" font-weight="bold" fill="#6B4423" letter-spacing="3">
+                            <textPath href="#top-arc" startOffset="50%" text-anchor="middle">RUSTIC GARDEN</textPath>
+                        </text>
+                        
+                        <!-- Text along bottom arc -->
+                        <path id="bottom-arc" d="M 30 100 A 70 70 0 0 0 170 100" fill="none"/>
+                        <text font-family="serif" font-size="14" font-weight="normal" fill="#6B4423" letter-spacing="2">
+                            <textPath href="#bottom-arc" startOffset="50%" text-anchor="middle">Kavutiri-Embu</textPath>
+                        </text>
+                    </svg>
+                    <div class="logo-text">
+                        <h1>Rustic Garden</h1>
+                        <div class="logo-tagline">Cultural Heritage & Wellness Research</div>
+                    </div>
+                </a>
+                <nav class="nav">
+                    <a href="#home">Home</a>
+                    <a href="#research">Research</a>
+                    <a href="#heritage">Heritage</a>
+                    <a href="#wellness">Wellness</a>
+                    <a href="#resources">Resources</a>
+                    <a href="#contact">Contact</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h2>Preserving Mt. Kenya's Cultural Legacy</h2>
+            <p>An academic platform dedicated to documenting, researching, and preserving the rich cultural heritage and wellness traditions of the Mt. Kenya region through scholarly collaboration and community engagement.</p>
+            <a href="#research" class="cta-button">Explore Research</a>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="research">
+        <div class="container">
+            <h2 class="section-title">Research Focus Areas</h2>
+            <p class="section-subtitle">Our interdisciplinary approach combines cultural anthropology, wellness studies, and environmental research to create a comprehensive understanding of Mt. Kenya's heritage.</p>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🏛️</div>
+                    <h3>Cultural Heritage Documentation</h3>
+                    <p>Comprehensive research and documentation of traditional practices, oral histories, and cultural artifacts of indigenous communities around Mt. Kenya.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🌿</div>
+                    <h3>Wellness & Traditional Medicine</h3>
+                    <p>Academic study of traditional healing practices, medicinal plants, and holistic wellness approaches rooted in local cultural knowledge.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📚</div>
+                    <h3>Educational Resources</h3>
+                    <p>Curated academic materials, research papers, and educational content for scholars, educators, and cultural preservation initiatives.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🤝</div>
+                    <h3>Community Collaboration</h3>
+                    <p>Partnerships with local communities, elders, and cultural practitioners to ensure authentic and respectful research methodologies.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🌍</div>
+                    <h3>Environmental Integration</h3>
+                    <p>Research on the interconnection between cultural practices and environmental stewardship in the Mt. Kenya ecosystem.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📖</div>
+                    <h3>Academic Publications</h3>
+                    <p>Peer-reviewed research publications, conference presentations, and scholarly contributions to cultural heritage studies.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="heritage">
+        <div class="container">
+            <h2 class="section-title">About Rustic Garden</h2>
+            <p class="section-subtitle">Bridging academic rigor with cultural authenticity in the heart of Mt. Kenya.</p>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Rustic Garden serves as a dedicated academic platform for the comprehensive study and preservation of Mt. Kenya's rich cultural heritage. Located in Kavutiri, Embu County, we are uniquely positioned to conduct authentic, community-based research that honors traditional knowledge while meeting academic standards.</p>
+                    <p>Our interdisciplinary approach combines anthropological research, wellness studies, and environmental science to create a holistic understanding of how cultural practices, traditional medicine, and ecological stewardship intersect in this unique mountain ecosystem.</p>
+                    <p>We work closely with local communities, cultural practitioners, and academic institutions to ensure our research is both rigorous and respectful, contributing valuable insights to the global understanding of indigenous knowledge systems and cultural preservation.</p>
+                </div>
+                <div class="about-image">
+                    <span>Mt. Kenya Cultural Research Hub</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Research Areas</h3>
+                    <p><a href="#">Cultural Anthropology</a></p>
+                    <p><a href="#">Traditional Medicine</a></p>
+                    <p><a href="#">Environmental Studies</a></p>
+                    <p><a href="#">Oral History Documentation</a></p>
+                </div>
+                <div class="footer-section">
+                    <h3>Academic Resources</h3>
+                    <p><a href="#">Research Papers</a></p>
+                    <p><a href="#">Conference Proceedings</a></p>
+                    <p><a href="#">Educational Materials</a></p>
+                    <p><a href="#">Data Archives</a></p>
+                </div>
+                <div class="footer-section">
+                    <h3>Collaboration</h3>
+                    <p><a href="#">Research Partnerships</a></p>
+                    <p><a href="#">Community Engagement</a></p>
+                    <p><a href="#">Academic Exchanges</a></p>
+                    <p><a href="#">Grant Opportunities</a></p>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Information</h3>
+                    <p>Kavutiri, Embu County, Kenya</p>
+                    <p><a href="tel:+254712345678">+254 712 345 678</a></p>
+                    <p><a href="mailto:info@rusticgarden.co.ke">info@rusticgarden.co.ke</a></p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Rustic Garden Cultural Heritage Research Platform. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Header scroll effect
+        let lastScrollTop = 0;
+        const header = document.querySelector('.main-header');
+        
+        window.addEventListener('scroll', function() {
+            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            
+            if (scrollTop > lastScrollTop && scrollTop > 100) {
+                header.style.transform = 'translateY(-100%)';
+            } else {
+                header.style.transform = 'translateY(0)';
+            }
+            
+            lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+        });
+    </script>
+</body>
+</html>
 
         /* Navigation */
         .main-nav {
@@ -854,4 +1251,5 @@
     </script>
 </body>
 </html>
+
 
