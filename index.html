@@ -95,10 +95,18 @@
         .logo-image {
             width: 50px;
             height: 50px;
-            transition: transform 0.3s var(--ease);
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
-        .logo:hover .logo-image {
+        .logo-svg {
+            width: 50px;
+            height: 50px;
+            display: block;
+        }
+        .logo:hover .logo-svg {
             transform: scale(1.05);
+            transition: transform 0.3s var(--ease);
         }
         .logo-text h1 { 
             font-size: 1.75rem;
@@ -110,183 +118,339 @@
             font-weight: 400; 
         }
         
-        .nav {
-            display: flex;
-            gap: 2rem;
-            align-items: center;
-        }
-        .nav a {
-            text-decoration: none;
-            color: var(--text);
-            font-weight: 500;
-            padding: 0.5rem 0;
+        /* Navigation */
+        .main-nav {
             position: relative;
-            transition: color 0.3s var(--ease);
         }
-        .nav a:hover {
+        .nav-list {
+            display: flex;
+            gap: 0.5rem;
+            list-style: none;
+        }
+        .nav-link {
+            padding: 0.75rem 1.25rem;
+            color: var(--text-light);
+            font-weight: 500;
+            border-radius: 6px;
+            text-decoration: none;
+            transition: all 0.3s var(--ease);
+            font-size: 0.95rem;
+        }
+        .nav-link:hover,
+        .nav-link.active {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-1px);
+        }
+        .nav-dropdown {
+            position: relative;
+        }
+        .nav-dropdown .nav-link {
+            padding-right: 2.25rem;
+        }
+        .nav-dropdown .caret {
+            font-size: 0.75rem;
+            position: absolute;
+            right: 0.75rem;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            list-style: none;
+            background: white;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            min-width: 200px;
+            z-index: 110;
+        }
+        .nav-dropdown:hover .dropdown-menu {
+            display: block;
+        }
+        .dropdown-menu a {
+            display: block;
+            padding: 0.75rem 1.25rem;
+            color: var(--text);
+            text-decoration: none;
+        }
+        .dropdown-menu a:hover {
+            background: var(--bg-alt);
             color: var(--primary);
         }
-        .nav a::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--primary);
-            transition: width 0.3s var(--ease);
+        .dropdown-menu li:first-child a {
+            border-top-left-radius: var(--radius);
+            border-top-right-radius: var(--radius);
         }
-        .nav a:hover::after {
-            width: 100%;
+        .dropdown-menu li:last-child a {
+            border-bottom-left-radius: var(--radius);
+            border-bottom-right-radius: var(--radius);
+        }
+        .mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
         }
         
-        /* Hero Section */
+        /* Hero */
         .hero {
             background: linear-gradient(135deg, var(--bg-alt) 0%, white 100%);
             padding: 4rem 0;
             text-align: center;
         }
-        .hero h2 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            color: var(--primary);
+        .hero-content { position: relative; max-width: 1000px; margin: 0 auto; }
+        .badges {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
         }
-        .hero p {
-            font-size: 1.2rem;
+        .badge {
+            background: var(--primary);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+        .title {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1.5rem;
+        }
+        .lead {
+            font-size: 1.25rem;
             color: var(--text-light);
-            max-width: 600px;
+            max-width: 800px;
             margin: 0 auto 2rem;
         }
-        .cta-button {
-            display: inline-block;
-            background: var(--primary);
-            color: white;
-            padding: 1rem 2rem;
-            border-radius: var(--radius);
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s var(--ease);
-            box-shadow: var(--shadow);
+        .location {
+            font-style: italic;
+            color: var(--text-light);
+            margin-bottom: 3rem;
         }
-        .cta-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(44, 85, 48, 0.3);
-        }
-        
-        /* Features */
-        .features {
-            padding: 4rem 0;
-        }
-        .features-grid {
+        .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2rem;
-            margin-top: 3rem;
+            margin: 3rem 0;
         }
-        .feature-card {
+        .card {
             background: white;
             padding: 2rem;
-            border-radius: var(--radius);
+            border-radius: 12px;
             box-shadow: var(--shadow);
             text-align: center;
-            transition: transform 0.3s var(--ease);
+            transition: all 0.3s var(--ease);
         }
-        .feature-card:hover {
+        .card:hover {
             transform: translateY(-4px);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.15);
         }
-        .feature-icon {
-            width: 60px;
-            height: 60px;
-            background: var(--primary);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 1rem;
-            color: white;
-            font-size: 1.5rem;
+        .card-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            display: block;
         }
-        .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            color: var(--primary);
+        .card h3 {
+            font-size: 1.25rem;
             margin-bottom: 1rem;
         }
-        .section-subtitle {
-            text-align: center;
+        .card p {
             color: var(--text-light);
-            font-size: 1.1rem;
-            max-width: 600px;
-            margin: 0 auto;
+            line-height: 1.5;
         }
-        
-        /* About Section */
-        .about {
-            background: var(--bg-alt);
-            padding: 4rem 0;
-        }
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
+        .btn {
+            display: inline-flex;
             align-items: center;
-            margin-top: 3rem;
-        }
-        .about-text {
-            font-size: 1.1rem;
-            line-height: 1.8;
-        }
-        .about-image {
-            width: 100%;
-            height: 300px;
-            background: linear-gradient(135deg, var(--primary), var(--accent));
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            border: none;
             border-radius: var(--radius);
+            font: 500 1rem/1 inherit;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s var(--ease);
+            margin: 0.5rem;
+        }
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+            box-shadow: var(--shadow);
+        }
+        .btn-primary:hover {
+            background: #1e3a21;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 40px rgba(44, 85, 48, 0.3);
+        }
+        .btn-secondary {
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+        .btn-secondary:hover {
+            background: var(--primary);
+            color: white;
+        }
+        .section {
+            padding: 5rem 0;
+        }
+        .section:nth-child(even) {
+            background: var(--bg-alt);
+        }
+        .section-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+        .section-lead {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            line-height: 1.7;
+        }
+        /* Offering Cards */
+        .offering-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: all 0.3s var(--ease);
+            text-decoration: none;
+            color: inherit;
+        }
+        .offering-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+            border: 2px solid var(--primary);
+        }
+        .offering-image {
+            height: 200px;
+            background: var(--bg-alt);
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
-            font-size: 1.2rem;
+            border: 2px dashed var(--border);
+            position: relative;
+            color: var(--text-light);
+            font-size: 0.9rem;
+            text-align: center;
         }
-        
-        /* Footer */
-        .footer {
+        .category-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
             background: var(--primary);
             color: white;
-            padding: 3rem 0 1rem;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font: 600 0.75rem/1 inherit;
+            text-transform: uppercase;
+        }
+        .offering-content {
+            padding: 2rem;
+        }
+        .offering-title {
+            font-size: 1.25rem;
+            margin-bottom: 0.75rem;
+        }
+        .offering-description {
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            line-height: 1.5;
+        }
+        .offering-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border);
+        }
+        .offering-price {
+            font-weight: 600;
+            color: var(--primary);
+        }
+        .offering-type {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            background: var(--bg-alt);
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+        }
+        .heritage {
+            background: linear-gradient(135deg, rgba(44, 85, 48, 0.05), rgba(212, 165, 116, 0.05));
+        }
+        /* Footer */
+        .footer {
+            background: var(--text);
+            color: white;
+            padding: 4rem 0 2rem;
         }
         .footer-content {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
+            gap: 3rem;
+            margin-bottom: 3rem;
         }
-        .footer-section h3 {
-            margin-bottom: 1rem;
-            font-size: 1.2rem;
+        .footer h4 {
+            margin-bottom: 1.5rem;
+            color: var(--accent);
         }
-        .footer-section a {
-            color: rgba(255, 255, 255, 0.8);
+        .footer ul {
+            list-style: none;
+        }
+        .footer li {
+            margin-bottom: 0.75rem;
+        }
+        .footer a {
+            color: #d1d5db;
             text-decoration: none;
             transition: color 0.3s var(--ease);
         }
-        .footer-section a:hover {
+        .footer a:hover {
             color: white;
         }
         .footer-bottom {
-            text-align: center;
             padding-top: 2rem;
-            margin-top: 2rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.2);
-            color: rgba(255, 255, 255, 0.7);
+            border-top: 1px solid #374151;
+            text-align: center;
+            color: #9ca3af;
         }
-        
-        /* Responsive Design */
+        /* Responsive */
         @media (max-width: 768px) {
             .container { padding: 0 1rem; }
             .header-content { flex-direction: column; }
-            .nav { flex-wrap: wrap; gap: 1rem; }
-            .hero h2 { font-size: 2rem; }
-            .section-title { font-size: 2rem; }
-            .about-content { grid-template-columns: 1fr; }
+            .nav-list {
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: white;
+                box-shadow: var(--shadow);
+                padding: 1rem;
+                border-radius: 0 0 var(--radius) var(--radius);
+                display: none;
+            }
+            .nav-list.active {
+                display: flex;
+            }
+            .mobile-toggle { display: block; }
+            .hero { padding: 4rem 0; }
+            .section { padding: 3rem 0; }
+            .grid { grid-template-columns: 1fr; }
             .contact-info { gap: 1rem; }
         }
     </style>
@@ -316,651 +480,45 @@
     <header class="main-header">
         <div class="container">
             <div class="header-content">
-                <a href="#" class="logo">
-                    <svg class="logo-image" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                        <!-- Outer circle -->
-                        <circle cx="100" cy="100" r="95" fill="none" stroke="#6B4423" stroke-width="6"/>
-                        
-                        <!-- Inner circle background -->
-                        <circle cx="100" cy="100" r="75" fill="#F5F1E8"/>
-                        
-                        <!-- Inner decorative circle -->
-                        <circle cx="100" cy="100" r="45" fill="none" stroke="#6B4423" stroke-width="2"/>
-                        
-                        <!-- Central plant motif -->
-                        <g transform="translate(100, 100)">
-                            <!-- Stem -->
-                            <line x1="0" y1="20" x2="0" y2="-25" stroke="#6B4423" stroke-width="3" stroke-linecap="round"/>
-                            
-                            <!-- Left leaf -->
-                            <path d="M -2 -5 Q -18 -15 -25 -8 Q -20 5 -2 10 Z" fill="#6B4423"/>
-                            <path d="M -4 -2 Q -16 -10 -20 -5 Q -16 5 -4 8 Z" fill="#8B7355"/>
-                            
-                            <!-- Right leaf -->
-                            <path d="M 2 -5 Q 18 -15 25 -8 Q 20 5 2 10 Z" fill="#6B4423"/>
-                            <path d="M 4 -2 Q 16 -10 20 -5 Q 16 5 4 8 Z" fill="#8B7355"/>
-                            
-                            <!-- Center leaf/bud -->
-                            <path d="M 0 -25 Q -8 -35 0 -40 Q 8 -35 0 -25 Z" fill="#6B4423"/>
-                            <path d="M 0 -27 Q -5 -33 0 -36 Q 5 -33 0 -27 Z" fill="#8B7355"/>
-                            
-                            <!-- Water ripples -->
-                            <ellipse cx="0" cy="22" rx="15" ry="3" fill="none" stroke="#6B4423" stroke-width="1.5"/>
-                            <ellipse cx="0" cy="26" rx="22" ry="4" fill="none" stroke="#6B4423" stroke-width="1.5"/>
-                            <ellipse cx="0" cy="31" rx="28" ry="5" fill="none" stroke="#6B4423" stroke-width="1.5"/>
-                        </g>
-                        
-                        <!-- Text along top arc -->
-                        <path id="top-arc" d="M 30 100 A 70 70 0 0 1 170 100" fill="none"/>
-                        <text font-family="serif" font-size="16" font-weight="bold" fill="#6B4423" letter-spacing="3">
-                            <textPath href="#top-arc" startOffset="50%" text-anchor="middle">RUSTIC GARDEN</textPath>
-                        </text>
-                        
-                        <!-- Text along bottom arc -->
-                        <path id="bottom-arc" d="M 30 100 A 70 70 0 0 0 170 100" fill="none"/>
-                        <text font-family="serif" font-size="14" font-weight="normal" fill="#6B4423" letter-spacing="2">
-                            <textPath href="#bottom-arc" startOffset="50%" text-anchor="middle">Kavutiri-Embu</textPath>
-                        </text>
-                    </svg>
-                    <div class="logo-text">
-                        <h1>Rustic Garden</h1>
-                        <div class="logo-tagline">Cultural Heritage & Wellness Research</div>
-                    </div>
-                </a>
-                <nav class="nav">
-                    <a href="#home">Home</a>
-                    <a href="#research">Research</a>
-                    <a href="#heritage">Heritage</a>
-                    <a href="#wellness">Wellness</a>
-                    <a href="#resources">Resources</a>
-                    <a href="#contact">Contact</a>
-                </nav>
-            </div>
-        </div>
-    </header>
-
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-        <div class="container">
-            <h2>Preserving Mt. Kenya's Cultural Legacy</h2>
-            <p>An academic platform dedicated to documenting, researching, and preserving the rich cultural heritage and wellness traditions of the Mt. Kenya region through scholarly collaboration and community engagement.</p>
-            <a href="#research" class="cta-button">Explore Research</a>
-        </div>
-    </section>
-
-    <!-- Features Section -->
-    <section class="features" id="research">
-        <div class="container">
-            <h2 class="section-title">Research Focus Areas</h2>
-            <p class="section-subtitle">Our interdisciplinary approach combines cultural anthropology, wellness studies, and environmental research to create a comprehensive understanding of Mt. Kenya's heritage.</p>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">🏛️</div>
-                    <h3>Cultural Heritage Documentation</h3>
-                    <p>Comprehensive research and documentation of traditional practices, oral histories, and cultural artifacts of indigenous communities around Mt. Kenya.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🌿</div>
-                    <h3>Wellness & Traditional Medicine</h3>
-                    <p>Academic study of traditional healing practices, medicinal plants, and holistic wellness approaches rooted in local cultural knowledge.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">📚</div>
-                    <h3>Educational Resources</h3>
-                    <p>Curated academic materials, research papers, and educational content for scholars, educators, and cultural preservation initiatives.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🤝</div>
-                    <h3>Community Collaboration</h3>
-                    <p>Partnerships with local communities, elders, and cultural practitioners to ensure authentic and respectful research methodologies.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🌍</div>
-                    <h3>Environmental Integration</h3>
-                    <p>Research on the interconnection between cultural practices and environmental stewardship in the Mt. Kenya ecosystem.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">📖</div>
-                    <h3>Academic Publications</h3>
-                    <p>Peer-reviewed research publications, conference presentations, and scholarly contributions to cultural heritage studies.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section class="about" id="heritage">
-        <div class="container">
-            <h2 class="section-title">About Rustic Garden</h2>
-            <p class="section-subtitle">Bridging academic rigor with cultural authenticity in the heart of Mt. Kenya.</p>
-            <div class="about-content">
-                <div class="about-text">
-                    <p>Rustic Garden serves as a dedicated academic platform for the comprehensive study and preservation of Mt. Kenya's rich cultural heritage. Located in Kavutiri, Embu County, we are uniquely positioned to conduct authentic, community-based research that honors traditional knowledge while meeting academic standards.</p>
-                    <p>Our interdisciplinary approach combines anthropological research, wellness studies, and environmental science to create a holistic understanding of how cultural practices, traditional medicine, and ecological stewardship intersect in this unique mountain ecosystem.</p>
-                    <p>We work closely with local communities, cultural practitioners, and academic institutions to ensure our research is both rigorous and respectful, contributing valuable insights to the global understanding of indigenous knowledge systems and cultural preservation.</p>
-                </div>
-                <div class="about-image">
-                    <span>Mt. Kenya Cultural Research Hub</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer" id="contact">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>Research Areas</h3>
-                    <p><a href="#">Cultural Anthropology</a></p>
-                    <p><a href="#">Traditional Medicine</a></p>
-                    <p><a href="#">Environmental Studies</a></p>
-                    <p><a href="#">Oral History Documentation</a></p>
-                </div>
-                <div class="footer-section">
-                    <h3>Academic Resources</h3>
-                    <p><a href="#">Research Papers</a></p>
-                    <p><a href="#">Conference Proceedings</a></p>
-                    <p><a href="#">Educational Materials</a></p>
-                    <p><a href="#">Data Archives</a></p>
-                </div>
-                <div class="footer-section">
-                    <h3>Collaboration</h3>
-                    <p><a href="#">Research Partnerships</a></p>
-                    <p><a href="#">Community Engagement</a></p>
-                    <p><a href="#">Academic Exchanges</a></p>
-                    <p><a href="#">Grant Opportunities</a></p>
-                </div>
-                <div class="footer-section">
-                    <h3>Contact Information</h3>
-                    <p>Kavutiri, Embu County, Kenya</p>
-                    <p><a href="tel:+254712345678">+254 712 345 678</a></p>
-                    <p><a href="mailto:info@rusticgarden.co.ke">info@rusticgarden.co.ke</a></p>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2024 Rustic Garden Cultural Heritage Research Platform. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
-
-    <script>
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-        // Header scroll effect
-        let lastScrollTop = 0;
-        const header = document.querySelector('.main-header');
-        
-        window.addEventListener('scroll', function() {
-            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-            
-            if (scrollTop > lastScrollTop && scrollTop > 100) {
-                header.style.transform = 'translateY(-100%)';
-            } else {
-                header.style.transform = 'translateY(0)';
-            }
-            
-            lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
-        });
-    </script>
-</body>
-</html>
-
-        /* Navigation */
-        .main-nav {
-            position: relative;
-        }
-        
-        .nav-list {
-            display: flex;
-            gap: 0.5rem;
-            list-style: none;
-        }
-
-        .nav-link {
-            padding: 0.75rem 1.25rem;
-            color: var(--text-light);
-            font-weight: 500;
-            border-radius: 6px;
-            text-decoration: none;
-            transition: all 0.3s var(--ease);
-            font-size: 0.95rem;
-        }
-
-        .nav-link:hover,
-        .nav-link.active {
-            background: var(--primary);
-            color: white;
-            transform: translateY(-1px);
-        }
-
-        /* Dropdown Menu Styling */
-        .nav-dropdown {
-            position: relative;
-        }
-        
-        .nav-dropdown .nav-link {
-            padding-right: 2.25rem;
-        }
-        
-        .nav-dropdown .caret {
-            font-size: 0.75rem;
-            position: absolute;
-            right: 0.75rem;
-            top: 50%;
-            transform: translateY(-50%);
-        }
-        
-        .dropdown-menu {
-            display: none;
-            position: absolute;
-            top: 100%;
-            left: 0;
-            list-style: none;
-            background: white;
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
-            min-width: 200px;
-            z-index: 110;
-        }
-        
-        .nav-dropdown:hover .dropdown-menu {
-            display: block;
-        }
-        
-        .dropdown-menu a {
-            display: block;
-            padding: 0.75rem 1.25rem;
-            color: var(--text);
-            text-decoration: none;
-        }
-        
-        .dropdown-menu a:hover {
-            background: var(--bg-alt);
-            color: var(--primary);
-        }
-        
-        .dropdown-menu li:first-child a {
-            border-top-left-radius: var(--radius);
-            border-top-right-radius: var(--radius);
-        }
-        
-        .dropdown-menu li:last-child a {
-            border-bottom-left-radius: var(--radius);
-            border-bottom-right-radius: var(--radius);
-        }
-        
-        .mobile-toggle {
-            display: none;
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-            padding: 0.5rem;
-        }
-
-        /* Hero */
-        .hero {
-            background: linear-gradient(135deg, var(--bg) 0%, var(--bg-alt) 100%);
-            padding: 6rem 0;
-            text-align: center;
-            position: relative;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="1" fill="%23000" opacity="0.02"/></svg>') repeat;
-            opacity: 0.5;
-        }
-
-        .hero-content { position: relative; max-width: 1000px; margin: 0 auto; }
-
-        .badges {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin-bottom: 2rem;
-            flex-wrap: wrap;
-        }
-
-        .badge {
-            background: var(--primary);
-            color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 50px;
-            font-size: 0.85rem;
-            font-weight: 500;
-        }
-
-        .title {
-            font-size: clamp(2.5rem, 5vw, 4rem);
-            font-weight: 700;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            background-clip: text;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 1.5rem;
-        }
-
-        .lead {
-            font-size: 1.25rem;
-            color: var(--text-light);
-            max-width: 800px;
-            margin: 0 auto 2rem;
-        }
-
-        .location {
-            font-style: italic;
-            color: var(--text-light);
-            margin-bottom: 3rem;
-        }
-
-        /* Cards */
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            margin: 3rem 0;
-        }
-
-        .card {
-            background: white;
-            padding: 2rem;
-            border-radius: 12px;
-            box-shadow: var(--shadow);
-            text-align: center;
-            transition: all 0.3s var(--ease);
-        }
-
-        .card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 10px 40px rgba(0,0,0,0.15);
-        }
-
-        .card-icon {
-            font-size: 3rem;
-            margin-bottom: 1.5rem;
-            display: block;
-        }
-
-        .card h3 {
-            font-size: 1.25rem;
-            margin-bottom: 1rem;
-        }
-
-        .card p {
-            color: var(--text-light);
-            line-height: 1.5;
-        }
-
-        /* Buttons */
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 1rem 2rem;
-            border: none;
-            border-radius: var(--radius);
-            font: 500 1rem/1 inherit;
-            cursor: pointer;
-            text-decoration: none;
-            transition: all 0.3s var(--ease);
-            margin: 0.5rem;
-        }
-
-        .btn-primary {
-            background: var(--primary);
-            color: white;
-            box-shadow: var(--shadow);
-        }
-
-        .btn-primary:hover {
-            background: #1e3a21;
-            transform: translateY(-2px);
-            box-shadow: 0 10px 40px rgba(44, 85, 48, 0.3);
-        }
-
-        .btn-secondary {
-            background: transparent;
-            color: var(--primary);
-            border: 2px solid var(--primary);
-        }
-
-        .btn-secondary:hover {
-            background: var(--primary);
-            color: white;
-        }
-
-        /* Sections */
-        .section {
-            padding: 5rem 0;
-        }
-
-        .section:nth-child(even) {
-            background: var(--bg-alt);
-        }
-
-        .section-title {
-            font-size: clamp(2rem, 4vw, 3rem);
-            text-align: center;
-            margin-bottom: 1rem;
-        }
-
-        .section-lead {
-            font-size: 1.1rem;
-            color: var(--text-light);
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto 3rem;
-            line-height: 1.7;
-        }
-
-        /* Offering Cards */
-        .offering-card {
-            background: white;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            transition: all 0.3s var(--ease);
-            text-decoration: none;
-            color: inherit;
-        }
-
-        .offering-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
-            border: 2px solid var(--primary);
-        }
-
-        .offering-image {
-            height: 200px;
-            background: var(--bg-alt);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 2px dashed var(--border);
-            position: relative;
-            color: var(--text-light);
-            font-size: 0.9rem;
-            text-align: center;
-        }
-
-        .category-badge {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            background: var(--primary);
-            color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            font: 600 0.75rem/1 inherit;
-            text-transform: uppercase;
-        }
-
-        .offering-content {
-            padding: 2rem;
-        }
-
-        .offering-title {
-            font-size: 1.25rem;
-            margin-bottom: 0.75rem;
-        }
-
-        .offering-description {
-            color: var(--text-light);
-            margin-bottom: 1.5rem;
-            line-height: 1.5;
-        }
-
-        .offering-meta {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding-top: 1rem;
-            border-top: 1px solid var(--border);
-        }
-
-        .offering-price {
-            font-weight: 600;
-            color: var(--primary);
-        }
-
-        .offering-type {
-            font-size: 0.85rem;
-            color: var(--text-light);
-            background: var(--bg-alt);
-            padding: 0.25rem 0.75rem;
-            border-radius: 12px;
-        }
-
-        /* Heritage Section */
-        .heritage {
-            background: linear-gradient(135deg, rgba(44, 85, 48, 0.05), rgba(212, 165, 116, 0.05));
-        }
-
-        /* Footer */
-        .footer {
-            background: var(--text);
-            color: white;
-            padding: 4rem 0 2rem;
-        }
-
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 3rem;
-            margin-bottom: 3rem;
-        }
-
-        .footer h4 {
-            margin-bottom: 1.5rem;
-            color: var(--accent);
-        }
-
-        .footer ul {
-            list-style: none;
-        }
-
-        .footer li {
-            margin-bottom: 0.75rem;
-        }
-
-        .footer a {
-            color: #d1d5db;
-            text-decoration: none;
-            transition: color 0.3s var(--ease);
-        }
-
-        .footer a:hover {
-            color: white;
-        }
-
-        .footer-bottom {
-            padding-top: 2rem;
-            border-top: 1px solid #374151;
-            text-align: center;
-            color: #9ca3af;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .container { padding: 0 1rem; }
-            .contact-info { flex-direction: column; gap: 1rem; }
-            .header-content { flex-wrap: wrap; }
-            .nav-list {
-                display: none;
-                flex-direction: column;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                right: 0;
-                background: white;
-                box-shadow: var(--shadow);
-                padding: 1rem;
-                border-radius: 0 0 var(--radius) var(--radius);
-            }
-            .nav-list.active {
-                display: flex;
-            }
-            .mobile-toggle { display: block; }
-            .hero { padding: 4rem 0; }
-            .section { padding: 3rem 0; }
-            .grid { grid-template-columns: 1fr; }
-            .nav-dropdown:hover .dropdown-menu {
-                position: static;
-                box-shadow: none;
-                background: none;
-                min-width: unset;
-                padding-left: 1rem;
-            }
-        }
-    </style>
-</head>
-<body>
-    <div class="contact-bar">
-        <div class="container">
-            <div class="contact-info">
-                <div class="contact-item">
-                    <svg viewBox="0 0 24 24">
-                        <path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56-.35-.12-.74-.03-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z"/>
-                    </svg>
-                    <span>Mobile: <a href="tel:+254722704997">+254 722 704 997</a></span>
-                </div>
-                <div class="contact-item">
-                    <svg viewBox="0 0 24 24">
-                        <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
-                    </svg>
-                    <span>Email: <a href="mailto:GroupNomad@outlook.com">GroupNomad@outlook.com</a></span>
-                </div>
-                <div class="contact-item">
-                    <svg viewBox="0 0 24 24">
-                        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
-                    </svg>
-                    <span>Location: Kavutiri, Embu County, Mt. Kenya</span>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <header class="main-header">
-        <div class="container">
-            <div class="header-content">
                 <a href="index.html" class="logo">
-                    <div class="logo-image">RG</div>
+                    <span class="logo-image">
+                        <!-- SVG LOGO: COLLECTIVE MARK & GEOGRAPHICAL INDICATOR -->
+                        <svg class="logo-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Outer circle -->
+                            <circle cx="100" cy="100" r="95" fill="none" stroke="#6B4423" stroke-width="6"/>
+                            <!-- Inner circle background -->
+                            <circle cx="100" cy="100" r="75" fill="#F5F1E8"/>
+                            <!-- Decorative circle -->
+                            <circle cx="100" cy="100" r="45" fill="none" stroke="#6B4423" stroke-width="2"/>
+                            <!-- Plant motif -->
+                            <g transform="translate(100, 100)">
+                                <line x1="0" y1="20" x2="0" y2="-25" stroke="#6B4423" stroke-width="3" stroke-linecap="round"/>
+                                <path d="M -2 -5 Q -18 -15 -25 -8 Q -20 5 -2 10 Z" fill="#6B4423"/>
+                                <path d="M -4 -2 Q -16 -10 -20 -5 Q -16 5 -4 8 Z" fill="#8B7355"/>
+                                <path d="M 2 -5 Q 18 -15 25 -8 Q 20 5 2 10 Z" fill="#6B4423"/>
+                                <path d="M 4 -2 Q 16 -10 20 -5 Q 16 5 4 8 Z" fill="#8B7355"/>
+                                <path d="M 0 -25 Q -8 -35 0 -40 Q 8 -35 0 -25 Z" fill="#6B4423"/>
+                                <path d="M 0 -27 Q -5 -33 0 -36 Q 5 -33 0 -27 Z" fill="#8B7355"/>
+                                <ellipse cx="0" cy="22" rx="15" ry="3" fill="none" stroke="#6B4423" stroke-width="1.5"/>
+                                <ellipse cx="0" cy="26" rx="22" ry="4" fill="none" stroke="#6B4423" stroke-width="1.5"/>
+                                <ellipse cx="0" cy="31" rx="28" ry="5" fill="none" stroke="#6B4423" stroke-width="1.5"/>
+                            </g>
+                            <!-- Top arc text -->
+                            <defs>
+                              <path id="top-arc" d="M 30 100 A 70 70 0 0 1 170 100" />
+                            </defs>
+                            <text font-family="serif" font-size="16" font-weight="bold" fill="#6B4423" letter-spacing="3">
+                                <textPath xlink:href="#top-arc" startOffset="50%" text-anchor="middle">RUSTIC GARDEN</textPath>
+                            </text>
+                            <!-- Bottom arc text -->
+                            <defs>
+                              <path id="bottom-arc" d="M 30 100 A 70 70 0 0 0 170 100" />
+                            </defs>
+                            <text font-family="serif" font-size="14" font-weight="normal" fill="#6B4423" letter-spacing="2">
+                                <textPath xlink:href="#bottom-arc" startOffset="50%" text-anchor="middle">Kavutiri-Embu</textPath>
+                            </text>
+                        </svg>
+                    </span>
                     <div class="logo-text">
                         <h1>Rustic Garden</h1>
                         <div class="logo-tagline">Academic Heritage & Cultural Research Platform</div>
@@ -968,7 +526,6 @@
                 </a>
                 
                 <button class="mobile-toggle" onclick="toggleNav()" aria-label="Toggle navigation">☰</button>
-
                 <nav role="navigation" aria-label="Main Navigation" class="main-nav">
                     <ul class="nav-list" id="nav">
                         <li><a href="wellness.html" class="nav-link">Wellness</a></li>
@@ -986,7 +543,6 @@
                         </li>
                         <li><a href="aquaculture.html" class="nav-link">Aquaculture</a></li>
                         <li><a href="events.html" class="nav-link">Events</a></li>
-                        
                         <li class="nav-dropdown">
                             <a href="#" class="nav-link dropdown-toggle">
                                 Academic<span class="caret">▾</span>
@@ -1243,13 +799,26 @@
     </footer>
     
     <script>
-        // JavaScript to toggle the mobile navigation menu
+        // Mobile navigation toggle
         function toggleNav() {
             const nav = document.getElementById('nav');
             nav.classList.toggle('active');
         }
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                if (this.getAttribute('href') === '#') return;
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
     </script>
 </body>
 </html>
-
-
