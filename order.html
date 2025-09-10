@@ -602,92 +602,96 @@
                     </p>
 
                     <form action="https://script.google.com/macros/s/AKfycbwYThJdueCao1HJP3KK_7wE8Z7Y2tkg8GKgZcz_R3Grb2W2Zt0HxCU4TQOusFOzLKJ4/exec" method="POST">
-                        <h4>Products</h4>
-                        <div class="checkbox-group">
-                            <label><input type="checkbox" name="products" value="Coffee"> Coffee (per kg)</label>
-                            <input type="number" name="coffee-qty" min="0" placeholder="Qty">
-                        </div>
-                        <div class="checkbox-group">
-                            <label><input type="checkbox" name="products" value="Macadamia"> Macadamia (per 500g)</label>
-                            <input type="number" name="macadamia-qty" min="0" placeholder="Qty">
-                        </div>
-                        <div class="checkbox-group">
-                            <label><input type="checkbox" name="products" value="Tilapia"> Fresh Tilapia (per kg)</label>
-                            <input type="number" name="tilapia-qty" min="0" placeholder="Qty">
-                        </div>
-                        <div class="checkbox-group">
-                            <label><input type="checkbox" name="products" value="Landscaping"> Landscaping Services</label>
-                        </div>
-        
-                        <h4>Events</h4>
-                        <div class="form-group">
-                            <label for="event-type">Select Event:</label>
-                            <select id="event-type" name="event-type" required>
-                                <option value="">--Choose--</option>
-                                <option>Wedding</option>
-                                <option>Baby Shower</option>
-                                <option>Graduation</option>
-                                <option>Retirement Party</option>
-                                <option>Birthday</option>
-                                <option>Choir Festival</option>
-                                <option>Corporate Team Building</option>
-                                <option>School Retreat</option>
-                                <option>Church Fellowship</option>
-                                <option>Cultural Festival</option>
-                                <option>Food & Coffee Fair</option>
-                                <option>Private Garden Party</option>
-                                <option>Camping</option>
-                                <option>Farm Tours</option>
-                            </select>
-                        </div>
-        
-                        <div class="form-group">
-                            <label for="event-date">Event Date:</label>
-                            <input type="date" id="event-date" name="event-date" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="event-time">Preferred Time:</label>
-                            <input type="time" id="event-time" name="event-time">
-                        </div>
-        
-                        <h4>Extras</h4>
-                        <div class="checkbox-group">
-                            <label><input type="checkbox" name="extras" value="Photography"> Professional Photographer</label>
-                            <label><input type="checkbox" name="extras" value="Catering"> Catering & Décor</label>
-                            <label><input type="checkbox" name="extras" value="Music"> Live Music / Choir</label>
-                            <label><input type="checkbox" name="extras" value="Transport"> Guest Transport</label>
-                            <label><input type="checkbox" name="extras" value="Security"> Security & Safety Package</label>
-                        </div>
-        
-                        <h4>Your Details</h4>
-                        <div class="form-group">
-                            <label for="name">Name:</label>
-                            <input type="text" id="name" name="name" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email:</label>
-                            <input type="email" id="email" name="email" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="phone">Phone:</label>
-                            <input type="tel" id="phone" name="phone">
-                        </div>
-        
-                        <p class="security-text">
-                            <svg viewBox="0 0 24 24"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.95-9H8.05V6c0-1.92 1.57-3.5 3.5-3.5s3.5 1.58 3.5 3.5v2z"/></svg>
-                            All bookings are secure & confirmed instantly by email.
-                        </p>
-                        <p class="low-commitment-text">
-                            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
-                            No upfront payment required — confirm on arrival.
-                        </p>
-        
-                        <button type="submit" class="btn btn-primary">Confirm Booking</button>
-                    </form>
-                </div>
-            </div>
-        </section>
-    </main>
+  <h4>Products</h4>
+  <div class="checkbox-group">
+    <label>
+      <input type="checkbox" name="coffee" value="Coffee"> Coffee (per kg)
+    </label>
+    <input type="number" name="coffee-qty" min="0" placeholder="Qty" disabled>
+  </div>
+  <div class="checkbox-group">
+    <label>
+      <input type="checkbox" name="macadamia" value="Macadamia"> Macadamia (per 500g)
+    </label>
+    <input type="number" name="macadamia-qty" min="0" placeholder="Qty" disabled>
+  </div>
+  <div class="checkbox-group">
+    <label>
+      <input type="checkbox" name="tilapia" value="Tilapia"> Fresh Tilapia (per kg)
+    </label>
+    <input type="number" name="tilapia-qty" min="0" placeholder="Qty" disabled>
+  </div>
+  <div class="checkbox-group">
+    <label>
+      <input type="checkbox" name="landscaping" value="Landscaping"> Landscaping Services
+    </label>
+  </div>
+
+  <h4>Events</h4>
+  <div class="form-group">
+    <label for="event-type">Select Event:</label>
+    <select id="event-type" name="event-type" required>
+      <option value="">--Choose--</option>
+      <option>Wedding</option>
+      <option>Baby Shower</option>
+      <option>Graduation</option>
+      <option>Retirement Party</option>
+      <option>Birthday</option>
+      <option>Choir Festival</option>
+      <option>Corporate Team Building</option>
+      <option>School Retreat</option>
+      <option>Church Fellowship</option>
+      <option>Cultural Festival</option>
+      <option>Food & Coffee Fair</option>
+      <option>Private Garden Party</option>
+      <option>Camping</option>
+      <option>Farm Tours</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="event-date">Event Date:</label>
+    <input type="date" id="event-date" name="event-date" required>
+  </div>
+  <div class="form-group">
+    <label for="event-time">Preferred Time:</label>
+    <input type="time" id="event-time" name="event-time">
+  </div>
+
+  <h4>Extras</h4>
+  <div class="checkbox-group">
+    <label><input type="checkbox" name="extras" value="Photography"> Professional Photographer</label>
+    <label><input type="checkbox" name="extras" value="Catering"> Catering & Décor</label>
+    <label><input type="checkbox" name="extras" value="Music"> Live Music / Choir</label>
+    <label><input type="checkbox" name="extras" value="Transport"> Guest Transport</label>
+    <label><input type="checkbox" name="extras" value="Security"> Security & Safety Package</label>
+  </div>
+
+  <h4>Your Details</h4>
+  <div class="form-group">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" required>
+  </div>
+  <div class="form-group">
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required>
+  </div>
+  <div class="form-group">
+    <label for="phone">Phone:</label>
+    <input type="tel" id="phone" name="phone">
+  </div>
+
+  <p class="security-text">
+    <svg viewBox="0 0 24 24"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.95-9H8.05V6c0-1.92 1.57-3.5 3.5-3.5s3.5 1.58 3.5 3.5v2z"/></svg>
+    All bookings are secure & confirmed instantly by email.
+  </p>
+  <p class="low-commitment-text">
+    <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+    No upfront payment required — confirm on arrival.
+  </p>
+
+  <button type="submit" class="btn btn-primary">Confirm Booking</button>
+</form>
 
     <footer id="contact" class="footer">
         <div class="container">
@@ -744,4 +748,5 @@
     </script>
 </body>
 </html>
+
 
