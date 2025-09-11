@@ -471,27 +471,99 @@
     </div>
 </div>
 
-<header class="main-header">
-    <div class="container">
-        <div class="header-content">
-            <a href="index.html" class="logo">
-                <div class="logo-image">RG</div>
-                <div class="logo-text">
-                    <h1>Rustic Garden</h1>
-                </div>
-            </a>
-            <button class="mobile-toggle" onclick="toggleNav()" aria-label="Toggle navigation">☰</button>
-            <nav role="navigation" aria-label="Main Navigation" class="main-nav" id="nav">
-                <ul class="nav-list">
-                    <li><a href="coffee.html" class="nav-link active">Coffee</a></li>
-                    <li><a href="macadamia.html" class="nav-link">Macadamia</a></li>
-                    <li><a href="#products" class="nav-link">Products</a></li>
-                    <li><a href="#contact" class="nav-link">Contact</a></li>
-                </ul>
-            </nav>
+ <!-- Main Header -->
+    <header class="main-header">
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo">
+                    <span class="logo-image">
+                        <!-- SVG LOGO: COLLECTIVE MARK & GEOGRAPHICAL INDICATOR -->
+                        <svg class="logo-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Outer circle -->
+                            <circle cx="100" cy="100" r="95" fill="none" stroke="#6B4423" stroke-width="6"/>
+                            <!-- Inner circle background -->
+                            <circle cx="100" cy="100" r="75" fill="#F5F1E8"/>
+                            <!-- Decorative circle -->
+                            <circle cx="100" cy="100" r="45" fill="none" stroke="#6B4423" stroke-width="2"/>
+                            <!-- Plant motif -->
+                            <g transform="translate(100, 100)">
+                                <line x1="0" y1="20" x2="0" y2="-25" stroke="#6B4423" stroke-width="3" stroke-linecap="round"/>
+                                <path d="M -2 -5 Q -18 -15 -25 -8 Q -20 5 -2 10 Z" fill="#6B4423"/>
+                                <path d="M -4 -2 Q -16 -10 -20 -5 Q -16 5 -4 8 Z" fill="#8B7355"/>
+                                <path d="M 2 -5 Q 18 -15 25 -8 Q 20 5 2 10 Z" fill="#6B4423"/>
+                                <path d="M 4 -2 Q 16 -10 20 -5 Q 16 5 4 8 Z" fill="#8B7355"/>
+                                <path d="M 0 -25 Q -8 -35 0 -40 Q 8 -35 0 -25 Z" fill="#6B4423"/>
+                                <path d="M 0 -27 Q -5 -33 0 -36 Q 5 -33 0 -27 Z" fill="#8B7355"/>
+                                <ellipse cx="0" cy="22" rx="15" ry="3" fill="none" stroke="#6B4423" stroke-width="1.5"/>
+                                <ellipse cx="0" cy="26" rx="22" ry="4" fill="none" stroke="#6B4423" stroke-width="1.5"/>
+                                <ellipse cx="0" cy="31" rx="28" ry="5" fill="none" stroke="#6B4423" stroke-width="1.5"/>
+                            </g>
+                            <!-- Top arc text -->
+                            <defs>
+                              <path id="top-arc" d="M 30 100 A 70 70 0 0 1 170 100" />
+                            </defs>
+                            <text font-family="serif" font-size="16" font-weight="bold" fill="#6B4423" letter-spacing="3">
+                                <textPath xlink:href="#top-arc" startOffset="50%" text-anchor="middle">RUSTIC GARDEN</textPath>
+                            </text>
+                            <!-- Bottom arc text -->
+                            <defs>
+                              <path id="bottom-arc" d="M 30 100 A 70 70 0 0 0 170 100" />
+                            </defs>
+                            <text font-family="serif" font-size="14" font-weight="normal" fill="#6B4423" letter-spacing="2">
+                                <textPath xlink:href="#bottom-arc" startOffset="50%" text-anchor="middle">Kavutiri-Embu</textPath>
+                            </text>
+                        </svg>
+                    </span>
+                    <div class="logo-text">
+                        <h1>Rustic Garden</h1>
+                        <div class="logo-tagline">Cultivating Culture. Inspiring Knowledge</div>
+                    </div>
+                </a>
+                
+                <button class="mobile-toggle" onclick="toggleNav()" aria-label="Toggle navigation">☰</button>
+                <nav role="navigation" aria-label="Main Navigation" class="main-nav">
+                    <ul class="nav-list" id="nav">
+                        <li><a href="wellness.html" class="nav-link">Wellness</a></li>
+                        <li><a href="our-story.html" class="nav-link">Our Story</a></li>
+                        <li><a href="coffee.html" class="nav-link">Coffee</a></li>
+                        <li><a href="macadamia.html" class="nav-link">Macadamia</a></li>
+                        <li class="nav-dropdown">
+                            <a href="#" class="nav-link dropdown-toggle">
+                                Youth Program <span class="caret">▾</span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="landscaping.html" class="dropdown-link">Landscaping</a></li>
+                                <li><a href="seedlings.html" class="dropdown-link">Seedlings</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="aquaculture.html" class="nav-link">Aquaculture</a></li>
+                        <li><a href="events.html" class="nav-link">Events</a></li>
+                        <li class="nav-dropdown">
+                            <a href="#" class="nav-link dropdown-toggle">
+                                Academic<span class="caret">▾</span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#research" class="dropdown-link">Research</a></li>
+                                <li><a href="#heritage" class="dropdown-link">Heritage</a></li>
+                                <li><a href="#resources" class="dropdown-link">Resources</a></li>
+                                <li><a href="#contact" class="dropdown-link">Contact</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-dropdown">
+                            <a href="#" class="nav-link dropdown-toggle">
+                                Products <span class="caret">▾</span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#coffee-products" class="dropdown-link">Coffee Products</a></li>
+                                <li><a href="#macadamia-products" class="dropdown-link">Macadamia Products</a></li>
+                                <li><a href="#seedlings-products" class="dropdown-link">Seedlings Products</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
         </div>
-    </div>
-</header>
+    </header>
 
 <main role="main">
 
@@ -648,5 +720,6 @@ function toggleNav() {
 
 </body>
 </html>
+
 
 
