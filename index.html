@@ -1,343 +1,1110 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Rustic Garden — Seed to Plate Deliveries | Kavutiri, Embu</title>
-  <meta name="description" content="Rustic Garden — Seed-to-plate fresh produce, aquaculture, macadamia, coffee and wellness experiences delivered to your door in Kavutiri, Embu."/>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
-  <style>
-    :root{
-      --primary:#2c5530; --secondary:#8b7355; --accent:#d4a574;
-      --text:#111827; --muted:#6b7280; --bg:#fffaf6; --card:#ffffff;
-      --radius:12px; --shadow: 0 8px 30px rgba(0,0,0,0.08);
-    }
-    *{box-sizing:border-box;margin:0;padding:0}
-    html,body{height:100%}
-    body{
-      font-family:'Inter',system-ui,Arial; color:var(--text);
-      background: linear-gradient(180deg,#fbfbfb,#fffaf6 40%);
-      -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
-      line-height:1.5;
-    }
-    .container{max-width:1200px;margin:0 auto;padding:0 1.25rem}
-
-    /* contact bar */
-    .contact-bar{background:var(--primary);color:#fff;padding:.6rem 0;font-size:.95rem}
-    .contact-info{display:flex;gap:2rem;justify-content:center;align-items:center;flex-wrap:wrap}
-    .contact-info a{color:inherit;text-decoration:none;opacity:.95}
-
-    /* header */
-    header{background:#fff;position:sticky;top:0;z-index:40;box-shadow:var(--shadow);backdrop-filter:blur(6px)}
-    .header-inner{display:flex;align-items:center;justify-content:space-between;padding:.9rem 0;gap:1rem}
-    .logo{display:flex;gap:1rem;align-items:center;text-decoration:none;color:inherit}
-    .logo-svg{width:56px;height:56px}
-    .logo h1{font-family:'Playfair Display',serif;font-size:1.45rem;color:var(--primary);margin-bottom:.1rem}
-    .logo .tag{font-size:.82rem;color:var(--muted)}
-
-    nav{display:flex;align-items:center;gap:1rem}
-    .nav-list{display:flex;gap:.35rem;list-style:none}
-    .nav-list a{padding:.55rem .9rem;border-radius:8px;text-decoration:none;color:var(--muted);font-weight:600}
-    .nav-list a:hover{background:var(--primary);color:#fff;transform:translateY(-2px)}
-    .mobile-toggle{display:none;font-size:1.45rem;background:none;border:0;cursor:pointer}
-
-    /* hero */
-    .hero{
-      margin-top:1rem;border-radius:16px;overflow:hidden;position:relative;
-      box-shadow:var(--shadow);
-      display:grid;grid-template-columns:1fr;align-items:stretch;
-      background:#fff;
-    }
-    .hero-visual{
-      background-image: url('hero-banner.jpg');
-      background-size:cover;background-position:center;height:520px;position:relative;
-      display:flex;align-items:center;justify-content:center;
-    }
-    .hero-overlay{
-      position:absolute;inset:0;background:linear-gradient(180deg, rgba(8,22,12,0.12), rgba(255,250,246,0.2));
-      pointer-events:none;
-    }
-    .hero-content{position:relative;z-index:2;padding:2.5rem 2rem;max-width:1100px;margin:0 auto;text-align:center;color:#fff}
-    .hero-title{font-family:'Playfair Display',serif;font-size:clamp(2rem,5vw,3.25rem);line-height:1.02;margin-bottom:.5rem}
-    .hero-sub{color:#f4f6f7;font-size:1.05rem;margin-bottom:1rem;opacity:.95}
-    .hero-cta{display:inline-flex;gap:.6rem;margin-top:1rem}
-    .btn{padding:.9rem 1.3rem;border-radius:10px;text-decoration:none;font-weight:700;display:inline-flex;align-items:center;gap:.6rem;cursor:pointer}
-    .btn-primary{background:var(--accent);color:#2b2b2b}
-    .btn-outline{background:transparent;border:2px solid rgba(255,255,255,.18);color:#fff}
-
-    /* seed-to-plate module */
-    .seed-plate{display:grid;grid-template-columns:1fr 420px;gap:2rem;padding:2.4rem;background:linear-gradient(90deg,#fffaf6, #ffffff);align-items:center}
-    .spot {padding:1.25rem;border-radius:12px;background:var(--card);box-shadow:var(--shadow)}
-    .spot h2{font-family:'Playfair Display';margin-bottom:.5rem;color:var(--primary)}
-    .spot p{color:var(--muted);margin-bottom:1rem}
-    .week-box{display:flex;flex-direction:column;gap:.6rem}
-    .item{display:flex;justify-content:space-between;padding:.6rem .8rem;border-radius:10px;border:1px solid #f1ede7;background:#fff}
-    .item small{color:var(--muted)}
-    .pack-preview{display:flex;flex-direction:column;gap:.75rem;align-items:center}
-    .pack-preview img{width:100%;height:auto;border-radius:10px;box-shadow:0 6px 20px rgba(0,0,0,.08)}
-    .deliver-note{font-size:.95rem;color:var(--muted);margin-top:.5rem}
-
-    /* products strip */
-    .products{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin-top:1.8rem}
-    .prod{border-radius:12px;overflow:hidden;background:#fff;box-shadow:var(--shadow);text-align:center;padding:1rem}
-    .prod img{width:100%;height:170px;object-fit:cover;display:block}
-    .prod h4{margin-top:.8rem;color:var(--primary)}
-    .prod p{color:var(--muted);font-size:.95rem}
-
-    /* info sections (heritage, research) - preserved */
-    .section{padding:3.2rem 0}
-    .section .section-title{font-family:'Playfair Display';font-size:1.6rem;color:var(--primary);margin-bottom:.6rem;text-align:center}
-    .section .lead{color:var(--muted);text-align:center;max-width:900px;margin:0 auto 1.6rem}
-
-    /* footer */
-    footer{background:#0f1724;color:#d1d5db;padding:2.4rem 0;margin-top:2.4rem;border-top:4px solid rgba(212,165,116,0.07)}
-    .footer-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.4rem}
-    .small{font-size:.9rem;color:#9aa3ad}
-
-    /* responsive */
-    @media (max-width:980px){
-      .seed-plate{grid-template-columns:1fr}
-      .hero-visual{height:420px}
-      .products{grid-template-columns:repeat(2,1fr)}
-    }
-    @media (max-width:640px){
-      .nav-list{display:none}
-      .mobile-toggle{display:block}
-      .products{grid-template-columns:1fr}
-      .hero-visual{height:360px}
-    }
-
-    /* subtle animation */
-    .fade-in{animation:fadeIn .9s ease both}
-    @keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rustic Garden | From Seed to Plate - Kavutiri Farm Fresh Delivery</title>
+    <meta name="description" content="Farm-fresh produce from our terraces in Kavutiri, Embu. Coffee, tilapia, macadamias & seasonal vegetables delivered fresh to your table.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2c5530;
+            --secondary: #8b7355;
+            --accent: #d4a574;
+            --fresh-green: #22c55e;
+            --earth-brown: #92400e;
+            --text: #1a1a1a;
+            --text-light: #6b7280;
+            --bg: #fefefe;
+            --bg-alt: #f8fafc;
+            --warm-cream: #fffbf0;
+            --border: #e5e7eb;
+            --shadow: 0 4px 20px rgba(0,0,0,0.12);
+            --shadow-lg: 0 20px 60px rgba(44, 85, 48, 0.15);
+            --radius: 12px;
+            --ease: cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font: 400 16px/1.6 'Inter', system-ui, sans-serif;
+            color: var(--text);
+            background: var(--bg);
+            overflow-x: hidden;
+        }
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        h1, h2, h3 { 
+            font-family: 'Playfair Display', serif; 
+            font-weight: 600;
+            line-height: 1.2;
+        }
+        
+        /* Enhanced Contact Bar */
+        .contact-bar {
+            background: linear-gradient(135deg, var(--primary), #1e3a21);
+            color: white;
+            padding: 0.75rem 0;
+            text-align: center;
+        }
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+            font-size: 0.9rem;
+        }
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s var(--ease);
+        }
+        .contact-item:hover {
+            transform: translateY(-1px);
+            opacity: 0.9;
+        }
+        .contact-item svg {
+            width: 16px;
+            height: 16px;
+            fill: currentColor;
+        }
+        .contact-item a {
+            color: inherit;
+            text-decoration: none;
+            transition: opacity 0.3s var(--ease);
+        }
+        .contact-item a:hover { opacity: 0.8; }
+        
+        /* Enhanced Header */
+        .main-header {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: var(--shadow);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+        }
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.3s var(--ease);
+        }
+        .logo:hover {
+            transform: translateY(-2px);
+        }
+        .logo-image {
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .logo-svg {
+            width: 60px;
+            height: 60px;
+            display: block;
+            filter: drop-shadow(0 2px 8px rgba(44, 85, 48, 0.1));
+            transition: all 0.3s var(--ease);
+        }
+        .logo:hover .logo-svg {
+            transform: scale(1.05) rotate(2deg);
+            filter: drop-shadow(0 4px 16px rgba(44, 85, 48, 0.2));
+        }
+        .logo-text h1 { 
+            font-size: 1.85rem;
+            color: var(--primary);
+            background: linear-gradient(135deg, var(--primary), var(--fresh-green));
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .logo-tagline { 
+            font-size: 0.85rem; 
+            color: var(--text-light); 
+            font-weight: 500;
+            margin-top: 2px;
+        }
+        
+        /* Enhanced Navigation */
+        .main-nav {
+            position: relative;
+        }
+        .nav-list {
+            display: flex;
+            gap: 0.5rem;
+            list-style: none;
+        }
+        .nav-link {
+            padding: 0.75rem 1.25rem;
+            color: var(--text-light);
+            font-weight: 500;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: all 0.3s var(--ease);
+            font-size: 0.95rem;
+            position: relative;
+        }
+        .nav-link:hover,
+        .nav-link.active {
+            background: linear-gradient(135deg, var(--primary), var(--fresh-green));
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(44, 85, 48, 0.3);
+        }
+        .nav-dropdown {
+            position: relative;
+        }
+        .nav-dropdown .nav-link {
+            padding-right: 2.25rem;
+        }
+        .nav-dropdown .caret {
+            font-size: 0.75rem;
+            position: absolute;
+            right: 0.75rem;
+            top: 50%;
+            transform: translateY(-50%);
+            transition: transform 0.3s var(--ease);
+        }
+        .nav-dropdown:hover .caret {
+            transform: translateY(-50%) rotate(180deg);
+        }
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            list-style: none;
+            background: white;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-lg);
+            min-width: 200px;
+            z-index: 110;
+            border: 1px solid var(--border);
+            overflow: hidden;
+        }
+        .nav-dropdown:hover .dropdown-menu {
+            display: block;
+            animation: dropdownFade 0.3s var(--ease);
+        }
+        @keyframes dropdownFade {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .dropdown-menu a {
+            display: block;
+            padding: 0.75rem 1.25rem;
+            color: var(--text);
+            text-decoration: none;
+            transition: all 0.3s var(--ease);
+        }
+        .dropdown-menu a:hover {
+            background: var(--warm-cream);
+            color: var(--primary);
+            padding-left: 1.5rem;
+        }
+        .mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            color: var(--primary);
+            transition: all 0.3s var(--ease);
+        }
+        .mobile-toggle:hover {
+            transform: scale(1.1);
+            color: var(--fresh-green);
+        }
+        
+        /* Farm-to-Fork Hero */
+        .hero {
+            background: linear-gradient(135deg, 
+                var(--warm-cream) 0%, 
+                rgba(34, 197, 94, 0.05) 30%,
+                rgba(212, 165, 116, 0.08) 70%,
+                white 100%);
+            padding: 6rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="%23d4a574" opacity="0.3"/><circle cx="80" cy="40" r="1.5" fill="%2322c55e" opacity="0.2"/><circle cx="60" cy="80" r="1" fill="%232c5530" opacity="0.2"/></svg>') repeat;
+            opacity: 0.1;
+            animation: float 20s ease-in-out infinite;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+        .hero-content { 
+            position: relative; 
+            max-width: 1200px; 
+            margin: 0 auto; 
+            text-align: center;
+            z-index: 2;
+        }
+        
+        /* Farm Journey Badges */
+        .journey-badges {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+        .journey-badge {
+            background: linear-gradient(135deg, var(--primary), var(--fresh-green));
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            box-shadow: var(--shadow);
+            transition: all 0.3s var(--ease);
+            position: relative;
+            overflow: hidden;
+        }
+        .journey-badge::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s ease;
+        }
+        .journey-badge:hover::before {
+            left: 100%;
+        }
+        .journey-badge:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 8px 25px rgba(44, 85, 48, 0.3);
+        }
+        
+        .title {
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary), var(--fresh-green), var(--accent));
+            background-size: 200% 200%;
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1.5rem;
+            animation: gradientShift 6s ease-in-out infinite;
+        }
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+        
+        .lead {
+            font-size: 1.3rem;
+            color: var(--text-light);
+            max-width: 900px;
+            margin: 0 auto 2rem;
+            line-height: 1.7;
+        }
+        .location {
+            font-style: italic;
+            color: var(--text-light);
+            margin-bottom: 4rem;
+            font-size: 1.1rem;
+        }
+        
+        /* Enhanced Farm Process Grid */
+        .farm-process {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin: 4rem 0;
+        }
+        .process-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: all 0.4s var(--ease);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid var(--border);
+        }
+        .process-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--fresh-green), var(--accent));
+            transform: scaleX(0);
+            transition: transform 0.4s var(--ease);
+        }
+        .process-card:hover::before {
+            transform: scaleX(1);
+        }
+        .process-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary);
+        }
+        .process-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            display: block;
+            transition: all 0.3s var(--ease);
+        }
+        .process-card:hover .process-icon {
+            transform: scale(1.1) rotate(5deg);
+        }
+        .process-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+        .process-card p {
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+        
+        /* Call to Action Buttons */
+        .hero-cta {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 3rem;
+            flex-wrap: wrap;
+        }
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1.2rem 2.5rem;
+            border: none;
+            border-radius: 12px;
+            font: 600 1.1rem/1 inherit;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s var(--ease);
+            position: relative;
+            overflow: hidden;
+        }
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s ease;
+        }
+        .btn:hover::before {
+            left: 100%;
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--fresh-green));
+            color: white;
+            box-shadow: var(--shadow);
+        }
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #1e3a21, #16a34a);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 40px rgba(44, 85, 48, 0.4);
+        }
+        .btn-secondary {
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+            box-shadow: var(--shadow);
+        }
+        .btn-secondary:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 12px 40px rgba(44, 85, 48, 0.3);
+        }
+        
+        /* Enhanced Sections */
+        .section {
+            padding: 6rem 0;
+            position: relative;
+        }
+        .section:nth-child(even) {
+            background: var(--warm-cream);
+        }
+        .section-title {
+            font-size: clamp(2rem, 4vw, 3.5rem);
+            text-align: center;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+        }
+        .section-lead {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto 4rem;
+            line-height: 1.8;
+        }
+        
+        /* Product Showcase */
+        .product-showcase {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin: 4rem 0;
+        }
+        .product-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: all 0.4s var(--ease);
+            text-decoration: none;
+            color: inherit;
+            position: relative;
+        }
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+        .product-image {
+            height: 250px;
+            background: linear-gradient(135deg, var(--warm-cream), var(--bg-alt));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-bottom: 3px solid var(--accent);
+            position: relative;
+            overflow: hidden;
+        }
+        .product-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent 30%, rgba(212, 165, 116, 0.1) 50%, transparent 70%);
+            transform: translateX(-100%);
+            transition: transform 0.5s ease;
+        }
+        .product-card:hover .product-image::before {
+            transform: translateX(100%);
+        }
+        .product-placeholder {
+            color: var(--text-light);
+            font-size: 1rem;
+            text-align: center;
+            font-weight: 500;
+        }
+        .freshness-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: var(--fresh-green);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font: 600 0.8rem/1 inherit;
+            text-transform: uppercase;
+            box-shadow: 0 2px 10px rgba(34, 197, 94, 0.3);
+        }
+        .product-content {
+            padding: 2rem;
+        }
+        .product-title {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+        .product-description {
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+        .product-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border);
+        }
+        .harvest-time {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            background: var(--warm-cream);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+        }
+        .freshness-level {
+            font-weight: 600;
+            color: var(--fresh-green);
+        }
+        
+        /* Footer Enhancement */
+        .footer {
+            background: linear-gradient(135deg, var(--text) 0%, #0f1419 100%);
+            color: white;
+            padding: 5rem 0 2rem;
+            position: relative;
+        }
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--fresh-green), var(--accent));
+        }
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+        .footer h4 {
+            margin-bottom: 1.5rem;
+            color: var(--accent);
+            font-size: 1.2rem;
+        }
+        .footer ul {
+            list-style: none;
+        }
+        .footer li {
+            margin-bottom: 0.75rem;
+        }
+        .footer a {
+            color: #d1d5db;
+            text-decoration: none;
+            transition: all 0.3s var(--ease);
+            position: relative;
+        }
+        .footer a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background: var(--accent);
+            transition: width 0.3s var(--ease);
+        }
+        .footer a:hover {
+            color: white;
+            transform: translateX(5px);
+        }
+        .footer a:hover::after {
+            width: 100%;
+        }
+        .footer-bottom {
+            padding-top: 2rem;
+            border-top: 1px solid #374151;
+            text-align: center;
+            color: #9ca3af;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container { padding: 0 1rem; }
+            .header-content { flex-direction: column; gap: 1.5rem; }
+            .nav-list {
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: rgba(255, 255, 255, 0.98);
+                backdrop-filter: blur(10px);
+                box-shadow: var(--shadow);
+                padding: 2rem;
+                border-radius: 0 0 var(--radius) var(--radius);
+                display: none;
+            }
+            .nav-list.active {
+                display: flex;
+                animation: mobileNavSlide 0.3s var(--ease);
+            }
+            @keyframes mobileNavSlide {
+                from { opacity: 0; transform: translateY(-20px); }
+                to { opacity: 1; transform: translateY(0); }
+            }
+            .mobile-toggle { display: block; }
+            .hero { padding: 4rem 0; }
+            .section { padding: 4rem 0; }
+            .farm-process { grid-template-columns: 1fr; }
+            .product-showcase { grid-template-columns: 1fr; }
+            .journey-badges { gap: 0.5rem; }
+            .hero-cta { flex-direction: column; align-items: center; }
+            .contact-info { 
+                flex-direction: column; 
+                gap: 1rem; 
+                text-align: center; 
+            }
+            .title { font-size: 2.5rem; }
+            .lead { font-size: 1.1rem; }
+        }
+        
+        /* Accessibility Improvements */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+        
+        /* High contrast mode support */
+        @media (prefers-contrast: high) {
+            :root {
+                --shadow: 0 4px 20px rgba(0,0,0,0.3);
+                --shadow-lg: 0 20px 60px rgba(0,0,0,0.4);
+            }
+        }
+    </style>
 </head>
 <body>
-  <!-- Using original uploaded file as base for structure and content. Source: uploaded index (5).html. --> 
-  <!-- citation: --> :contentReference[oaicite:1]{index=1}
-
-  <!-- Contact bar -->
-  <div class="contact-bar">
-    <div class="container contact-info">
-      <div><strong>Call</strong> <a href="tel:+254722704997">+254 722 704 997</a></div>
-      <div><strong>Email</strong> <a href="mailto:GroupNomad@outlook.com">GroupNomad@outlook.com</a></div>
-      <div>Kavutiri, Embu County • Mt. Kenya Region</div>
+    <!-- Contact Bar -->
+    <div class="contact-bar">
+        <div class="container">
+            <div class="contact-info">
+                <div class="contact-item">
+                    <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                    <a href="tel:+254722704997">+254 722 704 997</a>
+                </div>
+                <div class="contact-item">
+                    <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                    <a href="mailto:GroupNomad@outlook.com">GroupNomad@outlook.com</a>
+                </div>
+                <div class="contact-item">
+                    <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                    <span>Kavutiri, Embu County • Mt. Kenya Region</span>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
 
-  <!-- Header -->
-  <header>
-    <div class="container header-inner">
-      <a class="logo" href="index.html" aria-label="Rustic Garden home">
-        <!-- preserved logo SVG -->
-        <svg class="logo-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="100" cy="100" r="95" fill="none" stroke="#6B4423" stroke-width="6"/>
-          <circle cx="100" cy="100" r="75" fill="#F5F1E8"/>
-          <g transform="translate(100,100)"><line x1="0" y1="20" x2="0" y2="-25" stroke="#6B4423" stroke-width="3" stroke-linecap="round"/><path d="M -2 -5 Q -18 -15 -25 -8 Q -20 5 -2 10 Z" fill="#6B4423"/></g>
-          <text font-family="serif" font-size="14" fill="#6B4423" letter-spacing="2">
-            <textPath startOffset="50%" text-anchor="middle" xlink:href="#top-arc">RUSTIC GARDEN</textPath>
-          </text>
-        </svg>
-        <div>
-          <h1>Rustic Garden</h1>
-          <div class="tag">Seed • Farm • Plate — Kavutiri-Embu</div>
+    <!-- Main Header -->
+    <header class="main-header">
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo">
+                    <span class="logo-image">
+                        <!-- Your Custom SVG LOGO -->
+                        <svg class="logo-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Outer circle -->
+                            <circle cx="100" cy="100" r="95" fill="none" stroke="#6B4423" stroke-width="6"/>
+                            <!-- Inner circle background -->
+                            <circle cx="100" cy="100" r="75" fill="#F5F1E8"/>
+                            <!-- Decorative circle -->
+                            <circle cx="100" cy="100" r="45" fill="none" stroke="#6B4423" stroke-width="2"/>
+                            <!-- Plant motif -->
+                            <g transform="translate(100, 100)">
+                                <line x1="0" y1="20" x2="0" y2="-25" stroke="#6B4423" stroke-width="3" stroke-linecap="round"/>
+                                <path d="M -2 -5 Q -18 -15 -25 -8 Q -20 5 -2 10 Z" fill="#6B4423"/>
+                                <path d="M -4 -2 Q -16 -10 -20 -5 Q -16 5 -4 8 Z" fill="#8B7355"/>
+                                <path d="M 2 -5 Q 18 -15 25 -8 Q 20 5 2 10 Z" fill="#6B4423"/>
+                                <path d="M 4 -2 Q 16 -10 20 -5 Q 16 5 4 8 Z" fill="#8B7355"/>
+                                <path d="M 0 -25 Q -8 -35 0 -40 Q 8 -35 0 -25 Z" fill="#6B4423"/>
+                                <path d="M 0 -27 Q -5 -33 0 -36 Q 5 -33 0 -27 Z" fill="#8B7355"/>
+                                <ellipse cx="0" cy="22" rx="15" ry="3" fill="none" stroke="#6B4423" stroke-width="1.5"/>
+                                <ellipse cx="0" cy="26" rx="22" ry="4" fill="none" stroke="#6B4423" stroke-width="1.5"/>
+                                <ellipse cx="0" cy="31" rx="28" ry="5" fill="none" stroke="#6B4423" stroke-width="1.5"/>
+                            </g>
+                            <!-- Top arc text -->
+                            <defs>
+                              <path id="top-arc" d="M 30 100 A 70 70 0 0 1 170 100" />
+                            </defs>
+                            <text font-family="serif" font-size="16" font-weight="bold" fill="#6B4423" letter-spacing="3">
+                                <textPath href="#top-arc" startOffset="50%" text-anchor="middle">RUSTIC GARDEN</textPath>
+                            </text>
+                            <!-- Bottom arc text -->
+                            <defs>
+                              <path id="bottom-arc" d="M 30 100 A 70 70 0 0 0 170 100" />
+                            </defs>
+                            <text font-family="serif" font-size="14" font-weight="normal" fill="#6B4423" letter-spacing="2">
+                                <textPath href="#bottom-arc" startOffset="50%" text-anchor="middle">Kavutiri-Embu</textPath>
+                            </text>
+                        </svg>
+                    </span>
+                    <div class="logo-text">
+                        <h1>Rustic Garden</h1>
+                        <div class="logo-tagline">From Seed to Plate • Fresh Farm Delivery</div>
+                    </div>
+                </a>
+                
+                <button class="mobile-toggle" onclick="toggleNav()" aria-label="Toggle navigation">☰</button>
+                <nav role="navigation" aria-label="Main Navigation" class="main-nav">
+                    <ul class="nav-list" id="nav">
+                        <li><a href="wellness.html" class="nav-link">Wellness</a></li>
+                        <li><a href="our-story.html" class="nav-link">Our Story</a></li>
+                        <li><a href="coffee.html" class="nav-link">Coffee</a></li>
+                        <li><a href="macadamia.html" class="nav-link">Macadamia</a></li>
+                        <li class="nav-dropdown">
+                            <a href="#" class="nav-link dropdown-toggle">
+                                Youth Program <span class="caret">▾</span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="landscaping.html" class="dropdown-link">Landscaping</a></li>
+                                <li><a href="seedlings.html" class="dropdown-link">Seedlings</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="aquaculture.html" class="nav-link">Aquaculture</a></li>
+                        <li><a href="events.html" class="nav-link">Events</a></li>
+                        <li class="nav-dropdown">
+                            <a href="#" class="nav-link dropdown-toggle">
+                                Academic<span class="caret">▾</span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#research" class="dropdown-link">Research</a></li>
+                                <li><a href="#heritage" class="dropdown-link">Heritage</a></li>
+                                <li><a href="#resources" class="dropdown-link">Resources</a></li>
+                                <li><a href="#contact" class="dropdown-link">Contact</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-dropdown">
+                            <a href="#" class="nav-link dropdown-toggle">
+                                Fresh Delivery <span class="caret">▾</span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#coffee-products" class="dropdown-link">Fresh Coffee</a></li>
+                                <li><a href="#fish-products" class="dropdown-link">Pond Tilapia</a></li>
+                                <li><a href="#produce-box" class="dropdown-link">Weekly Box</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
         </div>
-      </a>
+    </header>
 
-      <button class="mobile-toggle" aria-label="menu" onclick="document.body.classList.toggle('open-nav')">☰</button>
+    <main role="main">
+        <section id="home" class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <div class="journey-badges">
+                        <span class="journey-badge">🌱 Seed</span>
+                        <span class="journey-badge">🚜 Farm</span>
+                        <span class="journey-badge">📦 Pack</span>
+                        <span class="journey-badge">🚚 Deliver</span>
+                        <span class="journey-badge">🍽️ Plate</span>
+                    </div>
+                    
+                    <h1 class="title">From Our Terraces to Your Table</h1>
+                    <p class="lead">Fresh coffee from our slopes, tilapia from our ponds, macadamias from our groves, and seasonal vegetables from our terraces. Farm-fresh produce delivered weekly to families across Embu County.</p>
+                    
+                    <p class="location">Kavutiri, Embu County • 4,000-6,900 feet elevation • Mt. Kenya Fresh</p>
+                    
+                    <div class="farm-process">
+                        <div class="process-card">
+                            <span class="process-icon">🌿</span>
+                            <h3>Grown Fresh Daily</h3>
+                            <p>Every morning at sunrise, we harvest what's ripe. Coffee beans picked red, vegetables at peak freshness, fish from clear spring-fed ponds.</p>
+                        </div>
+                        <div class="process-card">
+                            <span class="process-icon">🧊</span>
+                            <h3>Packed with Care</h3>
+                            <p>Immediately cooled and packed in insulated boxes with ice packs. Each family box contains 7-14 days of fresh, nutritious food.</p>
+                        </div>
+                        <div class="process-card">
+                            <span class="process-icon">🚚</span>
+                            <h3>Delivered Fresh</h3>
+                            <p>Same-day delivery across Embu County. From our farm gate to your kitchen table in under 8 hours, preserving maximum nutrition and flavor.</p>
+                        </div>
+                        <div class="process-card">
+                            <span class="process-icon">👨‍🍳</span>
+                            <h3>Ready to Cook</h3>
+                            <p>Every box includes cooking suggestions, storage tips, and recipes from local families. Turn fresh ingredients into delicious, healthy meals.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="hero-cta">
+                        <a href="#order" class="btn btn-primary">Order Fresh Box 📦</a>
+                        <a href="#products" class="btn btn-secondary">See What's Fresh Today 🌱</a>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-      <nav aria-label="Main Navigation">
-        <ul class="nav-list" id="navList">
-          <li><a href="#wellness">Wellness</a></li>
-          <li><a href="#our-story">Our Story</a></li>
-          <li><a href="#products">Products</a></li>
-          <li><a href="#aquaculture">Aquaculture</a></li>
-          <li><a href="#events">Events</a></li>
-          <li><a href="#research">Research</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
+        <section id="products" class="section">
+            <div class="container">
+                <h2 class="section-title">Fresh from the Farm Today</h2>
+                <p class="section-lead">Every item harvested fresh, packed immediately, and delivered the same day. Seasonal availability ensures peak nutrition and flavor.</p>
+                
+                <div class="product-showcase">
+                    <div class="product-card">
+                        <div class="product-image">
+                            <div class="product-placeholder">🐟<br>Fresh Tilapia<br>Photo Coming Soon</div>
+                            <span class="freshness-badge">Harvested Today</span>
+                        </div>
+                        <div class="product-content">
+                            <h3 class="product-title">Pond-Fresh Tilapia</h3>
+                            <p class="product-description">Whole tilapia harvested from our spring-fed ponds each morning. Clear, clean water produces firm, flaky fish with no muddy taste. Immediately iced and packed for delivery.</p>
+                            <div class="product-meta">
+                                <span class="harvest-time">⏰ Harvested 5AM daily</span>
+                                <span class="freshness-level">Best within 3 days</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="product-image">
+                            <div class="product-placeholder">☕<br>Fresh Coffee<br>Photo Coming Soon</div>
+                            <span class="freshness-badge">Roasted to Order</span>
+                        </div>
+                        <div class="product-content">
+                            <h3 class="product-title">Mt. Kenya Coffee</h3>
+                            <p class="product-description">Single-origin coffee beans grown on our terraced slopes at 5,000+ feet. Hand-picked red cherries, washed process, roasted fresh to order for maximum flavor and aroma.</p>
+                            <div class="product-meta">
+                                <span class="harvest-time">⏰ Roasted weekly</span>
+                                <span class="freshness-level">Peak flavor 14 days</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="product-image">
+                            <div class="product-placeholder">🥜<br>Macadamias<br>Photo Coming Soon</div>
+                            <span class="freshness-badge">Grove Fresh</span>
+                        </div>
+                        <div class="product-content">
+                            <h3 class="product-title">Macadamia Nuts</h3>
+                            <p class="product-description">Premium macadamias from our mature grove. Hand-harvested, cracked fresh, and lightly salted. Rich in healthy fats, perfect for snacking or cooking.</p>
+                            <div class="product-meta">
+                                <span class="harvest-time">⏰ Cracked daily</span>
+                                <span class="freshness-level">Stays fresh 3 weeks</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="product-image">
+                            <div class="product-placeholder">🥬<br>Mixed Vegetables<br>Photo Coming Soon</div>
+                            <span class="freshness-badge">Garden Fresh</span>
+                        </div>
+                        <div class="product-content">
+                            <h3 class="product-title">Seasonal Vegetables</h3>
+                            <p class="product-description">Mixed seasonal vegetables from our terraced gardens. Includes leafy greens, root vegetables, herbs, and seasonal fruits. All grown without chemicals using traditional methods.</p>
+                            <div class="product-meta">
+                                <span class="harvest-time">⏰ Picked dawn</span>
+                                <span class="freshness-level">Best within 7 days</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="product-image">
+                            <div class="product-placeholder">📦<br>Family Box<br>Photo Coming Soon</div>
+                            <span class="freshness-badge">Weekly Delivery</span>
+                        </div>
+                        <div class="product-content">
+                            <h3 class="product-title">Complete Family Box</h3>
+                            <p class="product-description">Everything your family needs for a week of fresh, healthy eating. Includes coffee, fish, nuts, vegetables, fruits, and herbs. Balanced nutrition from farm to table.</p>
+                            <div class="product-meta">
+                                <span class="harvest-time">⏰ Assembled fresh</span>
+                                <span class="freshness-level">7-14 day variety</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="product-image">
+                            <div class="product-placeholder">🌿<br>Wellness Experience<br>Photo Coming Soon</div>
+                            <span class="freshness-badge">Farm Visit</span>
+                        </div>
+                        <div class="product-content">
+                            <h3 class="product-title">Farm Wellness Experience</h3>
+                            <p class="product-description">Visit our farm for coffee cupping, pond-side relaxation, harvest participation, and traditional cooking classes. Connect with your food source and learn sustainable practices.</p>
+                            <div class="product-meta">
+                                <span class="harvest-time">⏰ By appointment</span>
+                                <span class="freshness-level">Lifetime memories</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-  <!-- Hero / centerfold -->
-  <main>
-    <section class="hero" aria-labelledby="heroTitle">
-      <div class="hero-visual" role="img" aria-label="Rustic Garden — hero banner">
-        <div class="hero-overlay"></div>
-        <div class="hero-content fade-in">
-          <div style="display:inline-block;padding:6px 10px;border-radius:999px;background:rgba(255,255,255,.08);font-weight:700;font-size:.9rem">Seed → Harvest → Deliver</div>
-          <h2 id="heroTitle" class="hero-title">From our pans and orchards to your doorstep — two weeks of fresh family food</h2>
-          <p class="hero-sub">Fresh coffee, tilapia, macadamias, root crops & seasonal fruit. Carefully packed for a family's two-week supply — delivered chilled and ready.</p>
-          <div class="hero-cta">
-            <a class="btn btn-primary" href="#order">Order a 2-week Box</a>
-            <a class="btn btn-outline" href="#products">See what's in season</a>
-          </div>
+        <section id="research" class="section">
+            <div class="container">
+                <h2 class="section-title">Sustainable Farming Research</h2>
+                <p class="section-lead">Documenting traditional knowledge and sustainable practices that make our fresh food system possible while preserving Embu cultural heritage.</p>
+                
+                <div class="farm-process">
+                    <div class="process-card">
+                        <span class="process-icon">🔬</span>
+                        <h3>Traditional Techniques</h3>
+                        <p>Research on indigenous farming methods, terracing systems, and sustainable aquaculture practices passed down through generations.</p>
+                    </div>
+                    <div class="process-card">
+                        <span class="process-icon">📚</span>
+                        <h3>Cultural Documentation</h3>
+                        <p>Preserving oral histories, traditional food preparation methods, and cultural significance of crops grown on Mt. Kenya slopes.</p>
+                    </div>
+                    <div class="process-card">
+                        <span class="process-icon">🌱</span>
+                        <h3>Modern Applications</h3>
+                        <p>Combining traditional wisdom with modern food safety and delivery systems to create sustainable farm-to-table operations.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="heritage" class="section heritage">
+            <div class="container">
+                <h2 class="section-title">Mt. Kenya Food Heritage</h2>
+                <p class="section-lead">The foods we grow and deliver today connect directly to centuries of Embu agricultural wisdom and cultural practices on the sacred slopes of Mt. Kenya.</p>
+                
+                <div class="farm-process">
+                    <div class="process-card">
+                        <span class="process-icon">🏔️</span>
+                        <h3>Sacred Mountain Waters</h3>
+                        <p>Our spring-fed ponds and irrigation systems draw from Mt. Kenya's glacial waters, considered sacred by the Embu people for their life-giving properties.</p>
+                    </div>
+                    <div class="process-card">
+                        <span class="process-icon">🌾</span>
+                        <h3>Ancestral Crops</h3>
+                        <p>Many vegetables in our boxes are traditional Embu varieties, preserved through generations of careful seed selection and cultural knowledge.</p>
+                    </div>
+                    <div class="process-card">
+                        <span class="process-icon">🍯</span>
+                        <h3>Traditional Preparation</h3>
+                        <p>Every box includes traditional recipes and preparation methods, connecting modern families to their cultural food heritage.</p>
+                    </div>
+                    <div class="process-card">
+                        <span class="process-icon">👥</span>
+                        <h3>Community Wisdom</h3>
+                        <p>Our farming practices incorporate elder knowledge about seasonal timing, companion planting, and sustainable land stewardship.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer id="contact" class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <h4>Fresh Delivery Service</h4>
+                    <ul>
+                        <li>📞 Order: <a href="tel:+254722704997">+254 722 704 997</a></li>
+                        <li>✉️ Email: <a href="mailto:GroupNomad@outlook.com">GroupNomad@outlook.com</a></li>
+                        <li>📍 Farm Location: Kavutiri, Embu County</li>
+                        <li>🚚 Delivery: All Embu County</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>What's Fresh Today</h4>
+                    <ul>
+                        <li><a href="#fish-products">🐟 Fresh Tilapia</a></li>
+                        <li><a href="#coffee-products">☕ Mt. Kenya Coffee</a></li>
+                        <li><a href="#produce-box">🥬 Seasonal Vegetables</a></li>
+                        <li><a href="#nuts">🥜 Macadamia Nuts</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Farm Experience</h4>
+                    <ul>
+                        <li><a href="wellness.html">🧘 Wellness Visits</a></li>
+                        <li><a href="events.html">👨‍🌾 Farm Tours</a></li>
+                        <li><a href="coffee.html">☕ Coffee Cupping</a></li>
+                        <li><a href="aquaculture.html">🐟 Pond Visits</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Our Heritage</h4>
+                    <ul>
+                        <li><a href="#heritage">🏔️ Mt. Kenya Traditions</a></li>
+                        <li><a href="#research">📚 Cultural Research</a></li>
+                        <li><a href="our-story.html">👴 Elder Stories</a></li>
+                        <li><a href="#contact">🤝 Community</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Rustic Garden • From Seed to Plate • Kavutiri, Embu County</p>
+            </div>
         </div>
-      </div>
-
-      <!-- Seed-to-plate spotlight -->
-      <div class="seed-plate container">
-        <div class="spot fade-in">
-          <h2>Two-Week Family Box — Seed to Plate</h2>
-          <p>Balanced selections designed to keep food fresh for up to 14 days when stored responsibly. Sourced from our coffee terraces, fish ponds, macadamia groves and vegetable beds.</p>
-
-          <div class="week-box" aria-live="polite">
-            <div class="item"><strong>Fresh Coffee (roast-to-order)</strong><small> • 500g — keeps flavour for 10–14 days if sealed</small></div>
-            <div class="item"><strong>Tilapia (whole)</strong><small> • 2–3 fish — best within 5–7 days chilled or frozen for longer</small></div>
-            <div class="item"><strong>Macadamias (shelled)</strong><small> • 300g — shelf-stable 10–14 days in cool place</small></div>
-            <div class="item"><strong>Root Vegetables (sweet potatoes, nduma)</strong><small> • 3–5kg — store in dry, cool place — lasts 10–14+ days</small></div>
-            <div class="item"><strong>Fruits (bananas, grafted pears, tree tomatoes)</strong><small> • mixed — stagger eating order: apples & pears later, bananas earlier</small></div>
-            <div class="item"><strong>Herbs & greens (for daily use)</strong><small> • rotate and keep wrapped in damp cloth — refresh at day 7</small></div>
-          </div>
-
-          <p class="deliver-note">We craft each box for freshness and sustainability — notify us of dietary needs. Deliveries across Embu County.</p>
-        </div>
-
-        <aside class="pack-preview fade-in">
-          <img src="packaging4.jpg" alt="Rustic Garden package on doorstep — fresh farm delivery" />
-          <div style="width:100%;text-align:left">
-            <strong>Packaging includes</strong>
-            <ul style="margin-top:.5rem;color:var(--muted);line-height:1.45">
-              <li>Insulated liner + ice packs for fish & perishable items</li>
-              <li>Biodegradable boxes and labels</li>
-              <li>Cooking suggestions & storage guide inside</li>
-            </ul>
-          </div>
-        </aside>
-      </div>
-    </section>
-
-    <!-- Products / featured (uses single1, wellness images) -->
-    <section id="products" class="section container">
-      <h3 class="section-title">Seasonal Highlights — straight from the farm</h3>
-      <p class="lead">Small-batch produce grown and tended at Rustic Garden. Click an item for handling tips.</p>
-
-      <div class="products">
-        <article class="prod fade-in">
-          <img src="single1.jpg" alt="Freshly caught tilapia — Rustic Garden ponds" />
-          <h4>Tilapia — Pond-fresh</h4>
-          <p>Harvested from our pans, iced immediately and packed for same-day delivery.</p>
-        </article>
-
-        <article class="prod fade-in">
-          <img src="wellness.jpg" alt="Wellness and farm experiences at Rustic Garden" />
-          <h4>Wellness & Coffee Ritual</h4>
-          <p>Wellness experiences around the pool and coffee therapy sessions — book an event or wellness box.</p>
-        </article>
-
-        <article class="prod fade-in">
-          <img src="packaging4.jpg" alt="Doorstep delivery packaging" />
-          <h4>Two-Week Box</h4>
-          <p>Everything you need to keep a small family's pantry fresh for up to 14 days — curated & delivered.</p>
-        </article>
-      </div>
-    </section>
-
-    <!-- preserved Research & Heritage sections (cleaned layout) -->
-    <section id="research" class="section" aria-labelledby="researchTitle">
-      <div class="container">
-        <h3 id="researchTitle" class="section-title">Research & Academic Resources</h3>
-        <p class="lead">We continue to preserve Embu cultural knowledge and study sustainable farming & aquaculture techniques used on the site.</p>
-
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem;margin-top:1rem">
-          <div class="spot"><strong>Oral History Archive</strong><p class="small">Elder narratives & cultural documentation.</p></div>
-          <div class="spot"><strong>Sustainable Agronomy</strong><p class="small">Trials on terraces, manure cycles & water pans.</p></div>
-          <div class="spot"><strong>Community Programs</strong><p class="small">Youth landscaping, seedlings & training.</p></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- preserved Heritage -->
-    <section id="heritage" class="section" aria-labelledby="heritageTitle">
-      <div class="container">
-        <h3 id="heritageTitle" class="section-title">Cultural Heritage of Mt. Kenya</h3>
-        <p class="lead">Preserving and sharing the living traditions of the Embu people — stories, rites and stewardship practices that shaped our land.</p>
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;margin-top:1rem">
-          <div class="spot"><strong>Sacred sites</strong><p class="small">Mt. Kenya stewardship & ceremonies.</p></div>
-          <div class="spot"><strong>Traditional agriculture</strong><p class="small">Terraces, rotations and seed preservation.</p></div>
-          <div class="spot"><strong>Elder wisdom</strong><p class="small">Oral materials & community knowledge.</p></div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <!-- Footer (preserved contact and links) -->
-  <footer id="contact">
-    <div class="container">
-      <div class="footer-grid">
-        <div>
-          <h4>Contact</h4>
-          <p class="small">Mobile: <a href="tel:+254722704997">+254 722 704 997</a><br>Email: <a href="mailto:GroupNomad@outlook.com">GroupNomad@outlook.com</a></p>
-        </div>
-        <div>
-          <h4>Deliveries</h4>
-          <p class="small">Next-day across Embu County. Packed with insulated liners for perishable items. Book via phone or email.</p>
-        </div>
-        <div>
-          <h4>Programs</h4>
-          <p class="small">Youth training • Aquaculture • Coffee workshops • Events & Wellness by the pool</p>
-        </div>
-        <div>
-          <h4>Follow</h4>
-          <p class="small">Community collaborations • Research outputs • Seasonal menus</p>
-        </div>
-      </div>
-
-      <div style="margin-top:1.2rem;text-align:center;color:#9aa3ad">
-        &copy; <span id="year"></span> Rustic Garden — All rights reserved.
-      </div>
-    </div>
-  </footer>
-
-  <!-- Optional audio: Vivaldi All Seasons (autoplay requested). Browsers may block autoplay; use controls to play loudly. -->
-  <div aria-hidden="true" style="position:fixed;bottom:14px;right:14px;z-index:60">
-    <audio id="vivaldi" controls loop preload="none" style="box-shadow:var(--shadow);border-radius:12px">
-      <source src="vivaldi-all-seasons.mp3" type="audio/mpeg">
-      Your browser does not support the audio element.
-    </audio>
-  </div>
-
-  <script>
-    // small helpers and preserved behaviour
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    // mobile toggle
-    document.querySelector('.mobile-toggle').addEventListener('click', function(){
-      const nav = document.getElementById('navList');
-      nav.style.display = nav.style.display === 'flex' ? '' : 'flex';
-      nav.style.flexDirection = 'column';
-      nav.style.background = '#fff';
-      nav.style.position = 'absolute';
-      nav.style.right = '1rem';
-      nav.style.top = '68px';
-      nav.style.boxShadow = 'var(--shadow)';
-      nav.style.padding = '.8rem';
-      nav.style.borderRadius = '10px';
-    });
-
-    // smooth scrolling for in-page anchors
-    document.querySelectorAll('a[href^="#"]').forEach(a=>{
-      a.addEventListener('click', function(e){
-        const href = this.getAttribute('href');
-        if(href.length>1){
-          e.preventDefault();
-          const target = document.querySelector(href);
-          if(target) target.scrollIntoView({behavior:'smooth',block:'start'});
+    </footer>
+    
+    <script>
+        // Mobile navigation toggle
+        function toggleNav() {
+            const nav = document.getElementById('nav');
+            nav.classList.toggle('active');
         }
-      });
-    });
 
-    // Small freshness hint: highlight items that need earlier use (fish, herbs)
-    (function(){
-      const items = document.querySelectorAll('.item');
-      items.forEach(i=>{
-        const txt = i.textContent.toLowerCase();
-        if(txt.includes('tilapia') || txt.includes('fish') || txt.includes('herbs')){
-          i.style.borderLeft = '4px solid #d97706';
-        }
-      });
-    })();
-  </script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                if (this.getAttribute('href') === '#') return;
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    // Close mobile nav if open
+                    document.getElementById('nav').classList.remove('active');
+                }
+            });
+        });
+
+        // Add loading animation to cards
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all cards for animation
+        document.querySelectorAll('.process-card, .product-card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(card);
+        });
+
+        // Add click tracking for delivery inquiries
+        document.querySelectorAll('a[href*="tel"], a[href*="mailto"]').forEach(link => {
+            link.addEventListener('click', function() {
+                console.log('Delivery inquiry initiated:', this.href);
+            });
+        });
+    </script>
 </body>
 </html>
