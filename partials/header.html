@@ -1,76 +1,72 @@
-<!-- partials/header.html -->
- <header class="main-header">
- <div class="container">
- <div class="header-content">
- <a href="index.html" class="logo" aria-label="Rustic Garden home">
- <span class="logo-image">
- <!-- Minimal inline SVG logo (can be replaced by assets/images/
- logo.svg) -->
- <svg class="logo-svg" viewBox="0 0 200 200" xmlns="http://
- www.w3.org/2000/svg">
- <circle cx="100" cy="100" r="75" fill="#F5F1E8" stroke="#6B4423"
- stroke-width="6" />
- <!-- simplified plant motif -->
- <g transform="translate(100,100)" fill="#6B4423"><path d="M0-25 
-L0 20" stroke="#6B4423" stroke-width="3"/></g>
- </svg>
- </span>
- <div class="logo-text">
- <h1>Rustic Garden</h1>
- <div class="logo-tagline">From Seed to Plate • Fresh Farm 
-Delivery</div>
- </div>
- </a>
- <button class="mobile-toggle" aria-label="Toggle navigation" data
-toggle="nav">☰</button>
- <nav role="navigation" aria-label="Main Navigation" class="main-nav">
- <ul class="nav-list" id="nav">
- <li><a href="wellness.html" class="nav-link">Wellness</a></li>
- <li><a href="our-story.html" class="nav-link">Our Story</a></li>
- <li><a href="coffee.html" class="nav-link">Coffee</a></li>
- <li><a href="macadamia.html" class="nav-link">Macadamia</a></li>
- <li class="nav-dropdown">
- <a href="#" class="nav-link dropdown-toggle">Youth Program <span
- class="caret">▾</span></a>
- <ul class="dropdown-menu">
- <li><a href="landscaping.html" class="dropdown
-link">Landscaping</a></li>
- <li><a href="seedlings.html" class="dropdown-link">Seedlings</
- 3
-a></li>
- li>
- </ul>
- </li>
- <li><a href="aquaculture.html" class="nav-link">Aquaculture</a></
- <li><a href="events.html" class="nav-link">Events</a></li>
- <li class="nav-dropdown">
- <a href="#" class="nav-link dropdown-toggle">Academic <span
- class="caret">▾</span></a>
- <ul class="dropdown-menu">
- <li><a href="research.html" class="dropdown-link">Research</
- a></li>
- <li><a href="heritage.html" class="dropdown-link">Heritage</
- a></li>
- <li><a href="resources.html" class="dropdown-link">Resources</
- a></li>
- <li><a href="contact.html" class="dropdown-link">Contact</a></
- li>
- </ul>
- </li>
- <li class="nav-dropdown">
- <a href="#" class="nav-link dropdown-toggle">Fresh Delivery <span
- class="caret">▾</span></a>
- <ul class="dropdown-menu">
- <li><a href="#coffee-products" class="dropdown-link">Fresh 
-Coffee</a></li>
- <li><a href="#fish-products" class="dropdown-link">Pond 
-Tilapia</a></li>
- <li><a href="#produce-box" class="dropdown-link">Weekly Box</
- a></li>
- </ul>
- </li>
- </ul>
- </nav>
- </div>
- </div>
- </header>
+<header class="main-header" role="banner" aria-label="Rustic Garden site header">
+<!-- Top contact bar (kept inside header so it stays visually connected) -->
+<div class="contact-bar" aria-hidden="false">
+<div class="container">
+<ul class="contact-info" role="list">
+<li class="contact-item">
+<a href="tel:+254722704997" class="contact-link" aria-label="Call Rustic Garden">📞 +254 722 704 997</a>
+</li>
+<li class="contact-item">
+<a href="mailto:GroupNomad@outlook.com" class="contact-link" aria-label="Email Rustic Garden">✉️ GroupNomad@outlook.com</a>
+</li>
+<li class="contact-item" aria-label="Farm location">📍 Kavutiri, Embu County • Mt. Kenya Region</li>
+</ul>
+</div>
+</div>
+
+
+<div class="container">
+<div class="header-content">
+
+
+<!-- Logo / Brand: SVG is intentionally inlined so it remains crisp, stylable and clearly represents geographic origin -->
+<a href="/" class="logo" aria-label="Rustic Garden — From Seed to Plate" title="Rustic Garden homepage">
+<span class="logo-image" aria-hidden="false">
+<!-- Accessible inline SVG: keep text on arcs to reflect geographic origin (Kavutiri - Embu) -->
+<svg class="logo-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="logoTitle logoDesc" focusable="false">
+<title id="logoTitle">Rustic Garden emblem</title>
+<desc id="logoDesc">Circular emblem showing a plant motif and the text "Rustic Garden — Kavutiri-Embu" representing origin on Mt. Kenya slopes.</desc>
+
+
+<!-- Outer ring -->
+<circle cx="100" cy="100" r="95" fill="none" stroke="#6B4423" stroke-width="6"/>
+<!-- Background -->
+<circle cx="100" cy="100" r="75" fill="#F5F1E8"/>
+
+
+<!-- Central plant motif (keeps warm-earth colours) -->
+<g transform="translate(100,100)">
+<line x1="0" y1="20" x2="0" y2="-25" stroke="#6B4423" stroke-width="3" stroke-linecap="round"/>
+<path d="M -2 -5 Q -18 -15 -25 -8 Q -20 5 -2 10 Z" fill="#6B4423"/>
+<path d="M -4 -2 Q -16 -10 -20 -5 Q -16 5 -4 8 Z" fill="#8B7355"/>
+<path d="M 2 -5 Q 18 -15 25 -8 Q 20 5 2 10 Z" fill="#6B4423"/>
+<path d="M 4 -2 Q 16 -10 20 -5 Q 16 5 4 8 Z" fill="#8B7355"/>
+<path d="M 0 -25 Q -8 -35 0 -40 Q 8 -35 0 -25 Z" fill="#6B4423"/>
+<path d="M 0 -27 Q -5 -33 0 -36 Q 5 -33 0 -27 Z" fill="#8B7355"/>
+<ellipse cx="0" cy="22" rx="15" ry="3" fill="none" stroke="#6B4423" stroke-width="1.5"/>
+<ellipse cx="0" cy="26" rx="22" ry="4" fill="none" stroke="#6B4423" stroke-width="1.5"/>
+<ellipse cx="0" cy="31" rx="28" ry="5" fill="none" stroke="#6B4423" stroke-width="1.5"/>
+</g>
+
+
+<!-- Top arc text -->
+<defs>
+<path id="top-arc" d="M 30 100 A 70 70 0 0 1 170 100" />
+<path id="bottom-arc" d="M 30 100 A 70 70 0 0 0 170 100" />
+</defs>
+<text font-family="Playfair Display, serif" font-size="16" font-weight="700" fill="#6B4423" letter-spacing="3">
+<textPath href="#top-arc" startOffset="50%" text-anchor="middle">RUSTIC GARDEN</textPath>
+</text>
+<text font-family="Playfair Display, serif" font-size="14" font-weight="400" fill="#6B4423" letter-spacing="2">
+<textPath href="#bottom-arc" startOffset="50%" text-anchor="middle">Kavutiri-Embu</textPath>
+</text>
+</svg>
+</span>
+
+
+<div class="logo-text">
+<h1 class="brand-name">Rustic Garden</h1>
+<div class="logo-tagline">From Seed to Plate • Fresh Farm Delivery</div>
+</div>
+</a>
+
