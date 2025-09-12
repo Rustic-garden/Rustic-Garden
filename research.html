@@ -1,64 +1,537 @@
- <!-- research.html -->
- <!doctype html>
- <html lang="en">
- <head>
- <meta charset="utf-8">
- <meta name="viewport" content="width=device-width,initial-scale=1">
- <title>Research — Rustic Garden</title>
- <meta name="description" content="Research on sustainable farming, 
-terracing and aquaculture practices from Rustic Garden.">
- <link rel="stylesheet" href="assets/css/style.css">
- <script src="assets/js/script.js" defer></script>
- </head>
- <body>
- <div data-include="partials/header.html"></div>
- <main role="main">
- <section class="section">
- <div class="container">
- <h2 class="section-title">Sustainable Farming Research</h2>
- <p class="section-lead">Documenting traditional knowledge and 
-sustainable practices that make our fresh food system possible.</p>
- <div class="farm-process">
- <div class="process-card">
- <span class="process-icon">🔬
- </span>
- <h3>Traditional Techniques</h3>
- <p>Research on indigenous farming methods and terracing 
-systems.</p>
- </div>
- <div class="process-card">
- <span class="process-icon">🌱</span>
- <h3>Modern Applications</h3>
- <p>Combining traditional wisdom with modern food safety and 
-delivery systems.</p>
- 10
-</div>
- </div>
- <hr>
- <h3>Research PDFs</h3>
- <ul>
- <li>
- <strong>Sustainable Terracing Practices</strong>
-            — 
-<button data-pdf="assets/pdf/research/sustainable
-terracing.pdf" class="btn btn-secondary">View</button>
- <a class="btn btn-primary" href="assets/pdf/research/sustainable
-terracing.pdf" target="_blank" rel="noopener noreferrer" download>Download 
-PDF</a>
- </li>
- <li>
- <strong>Aquaculture Systems Study</strong>
-            — 
-<button data-pdf="assets/pdf/research/aquaculture-systems.pdf"
- class="btn btn-secondary">View</button>
- <a class="btn btn-primary" href="assets/pdf/research/aquaculture
-systems.pdf" target="_blank" rel="noopener noreferrer" download>Download 
-PDF</a>
- </li>
- </ul>
- </div>
- </section>
- </main>
- <div data-include="partials/footer.html"></div>
- </body>
- </html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research — Rustic Garden</title>
+    <meta name="description" content="Research on sustainable farming, terracing and aquaculture practices from Rustic Garden.">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script src="assets/js/script.js" defer></script>
+    <style>
+        .research-hero {
+            background: linear-gradient(135deg, rgba(76, 175, 80, 0.1), rgba(139, 195, 74, 0.1));
+            padding: 4rem 0;
+            margin-bottom: 3rem;
+            border-radius: 15px;
+        }
+
+        .research-categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .category-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .category-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+        }
+
+        .category-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-color);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .category-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .research-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 3rem 0;
+            padding: 2rem;
+            background: linear-gradient(135deg, rgba(255,255,255,0.8), rgba(240,248,255,0.8));
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 1rem;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            display: block;
+        }
+
+        .stat-label {
+            color: #666;
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
+
+        .research-timeline {
+            position: relative;
+            margin: 3rem 0;
+        }
+
+        .timeline-item {
+            display: flex;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .timeline-date {
+            background: var(--primary-color);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: bold;
+            min-width: 120px;
+            text-align: center;
+            margin-right: 2rem;
+        }
+
+        .timeline-content {
+            flex: 1;
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .research-papers {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 3rem 0;
+        }
+
+        .paper-item {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+
+        .paper-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        .paper-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .paper-meta {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .paper-abstract {
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .paper-actions {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .methodology-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .method-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            border-left: 4px solid var(--secondary-color);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .method-title {
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .collaboration-section {
+            background: linear-gradient(135deg, #e3f2fd, #f3e5f5);
+            padding: 3rem;
+            border-radius: 15px;
+            margin: 3rem 0;
+            text-align: center;
+        }
+
+        .partner-logos {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+
+        .partner-logo {
+            background: white;
+            padding: 1rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            min-width: 120px;
+            font-weight: bold;
+            color: #666;
+        }
+
+        @media (max-width: 768px) {
+            .timeline-item {
+                flex-direction: column;
+            }
+            
+            .timeline-date {
+                margin-right: 0;
+                margin-bottom: 1rem;
+                align-self: flex-start;
+            }
+            
+            .paper-actions {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div data-include="partials/header.html"></div>
+
+    <main role="main">
+        <!-- Hero Section -->
+        <section class="research-hero">
+            <div class="container">
+                <h1 class="section-title">Sustainable Farming Research</h1>
+                <p class="section-lead">Documenting traditional knowledge and sustainable practices that make our fresh food system possible. Our research bridges ancient wisdom with modern innovation.</p>
+            </div>
+        </section>
+
+        <!-- Research Stats -->
+        <section class="section">
+            <div class="container">
+                <div class="research-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">15+</span>
+                        <div class="stat-label">Research Projects</div>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">8</span>
+                        <div class="stat-label">Published Papers</div>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">200+</span>
+                        <div class="stat-label">Farms Studied</div>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">5</span>
+                        <div class="stat-label">University Partners</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Research Categories -->
+        <section class="section">
+            <div class="container">
+                <h2 class="section-title">Research Areas</h2>
+                <div class="research-categories">
+                    <div class="category-card">
+                        <span class="category-icon">🏔️</span>
+                        <h3>Terracing Systems</h3>
+                        <p>Studying traditional terracing methods and their application in modern sustainable agriculture. Our research covers soil conservation, water management, and crop optimization on sloped terrain.</p>
+                    </div>
+                    <div class="category-card">
+                        <span class="category-icon">🐟</span>
+                        <h3>Aquaculture Integration</h3>
+                        <p>Exploring the integration of fish farming with traditional agriculture, including rice-fish systems, aquaponics, and sustainable water management practices.</p>
+                    </div>
+                    <div class="category-card">
+                        <span class="category-icon">🌱</span>
+                        <h3>Soil Health</h3>
+                        <p>Investigating organic matter composition, microbial diversity, and natural fertilization methods that enhance soil fertility while maintaining ecosystem balance.</p>
+                    </div>
+                    <div class="category-card">
+                        <span class="category-icon">💧</span>
+                        <h3>Water Conservation</h3>
+                        <p>Researching traditional and innovative irrigation techniques, rainwater harvesting, and drought-resistant farming methods suitable for changing climate conditions.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Research Methodology -->
+        <section class="section">
+            <div class="container">
+                <h2 class="section-title">Our Research Methodology</h2>
+                <div class="methodology-grid">
+                    <div class="method-card">
+                        <div class="method-title">Field Studies</div>
+                        <p>On-site data collection from working farms, measuring soil quality, crop yields, and environmental impact over multiple growing seasons.</p>
+                    </div>
+                    <div class="method-card">
+                        <div class="method-title">Community Interviews</div>
+                        <p>Documenting traditional knowledge through interviews with local farmers, preserving generations of agricultural wisdom.</p>
+                    </div>
+                    <div class="method-card">
+                        <div class="method-title">Laboratory Analysis</div>
+                        <p>Scientific testing of soil samples, water quality, and crop nutrition to validate traditional practices with modern metrics.</p>
+                    </div>
+                    <div class="method-card">
+                        <div class="method-title">Pilot Programs</div>
+                        <p>Testing innovative combinations of traditional and modern techniques in controlled environments before wider implementation.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Research Timeline -->
+        <section class="section">
+            <div class="container">
+                <h2 class="section-title">Research Timeline</h2>
+                <div class="research-timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-date">2024</div>
+                        <div class="timeline-content">
+                            <h4>Integrated Aquaculture Study</h4>
+                            <p>Launched comprehensive study on rice-fish integration systems across 50 farms in the region. Initial results show 30% increase in overall productivity.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">2023</div>
+                        <div class="timeline-content">
+                            <h4>Terracing Optimization Project</h4>
+                            <p>Completed analysis of traditional terracing methods, publishing findings on improved water retention and soil conservation techniques.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">2022</div>
+                        <div class="timeline-content">
+                            <h4>Soil Health Initiative</h4>
+                            <p>Began long-term study on organic soil improvement methods, establishing baseline measurements across 100 test plots.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Research Papers -->
+        <section class="section">
+            <div class="container">
+                <div class="research-papers">
+                    <h2 class="section-title">Published Research</h2>
+                    
+                    <div class="paper-item">
+                        <div class="paper-title">Sustainable Terracing Practices: Traditional Methods for Modern Agriculture</div>
+                        <div class="paper-meta">Published: March 2024 | Authors: Research Team | 45 pages</div>
+                        <div class="paper-abstract">
+                            This comprehensive study examines traditional terracing systems used across mountain agriculture, analyzing their effectiveness in soil conservation, water management, and crop productivity. The research includes detailed case studies from 25 farms and provides practical guidelines for implementing these techniques in modern sustainable farming operations.
+                        </div>
+                        <div class="paper-actions">
+                            <button data-pdf="assets/pdf/research/sustainable-terracing.pdf" class="btn btn-secondary">Preview</button>
+                            <a class="btn btn-primary" href="assets/pdf/research/sustainable-terracing.pdf" target="_blank" rel="noopener noreferrer" download>Download PDF</a>
+                        </div>
+                    </div>
+
+                    <div class="paper-item">
+                        <div class="paper-title">Aquaculture Systems Study: Integrating Fish Farming with Traditional Agriculture</div>
+                        <div class="paper-meta">Published: January 2024 | Authors: Research Team | 38 pages</div>
+                        <div class="paper-abstract">
+                            An in-depth analysis of integrated aquaculture systems, focusing on rice-fish farming and pond-based agriculture. The study demonstrates significant improvements in both fish yield and crop production when traditional techniques are properly applied, along with environmental benefits including improved water quality and biodiversity.
+                        </div>
+                        <div class="paper-actions">
+                            <button data-pdf="assets/pdf/research/aquaculture-systems.pdf" class="btn btn-secondary">Preview</button>
+                            <a class="btn btn-primary" href="assets/pdf/research/aquaculture-systems.pdf" target="_blank" rel="noopener noreferrer" download>Download PDF</a>
+                        </div>
+                    </div>
+
+                    <div class="paper-item">
+                        <div class="paper-title">Soil Microbiome Analysis in Organic Farming Systems</div>
+                        <div class="paper-meta">Published: November 2023 | Authors: Research Team | 52 pages</div>
+                        <div class="paper-abstract">
+                            A detailed study of soil microbial communities in organic farming systems, comparing traditional composting methods with modern soil improvement techniques. The research reveals the crucial role of beneficial microorganisms in maintaining soil health and crop resilience.
+                        </div>
+                        <div class="paper-actions">
+                            <button data-pdf="assets/pdf/research/soil-microbiome.pdf" class="btn btn-secondary">Preview</button>
+                            <a class="btn btn-primary" href="assets/pdf/research/soil-microbiome.pdf" target="_blank" rel="noopener noreferrer" download>Download PDF</a>
+                        </div>
+                    </div>
+
+                    <div class="paper-item">
+                        <div class="paper-title">Water Conservation Strategies in Mountain Agriculture</div>
+                        <div class="paper-meta">Published: September 2023 | Authors: Research Team | 41 pages</div>
+                        <div class="paper-abstract">
+                            This research examines traditional water management practices in mountain farming communities, including rainwater harvesting, irrigation optimization, and drought resistance strategies. The study provides actionable insights for farmers facing increasing water scarcity challenges.
+                        </div>
+                        <div class="paper-actions">
+                            <button data-pdf="assets/pdf/research/water-conservation.pdf" class="btn btn-secondary">Preview</button>
+                            <a class="btn btn-primary" href="assets/pdf/research/water-conservation.pdf" target="_blank" rel="noopener noreferrer" download>Download PDF</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Collaboration Section -->
+        <section class="section">
+            <div class="container">
+                <div class="collaboration-section">
+                    <h2 class="section-title">Research Partnerships</h2>
+                    <p>Our research is conducted in collaboration with leading agricultural institutions and local farming communities.</p>
+                    
+                    <div class="partner-logos">
+                        <div class="partner-logo">Agricultural University</div>
+                        <div class="partner-logo">Sustainable Farming Institute</div>
+                        <div class="partner-logo">Mountain Agriculture Research Center</div>
+                        <div class="partner-logo">Local Farmers Cooperative</div>
+                    </div>
+
+                    <div style="margin-top: 2rem;">
+                        <a href="mailto:research@rusticgarden.com" class="btn btn-primary">Collaborate With Us</a>
+                        <a href="#newsletter" class="btn btn-secondary">Subscribe to Research Updates</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div data-include="partials/footer.html"></div>
+
+    <script>
+        // Enhanced PDF preview functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const pdfButtons = document.querySelectorAll('[data-pdf]');
+            
+            pdfButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const pdfUrl = this.getAttribute('data-pdf');
+                    
+                    // Create modal for PDF preview
+                    const modal = document.createElement('div');
+                    modal.className = 'pdf-modal';
+                    modal.innerHTML = `
+                        <div class="pdf-modal-content">
+                            <div class="pdf-modal-header">
+                                <h3>Research Document Preview</h3>
+                                <button class="pdf-modal-close">&times;</button>
+                            </div>
+                            <div class="pdf-modal-body">
+                                <iframe src="${pdfUrl}" width="100%" height="600px" frameborder="0"></iframe>
+                            </div>
+                            <div class="pdf-modal-footer">
+                                <a href="${pdfUrl}" class="btn btn-primary" download>Download Full PDF</a>
+                                <button class="btn btn-secondary pdf-modal-close">Close Preview</button>
+                            </div>
+                        </div>
+                    `;
+                    
+                    document.body.appendChild(modal);
+                    
+                    // Close modal functionality
+                    const closeButtons = modal.querySelectorAll('.pdf-modal-close');
+                    closeButtons.forEach(closeBtn => {
+                        closeBtn.addEventListener('click', () => {
+                            document.body.removeChild(modal);
+                        });
+                    });
+                    
+                    // Close on background click
+                    modal.addEventListener('click', (e) => {
+                        if (e.target === modal) {
+                            document.body.removeChild(modal);
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+
+    <style>
+        /* PDF Modal Styles */
+        .pdf-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            padding: 2rem;
+        }
+
+        .pdf-modal-content {
+            background: white;
+            border-radius: 10px;
+            max-width: 90%;
+            max-height: 90%;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .pdf-modal-header {
+            padding: 1rem 2rem;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .pdf-modal-close {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #666;
+        }
+
+        .pdf-modal-close:hover {
+            color: #333;
+        }
+
+        .pdf-modal-body {
+            flex: 1;
+            padding: 1rem;
+        }
+
+        .pdf-modal-footer {
+            padding: 1rem 2rem;
+            border-top: 1px solid #eee;
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+    </style>
+</body>
+</html>
