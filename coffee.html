@@ -203,7 +203,11 @@
             padding: 4rem 0;
             text-align: center;
         }
-        .hero-content { position: relative; max-width: 1000px; margin: 0 auto; }
+        .hero-content { 
+            position: relative; 
+            max-width: 1000px; 
+            margin: 0 auto; 
+        }
         .badges {
             display: flex;
             justify-content: center;
@@ -219,7 +223,7 @@
             font-size: 0.85rem;
             font-weight: 500;
         }
-        .title {
+        .hero-title {
             font-size: clamp(2.5rem, 5vw, 4rem);
             font-weight: 700;
             background: linear-gradient(135deg, var(--primary), var(--secondary));
@@ -228,80 +232,14 @@
             -webkit-text-fill-color: transparent;
             margin-bottom: 1.5rem;
         }
-        .lead {
+        .hero-lead {
             font-size: 1.25rem;
             color: var(--text-light);
             max-width: 800px;
             margin: 0 auto 2rem;
         }
-        .location {
-            font-style: italic;
-            color: var(--text-light);
-            margin-bottom: 3rem;
-        }
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            margin: 3rem 0;
-        }
-        .card {
-            background: white;
-            padding: 2rem;
-            border-radius: 12px;
-            box-shadow: var(--shadow);
-            text-align: center;
-            transition: all 0.3s var(--ease);
-        }
-        .card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 10px 40px rgba(0,0,0,0.15);
-        }
-        .card-icon {
-            font-size: 3rem;
-            margin-bottom: 1.5rem;
-            display: block;
-        }
-        .card h3 {
-            font-size: 1.25rem;
-            margin-bottom: 1rem;
-        }
-        .card p {
-            color: var(--text-light);
-            line-height: 1.5;
-        }
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 1rem 2rem;
-            border: none;
-            border-radius: var(--radius);
-            font: 500 1rem/1 inherit;
-            cursor: pointer;
-            text-decoration: none;
-            transition: all 0.3s var(--ease);
-            margin: 0.5rem;
-        }
-        .btn-primary {
-            background: var(--primary);
-            color: white;
-            box-shadow: var(--shadow);
-        }
-        .btn-primary:hover {
-            background: #1e3a21;
-            transform: translateY(-2px);
-            box-shadow: 0 10px 40px rgba(44, 85, 48, 0.3);
-        }
-        .btn-secondary {
-            background: transparent;
-            color: var(--primary);
-            border: 2px solid var(--primary);
-        }
-        .btn-secondary:hover {
-            background: var(--primary);
-            color: white;
-        }
+        
+        /* Sections */
         .section {
             padding: 5rem 0;
         }
@@ -321,32 +259,71 @@
             margin: 0 auto 3rem;
             line-height: 1.7;
         }
-        /* Offering Cards */
-        .offering-card {
+        
+        /* Grid Layout */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        /* Story Cards */
+        .story-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: all 0.3s var(--ease);
+        }
+        .story-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+        }
+        .story-card-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+        .story-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+        .story-card p {
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+        
+        /* Product Cards */
+        .product-card {
             background: white;
             border-radius: 12px;
             overflow: hidden;
             box-shadow: var(--shadow);
             transition: all 0.3s var(--ease);
-            text-decoration: none;
-            color: inherit;
+            position: relative;
         }
-        .offering-card:hover {
+        .product-card:hover {
             transform: translateY(-6px);
             box-shadow: 0 20px 60px rgba(0,0,0,0.2);
-            border: 2px solid var(--primary);
         }
-        .offering-image {
-            height: 200px;
+        .product-image {
+            height: 240px;
             background: var(--bg-alt);
             display: flex;
             align-items: center;
             justify-content: center;
-            border: 2px dashed var(--border);
-            position: relative;
             color: var(--text-light);
             font-size: 0.9rem;
             text-align: center;
+            overflow: hidden;
+        }
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
         .category-badge {
             position: absolute;
@@ -358,40 +335,78 @@
             border-radius: 20px;
             font: 600 0.75rem/1 inherit;
             text-transform: uppercase;
+            z-index: 2;
         }
-        .offering-content {
+        .product-content {
             padding: 2rem;
         }
-        .offering-title {
+        .product-title {
             font-size: 1.25rem;
             margin-bottom: 0.75rem;
-        }
-        .offering-description {
-            color: var(--text-light);
-            margin-bottom: 1.5rem;
-            line-height: 1.5;
-        }
-        .offering-meta {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding-top: 1rem;
-            border-top: 1px solid var(--border);
-        }
-        .offering-price {
-            font-weight: 600;
             color: var(--primary);
         }
-        .offering-type {
-            font-size: 0.85rem;
+        .product-description {
             color: var(--text-light);
-            background: var(--bg-alt);
-            padding: 0.25rem 0.75rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+        .product-price {
+            font-weight: 600;
+            color: var(--primary);
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+        
+        /* Featured Card */
+        .featured-card {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 3rem 2rem;
             border-radius: 12px;
+            text-align: center;
+            grid-column: 1 / -1;
         }
-        .heritage {
-            background: linear-gradient(135deg, rgba(44, 85, 48, 0.05), rgba(212, 165, 116, 0.05));
+        .featured-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: white;
         }
+        .featured-card p {
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
+        /* Buttons */
+        .button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: var(--radius);
+            font: 500 1rem/1 inherit;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s var(--ease);
+            background: var(--primary);
+            color: white;
+            box-shadow: var(--shadow);
+        }
+        .button:hover {
+            background: #1e3a21;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 40px rgba(44, 85, 48, 0.3);
+        }
+        .featured-card .button {
+            background: white;
+            color: var(--primary);
+        }
+        .featured-card .button:hover {
+            background: var(--bg-alt);
+            color: var(--primary);
+        }
+        
         /* Footer */
         .footer {
             background: var(--text);
@@ -428,6 +443,7 @@
             text-align: center;
             color: #9ca3af;
         }
+        
         /* Responsive */
         @media (max-width: 768px) {
             .container { padding: 0 1rem; }
@@ -448,12 +464,19 @@
                 display: flex;
             }
             .mobile-toggle { display: block; }
-            .hero { padding: 4rem 0; }
+            .hero { padding: 3rem 0; }
             .section { padding: 3rem 0; }
-            .grid { grid-template-columns: 1fr; }
+            .grid { 
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
             .contact-info { gap: 1rem; }
+            .featured-card {
+                grid-column: 1;
+            }
         }
     </style>
+</head>
 <body>
 
 <div class="contact-bar">
@@ -471,99 +494,100 @@
     </div>
 </div>
 
- <!-- Main Header -->
-    <header class="main-header">
-        <div class="container">
-            <div class="header-content">
-                <a href="index.html" class="logo">
-                    <span class="logo-image">
-                        <!-- SVG LOGO: COLLECTIVE MARK & GEOGRAPHICAL INDICATOR -->
-                        <svg class="logo-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                            <!-- Outer circle -->
-                            <circle cx="100" cy="100" r="95" fill="none" stroke="#6B4423" stroke-width="6"/>
-                            <!-- Inner circle background -->
-                            <circle cx="100" cy="100" r="75" fill="#F5F1E8"/>
-                            <!-- Decorative circle -->
-                            <circle cx="100" cy="100" r="45" fill="none" stroke="#6B4423" stroke-width="2"/>
-                            <!-- Plant motif -->
-                            <g transform="translate(100, 100)">
-                                <line x1="0" y1="20" x2="0" y2="-25" stroke="#6B4423" stroke-width="3" stroke-linecap="round"/>
-                                <path d="M -2 -5 Q -18 -15 -25 -8 Q -20 5 -2 10 Z" fill="#6B4423"/>
-                                <path d="M -4 -2 Q -16 -10 -20 -5 Q -16 5 -4 8 Z" fill="#8B7355"/>
-                                <path d="M 2 -5 Q 18 -15 25 -8 Q 20 5 2 10 Z" fill="#6B4423"/>
-                                <path d="M 4 -2 Q 16 -10 20 -5 Q 16 5 4 8 Z" fill="#8B7355"/>
-                                <path d="M 0 -25 Q -8 -35 0 -40 Q 8 -35 0 -25 Z" fill="#6B4423"/>
-                                <path d="M 0 -27 Q -5 -33 0 -36 Q 5 -33 0 -27 Z" fill="#8B7355"/>
-                                <ellipse cx="0" cy="22" rx="15" ry="3" fill="none" stroke="#6B4423" stroke-width="1.5"/>
-                                <ellipse cx="0" cy="26" rx="22" ry="4" fill="none" stroke="#6B4423" stroke-width="1.5"/>
-                                <ellipse cx="0" cy="31" rx="28" ry="5" fill="none" stroke="#6B4423" stroke-width="1.5"/>
-                            </g>
-                            <!-- Top arc text -->
-                            <defs>
-                              <path id="top-arc" d="M 30 100 A 70 70 0 0 1 170 100" />
-                            </defs>
-                            <text font-family="serif" font-size="16" font-weight="bold" fill="#6B4423" letter-spacing="3">
-                                <textPath xlink:href="#top-arc" startOffset="50%" text-anchor="middle">RUSTIC GARDEN</textPath>
-                            </text>
-                            <!-- Bottom arc text -->
-                            <defs>
-                              <path id="bottom-arc" d="M 30 100 A 70 70 0 0 0 170 100" />
-                            </defs>
-                            <text font-family="serif" font-size="14" font-weight="normal" fill="#6B4423" letter-spacing="2">
-                                <textPath xlink:href="#bottom-arc" startOffset="50%" text-anchor="middle">Kavutiri-Embu</textPath>
-                            </text>
-                        </svg>
-                    </span>
-                    <div class="logo-text">
-                        <h1>Rustic Garden</h1>
-                        <div class="logo-tagline">Cultivating Culture. Inspiring Knowledge</div>
-                    </div>
-                </a>
-                
-                <button class="mobile-toggle" onclick="toggleNav()" aria-label="Toggle navigation">☰</button>
-                <nav role="navigation" aria-label="Main Navigation" class="main-nav">
-                    <ul class="nav-list" id="nav">
-                        <li><a href="wellness.html" class="nav-link">Wellness</a></li>
-                        <li><a href="our-story.html" class="nav-link">Our Story</a></li>
-                        <li><a href="coffee.html" class="nav-link">Coffee</a></li>
-                        <li><a href="macadamia.html" class="nav-link">Macadamia</a></li>
-                        <li class="nav-dropdown">
-                            <a href="#" class="nav-link dropdown-toggle">
-                                Youth Program <span class="caret">▾</span>
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a href="landscaping.html" class="dropdown-link">Landscaping</a></li>
-                                <li><a href="seedlings.html" class="dropdown-link">Seedlings</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="aquaculture.html" class="nav-link">Aquaculture</a></li>
-                        <li><a href="events.html" class="nav-link">Events</a></li>
-                        <li class="nav-dropdown">
-                            <a href="#" class="nav-link dropdown-toggle">
-                                Academic<span class="caret">▾</span>
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#research" class="dropdown-link">Research</a></li>
-                                <li><a href="#heritage" class="dropdown-link">Heritage</a></li>
-                                <li><a href="#resources" class="dropdown-link">Resources</a></li>
-                                <li><a href="#contact" class="dropdown-link">Contact</a></li>
-                            </ul>
-                        </li>
-                        <li class="nav-dropdown">
-                            <a href="#" class="nav-link dropdown-toggle">
-                                Products <span class="caret">▾</span>
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#coffee-products" class="dropdown-link">Coffee Products</a></li>
-                                <li><a href="#macadamia-products" class="dropdown-link">Macadamia Products</a></li>
-                                <li><a href="#seedlings-products" class="dropdown-link">Seedlings Products</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
+<!-- Main Header -->
+<header class="main-header">
+    <div class="container">
+        <div class="header-content">
+            <a href="index.html" class="logo">
+                <span class="logo-image">
+                    <!-- SVG LOGO: COLLECTIVE MARK & GEOGRAPHICAL INDICATOR -->
+                    <svg class="logo-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Outer circle -->
+                        <circle cx="100" cy="100" r="95" fill="none" stroke="#6B4423" stroke-width="6"/>
+                        <!-- Inner circle background -->
+                        <circle cx="100" cy="100" r="75" fill="#F5F1E8"/>
+                        <!-- Decorative circle -->
+                        <circle cx="100" cy="100" r="45" fill="none" stroke="#6B4423" stroke-width="2"/>
+                        <!-- Plant motif -->
+                        <g transform="translate(100, 100)">
+                            <line x1="0" y1="20" x2="0" y2="-25" stroke="#6B4423" stroke-width="3" stroke-linecap="round"/>
+                            <path d="M -2 -5 Q -18 -15 -25 -8 Q -20 5 -2 10 Z" fill="#6B4423"/>
+                            <path d="M -4 -2 Q -16 -10 -20 -5 Q -16 5 -4 8 Z" fill="#8B7355"/>
+                            <path d="M 2 -5 Q 18 -15 25 -8 Q 20 5 2 10 Z" fill="#6B4423"/>
+                            <path d="M 4 -2 Q 16 -10 20 -5 Q 16 5 4 8 Z" fill="#8B7355"/>
+                            <path d="M 0 -25 Q -8 -35 0 -40 Q 8 -35 0 -25 Z" fill="#6B4423"/>
+                            <path d="M 0 -27 Q -5 -33 0 -36 Q 5 -33 0 -27 Z" fill="#8B7355"/>
+                            <ellipse cx="0" cy="22" rx="15" ry="3" fill="none" stroke="#6B4423" stroke-width="1.5"/>
+                            <ellipse cx="0" cy="26" rx="22" ry="4" fill="none" stroke="#6B4423" stroke-width="1.5"/>
+                            <ellipse cx="0" cy="31" rx="28" ry="5" fill="none" stroke="#6B4423" stroke-width="1.5"/>
+                        </g>
+                        <!-- Top arc text -->
+                        <defs>
+                          <path id="top-arc" d="M 30 100 A 70 70 0 0 1 170 100" />
+                        </defs>
+                        <text font-family="serif" font-size="16" font-weight="bold" fill="#6B4423" letter-spacing="3">
+                            <textPath xlink:href="#top-arc" startOffset="50%" text-anchor="middle">RUSTIC GARDEN</textPath>
+                        </text>
+                        <!-- Bottom arc text -->
+                        <defs>
+                          <path id="bottom-arc" d="M 30 100 A 70 70 0 0 0 170 100" />
+                        </defs>
+                        <text font-family="serif" font-size="14" font-weight="normal" fill="#6B4423" letter-spacing="2">
+                            <textPath xlink:href="#bottom-arc" startOffset="50%" text-anchor="middle">Kavutiri-Embu</textPath>
+                        </text>
+                    </svg>
+                </span>
+                <div class="logo-text">
+                    <h1>Rustic Garden</h1>
+                    <div class="logo-tagline">Cultivating Culture. Inspiring Knowledge</div>
+                </div>
+            </a>
+            
+            <button class="mobile-toggle" onclick="toggleNav()" aria-label="Toggle navigation">☰</button>
+            <nav role="navigation" aria-label="Main Navigation" class="main-nav">
+                <ul class="nav-list" id="nav">
+                    <li><a href="wellness.html" class="nav-link">Wellness</a></li>
+                    <li><a href="our-story.html" class="nav-link">Our Story</a></li>
+                    <li><a href="coffee.html" class="nav-link active">Coffee</a></li>
+                    <li><a href="macadamia.html" class="nav-link">Macadamia</a></li>
+                    <li class="nav-dropdown">
+                        <a href="#" class="nav-link dropdown-toggle">
+                            Youth Program <span class="caret">▾</span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="landscaping.html" class="dropdown-link">Landscaping</a></li>
+                            <li><a href="seedlings.html" class="dropdown-link">Seedlings</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="aquaculture.html" class="nav-link">Aquaculture</a></li>
+                    <li><a href="events.html" class="nav-link">Events</a></li>
+                    <li class="nav-dropdown">
+                        <a href="#" class="nav-link dropdown-toggle">
+                            Academic<span class="caret">▾</span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="research.html" class="dropdown-link">Research</a></li>
+                            <li><a href="heritage.html" class="dropdown-link">Heritage</a></li>
+                            <li><a href="resources.html" class="dropdown-link">Resources</a></li>
+                            <li><a href="contact.html" class="dropdown-link">Contact</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-dropdown">
+                        <a href="#" class="nav-link dropdown-toggle">
+                            Products <span class="caret">▾</span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#products" class="dropdown-link">Coffee Products</a></li>
+                            <li><a href="#brewing-gear" class="dropdown-link">Brewing Gear</a></li>
+                            <li><a href="macadamia.html" class="dropdown-link">Macadamia Products</a></li>
+                            <li><a href="seedlings.html" class="dropdown-link">Seedlings Products</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
         </div>
-    </header>
+    </div>
+</header>
 
 <main role="main">
 
@@ -576,31 +600,31 @@
                     <span class="badge">Direct Trade</span>
                 </div>
                 <h1 class="hero-title">From Our Farm to Your Cup</h1>
-                <p class="hero-lead">Experience the rich, aromatic coffee cultivated on the volcanic soils of Mt. Kenya, carefully harvested and processed to preserve its unique flavor.</p>
-                <a href="#products" class="button">Shop Now</a>
+                <p class="hero-lead">Experience the rich, aromatic coffee cultivated on the volcanic soils of Mt. Kenya, carefully harvested and processed to preserve its unique flavor profile.</p>
+                <a href="#products" class="button">Shop Coffee Now</a>
             </div>
         </div>
     </section>
 
-    <section id="our-story" class="section story-section">
+    <section id="our-story" class="section">
         <div class="container">
             <h2 class="section-title">The Rustic Garden Coffee Story</h2>
-            <p class="section-lead">We combine traditional farming wisdom with modern sustainability to produce exceptional coffee. Our process honors the land and supports local communities. We're proud to showcase the complete <strong>"Seed to Cup & Back"</strong> journey of our coffee.</p>
+            <p class="section-lead">We combine traditional farming wisdom with modern sustainability practices to produce exceptional coffee. Our process honors the land and supports local communities while showcasing the complete <strong>"Seed to Cup & Back"</strong> journey.</p>
             <div class="grid">
                 <div class="story-card">
                     <span class="story-card-icon">🌱</span>
                     <h3>Cultivation & Harvest</h3>
-                    <p>Our journey begins with our coffee seedlings, grown using eco-friendly methods that protect the environment and maintain soil health.</p>
+                    <p>Our journey begins with carefully selected coffee seedlings, grown using eco-friendly methods that protect the environment and maintain soil health on the slopes of Mt. Kenya.</p>
                 </div>
                 <div class="story-card">
                     <span class="story-card-icon">☕</span>
                     <h3>Processing & Roasting</h3>
-                    <p>Each batch is carefully processed and roasted to perfection, highlighting the distinct flavor notes of our high-altitude beans.</p>
+                    <p>Each batch is carefully processed and roasted to perfection, highlighting the distinct flavor notes of our high-altitude beans with meticulous attention to detail.</p>
                 </div>
                 <div class="story-card">
                     <span class="story-card-icon">🔁</span>
                     <h3>Traceability & Rebirth</h3>
-                    <p>We offer QR-linked provenance to verify the journey from farm to cup. Once brewed, the coffee husks and grounds are returned to the farm to enrich the soil, completing the cycle and giving back to the land.</p>
+                    <p>We offer QR-linked provenance to verify the complete journey from farm to cup. Coffee husks and grounds return to enrich our soil, completing the sustainable cycle.</p>
                 </div>
             </div>
         </div>
@@ -609,76 +633,87 @@
     <section id="products" class="section">
         <div class="container">
             <h2 class="section-title">Our Coffee Products</h2>
-            <p class="section-lead">Browse our selection of freshly roasted coffee beans, brewing equipment, and accessories.</p>
+            <p class="section-lead">Browse our selection of freshly roasted coffee beans, each expressing the unique terroir of our Mt. Kenya farm.</p>
             <div class="grid">
                 <div class="product-card">
-                    <img src="https://images.unsplash.com/photo-1511920170033-f8396924c348?ixlib=rb-4.0.3&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&h=300&fit=crop" class="product-image" alt="Mt. Kenya Medium Roast Whole Bean Coffee">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1511920170033-f8396924c348?ixlib=rb-4.0.3&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&h=300&fit=crop" alt="Mt. Kenya Medium Roast Whole Bean Coffee">
+                    </div>
                     <span class="category-badge">Whole Bean</span>
                     <div class="product-content">
                         <h3 class="product-title">Mt. Kenya Medium Roast</h3>
-                        <p class="product-description">A balanced and smooth coffee with notes of citrus, chocolate, and a clean finish. Perfect for everyday brewing.</p>
-                        <span class="product-price">Ksh 1,500.</span>
+                        <p class="product-description">A balanced and smooth coffee with bright notes of citrus, dark chocolate, and a clean finish. Perfect for everyday brewing and showcasing our terroir.</p>
+                        <span class="product-price">Ksh 1,500</span>
                         <a href="#" class="button">Add to Cart</a>
                     </div>
                 </div>
 
                 <div class="product-card">
-                    <img src="https://images.unsplash.com/photo-1541334346808-01306f9d0e2e?ixlib=rb-4.0.3&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&h=300&fit=crop" class="product-image" alt="Dark Roast Blend Ground Coffee">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1541334346808-01306f9d0e2e?ixlib=rb-4.0.3&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&h=300&fit=crop" alt="Dark Roast Blend Ground Coffee">
+                    </div>
                     <span class="category-badge">Ground</span>
                     <div class="product-content">
                         <h3 class="product-title">Dark Roast Blend</h3>
-                        <p class="product-description">A bold and robust blend with hints of dark chocolate and roasted nuts. Ideal for espresso and French press.</p>
-                        <span class="product-price">Ksh 1,500.</span>
+                        <p class="product-description">A bold and robust blend with rich hints of dark chocolate and roasted nuts. Ideal for espresso, French press, and those who love intensity.</p>
+                        <span class="product-price">Ksh 1,500</span>
                         <a href="#" class="button">Add to Cart</a>
                     </div>
                 </div>
 
-                 <div class="featured-card">
+                <div class="featured-card">
                     <h3>Featured Single Origin Coffee</h3>
-                    <p>Experience our premium single-origin coffee, available exclusively through our trusted partner, Algrano. This is our most recent and sought-after harvest.</p>
-                    <a href="https://www.algrano.com/en/products/8631-kenya-gibbs-coffee-arabica-fully-washed-honey-oct-dec-2025?utm_campaign=pds_KE-114-202510-f6c079b7cc" class="button" target="_blank">View on Algrano</a>
+                    <p>Experience our premium single-origin coffee, available exclusively through our trusted partner, Algrano. This represents our most recent and sought-after harvest, showcasing the full complexity of our Mt. Kenya terroir.</p>
+                    <a href="https://www.algrano.com/en/products/8631-kenya-gibbs-coffee-arabica-fully-washed-honey-oct-dec-2025?utm_campaign=pds_KE-114-202510-f6c079b7cc" class="button" target="_blank" rel="noopener">View on Algrano</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="brewing-gear" class="section">
-        <div class="container">
-            <h2 class="section-title">Brewing Gear & Accessories</h2>
-            <p class="section-lead">Master the art of coffee preparation with our curated selection of high-quality tools.</p>
-            <div class="grid">
-                <div class="product-card">
-                    <div class="product-image">📷<br>Mokka Pot</div>
-                    <div class="product-content">
-                        <h3 class="product-title">Mokka Pot</h3>
-                        <p class="product-description">Classic stovetop espresso maker for a rich, aromatic brew. Multiple sizes available.</p>
-                        <div class="product-meta">From Ksh 3500</div>
-                        <a href="#" class="button">Learn More</a>
-                    </div>
+   <section id="brewing-gear" class="section">
+    <div class="container">
+        <h2 class="section-title">Brewing Gear & Accessories</h2>
+        <p class="section-lead">
+            Master the art of coffee preparation with our curated selection of high-quality brewing tools and accessories.
+        </p>
+        <div class="grid">
+            
+            <!-- Product 1 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <span style="font-size: 4rem;">🫖</span><br>
+                    <span>Mokka Pot</span>
                 </div>
-                <div class="product-card">
-                    <div class="product-image">📷<br>Milk Frother</div>
-                    <div class="product-content">
-                        <h3 class="product-title">Milk Frother</h3>
-                        <p class="product-description">Create silky smooth foam for cappuccinos and lattes with ease.</p>
-                        <span class="product-price">Ksh 2500</span>
-                        <a href="#" class="button">Add to Cart</a>
-                    </div>
-                </div>
-                <div class="product-card">
-                    <div class="product-image">📷<br>Milk Jugs</div>
-                    <div class="product-content">
-                        <h3 class="product-title">Milk Jugs</h3>
-                        <p class="product-description">Stainless steel jugs for perfectly steamed milk and latte art.</p>
-                        <span class="product-price">Ksh 1800</span>
-                        <a href="#" class="button">Add to Cart</a>
-                    </div>
+                <div class="product-content">
+                    <h3 class="product-title">Mokka Pot</h3>
+                    <p class="product-description">
+                        Classic Italian stovetop espresso maker for a rich, aromatic brew. 
+                        Available in multiple sizes to suit your household needs.
+                    </p>
+                    <span class="product-price">From Ksh 3,500</span>
+                    <a href="#" class="button">Learn More</a>
                 </div>
             </div>
-        </div>
-    </section>
 
-</main>
+            <!-- Product 2 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <span style="font-size: 4rem;">📷</span><br>
+                    <span>Milk Jugs</span>
+                </div>
+                <div class="product-content">
+                    <h3 class="product-title">Milk Jugs</h3>
+                    <p class="product-description">
+                        Stainless steel jugs for perfectly steamed milk and latte art.
+                    </p>
+                    <span class="product-price">Ksh 1,800</span>
+                    <a href="#" class="button">Add to Cart</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
 
 <footer id="contact" class="footer">
         <div class="container">
@@ -750,5 +785,6 @@
     </script>
 </body>
 </html>
+
 
 
