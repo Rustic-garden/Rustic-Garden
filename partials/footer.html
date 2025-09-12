@@ -1,62 +1,53 @@
-<!-- partials/footer.html -->
- <footer id="contact" class="footer">
- <div class="container">
- <div class="footer-content">
- <div>
- 4
-<h4>Fresh Delivery Service</h4>
- <ul>
- <li>📞 Order: 
-<li>✉️ Email: 
-<a href="tel:+254722704997">+254 722 704 997</a></li>
- <a
- href="mailto:GroupNomad@outlook.com">GroupNomad@outlook.com</a></li>
- <li>📍 Farm Location: Kavutiri, Embu County
- <li>🚚 Delivery: All Embu County
- </li>
- </li>
- </ul>
- </div>
- <div>
- <h4>What's Fresh Today</h4>
- <ul>
- <li><a href="#fish-products">🐟 Fresh Tilapia
- </a></li>
- <li><a href="#coffee-products">☕ Mt. Kenya Coffee
- <li><a href="#produce-box">🥬 Seasonal Vegetables
- <li><a href="#nuts">🥜 Macadamia Nuts
- </a></li>
- </a></li>
- </a></li>
- </ul>
- </div>
- <div>
- <h4>Farm Experience</h4>
- <ul>
- <li><a href="wellness.html">🧘 Wellness Visits</a></li>
- <li><a href="events.html">👨🌾 Farm Tours
- </a></li>
- <li><a href="coffee.html">☕ Coffee Cupping
- </a></li>
- <li><a href="aquaculture.html">🐟 Pond Visits
- </a></li>
- </ul>
- </div>
- <div>
- <h4>Our Heritage</h4>
- <ul>
- <li><a href="heritage.html">🏔️ Mt. Kenya Traditions
- <li><a href="research.html">📚 Cultural Research
- </a></li>
- </a></li>
- <li><a href="our-story.html">👴 Elder Stories</a></li>
- <li><a href="contact.html">🤝 Community</a></li>
- </ul>
- </div>
- </div>
- <div class="footer-bottom">
- <p>&copy; 2024 Rustic Garden • From Seed to Plate • Kavutiri, Embu 
-County</p>
- </div>
- </div>
- </footer>pa
+<!-- /partials/footer.html (fixed) -->
+<footer class="footer" role="contentinfo" aria-label="Rustic Garden site footer">
+  <div class="container">
+
+    <form id="newsletterForm" class="newsletter-form" action="#" method="post" novalidate aria-label="Sign up for Rustic Garden newsletter">
+      <label for="newsletterEmail" class="sr-only">Email address</label>
+      <input id="newsletterEmail" type="email" name="email" placeholder="Your email for farm updates" required aria-required="true">
+      <button type="submit" class="btn btn-primary">Join</button>
+      <div class="newsletter-feedback" aria-live="polite"></div>
+    </form>
+
+    <div class="social-links" aria-label="Rustic Garden social links">
+      <a href="#" class="social-link" aria-label="Rustic Garden on Facebook" rel="noopener noreferrer">Facebook</a>
+      <a href="#" class="social-link" aria-label="Rustic Garden on Instagram" rel="noopener noreferrer">Instagram</a>
+      <a href="#" class="social-link" aria-label="Rustic Garden on WhatsApp" rel="noopener noreferrer">WhatsApp</a>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; <span id="currentYear">2024</span> Rustic Garden • From Seed to Plate • Kavutiri, Embu County</p>
+      <p class="meta-links">
+        <a href="/privacy.html">Privacy</a> • <a href="/terms.html">Terms</a>
+      </p>
+    </div>
+
+  </div>
+
+  <!-- Structured data for local SEO -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Rustic Garden",
+    "url": "https://your-domain.example/",
+    "logo": "https://your-domain.example/assets/images/logo.svg",
+    "contactPoint": [
+      {
+        "@type": "ContactPoint",
+        "telephone": "+254722704997",
+        "contactType": "customer service",
+        "areaServed": "KE",
+        "availableLanguage": "en"
+      }
+    ],
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Kavutiri",
+      "addressRegion": "Embu County",
+      "addressCountry": "KE"
+    }
+  }
+  </script>
+</footer>
+<!-- End of /partials/footer.html -->
