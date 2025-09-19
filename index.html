@@ -3,16 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rustic Garden | From Seed to Plate - Kavutiri Farm Fresh Delivery</title>
-    <meta name="description" content="Farm-fresh produce from our terraces in Kavutiri, Embu. Coffee, tilapia, macadamias & seasonal vegetables delivered fresh to your table.">
+    <title>Rustic Garden | Premium Moka Pots & Mt. Kenya Dark Roast Coffee - Kavutiri</title>
+    <meta name="description" content="Expert coffee roasters offering premium Italian moka pots and Mt. Kenya dark roast coffee. From our nursery to your morning cup - complete coffee experience in Kavutiri, Embu.">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary: #2c5530;
             --secondary: #8b7355;
             --accent: #d4a574;
+            --coffee-dark: #3c2415;
+            --coffee-medium: #8b4513;
+            --steam-white: #f8f9fa;
+            --morning-gold: #ffd700;
             --fresh-green: #22c55e;
-            --earth-brown: #92400e;
             --text: #1a1a1a;
             --text-light: #6b7280;
             --bg: #fefefe;
@@ -24,31 +27,36 @@
             --radius: 12px;
             --ease: cubic-bezier(0.4, 0, 0.2, 1);
         }
+        
         * { margin: 0; padding: 0; box-sizing: border-box; }
+        
         body {
             font: 400 16px/1.6 'Inter', system-ui, sans-serif;
             color: var(--text);
             background: var(--bg);
             overflow-x: hidden;
         }
+        
         .container {
             max-width: 1400px;
             margin: 0 auto;
             padding: 0 2rem;
         }
-        h1, h2, h3 { 
-            font-family: 'Playfair Display', serif; 
+        
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
             font-weight: 600;
             line-height: 1.2;
         }
-        
+
         /* Enhanced Contact Bar */
         .contact-bar {
-            background: linear-gradient(135deg, var(--primary), #1e3a21);
+            background: linear-gradient(135deg, var(--coffee-dark), var(--primary));
             color: white;
             padding: 0.75rem 0;
             text-align: center;
         }
+        
         .contact-info {
             display: flex;
             justify-content: center;
@@ -56,28 +64,33 @@
             flex-wrap: wrap;
             font-size: 0.9rem;
         }
+        
         .contact-item {
             display: flex;
             align-items: center;
             gap: 0.5rem;
             transition: all 0.3s var(--ease);
         }
+        
         .contact-item:hover {
             transform: translateY(-1px);
             opacity: 0.9;
         }
+        
         .contact-item svg {
             width: 16px;
             height: 16px;
             fill: currentColor;
         }
+        
         .contact-item a {
             color: inherit;
             text-decoration: none;
             transition: opacity 0.3s var(--ease);
         }
-        .contact-item a:hover { opacity: 0.8; }
         
+        .contact-item a:hover { opacity: 0.8; }
+
         /* Enhanced Header */
         .main-header {
             background: rgba(255, 255, 255, 0.95);
@@ -89,6 +102,7 @@
             backdrop-filter: blur(20px);
             border-bottom: 1px solid var(--border);
         }
+        
         .header-content {
             display: flex;
             justify-content: space-between;
@@ -96,6 +110,7 @@
             flex-wrap: wrap;
             gap: 1rem;
         }
+        
         .logo {
             display: flex;
             align-items: center;
@@ -104,9 +119,11 @@
             color: inherit;
             transition: all 0.3s var(--ease);
         }
+        
         .logo:hover {
             transform: translateY(-2px);
         }
+        
         .logo-image {
             width: 60px;
             height: 60px;
@@ -114,6 +131,7 @@
             align-items: center;
             justify-content: center;
         }
+        
         .logo-svg {
             width: 60px;
             height: 60px;
@@ -121,128 +139,43 @@
             filter: drop-shadow(0 2px 8px rgba(44, 85, 48, 0.1));
             transition: all 0.3s var(--ease);
         }
+        
         .logo:hover .logo-svg {
             transform: scale(1.05) rotate(2deg);
             filter: drop-shadow(0 4px 16px rgba(44, 85, 48, 0.2));
         }
-        .logo-text h1 { 
+        
+        .logo-text h1 {
             font-size: 1.85rem;
             color: var(--primary);
-            background: linear-gradient(135deg, var(--primary), var(--fresh-green));
+            background: linear-gradient(135deg, var(--coffee-dark), var(--primary));
             background-clip: text;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-        .logo-tagline { 
-            font-size: 0.85rem; 
-            color: var(--text-light); 
-            font-weight: 500;
+        
+        .logo-tagline {
+            font-size: 0.85rem;
+            color: var(--coffee-medium);
+            font-weight: 600;
             margin-top: 2px;
         }
-        
-        /* Enhanced Navigation */
-        .main-nav {
-            position: relative;
-        }
-        .nav-list {
-            display: flex;
-            gap: 0.5rem;
-            list-style: none;
-        }
-        .nav-link {
-            padding: 0.75rem 1.25rem;
-            color: var(--text-light);
-            font-weight: 500;
-            border-radius: 8px;
-            text-decoration: none;
-            transition: all 0.3s var(--ease);
-            font-size: 0.95rem;
-            position: relative;
-        }
-        .nav-link:hover,
-        .nav-link.active {
-            background: linear-gradient(135deg, var(--primary), var(--fresh-green));
-            color: white;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(44, 85, 48, 0.3);
-        }
-        .nav-dropdown {
-            position: relative;
-        }
-        .nav-dropdown .nav-link {
-            padding-right: 2.25rem;
-        }
-        .nav-dropdown .caret {
-            font-size: 0.75rem;
-            position: absolute;
-            right: 0.75rem;
-            top: 50%;
-            transform: translateY(-50%);
-            transition: transform 0.3s var(--ease);
-        }
-        .nav-dropdown:hover .caret {
-            transform: translateY(-50%) rotate(180deg);
-        }
-        .dropdown-menu {
-            display: none;
-            position: absolute;
-            top: 100%;
-            left: 0;
-            list-style: none;
-            background: white;
-            border-radius: var(--radius);
-            box-shadow: var(--shadow-lg);
-            min-width: 200px;
-            z-index: 110;
-            border: 1px solid var(--border);
-            overflow: hidden;
-        }
-        .nav-dropdown:hover .dropdown-menu {
-            display: block;
-            animation: dropdownFade 0.3s var(--ease);
-        }
-        @keyframes dropdownFade {
-            from { opacity: 0; transform: translateY(-10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .dropdown-menu a {
-            display: block;
-            padding: 0.75rem 1.25rem;
-            color: var(--text);
-            text-decoration: none;
-            transition: all 0.3s var(--ease);
-        }
-        .dropdown-menu a:hover {
-            background: var(--warm-cream);
-            color: var(--primary);
-            padding-left: 1.5rem;
-        }
-        .mobile-toggle {
-            display: none;
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-            padding: 0.5rem;
-            color: var(--primary);
-            transition: all 0.3s var(--ease);
-        }
-        .mobile-toggle:hover {
-            transform: scale(1.1);
-            color: var(--fresh-green);
-        }
-        
-        /* Farm-to-Fork Hero */
+
+        /* Morning Coffee Hero */
         .hero {
-            background: linear-gradient(135deg, 
-                var(--warm-cream) 0%, 
-                rgba(34, 197, 94, 0.05) 30%,
-                rgba(212, 165, 116, 0.08) 70%,
-                white 100%);
-            padding: 6rem 0;
+            background: linear-gradient(135deg,
+                var(--coffee-dark) 0%,
+                rgba(60, 36, 21, 0.9) 20%,
+                rgba(44, 85, 48, 0.8) 60%,
+                var(--warm-cream) 100%);
+            padding: 8rem 0;
             position: relative;
             overflow: hidden;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
         }
+        
         .hero::before {
             content: '';
             position: absolute;
@@ -250,168 +183,418 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="%23d4a574" opacity="0.3"/><circle cx="80" cy="40" r="1.5" fill="%2322c55e" opacity="0.2"/><circle cx="60" cy="80" r="1" fill="%232c5530" opacity="0.2"/></svg>') repeat;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="%23ffd700" opacity="0.3"/><circle cx="80" cy="40" r="1.5" fill="%23d4a574" opacity="0.4"/><circle cx="60" cy="80" r="1" fill="%238b7355" opacity="0.2"/></svg>') repeat;
             opacity: 0.1;
-            animation: float 20s ease-in-out infinite;
+            animation: morningFloat 25s ease-in-out infinite;
         }
-        @keyframes float {
+        
+        @keyframes morningFloat {
             0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-20px) rotate(180deg); }
+            50% { transform: translateY(-30px) rotate(180deg); }
         }
-        .hero-content { 
-            position: relative; 
-            max-width: 1200px; 
-            margin: 0 auto; 
+        
+        .hero-content {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
             text-align: center;
             z-index: 2;
+            color: white;
         }
-        
-        /* Farm Journey Badges */
-        .journey-badges {
+
+        /* Coffee Process Timeline */
+        .coffee-journey {
             display: flex;
             justify-content: center;
-            gap: 1rem;
-            margin-bottom: 3rem;
+            align-items: center;
             flex-wrap: wrap;
-        }
-        .journey-badge {
-            background: linear-gradient(135deg, var(--primary), var(--fresh-green));
-            color: white;
-            padding: 0.75rem 1.5rem;
-            border-radius: 50px;
-            font-size: 0.9rem;
-            font-weight: 600;
-            box-shadow: var(--shadow);
-            transition: all 0.3s var(--ease);
+            gap: 1.5rem;
+            margin-bottom: 4rem;
             position: relative;
-            overflow: hidden;
-        }
-        .journey-badge::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-            transition: left 0.5s ease;
-        }
-        .journey-badge:hover::before {
-            left: 100%;
-        }
-        .journey-badge:hover {
-            transform: translateY(-3px) scale(1.05);
-            box-shadow: 0 8px 25px rgba(44, 85, 48, 0.3);
         }
         
-        .title {
-            font-size: clamp(2.5rem, 5vw, 4.5rem);
+        .journey-step {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            color: white;
+            padding: 1rem 1.5rem;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s var(--ease);
+            position: relative;
+        }
+        
+        .journey-step:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+        }
+        
+        .journey-step::after {
+            content: '→';
+            position: absolute;
+            right: -1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--morning-gold);
+            font-weight: bold;
+        }
+        
+        .journey-step:last-child::after {
+            display: none;
+        }
+
+        .morning-ritual-badge {
+            background: linear-gradient(135deg, var(--morning-gold), #ffed4a);
+            color: var(--coffee-dark);
+            padding: 1.5rem 2rem;
+            border-radius: 50px;
             font-weight: 700;
-            background: linear-gradient(135deg, var(--primary), var(--fresh-green), var(--accent));
+            font-size: 1.1rem;
+            box-shadow: 0 8px 30px rgba(255, 215, 0, 0.3);
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: morningGlow 3s ease-in-out infinite;
+            z-index: 5;
+            white-space: nowrap;
+        }
+        
+        @keyframes morningGlow {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); box-shadow: 0 8px 30px rgba(255, 215, 0, 0.3); }
+            50% { transform: translate(-50%, -50%) scale(1.05); box-shadow: 0 12px 40px rgba(255, 215, 0, 0.5); }
+        }
+
+        .hero-title {
+            font-size: clamp(3rem, 6vw, 5rem);
+            font-weight: 700;
+            background: linear-gradient(135deg, white, var(--morning-gold), var(--accent));
             background-size: 200% 200%;
             background-clip: text;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            margin-bottom: 1.5rem;
-            animation: gradientShift 6s ease-in-out infinite;
+            margin-bottom: 2rem;
+            animation: titleShimmer 8s ease-in-out infinite;
+            text-shadow: 0 4px 20px rgba(0,0,0,0.3);
         }
-        @keyframes gradientShift {
+        
+        @keyframes titleShimmer {
             0%, 100% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
         }
-        
-        .lead {
-            font-size: 1.3rem;
-            color: var(--text-light);
-            max-width: 900px;
-            margin: 0 auto 2rem;
+
+        .hero-subtitle {
+            font-size: 1.4rem;
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 800px;
+            margin: 0 auto 1rem;
             line-height: 1.7;
-        }
-        .location {
-            font-style: italic;
-            color: var(--text-light);
-            margin-bottom: 4rem;
-            font-size: 1.1rem;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
         }
         
-        /* Enhanced Farm Process Grid */
-        .farm-process {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            margin: 4rem 0;
+        .hero-location {
+            font-style: italic;
+            color: var(--morning-gold);
+            margin-bottom: 4rem;
+            font-size: 1.2rem;
+            font-weight: 500;
         }
-        .process-card {
-            background: white;
-            padding: 2.5rem;
-            border-radius: 16px;
-            box-shadow: var(--shadow);
-            text-align: center;
-            transition: all 0.4s var(--ease);
+
+        /* Premium Moka Pot Showcase */
+        .moka-showcase {
+            background: linear-gradient(135deg, var(--warm-cream), white);
+            padding: 6rem 0;
             position: relative;
-            overflow: hidden;
-            border: 1px solid var(--border);
         }
-        .process-card::before {
+        
+        .moka-showcase::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             height: 4px;
-            background: linear-gradient(90deg, var(--primary), var(--fresh-green), var(--accent));
-            transform: scaleX(0);
-            transition: transform 0.4s var(--ease);
-        }
-        .process-card:hover::before {
-            transform: scaleX(1);
-        }
-        .process-card:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--shadow-lg);
-            border-color: var(--primary);
-        }
-        .process-icon {
-            font-size: 3.5rem;
-            margin-bottom: 1.5rem;
-            display: block;
-            transition: all 0.3s var(--ease);
-        }
-        .process-card:hover .process-icon {
-            transform: scale(1.1) rotate(5deg);
-        }
-        .process-card h3 {
-            font-size: 1.3rem;
-            margin-bottom: 1rem;
-            color: var(--primary);
-        }
-        .process-card p {
-            color: var(--text-light);
-            line-height: 1.6;
+            background: linear-gradient(90deg, var(--coffee-dark), var(--coffee-medium), var(--accent));
         }
         
-        /* Call to Action Buttons */
+        .showcase-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .showcase-title {
+            font-size: clamp(2.5rem, 4vw, 4rem);
+            color: var(--coffee-dark);
+            margin-bottom: 1.5rem;
+        }
+        
+        .showcase-subtitle {
+            font-size: 1.3rem;
+            color: var(--text-light);
+            max-width: 900px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        .moka-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+            margin: 4rem 0;
+        }
+        
+        .moka-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: all 0.4s var(--ease);
+            position: relative;
+            border: 2px solid transparent;
+        }
+        
+        .moka-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--coffee-medium);
+        }
+        
+        .moka-card.featured {
+            border: 3px solid var(--morning-gold);
+            transform: scale(1.02);
+        }
+        
+        .moka-card.featured::before {
+            content: 'BESTSELLER';
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: var(--morning-gold);
+            color: var(--coffee-dark);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 0.8rem;
+            z-index: 10;
+        }
+
+        .moka-image {
+            height: 280px;
+            background: linear-gradient(135deg, var(--steam-white), #e8f4f8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .moka-image svg {
+            width: 80%;
+            height: 80%;
+            filter: drop-shadow(0 8px 20px rgba(0,0,0,0.1));
+            transition: all 0.5s var(--ease);
+        }
+        
+        .moka-card:hover .moka-image svg {
+            transform: scale(1.1) rotate(5deg);
+        }
+        
+        .steam-animation {
+            position: absolute;
+            top: 20%;
+            left: 60%;
+            width: 30px;
+            height: 60px;
+            opacity: 0;
+            transition: opacity 0.3s var(--ease);
+        }
+        
+        .moka-card:hover .steam-animation {
+            opacity: 1;
+        }
+        
+        .steam-line {
+            width: 3px;
+            height: 100%;
+            background: linear-gradient(to top, transparent, rgba(255,255,255,0.8), transparent);
+            margin: 0 auto;
+            animation: steam 2s ease-in-out infinite;
+            border-radius: 2px;
+        }
+        
+        @keyframes steam {
+            0% { transform: translateY(20px) scaleY(0.5); opacity: 0; }
+            50% { transform: translateY(-10px) scaleY(1); opacity: 1; }
+            100% { transform: translateY(-40px) scaleY(0.3); opacity: 0; }
+        }
+
+        .price-badge {
+            position: absolute;
+            bottom: 1rem;
+            left: 1rem;
+            background: var(--coffee-dark);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 25px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            box-shadow: 0 4px 15px rgba(60, 36, 21, 0.3);
+        }
+
+        .moka-content {
+            padding: 2.5rem;
+        }
+        
+        .moka-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--coffee-dark);
+        }
+        
+        .moka-description {
+            color: var(--text-light);
+            margin-bottom: 2rem;
+            line-height: 1.7;
+        }
+        
+        .moka-specs {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: var(--warm-cream);
+            border-radius: 12px;
+        }
+        
+        .spec-item {
+            text-align: center;
+        }
+        
+        .spec-label {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin-bottom: 0.5rem;
+        }
+        
+        .spec-value {
+            font-weight: 700;
+            color: var(--coffee-dark);
+            font-size: 1.1rem;
+        }
+
+        /* Dark Roast Coffee Section */
+        .coffee-section {
+            background: linear-gradient(135deg, var(--coffee-dark), #2c1810);
+            color: white;
+            padding: 6rem 0;
+            position: relative;
+        }
+        
+        .coffee-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="30" cy="30" r="8" fill="%23d4a574" opacity="0.1"/><circle cx="70" cy="70" r="6" fill="%23ffd700" opacity="0.1"/></svg>') repeat;
+            opacity: 0.3;
+        }
+        
+        .coffee-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .coffee-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .coffee-title {
+            font-size: clamp(2.5rem, 4vw, 3.5rem);
+            color: var(--morning-gold);
+            margin-bottom: 1.5rem;
+        }
+        
+        .coffee-subtitle {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.8);
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        .coffee-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin: 4rem 0;
+        }
+        
+        .feature-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 2.5rem;
+            border-radius: 16px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.4s var(--ease);
+        }
+        
+        .feature-card:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        }
+        
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+        
+        .feature-title {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--morning-gold);
+        }
+        
+        .feature-description {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.6;
+        }
+
+        /* Call to Action */
         .hero-cta {
             display: flex;
             justify-content: center;
-            gap: 1rem;
-            margin-top: 3rem;
+            gap: 1.5rem;
+            margin-top: 4rem;
             flex-wrap: wrap;
         }
+        
         .btn {
             display: inline-flex;
             align-items: center;
             gap: 0.75rem;
-            padding: 1.2rem 2.5rem;
+            padding: 1.5rem 3rem;
             border: none;
-            border-radius: 12px;
+            border-radius: 50px;
             font: 600 1.1rem/1 inherit;
             cursor: pointer;
             text-decoration: none;
             transition: all 0.3s var(--ease);
             position: relative;
             overflow: hidden;
+            min-width: 220px;
+            justify-content: center;
         }
+        
         .btn::before {
             content: '';
             position: absolute;
@@ -422,269 +605,135 @@
             background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
             transition: left 0.5s ease;
         }
+        
         .btn:hover::before {
             left: 100%;
         }
+        
         .btn-primary {
-            background: linear-gradient(135deg, var(--primary), var(--fresh-green));
-            color: white;
-            box-shadow: var(--shadow);
+            background: linear-gradient(135deg, var(--morning-gold), #ffed4a);
+            color: var(--coffee-dark);
+            box-shadow: 0 8px 30px rgba(255, 215, 0, 0.3);
         }
+        
         .btn-primary:hover {
-            background: linear-gradient(135deg, #1e3a21, #16a34a);
             transform: translateY(-3px);
-            box-shadow: 0 12px 40px rgba(44, 85, 48, 0.4);
+            box-shadow: 0 15px 50px rgba(255, 215, 0, 0.5);
         }
+        
         .btn-secondary {
             background: transparent;
-            color: var(--primary);
-            border: 2px solid var(--primary);
-            box-shadow: var(--shadow);
-        }
-        .btn-secondary:hover {
-            background: var(--primary);
             color: white;
-            transform: translateY(-3px);
-            box-shadow: 0 12px 40px rgba(44, 85, 48, 0.3);
+            border: 2px solid white;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.2);
         }
         
-        /* Enhanced Sections */
-        .section {
-            padding: 6rem 0;
-            position: relative;
+        .btn-secondary:hover {
+            background: white;
+            color: var(--coffee-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 50px rgba(255,255,255,0.3);
         }
-        .section:nth-child(even) {
+
+        /* Additional Sections */
+        .process-section {
+            padding: 6rem 0;
             background: var(--warm-cream);
         }
-        .section-title {
-            font-size: clamp(2rem, 4vw, 3.5rem);
-            text-align: center;
-            margin-bottom: 1.5rem;
-            color: var(--primary);
-        }
-        .section-lead {
-            font-size: 1.2rem;
-            color: var(--text-light);
-            text-align: center;
-            max-width: 900px;
-            margin: 0 auto 4rem;
-            line-height: 1.8;
+        
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
         }
         
-        /* Product Showcase */
-        .product-showcase {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-            margin: 4rem 0;
-        }
-        .product-card {
+        .process-card {
             background: white;
+            padding: 2.5rem;
             border-radius: 16px;
-            overflow: hidden;
             box-shadow: var(--shadow);
+            text-align: center;
             transition: all 0.4s var(--ease);
-            text-decoration: none;
-            color: inherit;
-            position: relative;
+            border-top: 4px solid var(--coffee-dark);
         }
-        .product-card:hover {
-            transform: translateY(-10px);
+        
+        .process-card:hover {
+            transform: translateY(-8px);
             box-shadow: var(--shadow-lg);
         }
-        .product-image {
-            height: 250px;
-            background: linear-gradient(135deg, var(--warm-cream), var(--bg-alt));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-bottom: 3px solid var(--accent);
-            position: relative;
-            overflow: hidden;
-        }
-        .product-image::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(45deg, transparent 30%, rgba(212, 165, 116, 0.1) 50%, transparent 70%);
-            transform: translateX(-100%);
-            transition: transform 0.5s ease;
-        }
-        .product-card:hover .product-image::before {
-            transform: translateX(100%);
-        }
-        .product-placeholder {
-            color: var(--text-light);
-            font-size: 1rem;
-            text-align: center;
-            font-weight: 500;
-        }
-        .freshness-badge {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            background: var(--fresh-green);
-            color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            font: 600 0.8rem/1 inherit;
-            text-transform: uppercase;
-            box-shadow: 0 2px 10px rgba(34, 197, 94, 0.3);
-        }
-        .product-content {
-            padding: 2rem;
-        }
-        .product-title {
-            font-size: 1.4rem;
-            margin-bottom: 1rem;
-            color: var(--primary);
-        }
-        .product-description {
-            color: var(--text-light);
+        
+        .process-icon {
+            font-size: 3rem;
             margin-bottom: 1.5rem;
-            line-height: 1.6;
-        }
-        .product-meta {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding-top: 1rem;
-            border-top: 1px solid var(--border);
-        }
-        .harvest-time {
-            font-size: 0.9rem;
-            color: var(--text-light);
-            background: var(--warm-cream);
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-        }
-        .freshness-level {
-            font-weight: 600;
-            color: var(--fresh-green);
+            display: block;
         }
         
-        /* Footer Enhancement */
+        .process-title {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--coffee-dark);
+        }
+        
+        .process-description {
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        /* Footer */
         .footer {
-            background: linear-gradient(135deg, var(--text) 0%, #0f1419 100%);
+            background: linear-gradient(135deg, var(--coffee-dark), #1a0e08);
             color: white;
             padding: 5rem 0 2rem;
-            position: relative;
         }
-        .footer::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, var(--primary), var(--fresh-green), var(--accent));
-        }
+        
         .footer-content {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 3rem;
             margin-bottom: 3rem;
         }
+        
         .footer h4 {
             margin-bottom: 1.5rem;
-            color: var(--accent);
+            color: var(--morning-gold);
             font-size: 1.2rem;
         }
+        
         .footer ul {
             list-style: none;
         }
+        
         .footer li {
             margin-bottom: 0.75rem;
         }
+        
         .footer a {
-            color: #d1d5db;
+            color: rgba(255, 255, 255, 0.8);
             text-decoration: none;
             transition: all 0.3s var(--ease);
-            position: relative;
-        }
-        .footer a::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -2px;
-            left: 0;
-            background: var(--accent);
-            transition: width 0.3s var(--ease);
-        }
-        .footer a:hover {
-            color: white;
-            transform: translateX(5px);
-        }
-        .footer a:hover::after {
-            width: 100%;
-        }
-        .footer-bottom {
-            padding-top: 2rem;
-            border-top: 1px solid #374151;
-            text-align: center;
-            color: #9ca3af;
         }
         
+        .footer a:hover {
+            color: var(--morning-gold);
+        }
+        
+        .footer-bottom {
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            text-align: center;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
         /* Responsive Design */
         @media (max-width: 768px) {
             .container { padding: 0 1rem; }
-            .header-content { flex-direction: column; gap: 1.5rem; }
-            .nav-list {
-                flex-direction: column;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                right: 0;
-                background: rgba(255, 255, 255, 0.98);
-                backdrop-filter: blur(10px);
-                box-shadow: var(--shadow);
-                padding: 2rem;
-                border-radius: 0 0 var(--radius) var(--radius);
-                display: none;
-            }
-            .nav-list.active {
-                display: flex;
-                animation: mobileNavSlide 0.3s var(--ease);
-            }
-            @keyframes mobileNavSlide {
-                from { opacity: 0; transform: translateY(-20px); }
-                to { opacity: 1; transform: translateY(0); }
-            }
-            .mobile-toggle { display: block; }
-            .hero { padding: 4rem 0; }
-            .section { padding: 4rem 0; }
-            .farm-process { grid-template-columns: 1fr; }
-            .product-showcase { grid-template-columns: 1fr; }
-            .journey-badges { gap: 0.5rem; }
+            .hero { padding: 4rem 0; min-height: auto; }
+            .coffee-journey { flex-direction: column; }
+            .journey-step::after { display: none; }
+            .moka-grid { grid-template-columns: 1fr; }
             .hero-cta { flex-direction: column; align-items: center; }
-            .contact-info { 
-                flex-direction: column; 
-                gap: 1rem; 
-                text-align: center; 
-            }
-            .title { font-size: 2.5rem; }
-            .lead { font-size: 1.1rem; }
-        }
-        
-        /* Accessibility Improvements */
-        @media (prefers-reduced-motion: reduce) {
-            *, *::before, *::after {
-                animation-duration: 0.01ms !important;
-                animation-iteration-count: 1 !important;
-                transition-duration: 0.01ms !important;
-            }
-        }
-        
-        /* High contrast mode support */
-        @media (prefers-contrast: high) {
-            :root {
-                --shadow: 0 4px 20px rgba(0,0,0,0.3);
-                --shadow-lg: 0 20px 60px rgba(0,0,0,0.4);
-            }
+            .contact-info { flex-direction: column; gap: 1rem; }
+            .moka-specs { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -715,88 +764,45 @@
             <div class="header-content">
                 <a href="index.html" class="logo">
                     <span class="logo-image">
-                        <!-- Your Custom SVG LOGO -->
                         <svg class="logo-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                            <!-- Outer circle -->
-                            <circle cx="100" cy="100" r="95" fill="none" stroke="#6B4423" stroke-width="6"/>
-                            <!-- Inner circle background -->
-                            <circle cx="100" cy="100" r="75" fill="#F5F1E8"/>
-                            <!-- Decorative circle -->
-                            <circle cx="100" cy="100" r="45" fill="none" stroke="#6B4423" stroke-width="2"/>
-                            <!-- Plant motif -->
+                            <circle cx="100" cy="100" r="95" fill="none" stroke="#3c2415" stroke-width="6"/>
+                            <circle cx="100" cy="100" r="75" fill="#fffbf0"/>
+                            <circle cx="100" cy="100" r="45" fill="none" stroke="#8b4513" stroke-width="2"/>
                             <g transform="translate(100, 100)">
-                                <line x1="0" y1="20" x2="0" y2="-25" stroke="#6B4423" stroke-width="3" stroke-linecap="round"/>
-                                <path d="M -2 -5 Q -18 -15 -25 -8 Q -20 5 -2 10 Z" fill="#6B4423"/>
-                                <path d="M -4 -2 Q -16 -10 -20 -5 Q -16 5 -4 8 Z" fill="#8B7355"/>
-                                <path d="M 2 -5 Q 18 -15 25 -8 Q 20 5 2 10 Z" fill="#6B4423"/>
-                                <path d="M 4 -2 Q 16 -10 20 -5 Q 16 5 4 8 Z" fill="#8B7355"/>
-                                <path d="M 0 -25 Q -8 -35 0 -40 Q 8 -35 0 -25 Z" fill="#6B4423"/>
-                                <path d="M 0 -27 Q -5 -33 0 -36 Q 5 -33 0 -27 Z" fill="#8B7355"/>
-                                <ellipse cx="0" cy="22" rx="15" ry="3" fill="none" stroke="#6B4423" stroke-width="1.5"/>
-                                <ellipse cx="0" cy="26" rx="22" ry="4" fill="none" stroke="#6B4423" stroke-width="1.5"/>
-                                <ellipse cx="0" cy="31" rx="28" ry="5" fill="none" stroke="#6B4423" stroke-width="1.5"/>
+                                <rect x="-8" y="-30" width="16" height="50" fill="#8b4513" rx="8"/>
+                                <rect x="-12" y="20" width="24" height="15" fill="#3c2415" rx="5"/>
+                                <circle cx="0" cy="35" r="3" fill="#d4a574"/>
+                                <path d="M -15 -20 Q -25 -35 -15 -40 Q -5 -35 -15 -20" fill="#228B22"/>
+                                <path d="M 15 -20 Q 25 -35 15 -40 Q 5 -35 15 -20" fill="#228B22"/>
+                                <path d="M 0 -40 Q -10 -50 0 -55 Q 10 -50 0 -40" fill="#228B22"/>
                             </g>
-                            <!-- Top arc text -->
                             <defs>
                               <path id="top-arc" d="M 30 100 A 70 70 0 0 1 170 100" />
                             </defs>
-                            <text font-family="serif" font-size="16" font-weight="bold" fill="#6B4423" letter-spacing="3">
+                            <text font-family="serif" font-size="16" font-weight="bold" fill="#3c2415" letter-spacing="3">
                                 <textPath href="#top-arc" startOffset="50%" text-anchor="middle">RUSTIC GARDEN</textPath>
                             </text>
-                            <!-- Bottom arc text -->
                             <defs>
                               <path id="bottom-arc" d="M 30 100 A 70 70 0 0 0 170 100" />
                             </defs>
-                            <text font-family="serif" font-size="14" font-weight="normal" fill="#6B4423" letter-spacing="2">
-                                <textPath href="#bottom-arc" startOffset="50%" text-anchor="middle">Kavutiri-Embu</textPath>
+                            <text font-family="serif" font-size="14" font-weight="normal" fill="#3c2415" letter-spacing="2">
+                                <textPath href="#bottom-arc" startOffset="50%" text-anchor="middle">Coffee Experts</textPath>
                             </text>
                         </svg>
                     </span>
                     <div class="logo-text">
                         <h1>Rustic Garden</h1>
-                        <div class="logo-tagline">From Seed to Plate • Fresh Farm Delivery</div>
+                        <div class="logo-tagline">Premium Moka Pots & Mt. Kenya Coffee</div>
                     </div>
                 </a>
                 
-                <button class="mobile-toggle" onclick="toggleNav()" aria-label="Toggle navigation">☰</button>
-                <nav role="navigation" aria-label="Main Navigation" class="main-nav">
-                    <ul class="nav-list" id="nav">
-                        <li><a href="wellness.html" class="nav-link">Wellness</a></li>
-                        <li><a href="our-story.html" class="nav-link">Our Story</a></li>
-                        <li><a href="coffee.html" class="nav-link">Coffee</a></li>
-                        <li><a href="macadamia.html" class="nav-link">Macadamia</a></li>
-                        <li class="nav-dropdown">
-                            <a href="#" class="nav-link dropdown-toggle">
-                                Youth Program <span class="caret">▾</span>
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a href="landscaping.html" class="dropdown-link">Landscaping</a></li>
-                                <li><a href="seedlings.html" class="dropdown-link">Seedlings</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="aquaculture.html" class="nav-link">Aquaculture</a></li>
-                        <li><a href="events.html" class="nav-link">Events</a></li>
-                        <li class="nav-dropdown">
-                            <a href="#" class="nav-link dropdown-toggle">
-                                Academic<span class="caret">▾</span>
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a href="research.html" class="dropdown-link">Research</a></li>
-                                <li><a href="heritage.html" class="dropdown-link">Heritage</a></li>
-                                <li><a href="resources.html" class="dropdown-link">Resources</a></li>
-                                <li><a href="contact.html" class="dropdown-link">Contact</a></li>
-                            </ul>
-                        </li>
-                        <li class="nav-dropdown">
-                            <a href="#" class="nav-link dropdown-toggle">
-                                Fresh Delivery <span class="caret">▾</span>
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#coffee-products" class="dropdown-link">Fresh Coffee</a></li>
-                                <li><a href="#fish-products" class="dropdown-link">Pond Tilapia</a></li>
-                                <li><a href="#produce-box" class="dropdown-link">Weekly Box</a></li>
-                            </ul>
-                        </li>
+                <nav role="navigation" aria-label="Main Navigation">
+                    <ul style="display: flex; gap: 2rem; list-style: none; align-items: center;">
+                        <li><a href="#home" style="color: var(--coffee-dark); text-decoration: none; font-weight: 600; padding: 0.5rem 1rem; border-radius: 8px; transition: all 0.3s ease;">Home</a></li>
+                        <li><a href="#moka-pots" style="color: var(--coffee-dark); text-decoration: none; font-weight: 600; padding: 0.5rem 1rem; border-radius: 8px; transition: all 0.3s ease;">Moka Pots</a></li>
+                        <li><a href="#coffee" style="color: var(--coffee-dark); text-decoration: none; font-weight: 600; padding: 0.5rem 1rem; border-radius: 8px; transition: all 0.3s ease;">Dark Roast</a></li>
+                        <li><a href="#process" style="color: var(--coffee-dark); text-decoration: none; font-weight: 600; padding: 0.5rem 1rem; border-radius: 8px; transition: all 0.3s ease;">Our Process</a></li>
+                        <li><a href="#contact" style="color: var(--coffee-dark); text-decoration: none; font-weight: 600; padding: 0.5rem 1rem; border-radius: 8px; transition: all 0.3s ease;">Contact</a></li>
                     </ul>
                 </nav>
             </div>
@@ -804,158 +810,202 @@
     </header>
 
     <main role="main">
+        <!-- Morning Coffee Hero -->
         <section id="home" class="hero">
             <div class="container">
                 <div class="hero-content">
-                    <div class="journey-badges">
-                        <span class="journey-badge">🌱 Seed</span>
-                        <span class="journey-badge">🚜 Farm</span>
-                        <span class="journey-badge">📦 Pack</span>
-                        <span class="journey-badge">🚚 Deliver</span>
-                        <span class="journey-badge">🍽️ Plate</span>
+                    <div class="coffee-journey">
+                        <span class="journey-step">Seedling Nursery</span>
+                        <span class="journey-step">Mountain Plantation</span>
+                        <span class="journey-step">Hand Harvest</span>
+                        <span class="journey-step">Expert Processing</span>
+                        <span class="journey-step">Dark Roasting</span>
+                        <span class="journey-step">Premium Packaging</span>
+                        <span class="morning-ritual-badge">Perfect Morning Ritual</span>
                     </div>
-                    
-                    <h1 class="title">From Our Terraces to Your Table</h1>
-                    <p class="lead">Fresh coffee from our slopes, tilapia from our ponds, macadamias from our groves, and seasonal vegetables from our terraces. Farm-fresh produce delivered weekly to families across Embu County.</p>
-                    
-                    <p class="location">Kavutiri, Embu County • 4,000-6,900 feet elevation • Mt. Kenya Fresh</p>
-                    
-                    <div class="farm-process">
-                        <div class="process-card">
-                            <span class="process-icon">🌿</span>
-                            <h3>Grown Fresh Daily</h3>
-                            <p>Every morning at sunrise, we harvest what's ripe. Coffee beans picked red, vegetables at peak freshness, fish from clear spring-fed ponds.</p>
-                        </div>
-                        <div class="process-card">
-                            <span class="process-icon">🧊</span>
-                            <h3>Packed with Care</h3>
-                            <p>Immediately cooled and packed in insulated boxes with ice packs. Each family box contains 7-14 days of fresh, nutritious food.</p>
-                        </div>
-                        <div class="process-card">
-                            <span class="process-icon">🚚</span>
-                            <h3>Delivered Fresh</h3>
-                            <p>Same-day delivery across Embu County. From our farm gate to your kitchen table in under 8 hours, preserving maximum nutrition and flavor.</p>
-                        </div>
-                        <div class="process-card">
-                            <span class="process-icon">👨‍🍳</span>
-                            <h3>Ready to Cook</h3>
-                            <p>Every box includes cooking suggestions, storage tips, and recipes from local families. Turn fresh ingredients into delicious, healthy meals.</p>
-                        </div>
-                    </div>
-                    
+
+                    <h1 class="hero-title">Wake Up to Mt. Kenya Excellence</h1>
+                    <p class="hero-subtitle">From our seedling nursery to your premium Italian moka pot - experience the complete journey of exceptional coffee. Our dark roast Mt. Kenya beans paired with authentic moka pots create the perfect morning ritual.</p>
+                    <p class="hero-location">Kavutiri Coffee Estate • 4,000-6,900ft Elevation • Expert Roasters Since 2020</p>
+
                     <div class="hero-cta">
-                        <a href="#order" class="btn btn-primary">Order Fresh Box 📦</a>
-                        <a href="#products" class="btn btn-secondary">See What's Fresh Today 🌱</a>
+                        <a href="#moka-pots" class="btn btn-primary">Shop Moka Pots</a>
+                        <a href="#coffee" class="btn btn-secondary">Order Dark Roast</a>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="products" class="section">
+        <!-- Premium Moka Pot Showcase -->
+        <section id="moka-pots" class="moka-showcase">
             <div class="container">
-                <h2 class="section-title">Fresh from the Farm Today</h2>
-                <p class="section-lead">Every item harvested fresh, packed immediately, and delivered the same day. Seasonal availability ensures peak nutrition and flavor.</p>
-                
-                <div class="product-showcase">
-                    <div class="product-card">
-                        <div class="product-image">
-                            <div class="product-placeholder">🐟<br>Fresh Tilapia<br>Photo Coming Soon</div>
-                            <span class="freshness-badge">Harvested Today</span>
-                        </div>
-                        <div class="product-content">
-                            <h3 class="product-title">Pond-Fresh Tilapia</h3>
-                            <p class="product-description">Whole tilapia harvested from our spring-fed ponds each morning. Clear, clean water produces firm, flaky fish with no muddy taste. Immediately iced and packed for delivery.</p>
-                            <div class="product-meta">
-                                <span class="harvest-time">⏰ Harvested 5AM daily</span>
-                        <span class="freshness-level">Best within 3 days</span>
-                    </div>
+                <div class="showcase-header">
+                    <h2 class="showcase-title">Premium Italian Moka Pots</h2>
+                    <p class="showcase-subtitle">Authentic Italian-style moka pots crafted for the perfect extraction of our Mt. Kenya dark roast. Each pot is designed to bring out the rich, bold flavors that make your morning extraordinary.</p>
                 </div>
-            </div>
-            
-            <div class="product-card">
-                <div class="product-image coffee-showcase">
-                    <span class="freshness-badge">Roasted to Order</span>
-                    <div class="moka-gallery">
-                        <div class="moka-container">
-                            <img src="images/mokas garden.jpg" alt="2-Cup Moka Pot - Personal Ritual" class="moka-image primary">
-                            <div class="moka-label">Personal Ritual</div>
-                        </div>
-                        <div class="moka-container">
-                            <img src="images/mokas.jpg" alt="12-Cup Moka Pot - Community Sharing" class="moka-image secondary">
-                            <div class="moka-label">Community Sharing</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="product-content">
-                    <h3 class="product-title">Mt. Kenya Coffee</h3>
-                    <p class="product-description">
-                        Grown high upon our terraced slopes in Kavutiri-Embu Kenya, these single-origin beans draw their strength from cool mountain air and rich volcanic soils. Each ruby-red cherry is hand-picked at peak ripeness, then carefully washed in pure spring water before being sun-dried. Finally, we roast each batch to order, capturing a cup alive with layered aroma, vibrant acidity, and the deep character of Mt. Kenya itself.
-                    </p>
-                    <div class="product-meta">
-                        <span class="harvest-time">⏰ Roasted weekly</span>
-                        <span class="freshness-level">Peak flavor 14 days</span>
-                    </div>
-                </div>
-            </div>
-            
 
-                    
-                    <div class="product-card">
-                        <div class="product-image">
-                            <div class="product-placeholder">🥜<br>Macadamias<br>Photo Coming Soon</div>
-                            <span class="freshness-badge">Grove Fresh</span>
+                <div class="moka-grid">
+                    <div class="moka-card">
+                        <div class="moka-image">
+                            <svg viewBox="0 0 200 300" xmlns="http://www.w3.org/2000/svg">
+                                <!-- 50ml Moka Pot -->
+                                <rect x="50" y="80" width="100" height="120" fill="#f0d9b5" rx="10"/>
+                                <rect x="60" y="200" width="80" height="20" fill="#8b7355" rx="10"/>
+                                <circle cx="100" cy="210" r="8" fill="#3c2415"/>
+                                <line x1="140" y1="120" x2="170" y2="110" stroke="#8b7355" stroke-width="8" stroke-linecap="round"/>
+                                <circle cx="100" cy="140" r="25" fill="#3c2415"/>
+                                <circle cx="100" cy="140" r="18" fill="#d4a574"/>
+                                <rect x="95" y="60" width="10" height="25" fill="#8b7355" rx="5"/>
+                            </svg>
+                            <div class="steam-animation">
+                                <div class="steam-line"></div>
+                            </div>
+                            <div class="price-badge">KES 1,200</div>
                         </div>
-                        <div class="product-content">
-                            <h3 class="product-title">Macadamia Nuts</h3>
-                            <p class="product-description">Premium macadamias from our mature grove. Hand-harvested, cracked fresh, and lightly salted. Rich in healthy fats, perfect for snacking or cooking.</p>
-                            <div class="product-meta">
-                                <span class="harvest-time">⏰ Cracked daily</span>
-                                <span class="freshness-level">Stays fresh 3 weeks</span>
+                        <div class="moka-content">
+                            <h3 class="moka-title">50ml Classic Moka Pot</h3>
+                            <p class="moka-description">Perfect for a single shot of intense espresso-style coffee. Ideal for solo morning rituals or when you need that perfect concentrated coffee experience.</p>
+                            <div class="moka-specs">
+                                <div class="spec-item">
+                                    <div class="spec-label">Capacity</div>
+                                    <div class="spec-value">50ml</div>
+                                </div>
+                                <div class="spec-item">
+                                    <div class="spec-label">Servings</div>
+                                    <div class="spec-value">1 Strong</div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    
-                    <div class="product-card">
-                        <div class="product-image">
-                            <div class="product-placeholder">🥬<br>Mixed Vegetables<br>Photo Coming Soon</div>
-                            <span class="freshness-badge">Garden Fresh</span>
+
+                    <div class="moka-card">
+                        <div class="moka-image">
+                            <svg viewBox="0 0 200 300" xmlns="http://www.w3.org/2000/svg">
+                                <!-- 100ml Moka Pot -->
+                                <rect x="45" y="70" width="110" height="130" fill="#f0d9b5" rx="12"/>
+                                <rect x="55" y="200" width="90" height="22" fill="#8b7355" rx="11"/>
+                                <circle cx="100" cy="211" r="9" fill="#3c2415"/>
+                                <line x1="145" y1="125" x2="180" y2="115" stroke="#8b7355" stroke-width="8" stroke-linecap="round"/>
+                                <circle cx="100" cy="135" r="28" fill="#3c2415"/>
+                                <circle cx="100" cy="135" r="20" fill="#d4a574"/>
+                                <rect x="95" y="55" width="10" height="20" fill="#8b7355" rx="5"/>
+                            </svg>
+                            <div class="steam-animation">
+                                <div class="steam-line"></div>
+                            </div>
+                            <div class="price-badge">KES 1,300</div>
                         </div>
-                        <div class="product-content">
-                            <h3 class="product-title">Seasonal Vegetables</h3>
-                            <p class="product-description">Mixed seasonal vegetables from our terraced gardens. Includes leafy greens, root vegetables, herbs, and seasonal fruits. All grown without chemicals using traditional methods.</p>
-                            <div class="product-meta">
-                                <span class="harvest-time">⏰ Picked dawn</span>
-                                <span class="freshness-level">Best within 7 days</span>
+                        <div class="moka-content">
+                            <h3 class="moka-title">100ml Artisan Moka Pot</h3>
+                            <p class="moka-description">Versatile size perfect for one generous serving or sharing between two. Great for experimenting with different grind sizes and extraction times.</p>
+                            <div class="moka-specs">
+                                <div class="spec-item">
+                                    <div class="spec-label">Capacity</div>
+                                    <div class="spec-value">100ml</div>
+                                </div>
+                                <div class="spec-item">
+                                    <div class="spec-label">Servings</div>
+                                    <div class="spec-value">1-2 Cups</div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    
-                    <div class="product-card">
-                        <div class="product-image">
-                            <div class="product-placeholder">📦<br>Family Box<br>Photo Coming Soon</div>
-                            <span class="freshness-badge">Weekly Delivery</span>
+
+                    <div class="moka-card featured">
+                        <div class="moka-image">
+                            <svg viewBox="0 0 200 300" xmlns="http://www.w3.org/2000/svg">
+                                <!-- 150ml Moka Pot -->
+                                <rect x="40" y="65" width="120" height="140" fill="#f0d9b5" rx="15"/>
+                                <rect x="50" y="205" width="100" height="25" fill="#8b7355" rx="12"/>
+                                <circle cx="100" cy="217" r="10" fill="#3c2415"/>
+                                <line x1="150" y1="130" x2="185" y2="120" stroke="#8b7355" stroke-width="9" stroke-linecap="round"/>
+                                <circle cx="100" cy="135" r="32" fill="#3c2415"/>
+                                <circle cx="100" cy="135" r="24" fill="#d4a574"/>
+                                <rect x="95" y="50" width="10" height="20" fill="#8b7355" rx="5"/>
+                            </svg>
+                            <div class="steam-animation">
+                                <div class="steam-line"></div>
+                            </div>
+                            <div class="price-badge">KES 1,500</div>
                         </div>
-                        <div class="product-content">
-                            <h3 class="product-title">Complete Family Box</h3>
-                            <p class="product-description">Everything your family needs for a week of fresh, healthy eating. Includes coffee, fish, nuts, vegetables, fruits, and herbs. Balanced nutrition from farm to table.</p>
-                            <div class="product-meta">
-                                <span class="harvest-time">⏰ Assembled fresh</span>
-                                <span class="freshness-level">7-14 day variety</span>
+                        <div class="moka-content">
+                            <h3 class="moka-title">150ml Premium Moka Pot</h3>
+                            <p class="moka-description">Our most popular size! Perfect for couples or when you want a more generous serving. Excellent heat distribution ensures optimal extraction every time.</p>
+                            <div class="moka-specs">
+                                <div class="spec-item">
+                                    <div class="spec-label">Capacity</div>
+                                    <div class="spec-value">150ml</div>
+                                </div>
+                                <div class="spec-item">
+                                    <div class="spec-label">Servings</div>
+                                    <div class="spec-value">2-3 Cups</div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    
-                    <div class="product-card">
-                        <div class="product-image">
-                            <div class="product-placeholder">🌿<br>Wellness Experience<br>Photo Coming Soon</div>
-                            <span class="freshness-badge">Farm Visit</span>
+
+                    <div class="moka-card">
+                        <div class="moka-image">
+                            <svg viewBox="0 0 200 300" xmlns="http://www.w3.org/2000/svg">
+                                <!-- 450ml Moka Pot -->
+                                <rect x="30" y="50" width="140" height="170" fill="#f0d9b5" rx="20"/>
+                                <rect x="40" y="220" width="120" height="30" fill="#8b7355" rx="15"/>
+                                <circle cx="100" cy="235" r="12" fill="#3c2415"/>
+                                <line x1="160" y1="140" x2="195" y2="130" stroke="#8b7355" stroke-width="10" stroke-linecap="round"/>
+                                <circle cx="100" cy="135" r="40" fill="#3c2415"/>
+                                <circle cx="100" cy="135" r="30" fill="#d4a574"/>
+                                <rect x="95" y="35" width="10" height="20" fill="#8b7355" rx="5"/>
+                            </svg>
+                            <div class="steam-animation">
+                                <div class="steam-line"></div>
+                            </div>
+                            <div class="price-badge">KES 2,000</div>
                         </div>
-                        <div class="product-content">
-                            <h3 class="product-title">Farm Wellness Experience</h3>
-                            <p class="product-description">Visit our farm for coffee cupping, pond-side relaxation, harvest participation, and traditional cooking classes. Connect with your food source and learn sustainable practices.</p>
-                            <div class="product-meta">
-                                <span class="harvest-time">⏰ By appointment</span>
-                                <span class="freshness-level">Lifetime memories</span>
+                        <div class="moka-content">
+                            <h3 class="moka-title">450ml Family Moka Pot</h3>
+                            <p class="moka-description">Perfect for families or when entertaining guests. Brews enough coffee for a small gathering while maintaining the rich, authentic moka pot flavor profile.</p>
+                            <div class="moka-specs">
+                                <div class="spec-item">
+                                    <div class="spec-label">Capacity</div>
+                                    <div class="spec-value">450ml</div>
+                                </div>
+                                <div class="spec-item">
+                                    <div class="spec-label">Servings</div>
+                                    <div class="spec-value">4-6 Cups</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="moka-card">
+                        <div class="moka-image">
+                            <svg viewBox="0 0 200 300" xmlns="http://www.w3.org/2000/svg">
+                                <!-- 600ml Moka Pot -->
+                                <rect x="25" y="40" width="150" height="180" fill="#f0d9b5" rx="25"/>
+                                <rect x="35" y="220" width="130" height="35" fill="#8b7355" rx="17"/>
+                                <circle cx="100" cy="237" r="14" fill="#3c2415"/>
+                                <line x1="165" y1="145" x2="200" y2="135" stroke="#8b7355" stroke-width="12" stroke-linecap="round"/>
+                                <circle cx="100" cy="130" r="45" fill="#3c2415"/>
+                                <circle cx="100" cy="130" r="35" fill="#d4a574"/>
+                                <rect x="95" y="25" width="10" height="20" fill="#8b7355" rx="5"/>
+                            </svg>
+                            <div class="steam-animation">
+                                <div class="steam-line"></div>
+                            </div>
+                            <div class="price-badge">KES 2,300</div>
+                        </div>
+                        <div class="moka-content">
+                            <h3 class="moka-title">600ml Professional Moka Pot</h3>
+                            <p class="moka-description">Our largest moka pot, perfect for offices, cafes, or serious coffee enthusiasts. Professional-grade construction for daily heavy use and consistent results.</p>
+                            <div class="moka-specs">
+                                <div class="spec-item">
+                                    <div class="spec-label">Capacity</div>
+                                    <div class="spec-value">600ml</div>
+                                </div>
+                                <div class="spec-item">
+                                    <div class="spec-label">Servings</div>
+                                    <div class="spec-value">6-8 Cups</div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -963,119 +1013,156 @@
             </div>
         </section>
 
-        <section id="research" class="section">
+        <!-- Dark Roast Coffee Section -->
+        <section id="coffee" class="coffee-section">
             <div class="container">
-                <h2 class="section-title">Sustainable Farming Research</h2>
-                <p class="section-lead">Documenting traditional knowledge and sustainable practices that make our fresh food system possible while preserving Embu cultural heritage.</p>
-                
-                <div class="farm-process">
-                    <div class="process-card">
-                        <span class="process-icon">🔬</span>
-                        <h3>Traditional Techniques</h3>
-                        <p>Research on indigenous farming methods, terracing systems, and sustainable aquaculture practices passed down through generations.</p>
+                <div class="coffee-content">
+                    <div class="coffee-header">
+                        <h2 class="coffee-title">Mt. Kenya Dark Roast</h2>
+                        <p class="coffee-subtitle">Our signature dark roast brings out the bold, rich flavors that Mt. Kenya coffee is famous for. Perfect for moka pot brewing, each bean is carefully roasted to achieve the ideal balance of intensity and smoothness.</p>
                     </div>
-                    <div class="process-card">
-                        <span class="process-icon">📚</span>
-                        <h3>Cultural Documentation</h3>
-                        <p>Preserving oral histories, traditional food preparation methods, and cultural significance of crops grown on Mt. Kenya slopes.</p>
+
+                    <div class="coffee-features">
+                        <div class="feature-card">
+                            <span class="feature-icon">🌱</span>
+                            <h3 class="feature-title">From Our Nursery</h3>
+                            <p class="feature-description">Every coffee plant starts in our own seedling nursery, where we cultivate hardy, disease-resistant varieties perfectly adapted to Mt. Kenya's climate.</p>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <span class="feature-icon">🏔️</span>
+                            <h3 class="feature-title">High Altitude Growth</h3>
+                            <p class="feature-description">Grown at 4,000-6,900 feet on the slopes of Mt. Kenya, our beans develop complex flavors and higher density that create exceptional coffee.</p>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <span class="feature-icon">🔥</span>
+                            <h3 class="feature-title">Expert Dark Roasting</h3>
+                            <p class="feature-description">Our master roasters bring out bold, rich flavors with notes of dark chocolate and caramel - perfect for the intense extraction of moka pot brewing.</p>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <span class="feature-icon">☕</span>
+                            <h3 class="feature-title">Moka Pot Optimized</h3>
+                            <p class="feature-description">Ground specifically for moka pot brewing - the perfect grind size and roast level to create that authentic Italian espresso-style coffee experience.</p>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <span class="feature-icon">📦</span>
+                            <h3 class="feature-title">Fresh Daily Roasting</h3>
+                            <p class="feature-description">Roasted in small batches every morning and sealed immediately to preserve the rich aroma and bold flavor profile that makes morning coffee special.</p>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <span class="feature-icon">🚚</span>
+                            <h3 class="feature-title">Same-Day Delivery</h3>
+                            <p class="feature-description">From our roastery to your kitchen within hours. Fresh-roasted coffee delivered across Embu County while the beans are still releasing their aromatic oils.</p>
+                        </div>
                     </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Coffee Process Section -->
+        <section id="process" class="process-section">
+            <div class="container">
+                <div class="showcase-header">
+                    <h2 class="showcase-title" style="color: var(--coffee-dark);">Our Complete Coffee Journey</h2>
+                    <p class="showcase-subtitle">From seedling to your morning cup - we control every step of the process to ensure the highest quality Mt. Kenya coffee experience.</p>
+                </div>
+
+                <div class="process-grid">
                     <div class="process-card">
                         <span class="process-icon">🌱</span>
-                        <h3>Modern Applications</h3>
-                        <p>Combining traditional wisdom with modern food safety and delivery systems to create sustainable farm-to-table operations.</p>
+                        <h3 class="process-title">Seedling Nursery</h3>
+                        <p class="process-description">We start with our own nursery, growing hardy coffee seedlings adapted to Mt. Kenya's unique conditions. Each plant is nurtured from germination to ensure strong, healthy growth.</p>
                     </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="heritage" class="section heritage">
-            <div class="container">
-                <h2 class="section-title">Mt. Kenya Food Heritage</h2>
-                <p class="section-lead">The foods we grow and deliver today connect directly to centuries of Embu agricultural wisdom and cultural practices on the sacred slopes of Mt. Kenya.</p>
-                
-                <div class="farm-process">
+                    
                     <div class="process-card">
                         <span class="process-icon">🏔️</span>
-                        <h3>Sacred Mountain Waters</h3>
-                        <p>Our spring-fed ponds and irrigation systems draw from Mt. Kenya's glacial waters, considered sacred by the Embu people for their life-giving properties.</p>
+                        <h3 class="process-title">Mountain Plantation</h3>
+                        <p class="process-description">Our terraced plantation on Mt. Kenya's slopes provides the perfect growing conditions - rich volcanic soil, ideal altitude, and natural shade for slow cherry development.</p>
                     </div>
+                    
                     <div class="process-card">
-                        <span class="process-icon">🌾</span>
-                        <h3>Ancestral Crops</h3>
-                        <p>Many vegetables in our boxes are traditional Embu varieties, preserved through generations of careful seed selection and cultural knowledge.</p>
+                        <span class="process-icon">✋</span>
+                        <h3 class="process-title">Hand Harvesting</h3>
+                        <p class="process-description">Only ripe red cherries are hand-picked by our experienced harvesters, ensuring optimal sugar content and flavor development in every bean.</p>
                     </div>
+                    
                     <div class="process-card">
-                        <span class="process-icon">🍯</span>
-                        <h3>Traditional Preparation</h3>
-                        <p>Every box includes traditional recipes and preparation methods, connecting modern families to their cultural food heritage.</p>
+                        <span class="process-icon">🔄</span>
+                        <h3 class="process-title">Expert Processing</h3>
+                        <p class="process-description">Our wet processing method removes pulp and ferments beans to develop clean, bright flavors while maintaining the rich body Mt. Kenya coffee is known for.</p>
                     </div>
+                    
                     <div class="process-card">
-                        <span class="process-icon">👥</span>
-                        <h3>Community Wisdom</h3>
-                        <p>Our farming practices incorporate elder knowledge about seasonal timing, companion planting, and sustainable land stewardship.</p>
+                        <span class="process-icon">🔥</span>
+                        <h3 class="process-title">Dark Roast Mastery</h3>
+                        <p class="process-description">Small-batch dark roasting brings out bold, rich flavors with notes of dark chocolate and caramel - perfectly balanced for moka pot extraction.</p>
+                    </div>
+                    
+                    <div class="process-card">
+                        <span class="process-icon">📦</span>
+                        <h3 class="process-title">Premium Packaging</h3>
+                        <p class="process-description">Immediately sealed in valve bags to preserve freshness and aroma. Each package includes brewing instructions for optimal moka pot preparation.</p>
                     </div>
                 </div>
             </div>
         </section>
     </main>
 
+    <!-- Footer -->
     <footer id="contact" class="footer">
         <div class="container">
             <div class="footer-content">
                 <div>
-                    <h4>Fresh Delivery Service</h4>
+                    <h4>Premium Coffee & Moka Pots</h4>
                     <ul>
-                        <li>📞 Order: <a href="tel:+254722704997">+254 722 704 997</a></li>
+                        <li>📞 Orders: <a href="tel:+254722704997">+254 722 704 997</a></li>
                         <li>✉️ Email: <a href="mailto:GroupNomad@outlook.com">GroupNomad@outlook.com</a></li>
-                        <li>📍 Farm Location: Kavutiri, Embu County</li>
+                        <li>🏔️ Estate: Kavutiri, Embu County</li>
                         <li>🚚 Delivery: All Embu County</li>
                     </ul>
                 </div>
                 <div>
-                    <h4>What's Fresh Today</h4>
+                    <h4>Our Products</h4>
                     <ul>
-                        <li><a href="#fish-products">🐟 Fresh Tilapia</a></li>
-                        <li><a href="#coffee-products">☕ Mt. Kenya Coffee</a></li>
-                        <li><a href="#produce-box">🥬 Seasonal Vegetables</a></li>
-                        <li><a href="#nuts">🥜 Macadamia Nuts</a></li>
+                        <li><a href="#moka-pots">Premium Moka Pots</a></li>
+                        <li><a href="#coffee">Mt. Kenya Dark Roast</a></li>
+                        <li><a href="#process">Coffee Grinding Service</a></li>
+                        <li><a href="#contact">Custom Orders</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h4>Farm Experience</h4>
+                    <h4>Coffee Education</h4>
                     <ul>
-                        <li><a href="wellness.html">🧘 Wellness Visits</a></li>
-                        <li><a href="events.html">👨‍🌾 Farm Tours</a></li>
-                        <li><a href="coffee.html">☕ Coffee Cupping</a></li>
-                        <li><a href="aquaculture.html">🐟 Pond Visits</a></li>
+                        <li><a href="#process">Moka Pot Brewing Guide</a></li>
+                        <li><a href="#process">Coffee Farm Tours</a></li>
+                        <li><a href="#coffee">Roasting Workshops</a></li>
+                        <li><a href="#process">Cupping Sessions</a></li>
                     </ul>
                 </div>
                 <div>
                     <h4>Our Heritage</h4>
                     <ul>
-                        <li><a href="#heritage">🏔️ Mt. Kenya Traditions</a></li>
-                        <li><a href="#research">📚 Cultural Research</a></li>
-                        <li><a href="our-story.html">👴 Elder Stories</a></li>
-                        <li><a href="#contact">🤝 Community</a></li>
+                        <li><a href="#home">Mt. Kenya Coffee Tradition</a></li>
+                        <li><a href="#process">Sustainable Farming</a></li>
+                        <li><a href="#contact">Community Impact</a></li>
+                        <li><a href="#coffee">Quality Standards</a></li>
                     </ul>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2024 Rustic Garden • From Seed to Plate • Kavutiri, Embu County</p>
+                <p>&copy; 2024 Rustic Garden • Premium Moka Pots & Mt. Kenya Coffee • Kavutiri, Embu County</p>
             </div>
         </div>
     </footer>
-    
-    <script>
-        // Mobile navigation toggle
-        function toggleNav() {
-            const nav = document.getElementById('nav');
-            nav.classList.toggle('active');
-        }
 
-        // Smooth scrolling for anchor links
+    <script>
+        // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
-                if (this.getAttribute('href') === '#') return;
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
@@ -1083,13 +1170,11 @@
                         behavior: 'smooth',
                         block: 'start'
                     });
-                    // Close mobile nav if open
-                    document.getElementById('nav').classList.remove('active');
                 }
             });
         });
 
-        // Add loading animation to cards
+        // Add scroll animations to cards
         const observerOptions = {
             threshold: 0.1,
             rootMargin: '0px 0px -50px 0px'
@@ -1104,23 +1189,41 @@
             });
         }, observerOptions);
 
-        // Observe all cards for animation
-        document.querySelectorAll('.process-card, .product-card').forEach(card => {
+        // Initialize animations for all cards
+        document.querySelectorAll('.moka-card, .feature-card, .process-card').forEach(card => {
             card.style.opacity = '0';
             card.style.transform = 'translateY(30px)';
-            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            card.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
             observer.observe(card);
         });
 
-        // Add click tracking for delivery inquiries
+        // Add hover effects for navigation
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('mouseenter', function() {
+                this.style.background = 'var(--coffee-dark)';
+                this.style.color = 'white';
+            });
+            
+            link.addEventListener('mouseleave', function() {
+                this.style.background = 'transparent';
+                this.style.color = 'var(--coffee-dark)';
+            });
+        });
+
+        // Add click tracking for orders
         document.querySelectorAll('a[href*="tel"], a[href*="mailto"]').forEach(link => {
             link.addEventListener('click', function() {
-                console.log('Delivery inquiry initiated:', this.href);
+                console.log('Order inquiry initiated:', this.href);
             });
+        });
+
+        // Enhance steam animation timing
+        document.querySelectorAll('.moka-card').forEach((card, index) => {
+            const steamAnimation = card.querySelector('.steam-animation');
+            if (steamAnimation) {
+                steamAnimation.style.animationDelay = `${index * 0.5}s`;
+            }
         });
     </script>
 </body>
 </html>
-
-
-
