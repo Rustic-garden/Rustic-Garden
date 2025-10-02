@@ -4,3 +4,9 @@ opencv-python-headless
 numpy
 cairosvg
 pdf2image
+streamlit
+numpy
+pandas
+matplotlib
+scipy
+dataclasses
